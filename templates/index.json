@@ -12,7 +12,7 @@
     "image_with_text": {
       "type": "image_with_text",
       "settings": {
-        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL  </p>"
+        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL </p>"
       }
     },
     "featured_products": {
@@ -26,37 +26,18 @@
         "collection_collection_limit": 6
       }
     },
-    "featured_collections": {
-      "type": "featured_collections",
+    "featured_products_fu": {
+      "type": "featured_products_fu"
+    },
+    "styled_by_vera": {
+      "type": "styled_by_vera",
       "blocks": {
-        "block_N3MFna": {
-          "type": "block",
-          "name": "Block",
-          "settings": {
-            "url_link": ""
-          },
-          "blocks": {}
-        },
-        "block_LXrPRz": {
-          "type": "block",
-          "name": "Block",
-          "settings": {
-            "url_link": ""
-          },
-          "blocks": {}
-        },
         "block": {
           "type": "block",
-          "name": "Block",
-          "settings": {
-            "url_link": ""
-          },
-          "blocks": {}
+          "name": "Block"
         }
       },
       "block_order": [
-        "block_N3MFna",
-        "block_LXrPRz",
         "block"
       ],
       "settings": {
@@ -89,7 +70,7 @@
     "content_2": {
       "type": "content_2",
       "blocks": {
-        "social_sign_up_MCytUV": {
+        "social-sign-up": {
           "type": "social-sign-up",
           "settings": {
             "text_headline": "Social Sign Up",
@@ -97,9 +78,7 @@
           }
         }
       },
-      "block_order": [
-        "social_sign_up_MCytUV"
-      ],
+      "block_order": ["social-sign-up"],
       "settings": {
         "image_position": "left"
       }
@@ -110,7 +89,9 @@
   "order": [
     "image_with_text",
     "featured_products",
-    "featured_collections",
+    null,
+    "featured_products_fu",
+    "styled_by_vera",
     "featured_products_2",
     "blog_posts",
     "custom_liquid",
