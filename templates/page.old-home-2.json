@@ -1,0 +1,12 @@
+{
+    "sections": {
+        "landing_hero": {
+            "type": "landing_hero"
+        }
+    },
+    "layout": "page.old-home-2",
+    "wrapper": "div.main-wrapper",
+    "order": [
+        "landing_hero"
+    ]
+}
