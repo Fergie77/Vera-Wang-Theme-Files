@@ -1,99 +1,60 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
-  "sections": {
-    "image_with_text": {
-      "type": "image_with_text",
-      "settings": {
-        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 27 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL </p>"
-      }
-    },
-    "featured_products": {
-      "type": "featured_products",
-      "settings": {
-        "text_heading": "Headline Copy",
-        "url_button_link": "shopify://collections/collection-1",
-        "image_image": "shopify://shop_images/image_129.jpg",
-        "text_button_text": "Shop the collection",
-        "text_color": "#ffffff",
-        "collection_collection": "collection-1",
-        "collection_collection_limit": 4
-      }
-    },
-    "featured_products_fu": {
-      "type": "featured_products_fu"
-    },
-    "styled_by_vera": {
-      "type": "styled_by_vera",
-      "blocks": {
-        "block": {
-          "type": "block",
-          "name": "Block"
+    "sections": {
+        "image_with_text": {
+            "type": "image_with_text"
+        },
+        "featured_products": {
+            "type": "featured_products"
+        },
+        "": [],
+        "featured_products_fu": {
+            "type": "featured_products_fu"
+        },
+        "styled_by_vera": {
+            "type": "styled_by_vera",
+            "blocks": {
+                "block": {
+                    "type": "block",
+                    "name": "Block"
+                }
+            },
+            "block_order": [
+                "block"
+            ]
+        },
+        "featured_products_2": {
+            "type": "featured_products_2"
+        },
+        "blog_posts": {
+            "type": "blog_posts"
+        },
+        "custom_liquid": {
+            "type": "custom_liquid"
+        },
+        "content_2": {
+            "type": "content_2",
+            "blocks": {
+                "social-sign-up": {
+                    "name": "Social Sign Up",
+                    "type": "social-sign-up"
+                }
+            },
+            "block_order": [
+                "social-sign-up"
+            ]
         }
-      },
-      "block_order": ["block"],
-      "settings": {
-        "text_heading": "Styled By Vera"
-      }
     },
-    "featured_products_2": {
-      "type": "featured_products_2",
-      "settings": {
-        "url_button_link": "",
-        "text_button_text": "<img loading=\"lazy\" src=\"https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg\" alt=\"\" class=\"featured-products_collection-image\">",
-        "text_heading": "Handbags Headline"
-      }
-    },
-    "blog_posts": {
-      "type": "blog_posts",
-      "settings": {
-        "text_heading": "Diary",
-        "article_article": "",
-        "text_button_text": "See More",
-        "url_button_link": ""
-      }
-    },
-    "custom_liquid": {
-      "type": "custom_liquid",
-      "settings": {
-        "custom_liquid": ""
-      }
-    },
-    "content_2": {
-      "type": "content_2",
-      "blocks": {
-        "social-sign-up": {
-          "type": "social-sign-up",
-          "settings": {
-            "text_headline": "Social Sign Up",
-            "text_checkbox": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
-          }
-        }
-      },
-      "block_order": ["social-sign-up"],
-      "settings": {
-        "image_position": "left"
-      }
-    }
-  },
-  "layout": "theme",
-  "wrapper": "main.main-wrapper",
-  "order": [
-    "image_with_text",
-    "featured_products",
-    null,
-    "featured_products_fu",
-    "styled_by_vera",
-    "featured_products_2",
-    "blog_posts",
-    "custom_liquid",
-    "content_2"
-  ]
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "image_with_text",
+        "featured_products",
+        null,
+        "featured_products_fu",
+        "styled_by_vera",
+        "featured_products_2",
+        "blog_posts",
+        "custom_liquid",
+        "content_2"
+    ]
 }
