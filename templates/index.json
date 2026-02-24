@@ -11,41 +11,97 @@
   "sections": {
     "image_with_text": {
       "type": "image_with_text",
-      "settings": {}
+      "settings": {
+        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL  </p>"
+      }
     },
     "featured_products": {
       "type": "featured_products",
-      "settings": {}
+      "settings": {
+        "text_heading": "Headline Copy",
+        "url_button_link": "",
+        "text_button_text": "<img src=\"https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg\" loading=\"lazy\" alt=\"\" class=\"featured-products_collection-image\">\n                  <div class=\"featured-products_collection-link-text\">Shop the collection</div>",
+        "collection_collection": "",
+        "collection_collection_limit": 6
+      }
     },
     "featured_collections": {
       "type": "featured_collections",
       "blocks": {
+        "block_N3MFna": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
+        },
+        "block_LXrPRz": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
+        },
         "block": {
           "type": "block",
           "name": "Block",
-          "settings": {}
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
         }
       },
       "block_order": [
+        "block_N3MFna",
+        "block_LXrPRz",
         "block"
       ],
-      "settings": {}
+      "settings": {
+        "text_heading": "Styled By Vera"
+      }
     },
     "featured_products_2": {
       "type": "featured_products_2",
-      "settings": {}
+      "settings": {
+        "url_button_link": "",
+        "text_button_text": "<img loading=\"lazy\" src=\"https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg\" alt=\"\" class=\"featured-products_collection-image\">",
+        "text_heading": "Handbags Headline"
+      }
     },
     "blog_posts": {
       "type": "blog_posts",
-      "settings": {}
+      "settings": {
+        "text_heading": "Diary",
+        "article_article": "",
+        "text_button_text": "See More",
+        "url_button_link": ""
+      }
     },
     "custom_liquid": {
       "type": "custom_liquid",
-      "settings": {}
+      "settings": {
+        "custom_liquid": ""
+      }
     },
     "content_2": {
       "type": "content_2",
-      "settings": {}
+      "blocks": {
+        "social_sign_up_MCytUV": {
+          "type": "social-sign-up",
+          "settings": {
+            "text_headline": "Social Sign Up",
+            "text_checkbox": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
+          }
+        }
+      },
+      "block_order": [
+        "social_sign_up_MCytUV"
+      ],
+      "settings": {
+        "image_position": "left"
+      }
     }
   },
   "layout": "theme",
