@@ -12,7 +12,7 @@
     "image_with_text": {
       "type": "image_with_text",
       "settings": {
-        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL </p>"
+        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 27 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL </p>"
       }
     },
     "featured_products": {
@@ -38,9 +38,7 @@
           "name": "Block"
         }
       },
-      "block_order": [
-        "block"
-      ],
+      "block_order": ["block"],
       "settings": {
         "text_heading": "Styled By Vera"
       }
