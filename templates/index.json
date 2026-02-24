@@ -20,8 +20,9 @@
       "settings": {
         "text_heading": "Headline Copy",
         "url_button_link": "",
-        "text_button_text": "<img src=\"https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg\" loading=\"lazy\" alt=\"\" class=\"featured-products_collection-image\">\n                  <div class=\"featured-products_collection-link-text\">Shop the collection</div>",
-        "collection_collection": "",
+        "text_button_text": "Shop the collection",
+        "image_image": "shopify://shop_images/image_129.jpg",
+        "collection_collection": "collection-1",
         "collection_collection_limit": 6
       }
     },
