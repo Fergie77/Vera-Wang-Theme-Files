@@ -9,8 +9,8 @@
         "cta_1": {
             "type": "cta_1"
         },
-        "featured_products_fu": {
-            "type": "featured_products_fu"
+        "featured_wide": {
+            "type": "featured_wide"
         },
         "styled_by_vera": {
             "type": "styled_by_vera",
@@ -24,11 +24,14 @@
                 "block"
             ]
         },
-        "featured_products_2": {
-            "type": "featured_products_2"
+        "featured_2": {
+            "type": "featured_2"
         },
         "blog_posts": {
             "type": "blog_posts"
+        },
+        "featured_3": {
+            "type": "featured_3"
         },
         "custom_liquid": {
             "type": "custom_liquid"
@@ -52,10 +55,11 @@
         "image_with_text",
         "featured_products",
         "cta_1",
-        "featured_products_fu",
+        "featured_wide",
         "styled_by_vera",
-        "featured_products_2",
+        "featured_2",
         "blog_posts",
+        "featured_3",
         "custom_liquid",
         "content_2"
     ]
