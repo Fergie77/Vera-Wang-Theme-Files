@@ -10,7 +10,7 @@
                 </div>
               </div>
               <div class="featured-products_layout">
-                <a id="w-node-_38ec51fc-5cb6-9c7f-e7ce-d4409a525315-4e4cbfad" href="{{ section.settings.url_button_link }}" class="featured-products_collection-link w-inline-block"> {% if section.settings.image_image %} {{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'featured-products_collection-image' }} {% else %} <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="featured-products_collection-image"> {% endif %} <div class="featured-products_collection-link-text">{{ section.settings.text_button_text }}</div> </a>
+                <a id="w-node-_38ec51fc-5cb6-9c7f-e7ce-d4409a525315-4e4cbfad" href="{{ section.settings.url_button_link }}" class="featured-products_collection-link w-inline-block"> {% if section.settings.image_image %} {{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'featured-products_collection-image' }} {% else %} <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="featured-products_collection-image"> {% endif %} <div class="featured-products_collection-link-text" style="color:{{section.settings.text_color}}">{{ section.settings.text_button_text }}</div> </a>
                 <div id="w-node-f727b04f-0fb7-b1ec-5db9-c7264e4cbfb9-4e4cbfad" class="product_list-wrapper w-dyn-list">
                   <div role="list" class="product_list w-dyn-items">
                     {% for product in section.settings.collection_collection.products limit: section.settings.collection_collection_limit %}
@@ -56,6 +56,16 @@
             "type": "text",
             "label": "Button-Text",
             "default": "Shop the collection"
+        },
+        {
+            "type": "header",
+            "content": "Text Colour"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "#000000"
         },
         {
             "id": "collection_collection",
