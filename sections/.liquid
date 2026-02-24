@@ -1,0 +1,37 @@
+<div class="padding-global">
+          <div>
+            <div class="header5_component">
+              <div class="rl_header5_content">
+                <h1 class="rl_header5_heading">Handbags</h1>
+                <p class="cta-text">Call to action button</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rl_section_link" href="{{ section.settings.url_link }}"> </div>{% if section.settings.image_background_image %}
+{{ section.settings.image_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'rl_section_background-image' }}
+{% else %}
+<img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="rl_section_background-image">
+{% endif %} {% schema %} {
+    "tag": "header",
+    "class": "rl_section_header5",
+    "settings": [
+        {
+            "id": "url_link",
+            "type": "url",
+            "label": "Link"
+        },
+        {
+            "id": "image_background_image",
+            "type": "image_picker",
+            "label": "Background Image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}
