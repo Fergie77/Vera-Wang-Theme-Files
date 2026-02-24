@@ -1,12 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "landing_hero": {
-            "type": "landing_hero"
-        }
+  "sections": {
+    "image_with_text": {
+      "type": "image_with_text",
+      "settings": {}
     },
-    "layout": "theme",
-    "wrapper": "div.main-wrapper",
-    "order": [
-        "landing_hero"
-    ]
+    "featured_products": {
+      "type": "featured_products",
+      "settings": {}
+    },
+    "featured_collections": {
+      "type": "featured_collections",
+      "blocks": {
+        "block": {
+          "type": "block",
+          "name": "Block",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "block"
+      ],
+      "settings": {}
+    },
+    "featured_products_2": {
+      "type": "featured_products_2",
+      "settings": {}
+    },
+    "blog_posts": {
+      "type": "blog_posts",
+      "settings": {}
+    },
+    "custom_liquid": {
+      "type": "custom_liquid",
+      "settings": {}
+    },
+    "content_2": {
+      "type": "content_2",
+      "settings": {}
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "image_with_text",
+    "featured_products",
+    "featured_collections",
+    "featured_products_2",
+    "blog_posts",
+    "custom_liquid",
+    "content_2"
+  ]
 }
