@@ -1,0 +1,63 @@
+<div class="padding-global padding-section-medium remove-mobile">
+          <div class="container-large">
+            <div class="blog_link-layout">
+              <div id="w-node-_4d7af1cf-0c17-815b-6613-2343dbf24ad7-dbf24ad4" class="headline-wrapper">
+                <h2 class="blog_heading heading-style-h2">
+{{ section.settings.text_heading }}
+</h2>
+              </div>
+              <div id="w-node-_99f40285-bd9a-745d-4b39-876f36307773-dbf24ad4" class="spacer-medium"></div>
+              <div id="w-node-_4d7af1cf-0c17-815b-6613-2343dbf24adc-dbf24ad4" class="blog_component">
+                <div class="blog_featured-item">
+                  <div id="w-node-_4d7af1cf-0c17-815b-6613-2343dbf24ade-dbf24ad4" class="blog_featured-image-link">{% assign article = articles[section.settings.article_article] %} 
+                    <a li-object:href="article.url" href="{{ article.url }}" class="blog_featured-image-wrapper w-inline-block">
+                      <div class="blog_title-wrapper">
+                        <div class="blog_title-layout">
+                          <h3 li-object="article.title" class="blog_title">{{ article.title }}</h3>
+                          <p li-object="article.excerpt | truncate: 25" class="blog_subheading">{{ article.excerpt | truncate: 25 }}</p>
+                        </div>
+                        <div class="cta-text">Read now</div>
+                      </div><img alt="" loading="lazy" li-object:src="article.image.src | image_url: width: 600" src="{{ article.image.src | image_url: width: 600 }}" class="blog_featured-image">
+                    </a>
+                  </div>
+                </div>
+                <a id="w-node-b14c5374-d8b8-6358-dcb7-754007b3c650-dbf24ad4" href="{{ section.settings.url_button_link }}" class="cta-text"> {{ section.settings.text_button_text }} </a>
+              </div>
+            </div>
+          </div>
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Blog posts",
+    "class": "section_blog",
+    "settings": [
+        {
+            "id": "text_heading",
+            "type": "text",
+            "label": "Heading",
+            "default": "Diary"
+        },
+        {
+            "id": "article_article",
+            "type": "article",
+            "label": "Article"
+        },
+        {
+            "id": "text_button_text",
+            "type": "text",
+            "label": "Button-Text",
+            "default": "See More"
+        },
+        {
+            "id": "url_button_link",
+            "type": "url",
+            "label": "Button-Link"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Blog posts",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

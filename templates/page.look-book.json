@@ -1,0 +1,12 @@
+{
+    "sections": {
+        "look_book": {
+            "type": "look_book"
+        }
+    },
+    "layout": "page.look-book",
+    "wrapper": "div.main-wrapper",
+    "order": [
+        "look_book"
+    ]
+}

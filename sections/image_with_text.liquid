@@ -1,0 +1,46 @@
+<div class="header_background-image-wrapper">{% if section.settings.image_image_left %}
+{{ section.settings.image_image_left | image_url: width: 1000 | image_tag: loading: 'eager', class: 'header_background-image is-left' }}
+{% else %}
+ {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image is-left' }} 
+{% endif %}
+          <div class="header_background-image-right-wrapper">{% if section.settings.image_image_right %}
+{{ section.settings.image_image_right | image_url: width: 1000 | image_tag: loading: 'eager', class: 'header_background-image is-right' }}
+{% else %}
+ {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image is-right' }} 
+{% endif %}
+            <div class="header_card text-color-white">
+              <div class="max-width-large">
+                <div class="text-size-medium"> {{ section.settings.richtext_paragraph }} </div>
+              </div>
+            </div>
+          </div>
+        </div> {% schema %} {
+    "tag": "header",
+    "name": "Image with Text",
+    "class": "section_header-home",
+    "settings": [
+        {
+            "id": "image_image_left",
+            "type": "image_picker",
+            "label": "Image Left"
+        },
+        {
+            "id": "image_image_right",
+            "type": "image_picker",
+            "label": "Image Right"
+        },
+        {
+            "id": "richtext_paragraph",
+            "type": "richtext",
+            "label": "Paragraph",
+            "default": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL \u2028<\/p>"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Image with Text",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}
