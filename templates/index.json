@@ -1,66 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "image_with_text": {
-            "type": "image_with_text"
-        },
-        "featured_products": {
-            "type": "featured_products"
-        },
-        "cta_1": {
-            "type": "cta_1"
-        },
-        "featured_wide": {
-            "type": "featured_wide"
-        },
-        "styled_by_vera": {
-            "type": "styled_by_vera",
-            "blocks": {
-                "block": {
-                    "type": "block",
-                    "name": "Block"
-                }
-            },
-            "block_order": [
-                "block"
-            ]
-        },
-        "featured_2": {
-            "type": "featured_2"
-        },
-        "blog_posts": {
-            "type": "blog_posts"
-        },
-        "featured_3": {
-            "type": "featured_3"
-        },
-        "custom_liquid": {
-            "type": "custom_liquid"
-        },
-        "content_2": {
-            "type": "content_2",
-            "blocks": {
-                "social-sign-up": {
-                    "name": "Social Sign Up",
-                    "type": "social-sign-up"
-                }
-            },
-            "block_order": [
-                "social-sign-up"
-            ]
-        }
+  "sections": {
+    "image_with_text": {
+      "type": "image_with_text",
+      "settings": {
+        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL  </p>"
+      }
     },
-    "layout": "theme",
-    "wrapper": "main.main-wrapper",
-    "order": [
-        "image_with_text",
-        "featured_products",
-        "cta_1",
-        "featured_wide",
-        "styled_by_vera",
-        "featured_2",
-        "blog_posts",
-        "featured_3",
-        "custom_liquid",
-        "content_2"
-    ]
+    "featured_products": {
+      "type": "featured_products",
+      "settings": {
+        "text_heading": "Headline Copy",
+        "url_button_link": "",
+        "text_button_text": "Shop the collection",
+        "text_color": "#000000",
+        "collection_collection": "",
+        "collection_collection_limit": 6
+      }
+    },
+    "cta_1": {
+      "type": "cta_1",
+      "settings": {
+        "url_link": "",
+        "text_eyebrow_text": "THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE",
+        "text_heading": "Heading Copy",
+        "text_sub_heading": "Subhead Copy",
+        "text_link_text": "Call to action link"
+      }
+    },
+    "featured_wide": {
+      "type": "featured_wide",
+      "settings": {
+        "url_link": ""
+      }
+    },
+    "styled_by_vera": {
+      "type": "styled_by_vera",
+      "blocks": {
+        "block": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "block"
+      ],
+      "settings": {
+        "text_heading": "Styled By Vera",
+        "url_link": ""
+      }
+    },
+    "featured_2": {
+      "type": "featured_2",
+      "settings": {
+        "text_heading": "Shoes",
+        "url_button_link": "",
+        "text_button_text": "<img loading=\"lazy\" src=\"https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg\" alt=\"\" class=\"featured-products_collection-image\">\n                  <div class=\"featured-products_collection-link-text\">Shop the collection</div>"
+      }
+    },
+    "blog_posts": {
+      "type": "blog_posts",
+      "settings": {
+        "text_heading": "Diary",
+        "article_article": "",
+        "text_button_text": "See More",
+        "url_button_link": ""
+      }
+    },
+    "featured_3": {
+      "type": "featured_3",
+      "settings": {
+        "url_button_link": "",
+        "text_button_text": "<img loading=\"lazy\" src=\"https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg\" alt=\"\" class=\"featured-products_collection-image\">",
+        "text_heading": "Handbags Headline"
+      }
+    },
+    "custom_liquid": {
+      "type": "custom_liquid",
+      "settings": {
+        "custom_liquid": ""
+      }
+    },
+    "content_2": {
+      "type": "content_2",
+      "blocks": {
+        "social-sign-up": {
+          "type": "social-sign-up",
+          "name": "Social Sign Up",
+          "settings": {
+            "text_headline": "Social Sign Up",
+            "text_checkbox": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
+          }
+        }
+      },
+      "block_order": [
+        "social-sign-up"
+      ],
+      "settings": {
+        "image_image": "shopify://shop_images/image_129.jpg",
+        "image_position": "left"
+      }
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "image_with_text",
+    "featured_products",
+    "cta_1",
+    "featured_wide",
+    "styled_by_vera",
+    "featured_2",
+    "blog_posts",
+    "featured_3",
+    "custom_liquid",
+    "content_2"
+  ]
 }
