@@ -6,7 +6,9 @@
         "featured_products": {
             "type": "featured_products"
         },
-        "": [],
+        "cta_1": {
+            "type": "cta_1"
+        },
         "featured_products_fu": {
             "type": "featured_products_fu"
         },
@@ -49,7 +51,7 @@
     "order": [
         "image_with_text",
         "featured_products",
-        null,
+        "cta_1",
         "featured_products_fu",
         "styled_by_vera",
         "featured_products_2",
