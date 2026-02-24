@@ -1,0 +1,53 @@
+<div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-medium">
+              <a href="{{ section.settings.url_link }}" class="rl_header1_component w-inline-block"> <div class="rl_header1_content"> <p class="rl_header1_detail-text">{{ section.settings.text_eyebrow_text }}</p> <div class="rl_header1_info-layout"> <h1 class="rl-heading-style-h1">{{ section.settings.text_heading }}</h1> <p class="rl_header1_subheading">{{ section.settings.text_sub_heading }}</p> </div> <p class="cta-text hide-tablet">{{ section.settings.text_link_text }}</p> </div> <div class="rl_header1_image-wrapper">{% if section.settings.image_image %} {{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'rl_header1_image' }} {% else %} <img src="{{ 'placeholder-image.svg' | asset_url }}" loading="lazy" alt="" class="rl_header1_image"> {% endif %}</div> <p id="w-node-_8eb5e00e-e52d-4526-88c3-22417d25b1f9-feb34c80" class="cta-text show-tablet">{{ section.settings.text_link_text }}</p> </a>
+            </div>
+          </div>
+        </div> {% schema %} {
+    "tag": "header",
+    "class": "rl_section_header1",
+    "settings": [
+        {
+            "id": "url_link",
+            "type": "url",
+            "label": "Link"
+        },
+        {
+            "id": "text_eyebrow_text",
+            "type": "text",
+            "label": "Eyebrow Text",
+            "default": "THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE"
+        },
+        {
+            "id": "text_heading",
+            "type": "text",
+            "label": "Heading",
+            "default": "Heading Copy"
+        },
+        {
+            "id": "text_sub_heading",
+            "type": "text",
+            "label": "Sub Heading",
+            "default": "Subhead Copy"
+        },
+        {
+            "id": "text_link_text",
+            "type": "text",
+            "label": "Link Text",
+            "default": "Call to action link"
+        },
+        {
+            "id": "image_image",
+            "type": "image_picker",
+            "label": "Image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

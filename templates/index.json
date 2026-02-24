@@ -19,11 +19,12 @@
       "type": "featured_products",
       "settings": {
         "text_heading": "Headline Copy",
-        "url_button_link": "",
-        "text_button_text": "Shop the collection",
+        "url_button_link": "shopify://collections/collection-1",
         "image_image": "shopify://shop_images/image_129.jpg",
+        "text_button_text": "Shop the collection",
+        "text_color": "#ffffff",
         "collection_collection": "collection-1",
-        "collection_collection_limit": 6
+        "collection_collection_limit": 4
       }
     },
     "featured_products_fu": {
