@@ -7,22 +7,29 @@
 {% when '@app' %}
 {% render block %}
 
-                <div class="social-sign-up_component">
-                  <p class="social-sign-up_eyebrow">THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE</p>
-                  <div class="social-sign-up_heading-layout">
+                {% when 'social-sign-up' %}
+            <div li-block="Social Sign Up" class="social-sign-up_component">
+                    
+                  
+                    <p class="social-sign-up_eyebrow">THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE</p>
+                    
+                  
+                    <div class="social-sign-up_heading-layout">
                     <h2 class="social-sign-up_heading">
-{{ section.settings.text_headline }}
+{{ block.settings.text_headline }}
 </h2>
                     <p class="social-sign-up_subheading">Subhead Copy</p>
                   </div>
-                  <div class="contact_form-block w-form">
+                    
+                  
+                    <div class="contact_form-block w-form">
                     {% form 'contact', return_to: '/', class: 'contact_form' %}
 <div class="form_field-wrapper"><input class="form_input w-input" maxlength="256" name="contact[first_name]" data-name="First Name" placeholder="First Name" type="text" id="First-Name" required=""></div>
                       <div class="form_field-wrapper"><input class="form_input w-input" maxlength="256" name="contact[last_name]" data-name="Last Name" placeholder="Last Name" type="text" id="Last-Name" required=""></div>
                       <div class="form_field-wrapper"><input class="form_input w-input" maxlength="256" name="contact[email]" data-name="Email" placeholder="Email" type="email" id="Email" required=""></div>
                       <div class="margin-vertical margin-small"><label id="Contact-5-Checkbox" class="w-checkbox form_checkbox" name="contact[checkbox]">
                           <div class="w-checkbox-input w-checkbox-input--inputType-custom form_checkbox-icon"></div><input id="Checkbox" name="Checkbox" type="checkbox" required="" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1"><span for="Checkbox" class="form_checkbox-label w-form-label">
-{{ section.settings.text_checkbox }}
+{{ block.settings.text_checkbox }}
 </span>
                         </label></div><input type="submit" data-wait="Please wait..." id="w-node-_9b1ba911-32e1-f643-9753-46188f1e5679-feb34c80" class="button is-alternate w-button" value="Submit">
                     {% endform %}
@@ -33,12 +40,16 @@
                       <div class="error-text">Oops! Something went wrong while submitting the form.</div>
                     </div>
                   </div>
-                  <div class="social-sign-up_social-links-layout">
+                    
+                  
+                    <div class="social-sign-up_social-links-layout">
                     <a href="#" class="cta-text">Instagram</a>
                     <a href="#" class="cta-text">Facebook</a>
                     <a href="#" class="cta-text">X</a>
                     <a href="#" class="cta-text">Tiktok</a>
                   </div>
+                    
+                
                 </div>
               {% endcase %}
 {% endfor %}
@@ -57,22 +68,28 @@
     "class": "section_social-sign-up background-color-primary",
     "blocks": [
         {
+            "name": "Social Sign Up",
+            "type": "social-sign-up",
+            "settings": [
+                {
+                    "id": "text_headline",
+                    "type": "text",
+                    "label": "Headline",
+                    "default": "Social Sign Up"
+                },
+                {
+                    "id": "text_checkbox",
+                    "type": "text",
+                    "label": "Checkbox",
+                    "default": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
+                }
+            ]
+        },
+        {
             "type": "@app"
         }
     ],
     "settings": [
-        {
-            "id": "text_headline",
-            "type": "text",
-            "label": "Headline",
-            "default": "Social Sign Up"
-        },
-        {
-            "id": "text_checkbox",
-            "type": "text",
-            "label": "Checkbox",
-            "default": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
-        },
         {
             "id": "image_image",
             "type": "image_picker",
@@ -103,7 +120,11 @@
         {
             "name": "Content 2",
             "category": "Liquify",
-            "blocks": []
+            "blocks": [
+                {
+                    "type": "social-sign-up"
+                }
+            ]
         }
     ]
 } {% endschema %}
