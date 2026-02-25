@@ -22,7 +22,7 @@
         "url_button_link": "",
         "text_button_text": "Shop the collection",
         "text_color": "#000000",
-        "collection_collection": "",
+        "collection_collection": "collection-1",
         "collection_collection_limit": 6
       }
     },
@@ -66,10 +66,13 @@
       "type": "featured_2",
       "settings": {
         "text_heading": "Shoes",
+        "text_paragraph": "Lorem ipsum dolor sit amet consecteturadipiscing elit Vestibulumelementum elit sit amet dictum tempus",
+        "text_link_text": "View More",
         "collection_collection": "collection-1",
         "collection_collection_limit": 2,
-        "url_button_link": "",
-        "text_button_text": "Shop the collection"
+        "url_link_image_url": "",
+        "image_link_image": "shopify://shop_images/image_129.jpg",
+        "text_link_image_text": ""
       }
     },
     "blog_posts": {
