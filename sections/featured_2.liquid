@@ -1,7 +1,7 @@
 <div class="padding-global padding-section-medium">
           <div class="container-large">
             <div class="product_component">
-              <div class="featured-products_layout">
+              <div class="featured-products-component_layout">
                 <div id="w-node-_6327b60e-44ca-c0c8-eaac-83b50b20f8e5-feb34c80" class="product_heading is-grid">
                   <h2 id="w-node-_6327b60e-44ca-c0c8-eaac-83b50b20f8e6-feb34c80" class="product-section_heading is-large">
 {{ section.settings.text_heading }}
@@ -10,11 +10,21 @@
                   <div id="w-node-_6327b60e-44ca-c0c8-eaac-83b50b20f8ea-feb34c80" class="cta-text">View More</div>
                 </div>
                 <div id="w-node-_12ade119-ddf2-a571-f17d-2b2413af1788-feb34c80" class="slider-mobile-wrapper">
-                  <div class="display-contents-desktop">
-                    {% render 'product_item', product: product %}
-                  </div>
-                  <div id="w-node-e20e7507-f5d4-9abc-9b35-f7de405de8ce-feb34c80" class="display-contents-desktop">
-                    {% render 'product_item', product: product %}
+                  <div id="w-node-_85c3723d-2e12-1395-677e-166d97d4d035-feb34c80" class="w-dyn-list">
+                    <div role="list" class="featured-products_layout w-dyn-items">
+                      {% for product in section.settings.collection_collection.products limit: section.settings.collection_collection_limit %}
+<div role="listitem" class="featured-products_item w-dyn-item">
+    
+                        
+    {% render 'product_item', product: product %}
+    
+                      
+</div>
+{% endfor %}
+                    </div>
+                    <div class="w-dyn-empty">
+                      <div>No items found.</div>
+                    </div>
                   </div>
                 </div>
                 <a id="w-node-a96a619b-ba2d-8598-5535-0e3f407f9f82-feb34c80" href="{{ section.settings.url_button_link }}" class="featured-products_collection-link w-inline-block"> {{ section.settings.text_button_text }} </a>
@@ -31,6 +41,20 @@
             "type": "text",
             "label": "Heading",
             "default": "Shoes"
+        },
+        {
+            "id": "collection_collection",
+            "type": "collection",
+            "label": "Collection"
+        },
+        {
+            "type": "range",
+            "id": "collection_collection_limit",
+            "min": 1,
+            "max": 99,
+            "step": 1,
+            "label": "Limit: Collection",
+            "default": 6
         },
         {
             "id": "url_button_link",
