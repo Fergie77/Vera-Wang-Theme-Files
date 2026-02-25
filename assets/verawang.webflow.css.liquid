@@ -3583,7 +3583,7 @@ figcaption {
   z-index: 1;
   color: var(--base-color-neutral--white);
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   padding: 2rem;
   display: flex;
   position: absolute;
@@ -4278,7 +4278,7 @@ figcaption {
 }
 
 .featured-products-component_layout {
-  grid-column-gap: 16px;
+  grid-column-gap: var(--gap--global);
   grid-row-gap: 7.6rem;
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -4738,6 +4738,19 @@ figcaption {
 .social-sign-up_image-wrapper.grid-break {
   margin-left: 0;
   margin-right: calc(var(--padding--global) * -4);
+}
+
+.social-sign-up_image-wrapper.grid-break.is-right {
+  order: 1;
+}
+
+.social-sign-up_image-wrapper.grid-break.is-left {
+  margin-right: 0;
+  margin-left: calc(var(--padding--global) * -4);
+  order: -1;
+}
+
+.social-sign-up_image-wrapper.grid-break.is-spun {
   transform: rotate(-1deg);
 }
 
