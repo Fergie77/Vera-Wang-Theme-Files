@@ -6,8 +6,12 @@
                   <h2 id="w-node-_6327b60e-44ca-c0c8-eaac-83b50b20f8e6-feb34c80" class="product-section_heading is-large">
 {{ section.settings.text_heading }}
 </h2>
-                  <p id="w-node-_6327b60e-44ca-c0c8-eaac-83b50b20f8e8-feb34c80" class="product-section_subheading is-small">Lorem ipsum dolor sit amet consecteturadipiscing elit Vestibulumelementum elit sit amet dictum tempus</p>
-                  <div id="w-node-_6327b60e-44ca-c0c8-eaac-83b50b20f8ea-feb34c80" class="cta-text">View More</div>
+                  <p id="w-node-_6327b60e-44ca-c0c8-eaac-83b50b20f8e8-feb34c80" class="product-section_subheading is-small">
+{{ section.settings.text_paragraph }}
+</p>
+                  <div id="w-node-_6327b60e-44ca-c0c8-eaac-83b50b20f8ea-feb34c80" class="cta-text">
+{{ section.settings.text_link_text }}
+</div>
                 </div>
                 <div id="w-node-_12ade119-ddf2-a571-f17d-2b2413af1788-feb34c80" class="slider-mobile-wrapper">
                   <div id="w-node-_85c3723d-2e12-1395-677e-166d97d4d035-feb34c80" class="w-dyn-list">
@@ -27,7 +31,7 @@
                     </div>
                   </div>
                 </div>
-                <a id="w-node-a96a619b-ba2d-8598-5535-0e3f407f9f82-feb34c80" href="{{ section.settings.url_button_link }}" class="featured-products_collection-link w-inline-block"> {{ section.settings.text_button_text }} </a>
+                <a id="w-node-a96a619b-ba2d-8598-5535-0e3f407f9f82-feb34c80" href="{{ section.settings.url_link_image_url }}" class="featured-products_collection-link w-inline-block"> {% if section.settings.image_link_image %} {{ section.settings.image_link_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'featured-products_collection-image' }} {% else %} <img loading="lazy" alt="" src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" class="featured-products_collection-image"> {% endif %} <div class="featured-products_collection-link-text">{{ section.settings.text_link_image_text }}</div> </a>
               </div>
             </div>
           </div>
@@ -41,6 +45,18 @@
             "type": "text",
             "label": "Heading",
             "default": "Shoes"
+        },
+        {
+            "id": "text_paragraph",
+            "type": "text",
+            "label": "Paragraph",
+            "default": "Lorem ipsum dolor sit amet consecteturadipiscing elit Vestibulumelementum elit sit amet dictum tempus"
+        },
+        {
+            "id": "text_link_text",
+            "type": "text",
+            "label": "Link Text",
+            "default": "View More"
         },
         {
             "id": "collection_collection",
@@ -57,15 +73,20 @@
             "default": 6
         },
         {
-            "id": "url_button_link",
+            "id": "url_link_image_url",
             "type": "url",
-            "label": "Button-Link"
+            "label": "Link Image URL"
         },
         {
-            "id": "text_button_text",
+            "id": "image_link_image",
+            "type": "image_picker",
+            "label": "Link Image"
+        },
+        {
+            "id": "text_link_image_text",
             "type": "text",
-            "label": "Button-Text",
-            "default": "<img loading=\"lazy\" src=\"https:\/\/d3e54v103j8qbb.cloudfront.net\/plugins\/Basic\/assets\/placeholder.60f9b1840c.svg\" alt=\"\" class=\"featured-products_collection-image\"\/>\n                  <div class=\"featured-products_collection-link-text\">Shop the collection<\/div>\n                "
+            "label": "Link Image Text",
+            "default": "Shop the collection"
         }
     ],
     "presets": [
