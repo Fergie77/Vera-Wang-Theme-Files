@@ -42,9 +42,7 @@
                   <div class="featured-products_collection-link-text">
 {{ section.settings.text_link_image_text }}
 </div>
-                  {% if section.settings.collection_collection.url != blank %}    <a li-if="section.settings.collection_collection.url != blank" li-object:href="section.settings.collection_collection.url" href="section.settings.collection_collection.url" class="featured-products_collection-link w-inline-block">
-        </a>
-{% endif %}
+                  <a li-object:href="section.settings.collection_collection.url" href="{{ section.settings.collection_collection.url }}" class="featured-products_collection-link w-inline-block"></a>
                 </div>
               </div>
             </div>
