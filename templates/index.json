@@ -66,8 +66,10 @@
       "type": "featured_2",
       "settings": {
         "text_heading": "Shoes",
+        "collection_collection": "collection-1",
+        "collection_collection_limit": 2,
         "url_button_link": "",
-        "text_button_text": "<img loading=\"lazy\" src=\"https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg\" alt=\"\" class=\"featured-products_collection-image\">\n                  <div class=\"featured-products_collection-link-text\">Shop the collection</div>"
+        "text_button_text": "Shop the collection"
       }
     },
     "blog_posts": {
