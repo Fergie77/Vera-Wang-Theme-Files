@@ -113,8 +113,12 @@
       "type": "featured_3",
       "settings": {
         "url_button_link": "",
-        "text_button_text": "<img loading=\"lazy\" src=\"https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg\" alt=\"\" class=\"featured-products_collection-image\">",
-        "text_heading": "Handbags Headline"
+        "text_button_text": "",
+        "image_image": "shopify://shop_images/Frame_157.jpg",
+        "text_heading": "Handbags Headline",
+        "text_subheading": "Subheading Copy",
+        "collection_collection": "bags",
+        "collection_collection_limit": 2
       }
     },
     "custom_liquid": {
