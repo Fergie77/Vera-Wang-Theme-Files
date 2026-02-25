@@ -55,8 +55,8 @@
 {% endfor %}
 
     </div>
-    {{ section.settings.left_right }}
-              <div id="w-node-_8ca16f8a-8cd9-b771-1e9a-fbb108146be1-feb34c80" class="social-sign-up_image-wrapper grid-break" style="{% if section.settings.left_right == 'right'%}order: 9999;{% endif %}">{% if section.settings.image_image %}
+    {{ section.settings.image_position }}
+              <div id="w-node-_8ca16f8a-8cd9-b771-1e9a-fbb108146be1-feb34c80" class="social-sign-up_image-wrapper grid-break" style="{% if section.settings.image_position == 'right'%}order: 9999;{% endif %}">{% if section.settings.image_image %}
 {{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'content_image' }}
 {% else %}
 <img alt="" src="{{ 'image.svg' | asset_url }}" loading="lazy" class="content_image">
