@@ -46,7 +46,7 @@
                     <div li-block="Social-Media" class="footer_icon-item">
                                     
                     
-                                    <a href="{{ block.settings.url_link }}" target="_blank" class="cta-text w-inline-block"> </a>
+                                    <a href="{{ block.settings.url_link }}" target="_blank" class="cta-text w-inline-block"> {{ block.settings.text_social_text }} </a>
                                     
                   
                             </div>
@@ -147,6 +147,12 @@ customElements.define('localization-form', LocalizationForm);
             "name": "Social-Media",
             "type": "social-media",
             "settings": [
+                {
+                    "id": "text_social_text",
+                    "type": "text",
+                    "label": "Social Text",
+                    "default": "Lorem Ipsum"
+                },
                 {
                     "id": "url_link",
                     "type": "url",
