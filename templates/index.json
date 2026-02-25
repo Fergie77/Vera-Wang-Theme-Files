@@ -79,6 +79,7 @@
       "settings": {
         "text_heading": "Diary",
         "article_article": "",
+        "text_cta_text": "Read More",
         "text_button_text": "See More",
         "url_button_link": ""
       }
@@ -114,7 +115,7 @@
       ],
       "settings": {
         "image_image": "shopify://shop_images/Frame_175.png",
-        "image_position": "right"
+        "image_position": "is-left"
       }
     }
   },
