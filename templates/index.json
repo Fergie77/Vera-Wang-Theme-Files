@@ -12,6 +12,8 @@
     "image_with_text": {
       "type": "image_with_text",
       "settings": {
+        "image_image_left": "shopify://shop_images/image_61.jpg",
+        "image_image_right": "shopify://shop_images/image_130.jpg",
         "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL  </p>"
       }
     },
@@ -33,7 +35,8 @@
         "text_eyebrow_text": "THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE",
         "text_heading": "Heading Copy",
         "text_sub_heading": "Subhead Copy",
-        "text_link_text": "Call to action link"
+        "text_link_text": "Call to action link",
+        "image_image": "shopify://shop_images/image_120.jpg"
       }
     },
     "featured_wide": {
@@ -45,16 +48,37 @@
     "styled_by_vera": {
       "type": "styled_by_vera",
       "blocks": {
+        "block_fq3ywc": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_796.jpg"
+          },
+          "blocks": {}
+        },
+        "block_y3QYnJ": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_797.jpg"
+          },
+          "blocks": {}
+        },
         "block": {
           "type": "block",
           "name": "Block",
           "settings": {
-            "url_link": ""
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_798.jpg"
           },
           "blocks": {}
         }
       },
       "block_order": [
+        "block_fq3ywc",
+        "block_y3QYnJ",
         "block"
       ],
       "settings": {
@@ -70,7 +94,7 @@
         "text_link_text": "View More",
         "collection_collection": "collection-1",
         "collection_collection_limit": 2,
-        "image_link_image": "shopify://shop_images/image_129.jpg",
+        "image_link_image": "shopify://shop_images/image_147.jpg",
         "text_link_image_text": ""
       }
     },
