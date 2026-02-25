@@ -1683,13 +1683,13 @@ figcaption {
 
 .nav_menu-dropdown {
   align-items: stretch;
-  height: 5rem;
+  height: 4rem;
   display: flex;
 }
 
 .nav_dropdown-toggle {
   align-items: center;
-  padding: .5rem .75rem .5rem 0;
+  padding: .4rem .75rem .4rem 0;
   display: flex;
 }
 
@@ -2079,6 +2079,7 @@ figcaption {
 
 .header_background-image.is-right {
   aspect-ratio: 2 / 3;
+  filter: invert();
   width: auto;
   position: relative;
   inset: auto;
@@ -3432,6 +3433,8 @@ figcaption {
 }
 
 .header_card.text-color-white {
+  background-color: var(--background-color--background-alternate);
+  mix-blend-mode: difference;
   padding-left: 2rem;
   padding-right: 2rem;
   position: absolute;
@@ -4957,7 +4960,6 @@ figcaption {
 
 .header_heading {
   color: var(--text-color--text-primary);
-  mix-blend-mode: difference;
   max-width: 50ch;
   margin-left: auto;
   margin-right: auto;
