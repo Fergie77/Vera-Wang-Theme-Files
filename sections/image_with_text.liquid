@@ -7,6 +7,7 @@
             <div class="cta-text is-absolute" style="color:{{section.settings.text_color}}">
 {{ section.settings.text_link_text }}
 </div>
+            
           </div>
           <div class="header_background-image-right-wrapper">{% if section.settings.image_image_right %}
 {{ section.settings.image_image_right | image_url: width: 1000 | image_tag: loading: 'eager', class: 'header_background-image_item is-right' }}
@@ -35,6 +36,16 @@
             "type": "text",
             "label": "Link Text",
             "default": "Shop the collection"
+        },
+        {
+            "type": "header",
+            "content": "Links"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#000000"
         },
         {
             "id": "image_image_right",
