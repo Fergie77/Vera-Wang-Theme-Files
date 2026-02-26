@@ -17,6 +17,7 @@
         "social_media_mpyCPT": {
           "type": "social-media",
           "settings": {
+            "text_social_text": "Lorem Ipsum",
             "url_link": "https://instagram.com"
           }
         }
@@ -28,7 +29,7 @@
         "text_heading": "Join our Newsletter(Replace with Klaviyo)",
         "text_checkbox": "By subscribing you agree to with our Privacy Policy and provide consent to receive updates from our company.",
         "placeholder_text": "Email address",
-        "footer_menu": "footer"
+        "menu_1": "online-services"
       }
     }
   },
