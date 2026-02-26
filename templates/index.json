@@ -103,17 +103,16 @@
       "type": "blog_posts",
       "settings": {
         "text_heading": "Diary",
-        "article_article": "",
+        "article_article": "diary/diary-post-1",
         "text_cta_text": "Read More",
         "text_button_text": "See More",
-        "url_button_link": ""
+        "url_button_link": "shopify://blogs/diary"
       }
     },
     "featured_3": {
       "type": "featured_3",
       "settings": {
         "url_button_link": "",
-        "text_button_text": "",
         "image_image": "shopify://shop_images/Frame_157.jpg",
         "text_heading": "Handbags Headline",
         "text_subheading": "Subheading Copy",
