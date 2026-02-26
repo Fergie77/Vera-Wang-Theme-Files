@@ -3432,7 +3432,8 @@ figcaption {
 
 .section_header-home {
   z-index: 1;
-  min-height: 41vw;
+  height: 41vw;
+  min-height: 47rem;
   position: relative;
 }
 
@@ -4200,6 +4201,10 @@ figcaption {
 
 .test-text {
   color: var(--base-color-neutral--black);
+  mix-blend-mode: difference;
+  background-color: #6a6a6a;
+  font-size: 50px;
+  font-weight: 900;
 }
 
 .shift-up-form {
@@ -5009,6 +5014,13 @@ figcaption {
 .header_link {
   position: absolute;
   inset: 0%;
+}
+
+.test-text_wrapper {
+  z-index: 1;
+  mix-blend-mode: difference;
+  background-color: #fff;
+  position: absolute;
 }
 
 @media screen and (max-width: 991px) {
