@@ -8,8 +8,8 @@
                             <div li-object="link.title" class="footer_link-heading">{{ link.title }}</div>
                             
                   
-                            <div li-for:inside="child_link in link.links" class="footer_link-list">
-        {% for child_link in link.links %}                            
+                            <div li-for:inside="link in linklists[section.settings.menu_1].links" class="footer_link-list">
+        {% for link in linklists[section.settings.menu_1].links %}                            
                     
                             <a li-object:href="child_link.url" li-object="child_link.title" href="{{ child_link.url }}" class="footer_link">{{ child_link.title }}</a>
                             
@@ -19,6 +19,26 @@
                 
                         </div>
 {% endfor %}
+                <div class="footer_link-column">
+                  <div li-object="link.title" class="footer_link-heading">{{ link.title }}</div>
+                  <div li-for:inside="link in linklists[section.settings.menu_2].links" class="footer_link-list">
+        {% for link in linklists[section.settings.menu_2].links %}                            
+                    
+                            <a li-object:href="child_link.url" li-object="child_link.title" href="{{ child_link.url }}" class="footer_link">{{ child_link.title }}</a>
+                            
+                  
+                    {% endfor %}    </div>
+                </div>
+                <div class="footer_link-column">
+                  <div li-object="link.title" class="footer_link-heading">{{ link.title }}</div>
+                  <div li-for:inside="child_link in link.links" class="footer_link-list">
+        {% for child_link in link.links %}                            
+                    
+                            <a li-object:href="child_link.url" li-object="child_link.title" href="{{ child_link.url }}" class="footer_link">{{ child_link.title }}</a>
+                            
+                  
+                    {% endfor %}    </div>
+                </div>
               </div>
               <div id="w-node-_5eccf730-c887-5204-0e0c-693f99a7329a-99a7328f" class="footer_newsletter">
                 <h2 class="footer_heading">
@@ -81,7 +101,6 @@
               <div id="w-node-d3c79d1e-5728-0139-f8a8-b55d04c65927-99a7328f" class="footer_legal-wrapper">
                 <p id="w-node-f853398b-682e-bc34-dbb9-08bf44a5be88-99a7328f">Copyright 2025. All Rights Reserved. Vera Wang 2025. Operated by Batra Group Ltd.</p>
                 <div id="w-node-_28136b33-74f6-6da6-e09c-4eaac719b1f2-99a7328f" class="footer_language-links-wrapper">
-                   {{ linklists['footer'].links[1].title }}
                   <div li-for:inside="link in linklists['footer'].links" class="footer_legal-links">
         {% for link in linklists['footer'].links %}                            
                     
@@ -184,12 +203,6 @@ customElements.define('localization-form', LocalizationForm);
         {
             "type": "header",
             "content": "Navigation"
-        },
-        {
-            "type": "link_list",
-            "id": "footer_menu",
-            "label": "Footer Menu",
-            "default": "footer"
         }
     ],
     "presets": [
