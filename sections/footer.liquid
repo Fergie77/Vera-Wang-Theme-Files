@@ -12,6 +12,26 @@
                   
                     {% endfor %}    </div>
                 </div>
+                <div class="footer_link-column">
+                  <div li-object="section.settings.menu_1.title" class="footer_link-heading">{{ section.settings.menu_1.title }}</div>
+                  <div li-for:inside="link in linklists[section.settings.menu_2].links" class="footer_link-list">
+        {% for link in linklists[section.settings.menu_2].links %}                            
+                    
+                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer_link">{{ link.title }}</a>
+                            
+                  
+                    {% endfor %}    </div>
+                </div>
+                <div class="footer_link-column">
+                  <div li-object="section.settings.menu_3.title" class="footer_link-heading">{{ section.settings.menu_3.title }}</div>
+                  <div li-for:inside="link in linklists[section.settings.menu_3].links" class="footer_link-list">
+        {% for link in linklists[section.settings.menu_3].links %}                            
+                    
+                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer_link">{{ link.title }}</a>
+                            
+                  
+                    {% endfor %}    </div>
+                </div>
               </div>
               <div id="w-node-_5eccf730-c887-5204-0e0c-693f99a7329a-99a7328f" class="footer_newsletter">
                 <h2 class="footer_heading">
