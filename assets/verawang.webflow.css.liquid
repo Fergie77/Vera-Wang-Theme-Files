@@ -41,7 +41,7 @@
   --base-color-neutral--neutral-lightest: #eee;
   --accessible-components-dark-grey\<deleted\|variable-c4d8099c\>: #9b9b9b;
   --text-color--text-error: var(--base-color-system--error-red-dark);
-  --gap--global: .5rem;
+  --gap--global: .571429rem;
   --base-color-system--success-green-dark: #17660f;
   --base-color-neutral--neutral-darker: #222;
   --base-color-system--error-red: #f8e4e4;
@@ -372,7 +372,11 @@ figcaption {
 
 .form_checkbox-label {
   text-align: left;
-  font-size: .5rem;
+  font-size: .571429rem;
+}
+
+.form_checkbox-label.text-size-tiny {
+  font-size: .571429rem;
 }
 
 .icon-1x1-small {
@@ -664,7 +668,7 @@ figcaption {
   letter-spacing: .04em;
   text-transform: uppercase;
   font-family: big-caslon-fb, sans-serif;
-  font-size: 2.1875rem;
+  font-size: 2.5rem;
   font-weight: 400;
   line-height: 1;
 }
@@ -694,7 +698,7 @@ figcaption {
 
 .container-large {
   width: 100%;
-  max-width: 125rem;
+  max-width: 110rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -718,7 +722,18 @@ figcaption {
 }
 
 .button {
-  border: 1px solid var(--base-color-neutral--black);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: var(--base-color-neutral--black);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: var(--base-color-neutral--black);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--base-color-neutral--black);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: var(--base-color-neutral--black);
   color: var(--base-color-neutral--black);
   text-align: center;
   text-transform: uppercase;
@@ -727,6 +742,7 @@ figcaption {
   width: 100%;
   padding: .65rem 1.5rem;
   font-family: Gotham, Arial, sans-serif;
+  font-size: clamp(.625rem, .579082rem + .229592vw, .785714rem);
   font-weight: 400;
 }
 
@@ -2069,7 +2085,7 @@ figcaption {
   inset: 0%;
 }
 
-.header_background-image {
+.header_background-image_item {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -2077,7 +2093,7 @@ figcaption {
   inset: 0%;
 }
 
-.header_background-image.is-right {
+.header_background-image_item.is-right {
   aspect-ratio: 2 / 3;
   filter: invert();
   width: auto;
@@ -2085,8 +2101,7 @@ figcaption {
   inset: auto;
 }
 
-.header_background-image.is-left {
-  width: 50%;
+.header_background-image_item.is-left {
   right: auto;
 }
 
@@ -2317,6 +2332,7 @@ figcaption {
   grid-column-gap: .5rem;
   grid-row-gap: .5rem;
   align-items: center;
+  font-size: clamp(.625rem, .517857rem + .535714vw, 1rem);
   display: flex;
 }
 
@@ -3416,7 +3432,7 @@ figcaption {
 
 .section_header-home {
   z-index: 1;
-  min-height: 40rem;
+  min-height: 700px;
   position: relative;
 }
 
@@ -3425,6 +3441,8 @@ figcaption {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
   min-height: 40rem;
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -3433,6 +3451,7 @@ figcaption {
 }
 
 .header_card.text-color-white {
+  aspect-ratio: 2 / 3;
   background-color: var(--background-color--background-alternate);
   mix-blend-mode: difference;
   padding-left: 2rem;
@@ -3733,7 +3752,7 @@ figcaption {
 .footer_legal-link {
   color: var(--text-color--text-primary);
   text-transform: uppercase;
-  font-size: .875rem;
+  font-size: .857143rem;
 }
 
 .footer_link-list {
@@ -3747,7 +3766,7 @@ figcaption {
 
 .footer_link {
   text-transform: uppercase;
-  font-size: .6875rem;
+  font-size: .785714rem;
 }
 
 .product-header_description {
@@ -4270,19 +4289,19 @@ figcaption {
   letter-spacing: .04em;
   text-transform: uppercase;
   font-family: big-caslon-fb, sans-serif;
-  font-size: 2.1875rem;
+  font-size: 2.5rem;
   line-height: 1;
 }
 
 .product-section_heading.is-large {
-  font-size: 7rem;
+  font-size: 8rem;
 }
 
 .product-section_subheading {
   letter-spacing: .15em;
   text-transform: uppercase;
   font-family: Gotham, Arial, sans-serif;
-  font-size: .9375rem;
+  font-size: 1.07143rem;
   font-weight: 500;
   line-height: 1;
 }
@@ -4335,7 +4354,7 @@ figcaption {
 }
 
 .product-item_title {
-  font-size: clamp(.625rem, .553571rem + .357143vw, .875rem);
+  font-size: clamp(.625rem, .517857rem + .535714vw, 1rem);
   font-weight: 400;
 }
 
@@ -4484,8 +4503,12 @@ figcaption {
   letter-spacing: .15em;
   text-transform: uppercase;
   font-family: Gotham, Arial, sans-serif;
-  font-size: clamp(.625rem, .317857rem + .410714vw, .6875rem);
+  font-size: clamp(.625rem, .289796rem + .55102vw, .785714rem);
   text-decoration: underline;
+}
+
+.cta-text.is-absolute {
+  position: absolute;
 }
 
 .rl-button-2 {
@@ -4559,7 +4582,7 @@ figcaption {
 .header5_component {
   z-index: 2;
   align-items: center;
-  min-height: 43.4375rem;
+  min-height: 49.6429rem;
   max-height: 60rem;
   display: flex;
   position: relative;
@@ -4597,7 +4620,7 @@ figcaption {
   text-transform: uppercase;
   writing-mode: vertical-rl;
   font-family: big-caslon-fb, sans-serif;
-  font-size: 6.32813rem;
+  font-size: 7.23214rem;
   font-weight: 400;
   line-height: 1;
   position: absolute;
@@ -4840,14 +4863,14 @@ figcaption {
   letter-spacing: .04em;
   text-transform: uppercase;
   font-family: big-caslon-fb, sans-serif;
-  font-size: 3.125rem;
+  font-size: 3.57143rem;
   line-height: 1;
 }
 
 .social-sign-up_subheading {
   letter-spacing: .05px;
   text-transform: uppercase;
-  font-size: 2.6875rem;
+  font-size: 3.07143rem;
   line-height: 1;
 }
 
@@ -4863,9 +4886,9 @@ figcaption {
   display: flex;
 }
 
-.social-sign-up_eyebrow {
+.eyebrow-text {
   font-family: Gotham, Arial, sans-serif;
-  font-size: .5rem;
+  font-size: .571429rem;
   line-height: 1;
 }
 
@@ -4972,6 +4995,20 @@ figcaption {
   font-family: Gotham, Arial, sans-serif;
   font-size: clamp(.625rem, .553571rem + .357143vw, .875rem);
   font-weight: 500;
+}
+
+.header_background-image {
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  display: flex;
+  position: absolute;
+  inset: 0;
+}
+
+.header_link {
+  position: absolute;
+  inset: 0%;
 }
 
 @media screen and (max-width: 991px) {
@@ -6005,7 +6042,7 @@ figcaption {
     position: relative;
   }
 
-  .header_background-image.is-left {
+  .header_background-image_item.is-left {
     aspect-ratio: 1;
     order: 9999;
     width: 100%;
