@@ -145,6 +145,11 @@
         "image_image": "shopify://shop_images/Frame_175.png",
         "image_position": "is-right is-spun"
       }
+    },
+    "spacer_9hz6eA": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {}
     }
   },
   "layout": "theme",
@@ -159,6 +164,7 @@
     "blog_posts",
     "featured_3",
     "custom_liquid",
-    "content_2"
+    "content_2",
+    "spacer_9hz6eA"
   ]
 }
