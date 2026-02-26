@@ -149,7 +149,9 @@
     "spacer_9hz6eA": {
       "type": "spacer",
       "name": "Spacer",
-      "settings": {}
+      "settings": {
+        "spacer_size": "spacer-huge"
+      }
     }
   },
   "layout": "theme",
@@ -164,7 +166,7 @@
     "blog_posts",
     "featured_3",
     "custom_liquid",
-    "content_2",
-    "spacer_9hz6eA"
+    "spacer_9hz6eA",
+    "content_2"
   ]
 }
