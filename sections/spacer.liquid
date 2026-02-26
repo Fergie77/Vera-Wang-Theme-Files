@@ -1,58 +1,60 @@
-<div li-custom="Spacer" class="li-custom w-embed">{
-          "type": "select",
-          "id": "spacer_size",
-          "label": "Spacer Size",
-          "options": [
-          {
-          "value": "spacer-tiny",
-          "label": "Tiny"
-          },
-          {
-          "value": "spacer-xxsmall",
-          "label": "XX Small"
-          },
-          {
-          "value": "spacer-xsmall",
-          "label": "X Small"
-          },
-          {
-          "value": "spacer-small",
-          "label": "Small"
-          },
-          {
-          "value": "spacer-medium",
-          "label": "Medium"
-          },
-          {
-          "value": "spacer-large",
-          "label": "Large"
-          },
-          {
-          "value": "spacer-xlarge",
-          "label": "X Large"
-          },
-          {
-          "value": "spacer-xxlarge",
-          "label": "XX Large"
-          },
-          {
-          "value": "spacer-huge",
-          "label": "Huge"
-          },
-          {
-          "value": "spacer-xhuge",
-          "label": "X Huge"
-          },
-          {
-          "value": "spacer-xxhuge",
-          "label": "XX Huge"
-          }
-          ],
-          "default": "spacer-medium"
-          }</div>
-        <div li-object="section.settings.spacer_size">{{ section.settings.spacer_size }}</div> {% schema %} {
+<div li-object="section.settings.spacer_size">{{ section.settings.spacer_size }}</div> {% schema %} {
     "tag": "div",
     "name": "Spacer",
+    "settings": [
+        {
+            "type": "select",
+            "id": "spacer_size",
+            "label": "Spacer Size",
+            "options": [
+                {
+                    "value": "spacer-tiny",
+                    "label": "Tiny"
+                },
+                {
+                    "value": "spacer-xxsmall",
+                    "label": "XX Small"
+                },
+                {
+                    "value": "spacer-xsmall",
+                    "label": "X Small"
+                },
+                {
+                    "value": "spacer-small",
+                    "label": "Small"
+                },
+                {
+                    "value": "spacer-medium",
+                    "label": "Medium"
+                },
+                {
+                    "value": "spacer-large",
+                    "label": "Large"
+                },
+                {
+                    "value": "spacer-xlarge",
+                    "label": "X Large"
+                },
+                {
+                    "value": "spacer-xxlarge",
+                    "label": "XX Large"
+                },
+                {
+                    "value": "spacer-huge",
+                    "label": "Huge"
+                },
+                {
+                    "value": "spacer-xhuge",
+                    "label": "X Huge"
+                },
+                {
+                    "value": "spacer-xxhuge",
+                    "label": "XX Huge"
+                }
+            ],
+            "default": "spacer-medium"
+        }
+    ],
     "presets": [
         {
             "name": "Spacer",
