@@ -1,5 +1,6 @@
-<div class="padding-global padding-section-small">
+<div class="padding-global">
           <div class="container-large">
+            <div class="footer_divider"></div>
             <div class="footer_main-wrapper">
               <div id="w-node-_5eccf730-c887-5204-0e0c-693f99a73293-99a7328f" class="footer_link-grid">
                 <div class="footer_link-column">
@@ -72,7 +73,7 @@
             </div>
           </div>
         </div>
-        <div class="padding-global padding-section-small">
+        <div class="padding-global">
           <div class="container-large">
             <div class="footer_sub-footer">
               <a href="{{ routes.root_url }}" li-object:href="routes.root_url" class="footer_logo-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 657 88" fill="none">
@@ -92,7 +93,10 @@
                 </svg></a>
               <div class="footer_divider"></div>
               <div id="w-node-d3c79d1e-5728-0139-f8a8-b55d04c65927-99a7328f" class="footer_legal-wrapper">
-                <p id="w-node-f853398b-682e-bc34-dbb9-08bf44a5be88-99a7328f">Copyright 2025. All Rights Reserved. Vera Wang 2025. Operated by Batra Group Ltd.</p>
+                <p id="w-node-f853398b-682e-bc34-dbb9-08bf44a5be88-99a7328f">Copyright <span class="year">2025</span>. All Rights Reserved. Vera Wang <span class="year">2025</span>. Operated by Batra Group Ltd.</p>
+                <div class="hide w-embed w-script">
+                  <script>document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());</script>
+                </div>
                 <div id="w-node-_28136b33-74f6-6da6-e09c-4eaac719b1f2-99a7328f" class="footer_language-links-wrapper">
                   <div li-for:inside="link in linklists['footer'].links" class="footer_legal-links">
         {% for link in linklists['footer'].links %}                            
