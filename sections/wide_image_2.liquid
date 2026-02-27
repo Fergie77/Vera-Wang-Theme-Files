@@ -1,0 +1,30 @@
+<div>
+            <div class="container-large">
+              <div id="w-node-_44ba1f6f-31c4-60c4-b97f-20cb90b2b6d7-f55cc2be" class="image-text_block">
+                
+                <div data-video-urls="" data-autoplay="true" data-loop="true" data-wf-ignore="true" li-object="section.settings.video | video_tag: image_size: '2000x', autoplay: 'true', muted: 'true', loop: 'true'" class="cover-image w-background-video w-background-video-atom">{{ section.settings.video | video_tag: image_size: '2000x', autoplay: 'true', muted: 'true', loop: 'true' }}</div>
+              </div>
+            </div>
+          </div> {% schema %} {
+    "tag": "section",
+    "name": "wide-image-2",
+    "class": "section_wide-image padding-vertical padding-small",
+    "settings": [
+        {
+            "type": "header",
+            "content": "video"
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "A Shopify-hosted video"
+        }
+    ],
+    "presets": [
+        {
+            "name": "wide-image-2",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

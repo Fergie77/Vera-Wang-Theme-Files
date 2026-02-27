@@ -1,0 +1,59 @@
+<div class="container-large">
+            <div class="hero_grid-2 padding-global">
+              <div id="w-node-a4228f56-36da-9732-cc3a-92fe19f86634-f55cc2be" class="hero_content-2">
+                <h1 class="hero_heading-2">
+{{ section.settings.text_heading }}
+</h1>
+                <div class="w-embed">
+                  <style>
+.hero_heading{
+	-webkit-transform:translate3d(0,0,0);
+}
+</style>
+                </div>
+                <p class="hero_paragraph">
+{{ section.settings.text_paragraph }}
+</p>
+              </div>
+              <a id="w-node-a4228f56-36da-9732-cc3a-92fe19f8663a-f55cc2be" href="{{ section.settings.url_image_link }}" class="hero-image_wrapper w-inline-block"> <div> <img li-object:src="section.settings.image | image_url: width: 1024" li-object:alt="section.settings.image.alt" alt="{{ section.settings.image.alt }}" src="{{ section.settings.image | image_url: width: 1024 }}" loading="lazy" class="hero_image-2"> </div> </a>
+            </div>
+          </div> {% schema %} {
+    "tag": "section",
+    "name": "hero",
+    "class": "section_hero",
+    "settings": [
+        {
+            "id": "text_heading",
+            "type": "text",
+            "label": "Heading",
+            "default": "Sourcing Quality, Celebrating Origin"
+        },
+        {
+            "id": "text_paragraph",
+            "type": "text",
+            "label": "Paragraph",
+            "default": "Parallel Coffee, based in Glasgow, is a specialty coffee company founded by dedicated enthusiasts. Committed to sourcing and roasting high-quality beans from around the world, our mission is to share our passion for coffee and provide customers with exceptional beans that highlight unique flavor profiles."
+        },
+        {
+            "id": "url_image_link",
+            "type": "url",
+            "label": "Image Link"
+        },
+        {
+            "type": "header",
+            "content": "image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "hero",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

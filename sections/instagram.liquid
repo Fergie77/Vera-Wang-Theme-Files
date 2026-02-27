@@ -1,0 +1,65 @@
+<div class="padding-global">
+            <div class="intagram-grid_layout container-large">
+              <div>
+                <img li-object:src="section.settings.image_1 | image_url: width: 500" li-object:alt="section.settings.image.alt" alt="{{ section.settings.image.alt }}" src="{{ section.settings.image_1 | image_url: width: 500 }}" loading="eager" class="instagram-image">
+              </div>
+              <div>
+                <img li-object:src="section.settings.image_2 | image_url: width: 500" li-object:alt="section.settings.image.alt" alt="{{ section.settings.image.alt }}" src="{{ section.settings.image_2 | image_url: width: 500 }}" loading="eager" class="instagram-image">
+              </div>
+              <div>
+                <img li-object:src="section.settings.image_3 | image_url: width: 500" li-object:alt="section.settings.image.alt" alt="{{ section.settings.image.alt }}" src="{{ section.settings.image_3 | image_url: width: 500 }}" loading="eager" class="instagram-image">
+              </div>
+              <div>
+                <img li-object:src="section.settings.image_4 | image_url: width: 500" li-object:alt="section.settings.image.alt" alt="{{ section.settings.image.alt }}" src="{{ section.settings.image_4 | image_url: width: 500 }}" loading="eager" class="instagram-image">
+              </div>
+            </div>
+          </div> {% schema %} {
+    "tag": "div",
+    "name": "instagram",
+    "class": "section_instagram",
+    "settings": [
+        {
+            "type": "header",
+            "content": "image_1"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Image"
+        },
+        {
+            "type": "header",
+            "content": "image_2"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image"
+        },
+        {
+            "type": "header",
+            "content": "image_3"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_3",
+            "label": "Image"
+        },
+        {
+            "type": "header",
+            "content": "image_4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_4",
+            "label": "Image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "instagram",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

@@ -1,0 +1,29 @@
+<div>
+            <div class="container-large">
+              <div id="w-node-_5204e85f-4211-6053-9d4d-ef2ecb6c14a6-f55cc2be" class="image-text_block">
+                <img li-object:src="section.settings.image | image_url: width: 2000" li-object:alt="section.settings.image.alt" alt="{{ section.settings.image.alt }}" src="{{ section.settings.image | image_url: width: 2000 }}" loading="lazy" class="cover-image">
+              </div>
+            </div>
+          </div> {% schema %} {
+    "tag": "section",
+    "name": "wide-image-4",
+    "class": "section_wide-image",
+    "settings": [
+        {
+            "type": "header",
+            "content": "image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "wide-image-4",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

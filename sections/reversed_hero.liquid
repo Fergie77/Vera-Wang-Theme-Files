@@ -1,0 +1,54 @@
+<div class="hero_grid-3 remove-padding-mobile">
+            <a id="w-node-_17f19dc2-87fa-7206-7cdd-09cd2b71eddf-f55cc2be" href="#" class="hero-image_wrapper w-inline-block">
+              <img li-object:src="section.settings.image | image_url: width: 1024" li-object:alt="section.settings.image.alt" alt="{{ section.settings.image.alt }}" src="{{ section.settings.image | image_url: width: 1024 }}" loading="lazy" class="hero_image-2">
+            </a>
+            <div id="w-node-_17f19dc2-87fa-7206-7cdd-09cd2b71edd9-f55cc2be" class="hero_content-2">
+              <h1 class="hero_heading-2">
+{{ section.settings.text_heading }}
+</h1>
+              <div class="w-embed">
+                <style>
+.hero_heading{
+	-webkit-transform:translate3d(0,0,0);
+}
+</style>
+              </div>
+              <p class="hero_paragraph">
+{{ section.settings.text_paragraph }}
+</p>
+            </div>
+          </div> {% schema %} {
+    "tag": "section",
+    "name": "reversed-hero",
+    "class": "section_wide-image",
+    "settings": [
+        {
+            "type": "header",
+            "content": "image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "id": "text_heading",
+            "type": "text",
+            "label": "Heading",
+            "default": "A Nod to Origin"
+        },
+        {
+            "id": "text_paragraph",
+            "type": "text",
+            "label": "Paragraph",
+            "default": "Parallel Coffee is named as a tip of the hat to the importance of provenance and sourcing as essential elements of exceptional coffee. We\u2019re thrilled to be part of the specialty coffee community and to share our passion with our customers every day."
+        }
+    ],
+    "presets": [
+        {
+            "name": "reversed-hero",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

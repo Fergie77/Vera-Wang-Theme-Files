@@ -1,168 +1,278 @@
-<div class="padding-global padding-section-small">
-          <div class="container-large">
-            <div class="product-header_component">
-              <script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
-<div li-element="product-variant-container" class="w-layout-grid product-header_layout" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
-                <div id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136862-5313685d" class="swiper-container is-product-gallery">
-                  <div class="swiper is-product-gallery">
-                    <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
-        {% for media in product.media %}                            
-                      
-                            {% if media.media_type == 'image' %}    <div li-if="media.media_type == 'image'" class="swiper-slide is-product-gallery">
-    
-                        <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 1000" li-object:alt="media.alt" src="{{ media | image_url: width: 1000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
-                          </div>
-{% endif %}
-                            
-                      
-                            {% if media.media_type == 'video' %}    <div li-if="media.media_type == 'video'" class="swiper-slide is-product-gallery">
-    
-                        <div class="product-header_gallery-lightbox">
-                          <div li-object="media | video_tag: controls: true" class="product-header_gallery-image">{{ media | video_tag: controls: true }}</div>
+<div class="container-large-3">
+            <script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
+<div li-element="product-variant-container" class="product-page_split" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
+              <div class="product-images_list">
+                {% for image in product.images %}    <div li-for="image in product.images" class="product-image_wrapper">
+                                    <img data-animation="gsap-fade-in" class="product-image" src="{{ image.src | image_url: width: 1500 }}" alt="{{ image.alt }}" li-object:src="image.src | image_url: width: 1500" loading="lazy" li-object:alt="image.alt">
                         </div>
+{% endfor %}
+              </div>
+              <div data-animation="gsap-line-height" class="product-info_vertical-divider"></div>
+              <div class="product-info_column">
+                <div x-data="{selling_plan: '{{ product.selected_or_first_available_variant. selected_selling_plan_allocation.selling_plan.id }}', sellingplan_active: false }" class="product_top-info_layout">
+                  <div>
+                    <div class="margin-bottom margin-xsmall">
+                      <div data-animation="gsap-slide-in" class="product_top-info_title">
+                        <h1 li-object:text="product.title" class="product_title">
+{{ product.title }}
+</h1>
+                      </div>
+                    </div>
+                    <div class="margin-bottom margin-small">
+                      <div>
+                        <div>
+                          <div data-animation="gsap-slide-in" li-object="product.content" class="product_description w-richtext">{{ product.content }}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-animation="gsap-slide-in" class="product_bottom-info_layout">
+                    {% if product.metafields.custom.origin %}    <div li-if="product.metafields.custom.origin" id="w-node-_5d63ecb4-169d-d80b-777e-8d17f526d422-f55cc331" class="product-item_metafield-layout">
+    
+                      <div class="product-info_meta-heading">Origin°</div>
+                      <div li-object="product.metafields.custom.origin" id="w-node-_34e5cbe2-e749-6693-09a6-670fda5df6b0-f55cc331" class="product-info_metafield">{{ product.metafields.custom.origin }}</div>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.farm %}    <div li-if="product.metafields.custom.farm" class="product-item_metafield-layout">
+    
+                      <div class="product-info_meta-heading">Farm°</div>
+                      <div li-object="product.metafields.custom.farm" id="w-node-_34e5cbe2-e749-6693-09a6-670fda5df6b4-f55cc331" class="product-info_metafield">{{ product.metafields.custom.farm }}</div>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.region %}    <div li-if="product.metafields.custom.region" class="product-item_metafield-layout">
+    
+                      <div class="product-info_meta-heading">Region°</div>
+                      <div li-object="product.metafields.custom.region" id="w-node-de4ebd84-366d-26e0-cbae-095a4caebab8-f55cc331" class="product-info_metafield">{{ product.metafields.custom.region }}</div>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.variety %}    <div li-if="product.metafields.custom.variety" class="product-item_metafield-layout">
+    
+                      <div class="product-info_meta-heading">Variety°</div>
+                      <div li-object="product.metafields.custom.variety" id="w-node-_34e5cbe2-e749-6693-09a6-670fda5df6b8-f55cc331" class="product-info_metafield">{{ product.metafields.custom.variety }}</div>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.process %}    <div li-if="product.metafields.custom.process" class="product-item_metafield-layout">
+    
+                      <div class="product-info_meta-heading">Process°</div>
+                      <div li-object="product.metafields.custom.process" id="w-node-_34e5cbe2-e749-6693-09a6-670fda5df6bc-f55cc331" class="product-info_metafield">{{ product.metafields.custom.process }}</div>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.altitude %}    <div li-if="product.metafields.custom.altitude" class="product-item_metafield-layout">
+    
+                      <div class="product-info_meta-heading">Altitude°</div>
+                      <div li-object="product.metafields.custom.altitude" id="w-node-_2b50f0f8-d7f1-acc5-1b1a-9fbec250a254-f55cc331" class="product-info_metafield">{{ product.metafields.custom.altitude }}</div>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.notes %}    <div li-if="product.metafields.custom.notes" class="product-item_metafield-layout">
+    
+                      <div class="product-info_meta-heading">Notes°</div>
+                      <div id="w-node-_34e5cbe2-e749-6693-09a6-670fda5df6c0-f55cc331" class="product-item_notes-flex">
+                        {% for item in product.metafields.custom.notes.value %}    <div li-for="item in product.metafields.custom.notes.value">
+                                    
+                          
+                            <div li-object="item" class="product-info_metafield">{{ item }}</div>
+                            
+                        
+                        </div>
+{% endfor %}
+                      </div>
+                        </div>
+{% endif %}
+                  </div>
+                  <div data-animation="gsap-line-width" class="horizontal-divider"></div>
+                  <div data-animation="gsap-slide-in" class="pricing_layout"></div>
+                  <div data-animation="gsap-slide-in" class="product-header_add-to-cart w-form">
+                    {% form 'product', product, class: 'product-header_default-state' %}
+{% if product.selling_plan_groups.size > 0 %}    <div li-if="product.selling_plan_groups.size > 0">
+    
+                        <div li-for:inside="variant in product.variants">
+        {% for variant in product.variants %}                            
+                          
+                            <template x-if="{{ variant.id }} === product.selected_or_first_available_variant.id">
+            <div li-js-if="{{ variant.id }} === product.selected_or_first_available_variant.id" class="product-header_subscription">
+        <label class="product-header_subscription_radio-lable w-radio"><input x-on:click="sellingplan_active = false; selling_plan = ''" class="w-form-formradioinput radio_button w-radio-input" name="selling_plan_active" data-name="selling_plan_active" type="radio" id="radio-5" checked="" value=""><span class="radio_label w-form-label" for="radio-5">
+{{ section.settings.text_without_subscription }}
+</span></label><label class="product-header_subscription_radio-lable is-on w-radio"><input type="radio" name="selling_plan_active" id="radio-4" data-name="selling_plan_active" x-on:click="sellingplan_active = true; selling_plan = '{{ variant.selling_plan_allocations.first.selling_plan.id }}'" class="w-form-formradioinput radio_button w-radio-input" value="Radio 4"><span class="radio_label w-form-label" for="radio-4">
+{{ section.settings.text_with_subscription }}
+</span></label>
+                            <div id="w-node-c97accd2-b812-c933-dc4c-de71f71bddb8-f55cc331" class="product-header_subscription_options">
+                              <div x-show="sellingplan_active" class="w-layout-vflex flex-block">
+                                <div id="w-node-abe715a8-c224-68ab-6ab0-496d9568dd04-f55cc331" class="horizontal-divider"></div>{% for plan in variant.selling_plan_allocations %}    <label li-for="plan in variant.selling_plan_allocations" class="product-header_subscription_radio-lable-small w-radio">
+                                    <input class="w-form-formradioinput radio_button w-radio-input" li-object:value="plan.selling_plan.id" name="selling_plan" data-name="selling_plan" x-model="selling_plan" type="radio" id="radio-4" value="{{ plan.selling_plan.id }}">
+                            <span li-object="plan.selling_plan.name" class="radio_label w-form-label" for="radio-4">{{ plan.selling_plan.name }}</span>
+                            
+                                  
+                            <div class="radio_label">-</div>
+                            
+                                  
+                            <div li-object="plan.price | money" class="radio_label">{{ plan.price | money }}</div>
+                            
+                                
+                        </label>
+{% endfor %}
+                              </div>
+                              <div data-animation="gsap-line-width" class="horizontal-divider"></div>
+                            </div>
+                                  </div>
+    </template>
+                            <template x-if="sellingplan_active">
+            <input name="selling_plan" type="hidden" x-model="selling_plan" li-js-if="sellingplan_active">
+    </template>
+                            
+                        
+                    {% endfor %}    </div>
                           </div>
 {% endif %}
-                            
-                    
-                    {% endfor %}    </div>
-                  </div>
-                  <div class="product-header_slider-wrapper">
-                    <div class="swiper_button-wrapper is-product-slider pointer-events-off z-index-1 hide-mobile-landscape">
-                      <a aria-label="Previous Slide" href="#" class="swiper_button swiper-prev pointer-events-on w-inline-block">
-                        <div class="swiper_button-icon is-reversed w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 29.541 22.323">
-                            <g id="Group_44" data-name="Group 44" transform="translate(0 1.014)">
-                              <path id="Path_1" data-name="Path 1" d="M115.445,20.633l9.311-10.148L115.445.338" transform="translate(-97.25 -0.338)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"></path>
-                              <line id="Line_1" data-name="Line 1" x1="27.506" transform="translate(0 10.148)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"></line>
-                            </g>
-                          </svg></div>
-                      </a>
-                      <a aria-label="Next Slide" href="#" class="swiper_button swiper-next pointer-events-on w-inline-block">
-                        <div class="swiper_button-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 29.541 22.323">
-                            <g id="Group_44" data-name="Group 44" transform="translate(0 1.014)">
-                              <path id="Path_1" data-name="Path 1" d="M115.445,20.633l9.311-10.148L115.445.338" transform="translate(-97.25 -0.338)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"></path>
-                              <line id="Line_1" data-name="Line 1" x1="27.506" transform="translate(0 10.148)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"></line>
-                            </g>
-                          </svg></div>
-                      </a>
+                      {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list">
+    
+                        <template x-for="(option, optionKey) in product.options" :key="optionKey">
+    <div li-element="product-options-loop" class="product-header_option" data-ProductVariantsLoop="true">
+                          <div li-element="product-options-name" class="product-info_meta-heading" x-text="option">Variant</div>
+                          <div class="product-header_radio-list"><template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
+    <label li-element="product-option-loop" class="product-header_radio-4 w-radio">
+                              <div class="w-form-formradioinput w-form-formradioinput--inputType-custom product-header_radio-button-2 w-radio-input"></div><input type="radio" li-element="product-option-input" style="opacity:0;position:absolute;z-index:-1" x-on:click="setVariant" :name="option" :data-name="option" :value="variantName" :id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" :checked="selected_or_first_available_variant?.options.includes(variantName)" data-selectorType="radio" :class="firstOptionHasAvailableChildren[variantName] ? '' : 'data-disabled'"><span li-element="product-option-name" class="text-size-regular text-weight-semibold w-form-label" for="radio-4" x-text="variantName" :for="variantName">XS</span>
+                            </label></template></div>
+                        </div></template>
+                          </div>
+{% endif %}
+                      <div class="spacer-xsmall"></div>
+                      <div class="product-header_ad-to-cart-wrapper">
+                        <template x-if="selected_or_first_available_variant.available">
+            <div li-js-if="selected_or_first_available_variant.available" class="product-header_quantity">
+        
+                          <div class="quantity_wrapper">
+                            <div class="product-info_meta-heading">Quantity</div><input class="form-input is-quantity w-input" maxlength="256" name="quantity-2" li-element="add-to-cart-quantity" data-name="Quantity 2" placeholder="1" type="number" id="quantity-2" required="" x-model="quantity">
+                          </div><button li-element="add-to-cart" class="button-2 is-secondary" @click="addToCart($event, true)" :disabled="!addToCartButton">
+                            <div li-js-price="product.selected_or_first_available_variant.selling_plan_allocations.find(allocation => allocation.selling_plan_id == selling_plan)?.price ?? price" class="product_price" x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.selling_plan_allocations.find(allocation => allocation.selling_plan_id == selling_plan)?.price ?? price, true, '{{ shop.money_with_currency_format }}')">£8.25</div>
+                            <div class="product_price">-</div>
+                            <div>Add to Cart</div>
+                            <div>→</div>
+                          </button>
+                                </div>
+    </template>
+                        <template x-if="!selected_or_first_available_variant.available">
+            <div li-js-if="!selected_or_first_available_variant.available">
+        
+                          <a href="#" class="button is-secondary max-width-full pointer-events-off text-align-left w-button">Not in Stock</a>
+                                </div>
+    </template>
+                      </div>
+                    {% endform %}
+                    <div class="out-of-stock-state w-form-done">
+                      <div>Thank you! Your submission has been received!</div>
                     </div>
-                    <div class="swiper is-product-thumbnail">
-                      <div li-for:inside="media in product.media" class="swiper-wrapper is-product-thumbnail">
-        {% for media in product.media %}                            
-                        
-                            {% if media.media_type == 'image' %}    <div li-if="media.media_type == 'image'" class="swiper-slide is-product-thumbnail">
-    <img loading="lazy" li-object:src="media | image_url: width: 200" li-object:alt="media.alt" src="{{ media | image_url: width: 200 }}" alt="{{ media.alt }}" class="product-header_thumbnail-image">    </div>
-{% endif %}
-                            
-                        
-                            {% if media.media_type == 'video' %}    <div li-if="media.media_type == 'video'" class="swiper-slide is-product-thumbnail">
-    <img loading="lazy" li-object:src="media | image_url: width: 200" li-object:alt="media.alt" src="{{ media | image_url: width: 200 }}" alt="{{ media.alt }}" class="product-header_thumbnail-image">
-                          <div aria-hidden="true" class="product-header_play-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ic" width="100%" height="100%" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
-                              <path fill="currentColor" d="M8 5v14l11-7z"></path>
-                            </svg></div>
-                            </div>
-{% endif %}
-                            
-                      
-                    {% endfor %}    </div>
+                    <div class="error-state w-form-fail">
+                      <div>Oops! Something went wrong while submitting the form.</div>
                     </div>
                   </div>
-                  <div class="swiper-slide is-product-thumbnail is-active hide"></div>
+                  <div li-object:data-attribute="product.handle" data-attribute="{{ product.handle }}"></div>
                 </div>
-                <div li-content-for-theme-blocks="" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136879-5313685d" class="product-header_product-details">
-{% content_for 'blocks' %}
-</div>
+                <div class="product_top-info_layout">
+                  <div>
+                    {% if product.metafields.custom.key_features %}    <div data-hover="false" data-delay="0" li-if="product.metafields.custom.key_features" class="product-info_dropdown w-dropdown">
+    
+                      <div class="product-info_dropdown-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <div class="heading-style-h3 text-style-allcaps">Key Features</div>
+                      </div>
+                      <nav class="product-info_dropdown-list w-dropdown-list">
+                        <div li-object="product.metafields.custom.key_features | metafield_tag" class="product-info_rich-text w-richtext">{{ product.metafields.custom.key_features | metafield_tag }}</div>
+                      </nav>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.specifications %}    <div data-hover="false" data-delay="0" li-if="product.metafields.custom.specifications" class="product-info_dropdown w-dropdown">
+    
+                      <div class="product-info_dropdown-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <div class="heading-style-h3 text-style-allcaps">Specifications</div>
+                      </div>
+                      <nav class="product-info_dropdown-list w-dropdown-list">
+                        <div li-object="product.metafields.custom.specifications | metafield_tag" class="product-info_rich-text w-richtext">{{ product.metafields.custom.specifications | metafield_tag }}</div>
+                      </nav>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.importers_notes %}    <div data-hover="false" data-delay="0" li-if="product.metafields.custom.importers_notes" class="product-info_dropdown w-dropdown">
+    
+                      <div class="product-info_dropdown-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <div class="heading-style-h3 text-style-allcaps">Importers Notes</div>
+                      </div>
+                      <nav class="product-info_dropdown-list w-dropdown-list">
+                        <div li-object="product.metafields.custom.importers_notes | metafield_tag" class="product-info_rich-text w-richtext">{{ product.metafields.custom.importers_notes | metafield_tag }}</div>
+                      </nav>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.roasters_notes %}    <div data-hover="false" data-delay="0" li-if="product.metafields.custom.roasters_notes" class="product-info_dropdown w-dropdown">
+    
+                      <div class="product-info_dropdown-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <div class="heading-style-h3 text-style-allcaps">Roasting Analytics</div>
+                      </div>
+                      <nav class="product-info_dropdown-list w-dropdown-list">
+                        <div li-object="product.metafields.custom.roasters_notes | metafield_tag" class="product-info_rich-text w-richtext">{{ product.metafields.custom.roasters_notes | metafield_tag }}</div>
+                      </nav>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.farmers_notes %}    <div data-hover="false" data-delay="0" li-if="product.metafields.custom.farmers_notes" class="product-info_dropdown w-dropdown">
+    
+                      <div class="product-info_dropdown-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <div class="heading-style-h3 text-style-allcaps">Farmers Notes</div>
+                      </div>
+                      <nav class="product-info_dropdown-list w-dropdown-list">
+                        <div li-object="product.metafields.custom.farmers_notes | metafield_tag" class="product-info_rich-text w-richtext">{{ product.metafields.custom.farmers_notes | metafield_tag }}</div>
+                      </nav>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.finca_milan %}    <div data-hover="false" data-delay="0" li-if="product.metafields.custom.finca_milan" class="product-info_dropdown w-dropdown">
+    
+                      <div class="product-info_dropdown-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <div class="heading-style-h3 text-style-allcaps">Finca Milan</div>
+                      </div>
+                      <nav class="product-info_dropdown-list w-dropdown-list">
+                        <div li-object="product.metafields.custom.finca_milan | metafield_tag" class="product-info_rich-text w-richtext">{{ product.metafields.custom.finca_milan | metafield_tag }}</div>
+                      </nav>
+                        </div>
+{% endif %}
+                    {% if product.metafields.custom.el_vergel_estate %}    <div data-hover="false" data-delay="0" li-if="product.metafields.custom.el_vergel_estate" class="product-info_dropdown w-dropdown">
+    
+                      <div class="product-info_dropdown-toggle w-dropdown-toggle">
+                        <div class="w-icon-dropdown-toggle"></div>
+                        <div class="heading-style-h3 text-style-allcaps">El Vergel Estate</div>
+                      </div>
+                      <nav class="product-info_dropdown-list w-dropdown-list">
+                        <div li-object="product.metafields.custom.el_vergel_estate | metafield_tag" class="product-info_rich-text w-richtext">{{ product.metafields.custom.el_vergel_estate | metafield_tag }}</div>
+                      </nav>
+                        </div>
+{% endif %}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="hide w-embed w-script">
-          <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-          <script>
-document.addEventListener("DOMContentLoaded", () => {
-  $(".swiper-container").each(function (index) {
-    const thumbsSwiper = new Swiper($(this).find(".swiper.is-product-thumbnail")[0], {
-      slidesPerView: "auto",
-      rewind: false,
-      loopedSlides: 8,
-      slideToClickedSlide: true,
-      spaceBetween: "4%",
-    });
-    const swiper = new Swiper($(this).find(".swiper.is-product-gallery")[0], {
-      mousewheel: {
-        forceToAxis: true
-      },
-      thumbs: {
-        swiper: thumbsSwiper,
-        slideThumbActiveClass: "is-active",
-      },
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true
-      },
-      navigation: {
-        nextEl: $(this).find(".swiper-next")[0],
-        prevEl: $(this).find(".swiper-prev")[0],
-      }
-    });
-  }); 
-});
-</script>
-        </div> {% schema %} {
+          </div> {% schema %} {
     "tag": "section",
-    "name": "Product Hero",
-    "class": "section_product-header",
-    "blocks": [
+    "name": "Product-Hero",
+    "class": "section_hero",
+    "settings": [
         {
-            "type": "vendor"
+            "id": "text_without_subscription",
+            "type": "text",
+            "label": "without Subscription",
+            "default": "One Time Purchase"
         },
         {
-            "type": "product-name"
-        },
-        {
-            "type": "product-price"
-        },
-        {
-            "type": "availability"
-        },
-        {
-            "type": "add-to-cart"
-        },
-        {
-            "type": "description"
-        },
-        {
-            "type": "@app"
+            "id": "text_with_subscription",
+            "type": "text",
+            "label": "with Subscription",
+            "default": "Subscribe and Save"
         }
     ],
     "presets": [
         {
-            "name": "Product Hero",
+            "name": "Product-Hero",
             "category": "Liquify",
-            "blocks": [
-                {
-                    "type": "vendor"
-                },
-                {
-                    "type": "product-name"
-                },
-                {
-                    "type": "product-price"
-                },
-                {
-                    "type": "availability"
-                },
-                {
-                    "type": "add-to-cart"
-                },
-                {
-                    "type": "description"
-                }
-            ]
+            "blocks": []
         }
-    ],
-    "enabled_on": {
-        "templates": [
-            "product"
-        ]
-    }
+    ]
 } {% endschema %}

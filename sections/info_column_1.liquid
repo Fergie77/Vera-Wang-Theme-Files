@@ -1,0 +1,51 @@
+<div class="padding-global">
+            <div class="container-large">
+              <div id="Story" class="info-column_layout w-node-_9f73b539-f124-ef3a-8793-f27c4320959b-f55cc2be">
+                <h2 class="hero_heading-2">
+{{ section.settings.text_heading }}
+</h2>
+                <div class="info-paragraph_layout">
+                  <div>
+{{ section.settings.text_paragraph }}
+</div>
+                  <a href="{{ section.settings.url_button_link }}" class="button-2 w-button"> {{ section.settings.text_button_text }} </a>
+                </div>
+              </div>
+            </div>
+          </div> {% schema %} {
+    "tag": "section",
+    "name": "info-column-1",
+    "class": "section_info-column padding-vertical padding-small",
+    "settings": [
+        {
+            "id": "text_heading",
+            "type": "text",
+            "label": "Heading",
+            "default": "The Story Behind Every Sip"
+        },
+        {
+            "id": "text_paragraph",
+            "type": "text",
+            "label": "Paragraph",
+            "default": "We believe that the latitude at which coffee is grown is a crucial factor in determining its flavour and quality. That's why we name each of our coffees after its parallel line of latitude, such as 6.2 degrees for Wilder Lasso's Pink Bourbon, the first coffee we purchased. This is our way of acknowledging the relevance of latitude to coffee, and paying tribute to the importance of sourcing in the world of specialty coffee."
+        },
+        {
+            "id": "url_button_link",
+            "type": "url",
+            "label": "Button Link"
+        },
+        {
+            "id": "text_button_text",
+            "type": "text",
+            "label": "Button Text",
+            "default": "Shop Coffee"
+        }
+    ],
+    "presets": [
+        {
+            "name": "info-column-1",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}

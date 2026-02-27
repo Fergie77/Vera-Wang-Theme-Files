@@ -1,18 +1,15 @@
 <style>
-  [li-cloak_disabled="hide"] { display: none !important; }
-  [x-cloak] { display: none !important; }
-  html { font-size: calc(0.8125rem + 0.20833333333333331vw); }
-  @media screen and (max-width:1920px) { html { font-size: calc(0.8125rem + 0.20833333333333337vw); } }
-  @media screen and (max-width:1440px) { html { font-size: 1rem; } }
+   [li-cloak_disabled="hide"]  { display: none !important; }
+   [x-cloak] { display: none !important; }
+ :root {
+	font-size: clamp(1rem, 0.23525rem + 0.85vw, 2.1875rem);
+}
   /* Make text look crisper and more legible in all browsers */
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-  }
-  h1,h2,h3,h4,h5,h6,a, p{
-    text-box: trim-both cap alphabetic;
   }
   /* Focus state style for keyboard navigation for the focusable elements */
   *[tabindex]:focus-visible,
@@ -78,6 +75,13 @@
     display: -webkit-box;
     overflow: hidden;
     -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+   /* Apply "..." after 1 line of text */
+  .text-style-1line {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
   }
   /* Adds inline flex display */
@@ -176,15 +180,117 @@
     overflow: clip !important;
   }
   body {
-    overscroll-behavior: none;
+    overflowscroll-behavior: none;
   }
   .swiper-button-disabled {
     opacity: 50% !important;
     pointer-events: none !important;
   }
-  button {
-  	color: unset;
-    background-color: unset;
-    padding: unset;
+html:not(.wf-design-mode) section {
+	//opacity:0;
+}
+</style>
+      <style>
+:is([class*="u-text-style-"], h1, h2, h3, h4, h5, h6, p, blockquote)::before {
+	content: "";
+	display: table;
+	margin-bottom: calc(-0.5lh + 0.39em);
+}
+:is([class*="u-text-style-"], h1, h2, h3, h4, h5, h6, p, blockquote)::after {
+	content: "";
+	display: table;
+	margin-bottom: calc(-0.5lh + 0.32em);
+}
+</style>
+      <style>
+.mask-animation {
+  clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 0%);
+  animation-duration: 1.5s;
+  animation-name: growSquare;
+  animation-iteration-count: 1;
+}
+/* Default (Desktop) Animation */
+@keyframes growSquare {
+  0% {
+    clip-path: polygon(
+      0% 0%,         /* Top-left corner */
+      0% 100%,       /* Bottom-left corner */
+      50% 100%,      /* Midpoint of the bottom edge */
+      50% 50%,       /* Top Left - Center */
+      50% 50%,       /* Top Right - Center */
+      50% 50%,       /* Bottom Right - Center */
+      50% 50%,       /* Bottom Left - Center */
+      50% 100%,      /* Midpoint of the bottom edge again */
+      100% 100%,     /* Bottom-right corner */
+      100% 0%        /* Top-right corner */
+    );
   }
+  95% {
+    clip-path: polygon(
+      0% 0%, 0% 100%, 0% 100%, 0% 0%, 
+      100% 0%, 100% 100%, 
+      0% 100%, 0% 100%, 
+      100% 100%, 100% 0%
+    );
+    opacity: 1;
+  }
+  100% {
+    clip-path: polygon(
+      0% 0%, 0% 100%, 0% 100%, 0% 0%, 
+      100% 0%, 100% 100%, 
+      0% 100%, 0% 100%, 
+      100% 100%, 100% 0%
+    );
+    opacity: 0;
+  }
+}
+/* Mobile-Specific Animation */
+@media (max-width: 768px) {
+  @keyframes growSquare {
+    0% {
+      clip-path: polygon(
+        0% 0%, 
+        0% 100%, 
+        45% 100%, 
+        45% 50%, /* Top Left */
+        55% 50%, /* Top Right */
+        55% 50%, /* Bottom Right */
+        45% 50%, /* Bottom Left */
+        45% 100%, 
+        100% 100%, 
+        100% 0%
+      );
+    }
+    95% {
+      clip-path: polygon(
+        0% 0%, 0% 100%, 0% 100%, 0% 0%, 
+        100% 0%, 100% 100%, 
+        0% 100%, 0% 100%, 
+        100% 100%, 100% 0%
+      );
+      opacity: 1;
+    }
+    100% {
+      clip-path: polygon(
+        0% 0%, 0% 100%, 0% 100%, 0% 0%, 
+        100% 0%, 100% 100%, 
+        0% 100%, 0% 100%, 
+        100% 100%, 100% 0%
+      );
+      opacity: 0;
+    }
+  }
+}
+</style>
+      <style>
+:is([class*="radio_label"])::before {
+	content: "";
+	display: table;
+	margin-bottom: calc(-0.5lh + 0.59em);
+}
+:is([class*="radio_label"])::after {
+	content: "";
+	display: table;
+	margin-bottom: calc(-0.5lh + 0.31em);
+}
 </style>
