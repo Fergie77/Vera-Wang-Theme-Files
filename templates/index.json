@@ -13,18 +13,22 @@
       "type": "image_with_text",
       "settings": {
         "image_image_left": "shopify://shop_images/image_61.jpg",
+        "text_link_text": "",
+        "text_color": "#ffffff",
         "image_image_right": "shopify://shop_images/image_130.jpg",
-        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL  </p>"
+        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL  </p>",
+        "url_link": ""
       }
     },
     "featured_products": {
       "type": "featured_products",
       "settings": {
         "text_heading": "Headline Copy",
+        "text_subheading": "Subheading Copy",
         "url_button_link": "",
         "image_image": "shopify://shop_images/image_129.jpg",
-        "text_button_text": "Shop the collection",
-        "text_color": "#000000",
+        "text_link_text": "Shop the collection",
+        "text_color": "#ffffff",
         "collection_collection": "collection-1",
         "collection_collection_limit": 6
       }
@@ -126,6 +130,13 @@
         "custom_liquid": ""
       }
     },
+    "spacer_9hz6eA": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_size": "spacer-huge"
+      }
+    },
     "content_2": {
       "type": "content_2",
       "blocks": {
@@ -144,13 +155,6 @@
       "settings": {
         "image_image": "shopify://shop_images/Frame_175.png",
         "image_position": "is-right is-spun"
-      }
-    },
-    "spacer_9hz6eA": {
-      "type": "spacer",
-      "name": "Spacer",
-      "settings": {
-        "spacer_size": "spacer-huge"
       }
     }
   },
