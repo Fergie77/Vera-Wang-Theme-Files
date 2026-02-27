@@ -17,7 +17,7 @@
                           <div class="product-item_left">
                             <h3 li-object="product.title" class="product-item_title">{{ product.title }}</h3>
                           </div>
-                          <div class="product-item_price">
+                          <div class="product-item_subtitle">
                             {% if product.compare_at_price_max > product.price %}    <div li-if="product.compare_at_price_max > product.price">
     
                               <p li-object="product.compare_at_price | money" class="text-style-strikethrough text-style-muted">{{ product.compare_at_price | money }}</p>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="product-item_variants-wrapper">
                           <div class="product-item_variant-colour"></div>
-                          <p class="product-item_title">1 Colour</p>
+                          <p class="product-item_subtitle text-weight-normal">1 Colour</p>
                         </div>
                       </a>
                     </div>
