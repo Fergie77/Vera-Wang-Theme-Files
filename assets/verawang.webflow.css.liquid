@@ -35,8 +35,8 @@
   --background-color--background-tertiary: var(--base-color-brand--pink);
   --base-color-neutral--neutral-lighter: #ccc;
   --border-color--border-alternate: var(--base-color-neutral--white);
-  --text-color--text-primary: var(--base-color-neutral--black);
   --base-color-neutral--white: white;
+  --text-color--text-primary: var(--base-color-neutral--black);
   --base-color-neutral--neutral-darkest: #111;
   --base-color-neutral--neutral-lightest: #eee;
   --accessible-components-dark-grey\<deleted\|variable-c4d8099c\>: #9b9b9b;
@@ -859,8 +859,14 @@ figcaption {
 
 .section_navbar {
   z-index: 10;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
   position: fixed;
   inset: 0% 0% auto;
+}
+
+.section_navbar.scrolling {
+  background-color: var(--base-color-neutral--white);
+  transition: color .2s ease-in-out, background-color .2s ease-in-out;
 }
 
 .section_footer {
@@ -1682,6 +1688,7 @@ figcaption {
 }
 
 .nav_logo-link {
+  color: #fff;
   margin-left: auto;
   margin-right: auto;
   position: absolute;
