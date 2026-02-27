@@ -2336,11 +2336,12 @@ figcaption {
   display: flex;
 }
 
-.product-item_price {
+.product-item_subtitle {
   grid-column-gap: .5rem;
   grid-row-gap: .5rem;
   align-items: center;
-  font-size: clamp(.625rem, .517857rem + .535714vw, 1rem);
+  font-size: clamp(.625rem, .560714rem + .321429vw, .85rem);
+  line-height: 1;
   display: flex;
 }
 
@@ -4366,13 +4367,17 @@ figcaption {
 }
 
 .product-item_title {
+  font-family: Helvetica Now Var, Arial, sans-serif;
   font-size: clamp(.625rem, .517857rem + .535714vw, 1rem);
   font-weight: 400;
+  line-height: 1;
 }
 
 .product-item_variants-wrapper {
   grid-column-gap: .625rem;
   grid-row-gap: .625rem;
+  justify-content: flex-start;
+  align-items: center;
   display: flex;
 }
 
