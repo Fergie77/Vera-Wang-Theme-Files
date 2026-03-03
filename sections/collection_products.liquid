@@ -62,7 +62,7 @@
                     {% for collectionRef in collections %}    <div li-for="collectionRef in collections" class="collections-menu_item">
                                     
                       
-                            <a li-object="collectionRef.title | link_to: collectionRef.url" href="#" class="{% if collection.handle == collectionRef.handle %}is-current{% endif %}">{{ collectionRef.title | link_to: collectionRef.url }}</a>
+                            <a li-object="collectionRef.title | link_to: collectionRef.url" href="#" class="test{% if collection.handle == collectionRef.handle %}is-current{% endif %}">{{ collectionRef.title | link_to: collectionRef.url }}</a>
                             
                     
                         </div>
