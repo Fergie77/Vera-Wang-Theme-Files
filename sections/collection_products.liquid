@@ -58,13 +58,16 @@
               </div>
               <div id="w-node-f6c1ed66-8f2c-cc0d-fa87-63d3fbb7d543-fbb7d53a" class="filter_feed">
                 <div class="filter_feed-header">
-                  <div li-for:inside="collection in collections" class="collections-menu_layout">
-        {% for collection in collections %}                            
-                    
+                  <div class="collections-menu_layout">
+                    {% for collection in collections %}    <div li-for="collection in collections" class="collections-menu_item">
+                                    
+                      
                             <a li-object="collection.title | link_to: collection.url" href="#" class="collections-menu_link">{{ collection.title | link_to: collection.url }}</a>
                             
-                  
-                    {% endfor %}    </div>
+                    
+                        </div>
+{% endfor %}
+                  </div>
                   <div class="sort-and-filter_wrapper">
                     <a data-w-id="34fc6b3e-d004-5854-d201-095706f8d934" href="#" class="filter_tablet-filters-button w-inline-block">
                       <div>Filters</div>
