@@ -342,7 +342,8 @@ figcaption {
 
 .form_checkbox {
   flex-direction: row;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   margin-bottom: 0;
   padding-left: 0;
   display: flex;
@@ -5107,6 +5108,13 @@ figcaption {
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   display: flex;
+}
+
+.collections-menu_link.is-current {
+  text-underline-offset: 5px;
+  text-underline-position: under;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
 }
 
 @media screen and (max-width: 991px) {

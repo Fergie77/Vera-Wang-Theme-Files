@@ -59,10 +59,10 @@
               <div id="w-node-f6c1ed66-8f2c-cc0d-fa87-63d3fbb7d543-fbb7d53a" class="filter_feed">
                 <div class="filter_feed-header">
                   <div class="collections-menu_layout">
-                    {% for collection in collections %}    <div li-for="collection in collections" class="collections-menu_item">
+                    {% for collectionRef in collections %}    <div li-for="collectionRef in collections" class="collections-menu_item">
                                     
                       
-                            <a li-object="collection.title | link_to: collection.url" href="#" class="collections-menu_link">{{ collection.title | link_to: collection.url }}</a>
+                            <a li-object="collectionRef.title | link_to: collectionRef.url" href="#" class="{% if collection.handle == collectionRef.handle %}is-current{% endif %}">{{ collectionRef.title | link_to: collectionRef.url }}</a>
                             
                     
                         </div>
