@@ -79,7 +79,13 @@
                         <div class="sort-and-filter_wrapper">
                           <a data-w-id="34fc6b3e-d004-5854-d201-095706f8d934" href="#" class="filter_tablet-filters-button w-inline-block">
                             <div>Filter</div>
-                          </a>
+                          </a><select id="sort-by" li-for:inside="option in collection.sort_options" class="sort_select filter_checkbox">
+        {% for option in collection.sort_options %}                            
+                            
+                            <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% elsif option.value == collection.default_sort_by %}selected{% endif %}>{{ option.name }}</option>
+                            
+                          
+                    {% endfor %}    </select>
                           <div class="sort-form w-form">
                             <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="get" data-wf-page-id="68e64cde361aeb3efeb34c8c" data-wf-element-id="65ee24e1-0a25-f651-aeed-7ad0605c3b47">
                               <div class="fs_selectcustom-2_component">
