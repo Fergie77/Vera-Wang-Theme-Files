@@ -88,8 +88,7 @@
                                 </div>
                                 <div data-delay="0" data-hover="false" fs-selectcustom-element="dropdown" class="fs_selectcustom-2_dropdown w-dropdown">
                                   <div class="fs_selectcustom-2_toggle w-dropdown-toggle">
-                                    <div class="fs_selectcustom-2_label">Sort by</div>
-                                    <div class="fs_selectcustom-2_arrow w-icon-dropdown-toggle"></div>
+                                    <div class="fs_selectcustom-2_label">Sort by:</div>
                                     <div fs-selectcustom-element="label" class="fs_selectcustom-2_text">Select option</div>
                                   </div>
                                   <nav class="fs_selectcustom-2_list w-dropdown-list"><select id="sort-by" li-for:inside="option in collection.sort_options" class="sort_select filter_checkbox hide">
@@ -98,12 +97,7 @@
                             <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% elsif option.value == collection.default_sort_by %}selected{% endif %}>{{ option.name }}</option>
                             
                                     
-                    {% endfor %}    </select><select id="Select-field-2" name="Select-field-2" data-name="Select field 2" class="fs_selectcustom-2_field w-select">
-                                      <option value="">Select one...</option>
-                                      <option value="First">First choice</option>
-                                      <option value="Second">Second choice</option>
-                                      <option value="Third">Third choice</option>
-                                    </select>
+                    {% endfor %}    </select>
                                     <a href="#" class="fs_selectcustom-2_link w-dropdown-link">Select link</a>
                                   </nav>
                                 </div>
@@ -149,25 +143,27 @@
                     </div>
                   </div>
                 </div>
-                <div class="container-large">
-                  <div class="filter_product-list-wrapper w-dyn-list">
-                    <div role="list" class="filter_product-list w-dyn-items">
-                      {% for product in collection.products %}    <div li-for="product in collection.products" role="listitem" class="filter_product-list-item w-dyn-item">
+                <div>
+                  <div class="container-large">
+                    <div class="filter_product-list-wrapper w-dyn-list">
+                      <div role="list" class="filter_product-list w-dyn-items">
+                        {% for product in collection.products %}    <div li-for="product in collection.products" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
-                        
+                          
                             {% render 'product_item', product: product %}
                             
-                      
+                        
                         </div>
 {% endfor %}
-                    </div>
-                    {% if collection.products == blank %}    <div li-if="collection.products == blank" class="filter_empty w-dyn-empty">
+                      </div>
+                      {% if collection.products == blank %}    <div li-if="collection.products == blank" class="filter_empty w-dyn-empty">
     
-                      <div class="heading-style-h6">No results found.</div>
-                      <div class="spacer-xxsmall"></div>
-                      <div>There are no results with this criteria. Try changing your search.</div>
-                        </div>
+                        <div class="heading-style-h6">No results found.</div>
+                        <div class="spacer-xxsmall"></div>
+                        <div>There are no results with this criteria. Try changing your search.</div>
+                          </div>
 {% endif %}
+                    </div>
                   </div>
                 </div>
                 {% if paginate.pages > 1 %}    <nav li-if="paginate.pages > 1" class="pagination_component">
