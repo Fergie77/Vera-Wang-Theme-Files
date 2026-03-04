@@ -15,36 +15,41 @@
                 
                             {% if link.links.size > 0  %}    <nav li-if="link.links.size > 0 " class="nav_dropdown-list no-scrollbar w-dropdown-list">
     
-                  <div class="padding-global max-width-full">
-                    <div class="container-large">
-                      <div class="nav_dropdown-grid">
-                        {% for child_link in link.links %}    <div li-for="child_link in link.links" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86e09-d5a86df8">
+                  <div class="nav_divider"></div>
+                  <div class="nav_dropdown-list-layout">
+                    <div class="padding-global max-width-full">
+                      <div class="container-large">
+                        <div class="nav_dropdown-grid">
+                          {% for child_link in link.links %}    <div li-for="child_link in link.links" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86e09-d5a86df8">
                                     
-                          
-                            <h2 class="nav_dropdown-heading">Category 1</h2>
                             
-                          
+                            <a href="{{ link.url }}" li-object="link.title" li-object:href="link.url" class="nav_dropdown-heading w-dropdown-link">{{ link.title }}</a>
+                            
+                            
                             <a href="{{ child_link.url }}" li-object="child_link.title" li-object:href="child_link.url" class="nav_dropdown-link w-dropdown-link">{{ child_link.title }}</a>
                             
-                          
+                            
                             {% if child_link.links.size > 0 %}    <div li-if="child_link.links.size > 0">
     
-                            {% for grandchild_link in child_link.links %}    <div li-for="grandchild_link in child_link.links">
+                              {% for grandchild_link in child_link.links %}    <div li-for="grandchild_link in child_link.links">
                                     
-                              
+                                
                             <a href="{{ grandchild_link.url }}" li-object="grandchild_link.title" li-object:href="grandchild_link.url" class="nav_dropdown-link_child w-dropdown-link">{{ grandchild_link.title }}</a>
                             
-                            
+                              
                         </div>
 {% endfor %}
-                              </div>
+                                </div>
 {% endif %}
                             
-                        
+                          
                         </div>
 {% endfor %}
+                        </div>
                       </div>
                     </div>
+                    <div class="nav_dropdown-list-background"></div>
+                    <a href="{{ section.settings.url_link }}" class="nav_image-wrapper w-inline-block"> {% if section.settings.image_image %} {{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'nav_image' }} {% else %} <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_image"> {% endif %} <p class="nav_image-header">{{ section.settings.text_image_heading }}</p> <p class="nav_image-paragraph">{{ section.settings.text_image_paragraph }}</p> </a>
                   </div>
                     </nav>
 {% endif %}
@@ -783,6 +788,28 @@ color: black;
         }
     ],
     "settings": [
+        {
+            "id": "url_link",
+            "type": "url",
+            "label": "Link"
+        },
+        {
+            "id": "image_image",
+            "type": "image_picker",
+            "label": "Image"
+        },
+        {
+            "id": "text_image_heading",
+            "type": "text",
+            "label": "Image Heading",
+            "default": "AW\/26"
+        },
+        {
+            "id": "text_image_paragraph",
+            "type": "text",
+            "label": "Image Paragraph",
+            "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit Vestibulum elementum elit sit amet dictum tempus"
+        },
         {
             "id": "text_search",
             "type": "text",
