@@ -14,6 +14,10 @@
     "header": {
       "type": "header",
       "settings": {
+        "url_link": "",
+        "image_image": "shopify://shop_images/image_776_5e16d5c8-0390-4da4-ae60-a7bfe23a5b6f.jpg",
+        "text_image_heading": "AW/26",
+        "text_image_paragraph": "Lorem ipsum dolor sit amet consectetur adipiscing elit Vestibulum elementum elit sit amet dictum tempus",
         "text_search": "Search",
         "collection_search_bestseller": "",
         "collection_search_bestseller_limit": 6,
