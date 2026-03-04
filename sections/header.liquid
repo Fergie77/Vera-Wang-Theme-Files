@@ -56,61 +56,6 @@
               
                         </div>
 {% endfor %}
-              {% for link in linklists[section.settings.menu].links %}    <div data-hover="true" data-delay="200" li-for="link in linklists[section.settings.menu].links" class="nav_menu-dropdown w-dropdown">
-                                    
-                
-                            <div class="nav_dropdown-toggle w-dropdown-toggle">
-                  <a li-object:href="link.url" href="{{ link.url }}" class="w-inline-block">
-                    <div>
-                      <div li-object="link.title" class="nav_link-text">{{ link.title }}</div>
-                    </div>
-                  </a>
-                </div>
-                            
-                
-                            {% if link.links.size > 0  %}    <nav li-if="link.links.size > 0 " class="nav_dropdown-list no-scrollbar w-dropdown-list">
-    
-                  <div class="nav_divider"></div>
-                  <div class="nav_dropdown-list-layout">
-                    <div class="padding-global max-width-full">
-                      <div class="container-large">
-                        <div class="nav_dropdown-grid">
-                          {% for child_link in link.links %}    <div li-for="child_link in link.links" id="w-node-_581cd50c-d4ee-379a-17c3-d0fde9ae1579-d5a86df8">
-                                    
-                            
-                            <a href="{{ link.url }}" li-object="link.title" li-object:href="link.url" class="nav_dropdown-heading w-dropdown-link">{{ link.title }}</a>
-                            
-                            
-                            <a href="{{ child_link.url }}" li-object="child_link.title" li-object:href="child_link.url" class="nav_dropdown-link w-dropdown-link">{{ child_link.title }}</a>
-                            
-                            
-                            {% if child_link.links.size > 0 %}    <div li-if="child_link.links.size > 0">
-    
-                              {% for grandchild_link in child_link.links %}    <div li-for="grandchild_link in child_link.links">
-                                    
-                                
-                            <a href="{{ grandchild_link.url }}" li-object="grandchild_link.title" li-object:href="grandchild_link.url" class="nav_dropdown-link_child w-dropdown-link">{{ grandchild_link.title }}</a>
-                            
-                              
-                        </div>
-{% endfor %}
-                                </div>
-{% endif %}
-                            
-                          
-                        </div>
-{% endfor %}
-                        </div>
-                      </div>
-                    </div>
-                    <a href="{{ section.settings.url_link }}" class="nav_image-wrapper w-inline-block"> {% if section.settings.image_image %} {{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'nav_image' }} {% else %} <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_image"> {% endif %} <p class="nav_image-header">{{ section.settings.text_image_heading }}</p> <p class="nav_image-paragraph">{{ section.settings.text_image_paragraph }}</p> </a>
-                  </div>
-                    </nav>
-{% endif %}
-                            
-              
-                        </div>
-{% endfor %}
               <div class="nav_dropdown-list-background"></div>
             </nav>
             <a href="{{ routes.root_url }}" li-object:href="routes.root_url" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86dfb-d5a86df8" class="nav_logo-link w-nav-brand"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 339 46" fill="none" class="nav_logo">
