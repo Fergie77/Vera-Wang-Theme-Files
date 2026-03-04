@@ -144,13 +144,9 @@ customElements.define('localization-form', LocalizationForm);
                     </div>
                       </localization-form>
 {% endif %}
-                  <div li-for:inside="link in linklists['footer'].links" class="footer_legal-links">
-        {% for link in linklists['footer'].links %}                            
-                    
-                            <a li-object="link.title" li-object:href="link.url" href="{{ link.url }}" class="footer_legal-link">{{ link.title }}</a>
-                            
-                  
-                    {% endfor %}    </div>
+                  <div class="footer_legal-links">
+                    <a href="#" class="footer_legal-link">United Kingdom (£)</a>
+                  </div>
                 </div>
               </div>
             </div>
