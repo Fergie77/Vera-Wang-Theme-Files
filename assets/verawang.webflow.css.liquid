@@ -5390,6 +5390,16 @@ figcaption {
   text-decoration: underline;
 }
 
+.active-filter-results_layout {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.results-text {
+  font-size: clamp(.625rem, .660714rem - .178571vw, .5rem);
+}
+
 @media screen and (max-width: 991px) {
   .padding-medium {
     padding: 1.5rem;
@@ -6206,6 +6216,15 @@ figcaption {
 
   .footer_emblem {
     top: 0;
+  }
+
+  .collections-menu_layout {
+    flex: 1;
+    overflow: auto;
+  }
+
+  .collection-page_custom-padding {
+    padding-top: 5rem;
   }
 }
 
