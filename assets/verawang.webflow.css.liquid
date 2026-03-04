@@ -1744,7 +1744,7 @@ figcaption {
 }
 
 .nav_menu-dropdown {
-  z-index: 2;
+  z-index: 5;
   align-items: stretch;
   height: 4rem;
   display: flex;
@@ -1800,6 +1800,7 @@ figcaption {
   z-index: 1;
   grid-column-gap: 0rem;
   grid-row-gap: 0rem;
+  border-style: none;
   max-height: 100vh;
   padding-top: 4rem;
   top: 0;
@@ -2581,14 +2582,14 @@ figcaption {
 
 .nav_dropdown-grid {
   z-index: 2;
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
+  grid-column-gap: var(--gap--global);
+  grid-row-gap: var(--gap--global);
   flex-direction: column;
   grid-template-rows: auto auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-auto-columns: 1fr;
   width: 50%;
-  padding-top: 6rem;
+  padding-top: 3rem;
   padding-bottom: 1rem;
   display: grid;
   position: relative;
@@ -5320,7 +5321,7 @@ figcaption {
   color: var(--text-color--text-alternate);
   width: 100%;
   height: auto;
-  padding-top: 6rem;
+  padding-top: 3rem;
   padding-left: 2rem;
   padding-right: 2rem;
   display: flex;
