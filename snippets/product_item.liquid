@@ -3,7 +3,7 @@
                       <div class="product-item_image-link">
                         <a li-object:href="product.url" href="{{ product.url }}" class="product-item_image-wrapper w-inline-block"><img li-object:alt="product.featured_image.alt" loading="lazy" li-object:src="product.featured_image | image_url: width: 450" src="{{ product.featured_image | image_url: width: 450 }}" alt="{{ product.featured_image.alt }}" class="product-item_image is-primary">
                           {% if product.images[1] %}    <div li-if="product.images[1]">
-    <img li-object:alt="product.image[1].alt" loading="lazy" li-object:src="product.image[1] | image_url: width: 450" src="{{ product.image[1] | image_url: width: 450 }}" alt="{{ product.image[1].alt }}" class="product-item_image is-secondary">    </div>
+    <img li-object:alt="product.images[1].alt" loading="lazy" li-object:src="product.images[1] | image_url: width: 450" src="{{ product.images[1] | image_url: width: 450 }}" alt="{{ product.images[1].alt }}" class="product-item_image is-secondary">    </div>
 {% endif %}
                         </a>
                         <div class="product-item_tag_list">
