@@ -1658,6 +1658,7 @@ figcaption {
 }
 
 .product-item_image {
+  z-index: 2;
   background-color: var(--base-color-neutral--neutral-lightest);
   object-fit: cover;
   width: 100%;
@@ -1665,6 +1666,18 @@ figcaption {
   display: inline-block;
   position: absolute;
   inset: 0%;
+}
+
+.product-item_image.is-below {
+  z-index: 1;
+}
+
+.product-item_image.is-hover:hover {
+  opacity: 0;
+}
+
+.product-item_image.is-secondary {
+  transform: translate(83px);
 }
 
 .product-item_text-link {
@@ -1684,6 +1697,7 @@ figcaption {
 }
 
 .product-item_tag_list {
+  z-index: 3;
   grid-column-gap: .5rem;
   grid-row-gap: .5rem;
   flex-wrap: wrap;
