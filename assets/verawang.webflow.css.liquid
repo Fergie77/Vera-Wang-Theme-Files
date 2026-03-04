@@ -1726,7 +1726,7 @@ figcaption {
 }
 
 .nav_logo-link {
-  z-index: 3;
+  z-index: 5;
   color: #fff;
   margin-left: auto;
   margin-right: auto;
@@ -1754,10 +1754,6 @@ figcaption {
   align-items: center;
   padding: .4rem .75rem .4rem 0;
   display: flex;
-}
-
-.nav_dropdown-toggle.w--open {
-  z-index: 2;
 }
 
 .dropdown-icon {
@@ -1793,13 +1789,23 @@ figcaption {
 }
 
 .nav_dropdown-list.no-scrollbar {
+  opacity: 0;
+  pointer-events: none;
   background-color: #fff0;
+  flex-flow: wrap;
+  width: 100%;
+  padding-top: 4rem;
+  display: flex;
+  position: fixed;
+  inset: 0%;
 }
 
 .nav_dropdown-list.no-scrollbar.w--open {
   z-index: 1;
   grid-column-gap: 0rem;
   grid-row-gap: 0rem;
+  opacity: 100;
+  pointer-events: auto;
   border-style: none;
   max-height: 100vh;
   padding-top: 4rem;
@@ -1830,9 +1836,11 @@ figcaption {
 }
 
 .nav_shop-icons {
+  z-index: 5;
   justify-content: center;
   align-items: center;
   display: flex;
+  position: relative;
 }
 
 .nav_shop-icon {
@@ -5270,9 +5278,10 @@ figcaption {
 }
 
 .nav_dropdown-list-background {
-  background-color: #fff;
+  z-index: 1;
   width: 100%;
-  position: absolute;
+  margin-top: -32px;
+  position: fixed;
   inset: 0%;
 }
 
@@ -5287,6 +5296,7 @@ figcaption {
   height: 100%;
   min-height: 100svh;
   display: grid;
+  position: relative;
 }
 
 .nav_image-header {
@@ -7514,7 +7524,7 @@ figcaption {
   place-self: center start;
 }
 
-#w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86e09-d5a86df8 {
+#w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86e09-d5a86df8, #w-node-_581cd50c-d4ee-379a-17c3-d0fde9ae1579-d5a86df8 {
   justify-self: start;
 }
 
