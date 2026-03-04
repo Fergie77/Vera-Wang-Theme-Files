@@ -41,6 +41,7 @@
   --base-color-neutral--neutral-darkest: #111;
   --base-color-neutral--neutral-lightest: #eee;
   --gap--global: .571429rem;
+  --link-color--link-secondary: var(--base-color-neutral--black);
   --accessible-components-dark-grey\<deleted\|variable-c4d8099c\>: #9b9b9b;
   --text-color--text-error: var(--base-color-system--error-red-dark);
   --base-color-system--success-green-dark: #17660f;
@@ -76,7 +77,6 @@
   --border-color--border-secondary: var(--base-color-brand--blue);
   --border-radius--large: 1rem;
   --link-color--link-primary: var(--base-color-brand--blue);
-  --link-color--link-secondary: var(--base-color-neutral--black);
   --link-color--link-alternate: var(--base-color-neutral--white);
   --link-color--color: white;
 }
@@ -1756,8 +1756,25 @@ figcaption {
   align-items: center;
   height: 4rem;
   padding: .4rem .75rem .4rem 0;
+  font-family: Gotham, Arial, sans-serif;
+  font-weight: 400;
   display: flex;
   position: relative;
+}
+
+.nav_dropdown-toggle:hover {
+  text-underline-offset: 4px;
+  text-decoration: underline;
+  -webkit-text-decoration-color: var(--link-color--link-secondary);
+  text-decoration-color: var(--link-color--link-secondary);
+  text-decoration-thickness: 2px;
+}
+
+.nav_dropdown-toggle.w--current {
+  text-underline-offset: 4px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 .dropdown-icon {
@@ -6900,6 +6917,7 @@ figcaption {
     --base-color-neutral--neutral-darkest: #111;
     --base-color-neutral--neutral-lightest: #eee;
     --gap--global: .25rem;
+    --link-color--link-secondary: var(--base-color-neutral--black);
     --accessible-components-dark-grey\<deleted\|variable-c4d8099c\>: #9b9b9b;
     --text-color--text-error: var(--base-color-system--error-red-dark);
     --base-color-system--success-green-dark: #17660f;
@@ -6935,7 +6953,6 @@ figcaption {
     --border-color--border-secondary: var(--base-color-brand--blue);
     --border-radius--large: 1rem;
     --link-color--link-primary: var(--base-color-brand--blue);
-    --link-color--link-secondary: var(--base-color-neutral--black);
     --link-color--link-alternate: var(--base-color-neutral--white);
     --link-color--color: white;
   }
