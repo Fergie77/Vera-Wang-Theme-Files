@@ -10,10 +10,6 @@
                               </div>
     </template>
                       <div class="product-header_tag-list">
-                        <template x-if="product.selected_or_first_available_variant.available != true">
-            <div li-js-if="product.selected_or_first_available_variant.available != true" class="product-item_tag">
-        Not in Stock        </div>
-    </template>
                         <template x-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
             <div li-js-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price" class="product-item_tag is-red">
         Sale        </div>
