@@ -40,7 +40,7 @@
                                 {% assign color_index = nil %}
 {% for option in product.options %}
   {% assign option_down = option | downcase %}
-  {{ option_down }}
+
   {% if option_down == 'colour' %}
     {% assign color_index = forloop.index0 %}
   {% endif %}
