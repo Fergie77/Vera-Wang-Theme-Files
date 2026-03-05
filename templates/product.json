@@ -48,7 +48,7 @@
     "recommended_products": {
       "type": "recommended_products",
       "settings": {
-        "text_heading": "Headline Copy",
+        "text_heading": "We Think You'll Love",
         "text_subheading": "Subheading Copy"
       }
     }
