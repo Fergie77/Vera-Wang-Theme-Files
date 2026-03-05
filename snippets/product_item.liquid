@@ -40,13 +40,14 @@
                               {% for variant in product.variants %}    <div li-for="variant in product.variants" class="product-header_radio-list">
                                     
                                 
-                            <div li-for:inside="options in variant.options" class="product-header_radio-layout">
-        {% for options in variant.options %}                            
+                            {% for options in variant.options %}    <div li-for="options in variant.options" class="product-header_radio-layout">
+                                    
                                   
                             <div class="product-item_variant-colour" style="background:{{options.name}}"></div>
                             
                                 
-                    {% endfor %}    </div>
+                        </div>
+{% endfor %}
                             
                               
                         </div>
