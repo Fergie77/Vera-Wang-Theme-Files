@@ -11,13 +11,24 @@
   "sections": {
     "collection_products": {
       "type": "collection_products",
+      "blocks": {
+        "featured_wide_DiLN6f": {
+          "type": "featured-wide",
+          "settings": {
+            "text_heading": "",
+            "text_cta_text": "",
+            "url_link": "",
+            "image_background_image": "shopify://shop_images/Untitled-5_2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "featured_wide_DiLN6f"
+      ],
       "settings": {
         "text_filter": "Filters",
         "text_clear_all": "Clear all",
-        "text_products_shown": "Products shown",
-        "text_heading": "",
-        "text_cta_text": "",
-        "url_link": ""
+        "text_products_shown": "Products shown"
       }
     },
     "black_logo_UNcdNb": {
