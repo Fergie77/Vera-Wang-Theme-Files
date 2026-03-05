@@ -40,7 +40,7 @@
                               <div class="product-header_radio-list">
                                 <template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
     <div li-element="product-option-loop">
-                                  <p li-element="product-option-input" x-text="variantInput" :for="variantInput">Color</p>
+                                  <p li-element="product-option-name" x-text="variantName" :for="variantName">Color</p>
                                 </div></template>
                               </div>
                             </div></template>
