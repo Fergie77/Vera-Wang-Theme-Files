@@ -150,7 +150,51 @@
                   <div class="container-large">
                     <div class="filter_product-list-wrapper w-dyn-list">
                       <div role="list" class="filter_product-list w-dyn-items">
-                        {% for product in collection.products limit:2 %}    <div li-for="product in collection.products limit:12" role="listitem" class="filter_product-list-item w-dyn-item">
+                        {% for product in collection.products limit:12 %}    <div li-for="product in collection.products limit:12" role="listitem" class="filter_product-list-item w-dyn-item">
+                                    
+                          
+                            {% render 'product_item', product: product %}
+                            
+                        
+                        </div>
+{% endfor %}
+                      </div>
+                      {% if collection.products == blank %}    <div li-if="collection.products == blank" class="filter_empty w-dyn-empty">
+    
+                        <div class="heading-style-h6">No results found.</div>
+                        <div class="spacer-xxsmall"></div>
+                        <div>There are no results with this criteria. Try changing your search.</div>
+                          </div>
+{% endif %}
+                    </div>
+                  </div>
+                </div>
+                <header li-section="Featured Wide" class="rl_section_header5">
+                  <div class="padding-global">
+                    <div>
+                      <div class="header5_component">
+                        <div class="rl_header5_content">
+                          <h1 class="rl_header5_heading">
+{{ section.settings.text_heading }}
+</h1>
+                          <p class="cta-text">
+{{ section.settings.text_cta_text }}
+</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="{{ section.settings.url_link }}" class="rl_section_link w-inline-block"> </a>{% if section.settings.image_background_image %}
+{{ section.settings.image_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'rl_section_background-image' }}
+{% else %}
+<img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="rl_section_background-image">
+{% endif %}
+                </header>
+                <div class="padding-global">
+                  <div class="container-large">
+                    <div class="filter_product-list-wrapper w-dyn-list">
+                      <div role="list" class="filter_product-list w-dyn-items">
+                        {% for product in collection.products limit:12 %}    <div li-for="product in collection.products limit:12" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
                           
                             {% render 'product_item', product: product %}
@@ -283,6 +327,28 @@
             "type": "text",
             "label": "Products shown",
             "default": "Products shown"
+        },
+        {
+            "id": "text_heading",
+            "type": "text",
+            "label": "Heading",
+            "default": "Handbags"
+        },
+        {
+            "id": "text_cta_text",
+            "type": "text",
+            "label": "CTA Text",
+            "default": "Call to action button"
+        },
+        {
+            "id": "url_link",
+            "type": "url",
+            "label": "Link"
+        },
+        {
+            "id": "image_background_image",
+            "type": "image_picker",
+            "label": "Background Image"
         }
     ],
     "presets": [
