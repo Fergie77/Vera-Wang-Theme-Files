@@ -15,33 +15,31 @@
         "product-name": {
           "type": "product-name",
           "name": "Product Name",
-          "settings": {}
+          "settings": {},
+          "blocks": {}
         },
         "product-price": {
           "type": "product-price",
           "name": "Product Price",
-          "settings": {}
-        },
-        "availability": {
-          "type": "availability",
-          "name": "Availability",
-          "settings": {}
+          "settings": {},
+          "blocks": {}
         },
         "add-to-cart": {
           "type": "add-to-cart",
           "name": "Add to Cart",
-          "settings": {}
+          "settings": {},
+          "blocks": {}
         },
         "description": {
           "type": "description",
           "name": "Description",
-          "settings": {}
+          "settings": {},
+          "blocks": {}
         }
       },
       "block_order": [
         "product-name",
         "product-price",
-        "availability",
         "add-to-cart",
         "description"
       ],
@@ -49,7 +47,10 @@
     },
     "recommended_products": {
       "type": "recommended_products",
-      "settings": {}
+      "settings": {
+        "text_heading": "Headline Copy",
+        "text_subheading": "Subheading Copy"
+      }
     }
   },
   "layout": "theme",
