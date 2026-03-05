@@ -169,27 +169,38 @@
                     </div>
                   </div>
                 </div>
-                <header li-section="Featured Wide" class="rl_section_header5">
-                  <div class="padding-global">
+                {% for block in section.blocks %}
+    {% if block.type == "featured-wide" %}
+                    <header li-block="Featured Wide" class="rl_section_header5">
+                                    
+                  
+                                    <div class="padding-global">
                     <div>
                       <div class="header5_component">
                         <div class="rl_header5_content">
                           <h1 class="rl_header5_heading">
-{{ section.settings.text_heading }}
+{{ block.settings.text_heading }}
 </h1>
                           <p class="cta-text">
-{{ section.settings.text_cta_text }}
+{{ block.settings.text_cta_text }}
 </p>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <a href="{{ section.settings.url_link }}" class="rl_section_link w-inline-block"> </a>{% if section.settings.image_background_image %}
-{{ section.settings.image_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'rl_section_background-image' }}
+                                    
+                  
+                                    <a href="{{ block.settings.url_link }}" class="rl_section_link w-inline-block"> </a>
+                                    {% if block.settings.image_background_image %}
+{{ block.settings.image_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'rl_section_background-image' }}
 {% else %}
 <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="rl_section_background-image">
 {% endif %}
-                </header>
+                                    
+                
+                            </header>
+            {% endif %}
+{% endfor %}
                 <div class="padding-global">
                   <div class="container-large">
                     <div class="filter_product-list-wrapper w-dyn-list">
@@ -309,6 +320,36 @@
     "tag": "section",
     "name": "Collection Products",
     "class": "section_filter",
+    "blocks": [
+        {
+            "name": "Featured Wide",
+            "type": "featured-wide",
+            "settings": [
+                {
+                    "id": "text_heading",
+                    "type": "text",
+                    "label": "Heading",
+                    "default": "Handbags"
+                },
+                {
+                    "id": "text_cta_text",
+                    "type": "text",
+                    "label": "CTA Text",
+                    "default": "Call to action button"
+                },
+                {
+                    "id": "url_link",
+                    "type": "url",
+                    "label": "Link"
+                },
+                {
+                    "id": "image_background_image",
+                    "type": "image_picker",
+                    "label": "Background Image"
+                }
+            ]
+        }
+    ],
     "settings": [
         {
             "id": "text_filter",
@@ -327,35 +368,17 @@
             "type": "text",
             "label": "Products shown",
             "default": "Products shown"
-        },
-        {
-            "id": "text_heading",
-            "type": "text",
-            "label": "Heading",
-            "default": "Handbags"
-        },
-        {
-            "id": "text_cta_text",
-            "type": "text",
-            "label": "CTA Text",
-            "default": "Call to action button"
-        },
-        {
-            "id": "url_link",
-            "type": "url",
-            "label": "Link"
-        },
-        {
-            "id": "image_background_image",
-            "type": "image_picker",
-            "label": "Background Image"
         }
     ],
     "presets": [
         {
             "name": "Collection Products",
             "category": "Liquify",
-            "blocks": []
+            "blocks": [
+                {
+                    "type": "featured-wide"
+                }
+            ]
         }
     ],
     "enabled_on": {
