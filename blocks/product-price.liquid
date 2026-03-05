@@ -2,11 +2,11 @@
                     
                     
                     <div class="product-header_price-wrapper">
-                      <div li-js-price="product.selected_or_first_available_variant.price" class="text-size-large text-weight-bold" x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.price, true, '{{ shop.money_with_currency_format }}')">$55</div>
+                      <div li-js-price="product.selected_or_first_available_variant.price" class="product-price" x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.price, true, '{{ shop.money_with_currency_format }}')">$55</div>
                       <template x-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
             <div li-js-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
         
-                        <div li-js-price="product.selected_or_first_available_variant.compare_at_price" class="text-size-regular text-style-strikethrough text-align-right text-style-muted" x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.compare_at_price, true, '{{ shop.money_with_currency_format }}')">$55</div>
+                        <div li-js-price="product.selected_or_first_available_variant.compare_at_price" class="product-price text-style-muted text-style-strikethrough" x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.compare_at_price, true, '{{ shop.money_with_currency_format }}')">$55</div>
                               </div>
     </template>
                       <div class="product-header_tag-list">
@@ -20,9 +20,6 @@
     </template>
                       </div>
                     </div>
-                    
-                    
-                    <div class="text-size-small">inkl. VAT</div>
                     
                   
                 </div> {% schema %} {
