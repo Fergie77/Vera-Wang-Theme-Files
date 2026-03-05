@@ -42,6 +42,7 @@
   --base-color-neutral--neutral-lightest: #eee;
   --gap--global: .571429rem;
   --link-color--link-secondary: var(--base-color-neutral--black);
+  --base-color-neutral--neutral-dark: #444;
   --accessible-components-dark-grey\<deleted\|variable-c4d8099c\>: #9b9b9b;
   --text-color--text-error: var(--base-color-system--error-red-dark);
   --base-color-system--success-green-dark: #17660f;
@@ -69,7 +70,6 @@
   --base-color-brand--pink: #dd23bb;
   --base-color-brand--pink-dark: #3c043b;
   --base-color-neutral--neutral-light: #aaa;
-  --base-color-neutral--neutral-dark: #444;
   --base-color-neutral--neutral-darker: #222;
   --base-color-system--success-green: #cef5ca;
   --base-color-system--warning-yellow: #fcf8d8;
@@ -476,6 +476,12 @@ figcaption {
 
 .text-rich-text ul, .text-rich-text ol {
   margin-bottom: 1.5rem;
+}
+
+.text-rich-text.max-width-large {
+  letter-spacing: .02em;
+  font-weight: 400;
+  line-height: 1.3;
 }
 
 .container-small {
@@ -2054,8 +2060,11 @@ figcaption {
 .product-header_option {
   grid-column-gap: .625rem;
   grid-row-gap: .625rem;
+  color: var(--base-color-neutral--neutral-dark);
   flex-flow: row;
   align-items: center;
+  font-size: clamp(.625rem, .517857rem + .535714vw, 1rem);
+  font-weight: 400;
   display: flex;
 }
 
@@ -3923,8 +3932,8 @@ figcaption {
 }
 
 .product-header_description {
-  grid-column-gap: 1.5rem;
-  grid-row-gap: 1.5rem;
+  grid-column-gap: 2.5rem;
+  grid-row-gap: 2.5rem;
   flex-flow: column;
   margin-top: .5rem;
   display: flex;
@@ -5484,7 +5493,18 @@ figcaption {
 
 .product-header_links-layout {
   justify-content: space-between;
+  font-weight: 400;
   display: flex;
+}
+
+.product-header_link {
+  font-size: clamp(.625rem, .589286rem + .178571vw, .75rem);
+}
+
+.product-header_link:hover {
+  text-underline-offset: 2px;
+  text-underline-position: under;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 991px) {
@@ -7039,6 +7059,7 @@ figcaption {
     --base-color-neutral--neutral-lightest: #eee;
     --gap--global: .25rem;
     --link-color--link-secondary: var(--base-color-neutral--black);
+    --base-color-neutral--neutral-dark: #444;
     --accessible-components-dark-grey\<deleted\|variable-c4d8099c\>: #9b9b9b;
     --text-color--text-error: var(--base-color-system--error-red-dark);
     --base-color-system--success-green-dark: #17660f;
@@ -7066,7 +7087,6 @@ figcaption {
     --base-color-brand--pink: #dd23bb;
     --base-color-brand--pink-dark: #3c043b;
     --base-color-neutral--neutral-light: #aaa;
-    --base-color-neutral--neutral-dark: #444;
     --base-color-neutral--neutral-darker: #222;
     --base-color-system--success-green: #cef5ca;
     --base-color-system--warning-yellow: #fcf8d8;
