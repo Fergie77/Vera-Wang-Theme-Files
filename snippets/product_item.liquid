@@ -31,8 +31,9 @@
                           </div>
                         </div>
                         <div class="product-item_variants-wrapper">
-                          <div class="product-item_variant-colour"></div>
-                          <p class="product-item_subtitle text-weight-normal">1 Colour</p>
+                          {% if product.has_only_default_variant == true %}    <p li-if="product.has_only_default_variant == true" class="product-item_subtitle text-weight-normal">
+    1 Colour    </p>
+{% endif %}
                           {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list">
     
                             <div class="product-header_option">
@@ -41,8 +42,8 @@
                                 
                             {% for options in variant.options %}    <div li-for="options in variant.options">
                                     
-                                  {{ options.name}}
-                            <p li-object="options.product_option_value.swatch">{{ options.product_option_value.swatch }}</p>
+                                  
+                            <div class="product-item_variant-colour" style="background = {{options.name}}"></div>
                             
                                 
                         </div>
