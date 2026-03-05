@@ -168,29 +168,6 @@
 {% endif %}
                     </div>
                   </div>
-                  <div class="w-form">
-                    <form id="email-form-3" name="email-form-3" data-name="Email Form 3" method="get" data-wf-page-id="68e64cde361aeb3efeb34c8c" data-wf-element-id="691a0608-cc41-c3d5-dc20-21eb43624f13">
-                      {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list">
-    
-                        <template x-for="(option, optionKey) in product.options" :key="optionKey">
-    <div li-element="product-options-loop" class="product-header_option" data-ProductVariantsLoop="true">
-                          <div class="product-header_radio-list">
-                            <template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
-    <div li-element="product-option-loop">
-                              <p li-element="product-option-name" x-text="variantName" :for="variantName">Color</p>
-                            </div></template>
-                          </div>
-                        </div></template>
-                          </div>
-{% endif %}
-                    </form>
-                    <div class="w-form-done">
-                      <div>Thank you! Your submission has been received!</div>
-                    </div>
-                    <div class="w-form-fail">
-                      <div>Oops! Something went wrong while submitting the form.</div>
-                    </div>
-                  </div>
                 </div>
                 {% if paginate.pages > 1 %}    <nav li-if="paginate.pages > 1" class="pagination_component">
     
