@@ -1,21 +1,30 @@
 <div data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related" class="padding-global padding-section-medium product-recommendations">
           <div class="container-large">
-            <div class="headline-wrapper">
-              <h2 class="heading-style-h2">
+            <div class="product_component">
+              <div class="headline-wrapper">
+                <div class="product_heading-wrapper">
+                  <div class="product_heading">
+                    <h2 class="product-section_heading">
 {{ section.settings.text_heading }}
 </h2>
-            </div>
-            <div class="product_list-wrapper">
-              <ul role="list" class="product_list w-list-unstyled">
-                {% for product in recommendations.products %}    <li li-for="product in recommendations.products" class="product_list-item">
+                    <p class="product-section_subheading">
+{{ section.settings.text_subheading }}
+</p>
+                  </div>
+                </div>
+              </div>
+              <div class="product_list-wrapper">
+                <ul role="list" class="product_list w-list-unstyled">
+                  {% for product in recommendations.products %}    <li li-for="product in recommendations.products" class="product_list-item">
                                     
-                  
+                    
                             {% render 'product_item', product: product %}
                             
-                
+                  
                         </li>
 {% endfor %}
-              </ul>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -48,7 +57,13 @@
             "id": "text_heading",
             "type": "text",
             "label": "Heading",
-            "default": "Recommended"
+            "default": "Headline Copy"
+        },
+        {
+            "id": "text_subheading",
+            "type": "text",
+            "label": "Subheading",
+            "default": "Subheading Copy"
         }
     ],
     "presets": [
