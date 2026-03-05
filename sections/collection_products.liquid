@@ -150,7 +150,7 @@
                   <div class="container-large">
                     <div class="filter_product-list-wrapper w-dyn-list">
                       <div role="list" class="filter_product-list w-dyn-items">
-                        {% for product in collection.products limit:12 %}    <div li-for="product in collection.products limit:12" role="listitem" class="filter_product-list-item w-dyn-item">
+                        {% for product in collection.products limit:2 %}    <div li-for="product in collection.products limit:12" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
                           
                             {% render 'product_item', product: product %}
