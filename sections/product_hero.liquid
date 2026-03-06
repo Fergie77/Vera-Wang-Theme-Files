@@ -15,6 +15,27 @@
 {% endif %}
                             
                       
+                            {% if media.media_type == 'image' %}    <div li-if="media.media_type == 'image'" class="swiper-slide is-product-gallery">
+    
+                        <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
+                          </div>
+{% endif %}
+                            
+                      
+                            {% if media.media_type == 'image' %}    <div li-if="media.media_type == 'image'" class="swiper-slide is-product-gallery">
+    
+                        <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
+                          </div>
+{% endif %}
+                            
+                      
+                            {% if media.media_type == 'image' %}    <div li-if="media.media_type == 'image'" class="swiper-slide is-product-gallery">
+    
+                        <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
+                          </div>
+{% endif %}
+                            
+                      
                             {% if media.media_type == 'video' %}    <div li-if="media.media_type == 'video'" class="swiper-slide is-product-gallery">
     
                         <div class="product-header_gallery-lightbox">
@@ -46,14 +67,22 @@
           <script>
 document.addEventListener("DOMContentLoaded", () => {
   $(".swiper-container").each(function () {
-    new Swiper($(this).find(".swiper.is-product-gallery")[0], {
-    direction: "vertical",
+    const container = $(this);
+    container
+      .on("mouseenter", () => document.body.style.overflow = "hidden")
+      .on("mouseleave", () => document.body.style.overflow = "");
+    new Swiper(container.find(".swiper.is-product-gallery")[0], {
+      direction: "vertical",
       mousewheel: { forceToAxis: true },
       keyboard: { enabled: true, onlyInViewport: true },
       pagination: {
-        el: $(this).find(".swiper-pagination")[0],
+        el: container.find(".swiper-pagination")[0],
         clickable: true,
         direction: "vertical",
+      },
+      on: {
+        reachEnd: () => document.body.style.overflow = "",
+        fromEdge: () => document.body.style.overflow = "hidden",
       },
     });
   });
