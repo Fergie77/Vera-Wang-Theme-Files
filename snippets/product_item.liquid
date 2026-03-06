@@ -40,23 +40,25 @@
                                 {% assign color_index = nil %}
 {% for option in product.options %}
   {% assign option_down = option | downcase %}
-
   {% if option_down == 'colour' %}
     {% assign color_index = forloop.index0 %}
   {% endif %}
 {% endfor %}
                               </div>
-                              <div class="product-header_option">
-                                {% for variant in product.variants %}    <div li-for="variant in product.variants" class="product-header_radio-list">
-                                    
-                                  
-                            <div class="product-header_radio-layout">
-                                    <div class="product-item_variant-colour" style="background:{{variant.options[color_index]}}"></div>
-                                  </div>
-                            
-                                
-                        </div>
-{% endfor %}
+                              {% assign seen_colours = '' %}
+<div class="product-header_option" style="pointer-events: auto;">
+  {% for variant in product.variants %}
+    {% assign colour_value = variant.options[color_index] %}
+    {% unless seen_colours contains colour_value %}
+      {% assign seen_colours = seen_colours | append: colour_value | append: '|' %}
+      <div class="product-header_radio-list">
+        <div class="product-header_radio-layout">
+          <div class="product-item_variant-colour" style="background: {{ colour_value }}"></div>
+        </div>
+      </div>
+    {% endunless %}
+  {% endfor %}
+</div>
                               </div>
                                 </div>
 {% endif %}
