@@ -2069,7 +2069,7 @@ figcaption {
 
 .swiper.is-product-gallery {
   flex: 1;
-  height: auto;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -2086,7 +2086,9 @@ figcaption {
 }
 
 .swiper-wrapper.is-product-gallery {
+  flex-flow: column;
   height: auto;
+  display: flex;
 }
 
 .swiper-wrapper.is-product-thumbnail {
@@ -2102,6 +2104,7 @@ figcaption {
 
 .swiper-slide.is-product-gallery {
   width: 100%;
+  height: auto;
 }
 
 .swiper-slide.is-product-thumbnail {
@@ -2167,7 +2170,7 @@ figcaption {
 
 .product-header_gallery-lightbox {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .product-header_gallery-image {
@@ -2474,9 +2477,11 @@ figcaption {
 .swiper-container.is-product-gallery {
   width: 100%;
   min-width: 100%;
-  height: auto;
+  height: 100%;
+  max-height: 100svh;
   position: sticky;
   top: 6rem;
+  overflow: clip;
 }
 
 .footer_main-wrapper {
