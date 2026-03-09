@@ -683,7 +683,7 @@
                                 </div>
                                 <div>Colour <span li-js-object="item.variant.options[product.options | find_index: 'Colour'] " x-text="item.variant.options[product.options | find_index: 'Colour'] ">L</span></div>
                                 {% assign size_index = product.options | find_index: 'Size' %}
-{{ product.variants[0] }}
+{{ product.variants[0].title }}
 
                                 <div>Size <span li-js-object="item.variant.options[product.options | find_index: 'Size'] " x-text="item.variant.options[product.options | find_index: 'Size'] ">L</span></div>
                                 <div class="mini-cart_line-item_quantity">
