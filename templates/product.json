@@ -59,21 +59,21 @@
           "type": "dropdown",
           "settings": {
             "text_heading": "Description",
-            "richtext_content": "<p>\n                    In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.\n                    ‍\n                    \n                      Product description here\n                      100% material composition\n                      Colour: here\n                      Washing instructions go here\n                      Made in Country\n                      Loose fit\n</p>"
+            "richtext_content": "<p>In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.</p><p>‍</p><ul><li>Product description here</li><li>100% material composition</li><li>Colour: here</li><li>Washing instructions go here</li><li>Made in Country</li><li>Loose fit</li></ul><p>Model is 189cm/6'2 and is wearing a size M</p><p>Styled by Vera<br/></p>"
           }
         },
         "dropdown_Dime4C": {
           "type": "dropdown",
           "settings": {
             "text_heading": "Description",
-            "richtext_content": "<p><br/>                    In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.<br/>                    ‍<br/>                    <br/>                      Product description here<br/>                      100% material composition<br/>                      Colour: here<br/>                      Washing instructions go here<br/>                      Made in Country<br/>                      Loose fit<br/></p>"
+            "richtext_content": "<p>In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.</p><p>‍</p><ul><li>Product description here</li><li>100% material composition</li><li>Colour: here</li><li>Washing instructions go here</li><li>Made in Country</li><li>Loose fit</li></ul><p>Model is 189cm/6'2 and is wearing a size M</p><p>Styled by Vera<br/></p>"
           }
         },
         "dropdown_pX4iqR": {
           "type": "dropdown",
           "settings": {
             "text_heading": "Description",
-            "richtext_content": "<p><br/>                    In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.<br/>                    ‍<br/>                    <br/>                      Product description here<br/>                      100% material composition<br/>                      Colour: here<br/>                      Washing instructions go here<br/>                      Made in Country<br/>                      Loose fit<br/></p>"
+            "richtext_content": "<p>In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.</p><p>‍</p><ul><li>Product description here</li><li>100% material composition</li><li>Colour: here</li><li>Washing instructions go here</li><li>Made in Country</li><li>Loose fit</li></ul><p>Model is 189cm/6'2 and is wearing a size M</p><p>Styled by Vera<br/></p>"
           }
         }
       },
