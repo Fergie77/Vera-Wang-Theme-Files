@@ -5,48 +5,7 @@
 {% case block.type %}
 {% when '@app' %}
 {% render block %}
-
-              {% when 'dropdown' %}
-            <div li-block="dropdown" class="dropdown_wrapper">
-                    
-                
-                    <a href="#" class="dropdown_toggle w-inline-block">
-                  <h2 class="dropdown_title">
-{{ block.settings.text_heading }}
-</h2>
-                  <div class="dropdown_icon">
-                    <div class="dropdown_icon-inner is-top"></div>
-                    <div class="dropdown_icon-inner is-bottom"></div>
-                  </div>
-                </a>
-                    
-                
-                    <div class="dropdown_list-wrapper is-open">
-                  <div class="dropdown_list w-richtext"> {{ block.settings.richtext_content }} </div>
-                </div>
-                    
-                
-                    <div class="hide w-embed w-script">
-                  <script>
-  (function () {
-    const root = document.currentScript.closest('.dropdown_wrapper');
-    const toggle = root.querySelector('.dropdown_toggle');
-    const list = root.querySelector('.dropdown_list-wrapper');
-    const iconInner = root.querySelector('.dropdown_icon-inner.is-top');
-    if (!window.Webflow || !window.Webflow.env('editor')) {
-      list.classList.remove('is-open');
-    }
-    toggle.addEventListener('click', () => {
-      list.classList.toggle('is-open');
-      iconInner.classList.toggle('is-open');
-    });
-  })();
-</script>
-                </div>
-                    
-              
-                </div>
-            {% endcase %}
+{% endcase %}
 {% endfor %}
 
     </div>
@@ -55,42 +14,31 @@
             <div>Close</div>
           </a>
         </div>
-        <div class="module_background-blur"></div> {% schema %} {
+        <div class="module_background-blur"></div>
+        <div class="hide">
+{{ section.settings.text_module }}
+</div> {% schema %} {
     "tag": "div",
     "name": "Slide Out Module",
     "class": "module_slide-out",
     "blocks": [
         {
-            "name": "dropdown",
-            "type": "dropdown",
-            "settings": [
-                {
-                    "id": "text_heading",
-                    "type": "text",
-                    "label": "Heading",
-                    "default": "Description"
-                },
-                {
-                    "id": "richtext_content",
-                    "type": "richtext",
-                    "label": "Content",
-                    "default": "<p>\n                    In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.\n                    \u200d\n                    \n                      Product description here\n                      100% material composition\n                      Colour: here\n                      Washing instructions go here\n                      Made in Country\n                      Loose fit\n<\/p>"
-                }
-            ]
-        },
-        {
             "type": "@app"
+        }
+    ],
+    "settings": [
+        {
+            "id": "text_module",
+            "type": "text",
+            "label": "module",
+            "default": "Lorem Ipsum"
         }
     ],
     "presets": [
         {
             "name": "Slide Out Module",
             "category": "Liquify",
-            "blocks": [
-                {
-                    "type": "dropdown"
-                }
-            ]
+            "blocks": []
         }
     ]
 } {% endschema %}
