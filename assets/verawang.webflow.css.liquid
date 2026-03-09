@@ -1745,6 +1745,17 @@ figcaption {
   transform: translate(.5rem);
 }
 
+.nav_logo-link.is-slide-out {
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+  top: .8rem;
+  left: -8.9rem;
+}
+
+.nav_logo-link.is-slide-out.is-open {
+  opacity: 100;
+}
+
 .nav_menu {
   align-items: center;
   display: flex;
@@ -5565,6 +5576,11 @@ figcaption {
 
 .dropdown_list {
   font-size: clamp(.625rem, .589286rem + .178571vw, .75rem);
+}
+
+.dropdown_list ul {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .dropdown_title {
