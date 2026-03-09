@@ -51,12 +51,46 @@
         "text_heading": "We Think You'll Love",
         "text_subheading": "Subheading Copy"
       }
+    },
+    "slide_out_module_rqCxPF": {
+      "type": "slide_out_module",
+      "blocks": {
+        "dropdown_PJgRhR": {
+          "type": "dropdown",
+          "settings": {
+            "text_heading": "Description",
+            "richtext_content": "<p>\n                    In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.\n                    ‍\n                    \n                      Product description here\n                      100% material composition\n                      Colour: here\n                      Washing instructions go here\n                      Made in Country\n                      Loose fit\n</p>"
+          }
+        },
+        "dropdown_Fygtka": {
+          "type": "dropdown",
+          "settings": {
+            "text_heading": "Description",
+            "richtext_content": "<p><br/>                    In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.<br/>                    ‍<br/>                    <br/>                      Product description here<br/>                      100% material composition<br/>                      Colour: here<br/>                      Washing instructions go here<br/>                      Made in Country<br/>                      Loose fit<br/></p>"
+          }
+        },
+        "dropdown_zYj3Xf": {
+          "type": "dropdown",
+          "settings": {
+            "text_heading": "Description",
+            "richtext_content": "<p>\n                    In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.\n                    ‍\n                    \n                      Product description here\n                      100% material composition\n                      Colour: here\n                      Washing instructions go here\n                      Made in Country\n                      Loose fit\n</p>"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_PJgRhR",
+        "dropdown_Fygtka",
+        "dropdown_zYj3Xf"
+      ],
+      "name": "Slide Out Module",
+      "settings": {}
     }
   },
   "layout": "theme",
   "wrapper": "main.main-wrapper",
   "order": [
     "product_hero",
-    "recommended_products"
+    "recommended_products",
+    "slide_out_module_rqCxPF"
   ]
 }
