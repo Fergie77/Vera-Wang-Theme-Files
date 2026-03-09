@@ -63,6 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.module_background-blur').forEach(blur => {
     blur.addEventListener('click', () => closeModule(blur.parentElement.querySelector('[module]')));
   });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('[module].is-open').forEach(wrapper => closeModule(wrapper));
+  });
 });
 </script>
                   </div>
