@@ -102,7 +102,9 @@
         "dropdown_4i4nq8"
       ],
       "name": "Slide Out Module",
-      "settings": {}
+      "settings": {
+        "text_module": "size-guide"
+      }
     },
     "slide_out_module_GweRKk": {
       "type": "slide_out_module",
@@ -119,7 +121,9 @@
         "dropdown_WnnTm7"
       ],
       "name": "Slide Out Module",
-      "settings": {}
+      "settings": {
+        "text_module": "shipping"
+      }
     }
   },
   "layout": "theme",
