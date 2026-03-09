@@ -684,6 +684,7 @@
                                 <div>Colour <span li-js-object="item.variant.options[product.options | find_index: 'Colour'] " x-text="item.variant.options[product.options | find_index: 'Colour'] ">L</span></div>
                                 {% assign size_index = product.options | find_index: 'Size' %}
 {{ item.variant.options[size_index] }}
+{{ item.variant.options[size_index] }}
                                 <div>Size <span li-js-object="item.variant.options[product.options | find_index: 'Size'] " x-text="item.variant.options[product.options | find_index: 'Size'] ">L</span></div>
                                 <div class="mini-cart_line-item_quantity">
                                   <a li-element="mini-cart-item-decrease" href="#" class="mini-cart_line-item_quantity-adjust" :productprop="product" @click="$dispatch('decreasecartitem', { product: product.key, quantity: product.quantity, action: 'decrease' })">-</a><input li-element="mini-cart-item-quantity" class="mini-cart_line-item_quantity-adjust" value="1" :productprop="product" @input="$dispatch('setcartitem', { product: product.key, quantity: product.quantity })" x-model="product.quantity">
