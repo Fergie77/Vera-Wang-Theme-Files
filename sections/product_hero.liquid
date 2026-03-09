@@ -38,29 +38,24 @@
 </div>
                   <div class="hide w-embed w-script">
                     <script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[module-link]').forEach(link => {
-    link.addEventListener('click', () => {
-      const target = link.getAttribute('module-link');
-      document.querySelectorAll(`[module="${target}"]`).forEach(wrapper => {
-        wrapper.classList.add('is-open');
-        wrapper.parentElement.querySelector('.module_background-blur').classList.add('is-open');
-      });
+document.querySelectorAll('[module-link]').forEach(link => {
+  link.addEventListener('click', () => {
+    const target = link.getAttribute('module-link');
+    document.querySelectorAll(`[module="${target}"]`).forEach(wrapper => {
+      wrapper.classList.add('is-open');
+      wrapper.parentElement.querySelector('.module_background-blur').classList.add('is-open');
     });
   });
-
-  function closeModule(wrapper) {
-    wrapper.classList.remove('is-open');
-    wrapper.parentElement.querySelector('.module_background-blur').classList.remove('is-open');
-  }
-
-  document.querySelectorAll('.slide-out_close-button').forEach(btn => {
-    btn.addEventListener('click', () => closeModule(btn.closest('[module]')));
-  });
-
-  document.querySelectorAll('.module_background-blur').forEach(blur => {
-    blur.addEventListener('click', () => closeModule(blur.parentElement.querySelector('[module]')));
-  });
+});
+function closeModule(wrapper) {
+  wrapper.classList.remove('is-open');
+  wrapper.parentElement.querySelector('.module_background-blur').classList.remove('is-open');
+}
+document.querySelectorAll('.slide-out_close-button').forEach(btn => {
+  btn.addEventListener('click', () => closeModule(btn.closest('[module]')));
+});
+document.querySelectorAll('.module_background-blur').forEach(blur => {
+  blur.addEventListener('click', () => closeModule(blur.parentElement.querySelector('[module]')));
 });
 </script>
                   </div>
