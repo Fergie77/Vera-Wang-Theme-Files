@@ -49,22 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
-
   function closeModule(wrapper) {
   wrapper.classList.remove('is-open');
   wrapper.parentElement.querySelector('.module_background-blur').classList.remove('is-open');
   wrapper.querySelector('.nav_logo-link').classList.remove('is-open');
   wrapper.querySelectorAll('.dropdown_list-wrapper, .dropdown_icon-inner.is-top').forEach(el => el.classList.remove('is-open'));
 }
-
   document.querySelectorAll('.slide-out_close-button').forEach(btn => {
     btn.addEventListener('click', () => closeModule(btn.closest('[module]')));
   });
-
   document.querySelectorAll('.module_background-blur').forEach(blur => {
     blur.addEventListener('click', () => closeModule(blur.parentElement.querySelector('[module]')));
   });
-
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
     document.querySelectorAll('[module].is-open').forEach(wrapper => closeModule(wrapper));

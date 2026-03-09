@@ -1486,7 +1486,7 @@ figcaption {
   background-color: var(--base-color-neutral--white);
   flex-direction: column;
   align-items: stretch;
-  width: 28rem;
+  width: 50%;
   height: 100vh;
   max-height: 100vh;
   display: flex;
@@ -1519,8 +1519,8 @@ figcaption {
 }
 
 .mini-cart_header {
-  border-bottom: 1px solid var(--base-color-neutral--neutral-lightest);
-  justify-content: space-between;
+  border-bottom: 1px none var(--base-color-neutral--neutral-lightest);
+  justify-content: flex-end;
   align-items: center;
   padding: 1.5rem;
   display: flex;
@@ -1539,7 +1539,7 @@ figcaption {
 .mini-cart_line-item {
   flex: 1;
   max-height: 80vh;
-  padding: 1.5rem;
+  padding: 1.5rem 6rem;
   overflow: scroll;
 }
 
@@ -1565,7 +1565,7 @@ figcaption {
 .mini-cart_line-item_item {
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
-  border-bottom: 1px solid var(--base-color-neutral--neutral-lightest);
+  border-bottom: 1px none var(--base-color-neutral--neutral-lightest);
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: 0;
@@ -1575,11 +1575,11 @@ figcaption {
 }
 
 .mini-cart_line-item_img {
+  aspect-ratio: 173 / 209;
   border: 1px solid var(--base-color-neutral--neutral-lighter);
   background-color: var(--base-color-neutral--neutral-lightest);
   object-fit: contain;
-  width: 5rem;
-  height: 5rem;
+  width: 10rem;
 }
 
 .mini-cart_full {
@@ -1603,7 +1603,7 @@ figcaption {
   border-width: 1px;
   border-color: var(--base-color-neutral--black) black black;
   justify-content: space-between;
-  display: flex;
+  display: none;
 }
 
 .mini-cart_line-item_quantity-adjust {
@@ -1622,6 +1622,8 @@ figcaption {
   flex-direction: column;
   flex: 1;
   align-items: flex-start;
+  font-family: Helvetica Now Var, Arial, sans-serif;
+  font-weight: 400;
   display: flex;
 }
 
@@ -1632,8 +1634,9 @@ figcaption {
 }
 
 .mini-cart_line-item_price {
-  grid-column-gap: .5rem;
-  grid-row-gap: .5rem;
+  grid-column-gap: 0rem;
+  grid-row-gap: 0rem;
+  flex-flow: column;
   display: flex;
 }
 
@@ -5658,6 +5661,16 @@ figcaption {
 .module_background-blur.is-open {
   opacity: 100;
   pointer-events: auto;
+}
+
+.mini-cart_line-item_title {
+  font-weight: 400;
+}
+
+.product-info_layout {
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
 }
 
 @media screen and (max-width: 991px) {
