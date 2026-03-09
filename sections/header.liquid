@@ -686,6 +686,10 @@
                                 {{product.options_by_name['Size']}}
                                 {{product.options_by_name['colour']}}
 
+                                <script>
+  console.log({{ product.options_with_values | json }});
+</script>
+
 
                                 <div>Size <span li-js-object="item.variant.options[product.options | find_index: 'Size'] " x-text="item.variant.options[product.options | find_index: 'Size'] ">L</span></div>
                                 <div class="mini-cart_line-item_quantity">
