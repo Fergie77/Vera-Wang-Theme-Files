@@ -9,6 +9,7 @@
         {% for media in product.media %}                            
                       
                             <template x-if="media.media_type == 'image'">
+                              test
             <div li-js-if="'{{ media.alt }}' contains product.selected_or_first_available_variant.option1" li-if="media.media_type == 'image'" class="swiper-slide is-product-gallery">
         
                         <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
