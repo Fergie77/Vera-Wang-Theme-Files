@@ -83,7 +83,7 @@ function initSwipers() {
     function createSwiper() {
       const isMobile = mq.matches;
       return new Swiper(container.find(".swiper.is-product-gallery")[0], {
-        direction: isMobile ? "horizontal" : "horizontal",
+        direction: isMobile ? "horizontal" : "vertical",
         mousewheel: { forceToAxis: true },
         keyboard: { enabled: true, onlyInViewport: true },
         pagination: {
