@@ -5,23 +5,22 @@
 <div li-element="product-variant-container" class="w-layout-grid product-header_layout" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
                 <div id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136862-5313685d" class="swiper-container is-product-gallery">
                   <div class="swiper is-product-gallery">
-                    <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
-        {% for media in product.media %}                            
+                    {% for media in product.media %}    <div id="my-gallery" li-for="media in product.media" class="swiper-wrapper is-product-gallery">
+                                    
                       
-                            <template x-if="'{{ media.alt }}' .includes(product.selected_or_first_available_variant.option1)">
-            <div li-js-if="'{{ media.alt }}' .includes(product.selected_or_first_available_variant.option1)" class="swiper-slide is-product-gallery">
-        
+                            {% if media.alt contains product.selected_or_first_available_variant.option1 %}    <div li-if="media.alt contains product.selected_or_first_available_variant.option1" class="swiper-slide is-product-gallery">
+    
                         {% if media.media_type == 'image' %}    <div li-if="media.media_type == 'image'">
     
                           <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
                             </div>
 {% endif %}
-                              </div>
-    </template>
+                          </div>
+{% endif %}
                             
                       
-                            <template x-if="'{{ media.alt }}' .includes(product.selected_or_first_available_variant.option1)">
-            <div li-js-if="'{{ media.alt }}' .includes(product.selected_or_first_available_variant.option1)" class="swiper-slide is-product-gallery">
+                            <template x-if="media.alt contains product.selected_or_first_available_variant.option1">
+            <div li-js-if="media.alt contains product.selected_or_first_available_variant.option1" class="swiper-slide is-product-gallery">
         
                         {% if media.media_type == 'video' %}    <div li-if="media.media_type == 'video'">
     
@@ -34,7 +33,8 @@
     </template>
                             
                     
-                    {% endfor %}    </div>
+                        </div>
+{% endfor %}
                     <div class="swiper-pagination"></div>
                   </div>
                 </div>
