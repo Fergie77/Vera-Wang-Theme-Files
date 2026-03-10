@@ -8,6 +8,7 @@
                     <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
         {% for media in product.media %}                            
                       {{ media.alt }}
+                      {{ product.selected_or_first_available_variant.title }}
                        
                             <template x-if="media.media_type == 'image'">
 {{ media.alt }}
