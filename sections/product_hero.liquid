@@ -79,22 +79,31 @@ document.addEventListener('DOMContentLoaded', () => {
 function initSwipers() {
   $(".swiper-container").each(function () {
     const container = $(this);
+    const mq = window.matchMedia("(max-width: 767px)");
+    function createSwiper() {
+      const isMobile = mq.matches;
+      return new Swiper(container.find(".swiper.is-product-gallery")[0], {
+        direction: isMobile ? "horizontal" : "vertical",
+        mousewheel: { forceToAxis: true },
+        keyboard: { enabled: true, onlyInViewport: true },
+        pagination: {
+          el: container.find(".swiper-pagination")[0],
+          clickable: true,
+          direction: isMobile ? "horizontal" : "vertical",
+        },
+        on: {
+          reachEnd: () => document.body.style.overflow = "",
+          fromEdge: () => document.body.style.overflow = "hidden",
+        },
+      });
+    }
     container
       .on("mouseenter", () => document.body.style.overflow = "hidden")
       .on("mouseleave", () => document.body.style.overflow = "");
-    new Swiper(container.find(".swiper.is-product-gallery")[0], {
-      direction: "vertical",
-      mousewheel: { forceToAxis: true },
-      keyboard: { enabled: true, onlyInViewport: true },
-      pagination: {
-        el: container.find(".swiper-pagination")[0],
-        clickable: true,
-        direction: "vertical",
-      },
-      on: {
-        reachEnd: () => document.body.style.overflow = "",
-        fromEdge: () => document.body.style.overflow = "hidden",
-      },
+    let swiper = createSwiper();
+    mq.addEventListener("change", () => {
+      swiper.destroy(true, true);
+      swiper = createSwiper();
     });
   });
 }
