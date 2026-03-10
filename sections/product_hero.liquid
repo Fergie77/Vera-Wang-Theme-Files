@@ -8,7 +8,10 @@
                     <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
         {% for media in product.media %}                            
                       
-                            <div>test</div>
+                            <template x-if="'{{ media.alt }}' contains product.selected_or_first_available_variant.option1">
+            <div li-js-if="'{{ media.alt }}' contains product.selected_or_first_available_variant.option1">
+        test        </div>
+    </template>
                             
                       
                             {% if media.media_type == 'image' %}    <div li-if="media.media_type == 'image'" class="swiper-slide is-product-gallery">
