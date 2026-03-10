@@ -81,15 +81,14 @@ function initSwipers() {
     const container = $(this);
     const mq = window.matchMedia("(max-width: 767px)");
     function createSwiper() {
-      const isMobile = mq.matches;
       return new Swiper(container.find(".swiper.is-product-gallery")[0], {
-        direction: isMobile ? "horizontal" : "vertical",
+        direction: "vertical",
         mousewheel: { forceToAxis: true },
         keyboard: { enabled: true, onlyInViewport: true },
         pagination: {
           el: container.find(".swiper-pagination")[0],
           clickable: true,
-          direction: isMobile ? "horizontal" : "vertical",
+          direction: "vertical",
         },
         on: {
           reachEnd: () => document.body.style.overflow = "",
@@ -100,10 +99,14 @@ function initSwipers() {
     container
       .on("mouseenter", () => document.body.style.overflow = "hidden")
       .on("mouseleave", () => document.body.style.overflow = "");
-    let swiper = createSwiper();
+    let swiper = mq.matches ? null : createSwiper();
     mq.addEventListener("change", () => {
-      swiper.destroy(true, true);
-      swiper = createSwiper();
+      if (mq.matches) {
+        swiper.destroy(true, true);
+        swiper = null;
+      } else {
+        swiper = createSwiper();
+      }
     });
   });
 }
