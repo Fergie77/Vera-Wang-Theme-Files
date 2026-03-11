@@ -99,8 +99,8 @@ function initSwipers() {
     }
 
     container
-      .on("mouseenter", () => { if (!mq.matches) document.body.style.overflow = "hidden"; })
-      .on("mouseleave", () => { if (!mq.matches) document.body.style.overflow = ""; });
+  .on("mouseenter", () => { if (!mq.matches && !swiper?.isEnd) document.body.style.overflow = "hidden"; })
+  .on("mouseleave", () => { if (!mq.matches) document.body.style.overflow = ""; });
 
     let swiper = mq.matches ? null : createSwiper();
 
