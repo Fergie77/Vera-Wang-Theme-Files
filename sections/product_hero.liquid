@@ -8,7 +8,7 @@
                     <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
         {% for media in product.media %}                            
                       
-                            <div li-cloak="hide" class="display-contents w-embed">{% if has_variant_media %}
+                            <div li-cloak="hide" class="hide w-embed">{% if has_variant_media %}
                         {% if media.alt contains product.selected_or_first_available_variant.option1 %}
                         {% assign show_media = true %}
                         {% else %}
