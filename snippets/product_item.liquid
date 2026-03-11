@@ -50,7 +50,7 @@
 {% endif %}
                             {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list">
     
-                              <div li-cloak="hide" class="w-embed">{% assign color_index = nil %}
+                              <div li-cloak="hide" class="hide w-embed">{% assign color_index = nil %}
                                 {% for option in product.options %}
                                 {% if option | downcase == 'color' %}
                                 {% assign color_index = forloop.index0 %}
