@@ -1,11 +1,12 @@
 <script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
 <div li-element="product-variant-container" class="product-item_component" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
                         <div class="product-item_image-link">
-                          <a li-object:href="product.url" href="{{ product.url }}" class="product-item_image-wrapper w-inline-block"><img li-object:alt="product.featured_image.alt" loading="lazy" li-object:src="product.featured_image | image_url: width: 450" src="{{ product.featured_image | image_url: width: 450 }}" alt="{{ product.featured_image.alt }}" class="product-item_image is-primary">
-                            {% if product.images[1] %}    <div li-if="product.images[1]">
-    <img li-object:alt="product.images[1].alt" loading="lazy" li-object:src="product.images[1] | image_url: width: 450" src="{{ product.images[1] | image_url: width: 450 }}" alt="{{ product.images[1].alt }}" class="product-item_image is-secondary">    </div>
-{% endif %}
-                          </a>
+                          <a li-object:href="product.url" href="{{ product.url }}" class="product-item_image-wrapper w-inline-block">
+  <img li-object:alt="color_images[0].alt" loading="lazy" li-object:src="color_images[0] | image_url: width: 450" src="{{ color_images[0] | image_url: width: 450 }}" alt="{{ color_images[0].alt }}" class="product-item_image is-primary">
+  {% if color_images[1] %}
+    <img li-object:alt="color_images[1].alt" loading="lazy" li-object:src="color_images[1] | image_url: width: 450" src="{{ color_images[1] | image_url: width: 450 }}" alt="{{ color_images[1].alt }}" class="product-item_image is-secondary">
+  {% endif %}
+</a>
                           <div class="product-item_tag_list">
                             {% if product.selected_or_first_available_variant.available != true %}    <div li-if="product.selected_or_first_available_variant.available != true" class="product-item_tag">
     Not in Stock    </div>
@@ -36,36 +37,31 @@
 {% endif %}
                             {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list">
     
-                              <div li-cloak="hide" class="w-embed">{% assign color_index = nil %}
-                                {% for option in product.options %}
-                                {% if option | downcase == 'color' %}
-                                {% assign color_index = forloop.index0 %}
-                                {% endif %}
-                                {% endfor %}
-                                {% assign seen_colours = '' %}</div>
-                              <div class="product-header_option">
-                                {% for variant in product.variants %}    <div li-for="variant in product.variants">
-                                    
-                                  
-                            {% colour_value = variant.options[color_index] %}
-                            
-                                  
-                            {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
-    
-                                    {% assign seen_colours = seen_colours | append: colour_value | append: '|' %}
-                                    <div class="product-header_radio-list">
-                                      <div class="product-header_radio-layout">
-                                        <div class="product-item_variant-colour" style="background: {{ colour_value }}"></div>
-                                      </div>
-                                    </div>
-                                      </div>
-{% endunless %}
-                            
-                                
-                        </div>
+                              <div li-cloak="hide" class="w-embed">
+                                {% assign color_index = nil %}
+{% for option in product.options %}
+  {% assign option_down = option | downcase %}
+  {% if option_down == 'colour' %}
+    {% assign color_index = forloop.index0 %}
+  {% endif %}
 {% endfor %}
                               </div>
-                                </div>
+                              {% assign seen_colours = '' %}
+<div class="product-header_option" style="pointer-events: auto;">
+  {% for variant in product.variants %}
+    {% assign colour_value = variant.options[color_index] %}
+    {% unless seen_colours contains colour_value %}
+      {% assign seen_colours = seen_colours | append: colour_value | append: '|' %}
+      <div class="product-header_radio-list">
+        <div class="product-header_radio-layout">
+          <div class="product-item_variant-colour" style="background: {{ colour_value }}"></div>
+        </div>
+      </div>
+    {% endunless %}
+  {% endfor %}
+</div>
+                              </div>
+                                
 {% endif %}
                           </div>
                         </a>
