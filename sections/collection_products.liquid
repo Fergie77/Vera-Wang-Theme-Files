@@ -153,33 +153,7 @@
                         {% for product in collection.products limit:12 %}    <div li-for="product in collection.products limit:12" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
                           
-                            <div li-cloak="hide" class="w-embed">{% assign color_index = nil %}
-{% for option in product.options %}
-  {% assign option_lower = option | downcase %}
-  {% if option_lower == 'color' %}
-    {% assign color_index = forloop.index0 %}
-  {% endif %}
-{% endfor %}
-{% assign seen_colours = '' %}</div>
-                            
-                          
-                            {% for variant in product.variants %}    <div li-for="variant in product.variants" class="display-contents">
-                                    
-                            
-                            <div li-cloak="hide" class="w-embed">{% assign colour_value = variant.options[color_index] %}
-                              {% assign color_images = product.images | where: 'alt', colour_value %}</div>
-                            
-                            
-                            {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
-    
-                              <div li-cloak="hide" class="w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}</div>
-                              {% render 'product_item', product: product %}
-                                </div>
-{% endunless %}
-                            
-                          
-                        </div>
-{% endfor %}
+                            {% render 'product_item', product: product %}
                             
                         
                         </div>
