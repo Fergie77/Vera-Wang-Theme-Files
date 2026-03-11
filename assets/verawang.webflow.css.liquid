@@ -2089,7 +2089,7 @@ figcaption {
   flex: 1;
   height: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .swiper.is-product-thumbnail {
@@ -2500,7 +2500,7 @@ figcaption {
   height: 100%;
   position: sticky;
   top: 6rem;
-  overflow: clip;
+  overflow: visible;
 }
 
 .footer_main-wrapper {
@@ -5510,15 +5510,17 @@ figcaption {
 }
 
 .swiper-pagination {
+  z-index: 5;
   grid-column-gap: .3125rem;
   grid-row-gap: .3125rem;
-  mix-blend-mode: difference;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
   display: flex;
   position: absolute;
-  inset: 0% 90% 0% 0%;
+  inset: auto 0% 0;
 }
 
 .product-header_links-layout {
@@ -5701,6 +5703,23 @@ figcaption {
 
 .display-contents {
   display: contents;
+}
+
+.swiper-pagination-bullet {
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+}
+
+.swiper-pagination_wrapper {
+  mix-blend-mode: difference;
+  background-color: #000;
+  height: 0;
+  position: sticky;
+  top: auto;
+  bottom: 0;
+  right: 0;
 }
 
 @media screen and (max-width: 991px) {
