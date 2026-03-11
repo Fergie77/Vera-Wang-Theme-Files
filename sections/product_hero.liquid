@@ -5,45 +5,47 @@
 <div li-element="product-variant-container" class="w-layout-grid product-header_layout" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
                 <div li-render-custom="target" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136862-5313685d" class="swiper-container is-product-gallery">
                   <div class="swiper is-product-gallery">
-                    {% assign has_variant_media = false %}
-{% for media in product.media %}
-  {% if media.alt contains product.selected_or_first_available_variant.option1 %}
-    {% assign has_variant_media = true %}
-  {% endif %}
-{% endfor %}
                     <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
-  {% for media in product.media %}
-
-    {% if has_variant_media %}
-      {% if media.alt contains product.selected_or_first_available_variant.option1 %}
-        {% assign show_media = true %}
-      {% else %}
-        {% assign show_media = false %}
-      {% endif %}
-    {% else %}
-      {% assign show_media = true %}
-    {% endif %}
-
-    {% if show_media and media.media_type == 'image' %}
-      <div li-if="media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'image'" class="swiper-slide is-product-gallery">
-        <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
-      </div>
-    {% endif %}
-
-    {% if show_media and media.media_type == 'video' %}
-      <div li-if="media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'video'" class="swiper-slide is-product-gallery">
-        <div class="product-header_gallery-lightbox">
-          <div li-object="media | video_tag: controls: true" class="product-header_gallery-image">{{ media | video_tag: controls: true }}</div>
-        </div>
-      </div>
-    {% endif %}
-
-  {% endfor %}
-</div>
+        {% for media in product.media %}                            
+                      
+                            <div li-cloak="hide" class="display-contents w-embed">{% if has_variant_media %}
+                        {% if media.alt contains product.selected_or_first_available_variant.option1 %}
+                        {% assign show_media = true %}
+                        {% else %}
+                        {% assign show_media = false %}
+                        {% endif %}
+                        {% else %}
+                        {% assign show_media = true %}
+                        {% endif %}</div>
+                            
+                      
+                            {% if media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'image' %}    <div li-if="media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'image'" class="swiper-slide is-product-gallery">
+    
+                        <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
+                          </div>
+{% endif %}
+                            
+                      
+                            {% if media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'video' %}    <div li-if="media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'video'" class="swiper-slide is-product-gallery">
+    
+                        <div class="product-header_gallery-lightbox">
+                          <div li-object="media | video_tag: controls: true" class="product-header_gallery-image">{{ media | video_tag: controls: true }}</div>
+                        </div>
+                          </div>
+{% endif %}
+                            
+                    
+                    {% endfor %}    </div>
                     <div class="swiper-pagination"></div>
+                    <div li-cloak="hide" class="hide w-embed">{% assign has_variant_media = false %}
+                      {% for media in product.media %}
+                      {% if media.alt contains product.selected_or_first_available_variant.option1 %}
+                      {% assign has_variant_media = true %}
+                      {% endif %}
+                      {% endfor %}</div>
                   </div>
                 </div>
-                <div id="w-node-_0fed1a94-1f90-abfd-cc0c-dda684148897-5313685d" class="product-details_wrapper">
+                <div class="product-details_wrapper">
                   <a id="w-node-_80eb7b15-ebd5-1617-fdfc-2d1ea1dfd0e5-5313685d" href="{{product.collections.first.url}}" class="product-details_backlink-wrapper w-inline-block">
                     <div class="product-details_backlink"><</div>
                     <p li-object="product.collections.first.title" class="product-details_backlink">{{ product.collections.first.title }}</p>
@@ -88,9 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
         </div>
-        <div class="hide w-embed w-script">
-          <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-          <script>
+        <div class="hide w-embed w-script"><!-- <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script> -->
+          <script> /*
 function initSwipers() {
   $(".swiper-container").each(function () {
     const container = $(this);
@@ -129,6 +130,7 @@ function initSwipers() {
 }
 document.addEventListener("DOMContentLoaded", initSwipers);
 document.addEventListener("liquify:custom-rendered", initSwipers);
+*/
 document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("change", (e) => {
     const input = e.target.closest('[li-element="product-option-input"]');
@@ -149,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const newTarget = doc.querySelector('[li-render-custom="target"]');
         if (newTarget) {
           target.innerHTML = newTarget.innerHTML;
-          initSwipers();
+          //initSwipers();
         }
       });
   });
