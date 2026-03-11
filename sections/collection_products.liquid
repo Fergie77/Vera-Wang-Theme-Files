@@ -173,7 +173,7 @@
                             {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
     
                               <div li-cloak="hide" class="w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}</div>
-                              {% render 'product_item', product: product %}
+                              {% render 'product_item', color_images: {{color_images}}, product: product, variant: {{variant}} %}
                                 </div>
 {% endunless %}
                             
@@ -234,7 +234,7 @@
                         {% for product in collection.products limit:12 offset: 12 %}    <div li-for="product in collection.products limit:12 offset: 12" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
                           
-                            {% render 'product_item', product: product %}
+                            {% render 'product_item', color_images: {{color_images}}, product: product, variant: {{variant}} %}
                             
                         
                         </div>
