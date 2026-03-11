@@ -693,6 +693,7 @@ figcaption {
   flex-flow: column;
   min-height: 100vh;
   display: flex;
+  overflow: visible;
 }
 
 .li-styleguide_label {
@@ -5760,6 +5761,10 @@ figcaption {
     padding-bottom: 4rem;
   }
 
+  .section_navbar {
+    position: relative;
+  }
+
   .cart_grid-wrapper {
     grid-template-columns: 2fr;
   }
@@ -5972,6 +5977,7 @@ figcaption {
   }
 
   .product-header_component {
+    padding-top: 0;
     padding-bottom: 2.5rem;
   }
 
@@ -6306,6 +6312,11 @@ figcaption {
   .gift_card-logo {
     width: 8.4rem;
     height: 3.6rem;
+  }
+
+  .section_header-group {
+    position: sticky;
+    top: 0;
   }
 
   .landing-page_header-layout {
@@ -7561,11 +7572,13 @@ figcaption {
   }
 
   .nav_component {
-    min-height: 3.6rem;
+    min-height: 0;
   }
 
   .nav_container.container-large {
     grid-template-columns: 1fr .25fr min-content;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
   }
 
   .nav_logo-link {
@@ -7635,7 +7648,15 @@ figcaption {
     grid-template-columns: 1fr;
   }
 
-  .filter_product-list, .product-header_layout {
+  .filter_product-list {
+    grid-template-columns: 1fr;
+  }
+
+  .product-header_component {
+    padding-top: 0;
+  }
+
+  .product-header_layout {
     grid-template-columns: 1fr;
   }
 
