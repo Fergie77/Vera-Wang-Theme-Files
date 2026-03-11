@@ -80,6 +80,7 @@ function initSwipers() {
   $(".swiper-container").each(function () {
     const container = $(this);
     const mq = window.matchMedia("(max-width: 767px)");
+
     function createSwiper() {
       return new Swiper(container.find(".swiper.is-product-gallery")[0], {
         direction: "vertical",
@@ -96,13 +97,18 @@ function initSwipers() {
         },
       });
     }
+
     container
-      .on("mouseenter", () => document.body.style.overflow = "hidden")
-      .on("mouseleave", () => document.body.style.overflow = "");
+      .on("mouseenter", () => { if (!mq.matches) document.body.style.overflow = "hidden"; })
+      .on("mouseleave", () => { if (!mq.matches) document.body.style.overflow = ""; });
+
     let swiper = mq.matches ? null : createSwiper();
+
     mq.addEventListener("change", () => {
       if (mq.matches) {
         swiper.destroy(true, true);
+        container.find(".swiper-pagination").empty();
+        document.body.style.overflow = "";
         swiper = null;
       } else {
         swiper = createSwiper();
