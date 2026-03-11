@@ -103,7 +103,7 @@
                     {% for product in search.results %}    <div li-for="product in search.results" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
                       
-                            {% render 'product_item', product: product %}
+                            {% render 'product_item', color_images: {{color_images}}, product: product, variant: {{variant}} %}
                             
                     
                         </div>
