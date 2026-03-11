@@ -34,9 +34,15 @@
                           </div>
 {% endif %}
                             
+                      
+                            <div class="swiper-pagination_wrapper">
+                        <div class="swiper-pagination">
+                          <div class="swiper-pagination-bullet"></div>
+                        </div>
+                      </div>
+                            
                     
                     {% endfor %}    </div>
-                    <div class="swiper-pagination"></div>
                     <div li-cloak="hide" class="hide w-embed">{% assign has_variant_media = false %}
                       {% for media in product.media %}
                       {% if media.alt contains product.selected_or_first_available_variant.option1 %}
@@ -157,19 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-          <style>
-.swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background: transparent;
-  border: 1px solid white;
-  border-radius: 50%;
-  display: block;
-}
-.swiper-pagination-bullet-active {
-  background: white;
-}
-</style>
         </div> {% schema %} {
     "tag": "section",
     "name": "Product Hero",
