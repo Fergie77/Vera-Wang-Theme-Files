@@ -678,27 +678,27 @@
                               <template x-for="product in products" :key="product.key">
     <li li-element="mini-cart-item" class="mini-cart_line-item_item"><img src="../images/product-apparel-2.svg" loading="lazy" alt="" class="mini-cart_line-item_img" x-bind:src="product.image">
                                 <div class="mini-cart_line-item_product-info">
-                                  <div class="product-info_layout">
-                                    <div li-js-object="product.product_title" class="mini-cart_main-text-size" x-text="product.product_title">Product Title</div>
-                                    <div class="mini-cart_line-item_price">
-                                      <div li-js-price="product.price" class="mini-cart_main-text-size text-weight-light" x-text="LiquifyHelper.moneyFormat(product.price, true, '{{ shop.money_with_currency_format }}')">14,99 $</div>
-                                      <template x-if="product.price < product.original_price">
+                                  <div class="product-info_wrapper">
+                                    <div class="product-info_layout">
+                                      <div li-js-object="product.product_title" class="mini-cart_main-text-size" x-text="product.product_title">Product Title</div>
+                                      <div class="mini-cart_line-item_price">
+                                        <div li-js-price="product.price" class="mini-cart_main-text-size text-weight-light" x-text="LiquifyHelper.moneyFormat(product.price, true, '{{ shop.money_with_currency_format }}')">14,99 $</div>
+                                        <template x-if="product.price < product.original_price">
             <div li-js-if="product.price < product.original_price">
         
-                                        <div li-js-price="product.original_price" class="mini-cart_main-text-size text-weight-light text-style-strikethrough text-style-muted" x-text="LiquifyHelper.moneyFormat(product.original_price, true, '{{ shop.money_with_currency_format }}')">14,99 $</div>
-                                              </div>
+                                          <div li-js-price="product.original_price" class="mini-cart_main-text-size text-weight-light text-style-strikethrough text-style-muted" x-text="LiquifyHelper.moneyFormat(product.original_price, true, '{{ shop.money_with_currency_format }}')">14,99 $</div>
+                                                </div>
     </template>
+                                      </div>
                                     </div>
+                                    <div class="mini-cart_main-text-size text-color-grey"><span class="text-weight-medium">Colour</span> <span li-js-object="product.options_with_values[0].value" class="text-weight-light" x-text="product.options_with_values[0].value">L</span></div>
+                                    <div class="mini-cart_main-text-size text-color-grey"><span class="text-weight-medium">Size</span> <span li-js-object="product.options_with_values[1].value" class="text-weight-light" x-text="product.options_with_values[1].value">L</span></div>
                                   </div>
-                                  <div class="mini-cart_main-text-size">Colour <span li-js-object="product.options_with_values[0].value" x-text="product.options_with_values[0].value">L</span></div>
-                                  <div class="mini-cart_main-text-size">Size <span li-js-object="product.options_with_values[1].value" x-text="product.options_with_values[1].value">L</span></div>
                                   <div class="mini-cart_line-item_quantity">
                                     <a li-element="mini-cart-item-decrease" href="#" class="mini-cart_line-item_quantity-adjust" :productprop="product" @click="$dispatch('decreasecartitem', { product: product.key, quantity: product.quantity, action: 'decrease' })">-</a><input li-element="mini-cart-item-quantity" class="mini-cart_line-item_quantity-adjust" value="1" :productprop="product" @input="$dispatch('setcartitem', { product: product.key, quantity: product.quantity })" x-model="product.quantity">
                                     <a li-element="mini-cart-item-increase" href="#" class="mini-cart_line-item_quantity-adjust" :productprop="product" @click="$dispatch('increasecartitem', { product: product.key, quantity: product.quantity, action: 'increase' })">+</a>
                                   </div>
-                                  <div class="margin-top margin-small">
-                                    <a li-element="mini-cart-item-remove" href="#" class="cta-text" :productprop="product" @click="$dispatch('setcartitem', { product: product.key, quantity: 0 })">Remove</a>
-                                  </div>
+                                  <a li-element="mini-cart-item-remove" href="#" class="cta-text" :productprop="product" @click="$dispatch('setcartitem', { product: product.key, quantity: 0 })">Remove</a>
                                 </div>
                               </li></template>
                             </ul>
