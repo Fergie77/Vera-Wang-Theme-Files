@@ -24,7 +24,7 @@
 
 :root {
   --base-color-neutral--black: black;
-  --base-color-neutral--neutral: #777;
+  --base-color-neutral--neutral: #595959;
   --padding--global: 1.25rem;
   --text-color--text-alternate: var(--base-color-neutral--white);
   --background-color--background-alternate: var(--base-color-neutral--white);
@@ -599,7 +599,8 @@ figcaption {
 }
 
 .text-style-muted {
-  opacity: .6;
+  opacity: 1;
+  color: var(--base-color-neutral--neutral);
 }
 
 .text-size-small {
@@ -1620,8 +1621,8 @@ figcaption {
 }
 
 .mini-cart_line-item_product-info {
-  grid-column-gap: .5rem;
-  grid-row-gap: .5rem;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
   flex-direction: column;
   flex: 1;
   align-items: flex-start;
@@ -6087,6 +6088,10 @@ figcaption {
 
 .mini-cart_css {
   display: none;
+}
+
+.product-info_wrapper {
+  width: 100%;
 }
 
 @media screen and (max-width: 991px) {
