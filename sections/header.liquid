@@ -690,7 +690,6 @@
     </template>
                                     </div>
                                   </div>
-
                                   <div class="mini-cart_main-text-size">Colour <span li-js-object="product.selected_or_first_available_variant.option1" x-text="product.selected_or_first_available_variant.option1">L</span></div>
                                   <div class="mini-cart_main-text-size">Size <span li-js-object="product.selected_or_first_available_variant.option2" x-text="product.selected_or_first_available_variant.option2">L</span></div>
                                   <div class="mini-cart_line-item_quantity">
@@ -741,6 +740,28 @@
                     </div>
                   </nav>
                 </div>
+              </div>
+              <div class="navbar_mini-cart">
+                <div class="mini-cart_css w-embed">
+                  <style>
+[data-modal-position="right"] {
+	justify-content: flex-end;
+}
+[data-modal-position="left"] {
+	justify-content: flex-start;
+}
+[data-modal-position="center"] {
+	justify-content: center;
+  align-items: center;
+}
+[data-modal-position="center"] [li-element="mini-cart-container"] {
+	max-height: auto;
+  height: 70vh;
+}
+</style>
+                </div>
+                
+                {% render 'new_mini_cart', free_shipping_threshold: section.settings.mini_cart_free_shipping_threshold, content_animation_duration: section.settings.mini_cart_content_animation_duration, aria_label_increase_product_quantity: section.settings.aria_label_increase_product_quantity, modal_animation_easing: section.settings.mini_cart_modal_animation_easing, modal_animation: section.settings.mini_cart_modal_animation, aria_label_open_mini_cart: section.settings.aria_label_open_mini_cart, aria_label_decrease_product_quantity: section.settings.aria_label_decrease_product_quantity, aria_label_remove_product: section.settings.aria_label_remove_product, aria_label_close_mini_cart: section.settings.aria_label_close_mini_cart, modal_animation_duration: section.settings.mini_cart_modal_animation_duration, content_animation: section.settings.mini_cart_content_animation, free_shipping: section.settings.mini_cart_free_shipping, content_animation_easing: section.settings.mini_cart_content_animation_easing, content_position: section.settings.mini_cart_content_position %}
               </div>
             </div>
             <div id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86e16-d5a86df8" class="nav_menu-button w-nav-button">
@@ -832,6 +853,307 @@ color: black;
             "step": 1,
             "label": "Limit: Search - Bestseller",
             "default": 6
+        },
+        {
+            "type": "header",
+            "content": "Mini Cart"
+        },
+        {
+            "type": "select",
+            "id": "mini_cart_content_position",
+            "label": "Content - Position",
+            "options": [
+                {
+                    "value": "right",
+                    "label": "Right"
+                },
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center (Pop-Up)"
+                }
+            ],
+            "default": "right"
+        },
+        {
+            "type": "select",
+            "id": "mini_cart_content_animation",
+            "label": "Content - Animation",
+            "info": "Animates the cart content inside the modal",
+            "options": [
+                {
+                    "value": "fade",
+                    "label": "Fade"
+                },
+                {
+                    "value": "slide-up",
+                    "label": "Slide Up"
+                },
+                {
+                    "value": "slide-down",
+                    "label": "Slide Down"
+                },
+                {
+                    "value": "slide-right",
+                    "label": "Slide Right"
+                },
+                {
+                    "value": "slide-left",
+                    "label": "Slide Left"
+                },
+                {
+                    "value": "grow",
+                    "label": "Grow"
+                },
+                {
+                    "value": "shrink",
+                    "label": "Shrink"
+                },
+                {
+                    "value": "spin",
+                    "label": "Spin"
+                }
+            ],
+            "default": "slide-left"
+        },
+        {
+            "type": "select",
+            "id": "mini_cart_content_animation_easing",
+            "label": "Content - Animation Easing",
+            "options": [
+                {
+                    "value": "linear",
+                    "label": "Linear"
+                },
+                {
+                    "value": "ease",
+                    "label": "Ease"
+                },
+                {
+                    "value": "ease-in",
+                    "label": "Ease In"
+                },
+                {
+                    "value": "ease-out",
+                    "label": "Ease Out"
+                },
+                {
+                    "value": "ease-in-out",
+                    "label": "Ease In Out"
+                }
+            ],
+            "default": "ease"
+        },
+        {
+            "type": "number",
+            "id": "mini_cart_content_animation_duration",
+            "label": "Content - Animation Duration (ms)",
+            "default": 500
+        },
+        {
+            "type": "select",
+            "id": "mini_cart_modal_animation",
+            "label": "Modal - Animation",
+            "info": "Animates the modal wrapper",
+            "options": [
+                {
+                    "value": "fade",
+                    "label": "Fade"
+                },
+                {
+                    "value": "slide-up",
+                    "label": "Slide Up"
+                },
+                {
+                    "value": "slide-down",
+                    "label": "Slide Down"
+                },
+                {
+                    "value": "slide-right",
+                    "label": "Slide Right"
+                },
+                {
+                    "value": "slide-left",
+                    "label": "Slide Left"
+                },
+                {
+                    "value": "grow",
+                    "label": "Grow"
+                },
+                {
+                    "value": "shrink",
+                    "label": "Shrink"
+                },
+                {
+                    "value": "spin",
+                    "label": "Spin"
+                }
+            ],
+            "default": "slide-left"
+        },
+        {
+            "type": "select",
+            "id": "mini_cart_modal_animation_easing",
+            "label": "Modal - Animation Easing",
+            "options": [
+                {
+                    "value": "linear",
+                    "label": "Linear"
+                },
+                {
+                    "value": "ease",
+                    "label": "Ease"
+                },
+                {
+                    "value": "ease-in",
+                    "label": "Ease In"
+                },
+                {
+                    "value": "ease-out",
+                    "label": "Ease Out"
+                },
+                {
+                    "value": "ease-in-out",
+                    "label": "Ease In Out"
+                }
+            ],
+            "default": "ease"
+        },
+        {
+            "type": "number",
+            "id": "mini_cart_modal_animation_duration",
+            "label": "Modal - Animation Duration (ms)",
+            "default": 300
+        },
+        {
+            "type": "checkbox",
+            "id": "mini_cart_free_shipping",
+            "label": "Free Shipping - Show Elements",
+            "default": true
+        },
+        {
+            "type": "number",
+            "id": "mini_cart_free_shipping_threshold",
+            "label": "Free Shipping - Threshold",
+            "info": "Sets the threshold in your currency at which the shipping info elements in the cart will show and disappear",
+            "default": 80
+        },
+        {
+            "type": "text",
+            "id": "aria_label_open_mini_cart",
+            "label": "Aria Label - Open Mini Cart",
+            "default": "Open Mini Cart"
+        },
+        {
+            "type": "text",
+            "id": "aria_label_close_mini_cart",
+            "label": "Aria Label - Close Mini Cart",
+            "default": "Close Mini Cart"
+        },
+        {
+            "type": "text",
+            "id": "aria_label_remove_product",
+            "label": "Aria Label - Remove Product",
+            "default": "Remove Product"
+        },
+        {
+            "type": "text",
+            "id": "aria_label_increase_product_quantity",
+            "label": "Aria Label - Increase Product Quantity",
+            "default": "Increase Product Quantity"
+        },
+        {
+            "type": "text",
+            "id": "aria_label_decrease_product_quantity",
+            "label": "Aria Label - Decrease Product Quantity",
+            "default": "Decrease Product Quantity"
+        },
+        {
+            "id": "text_mini_cart_heading",
+            "type": "text",
+            "label": "Mini Cart - Heading",
+            "default": "Cart"
+        },
+        {
+            "id": "text_mini_cart_free_shipping_start",
+            "type": "text",
+            "label": "Mini Cart - Free Shipping Start",
+            "default": "You are "
+        },
+        {
+            "id": "text_mini_cart_free_shipping_end",
+            "type": "text",
+            "label": "Mini Cart - Free Shipping End",
+            "default": " away from free shipping"
+        },
+        {
+            "id": "text_mini_cart_free_shipping_success",
+            "type": "text",
+            "label": "Mini Cart - Free Shipping Success",
+            "default": "Congratulations! You received free shipping!"
+        },
+        {
+            "id": "text_mini_cart_subtotal",
+            "type": "text",
+            "label": "Mini Cart - Subtotal",
+            "default": "Subtotal"
+        },
+        {
+            "id": "text_mini_cart_shipping_costs",
+            "type": "text",
+            "label": "Mini Cart - Shipping Costs",
+            "default": "Shipping Costs"
+        },
+        {
+            "id": "text_mini_cart_shipping_calculated_at_checkout",
+            "type": "text",
+            "label": "Mini Cart - Shipping Calculated at Checkout",
+            "default": "Calculated at checkout"
+        },
+        {
+            "id": "text_mini_cart_free_shipping",
+            "type": "text",
+            "label": "Mini Cart - Free Shipping",
+            "default": "FREE"
+        },
+        {
+            "id": "text_mini_cart_discounts",
+            "type": "text",
+            "label": "Mini Cart - Discounts",
+            "default": "Discounts"
+        },
+        {
+            "id": "text_mini_cart_total",
+            "type": "text",
+            "label": "Mini Cart - Total",
+            "default": "Total"
+        },
+        {
+            "id": "text_mini_cart_cart_message_heading",
+            "type": "text",
+            "label": "Mini Cart - Cart Message Heading",
+            "default": "Message"
+        },
+        {
+            "id": "text_mini_cart_go_to_checkout",
+            "type": "text",
+            "label": "Mini Cart - Go to Checkout",
+            "default": "Go to Checkout"
+        },
+        {
+            "id": "text_mini_cart_empty_heading",
+            "type": "text",
+            "label": "Mini Cart - Empty Heading",
+            "default": "Cart"
+        },
+        {
+            "id": "text_mini_cart_empty_content",
+            "type": "text",
+            "label": "Mini Cart - Empty Content",
+            "default": "No products in your cart"
         },
         {
             "type": "header",
