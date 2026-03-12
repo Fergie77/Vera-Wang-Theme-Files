@@ -690,7 +690,7 @@
     </template>
                                     </div>
                                   </div>
-                                  <div class="mini-cart_main-text-size">Colour <span li-object="{{product.selected_or_first_available_variant.option1}}" x-text="product.selected_or_first_available_variant.option1">L</span></div>
+                                  <div class="mini-cart_main-text-size">Colour <span li-object="{{product.selected_or_first_available_variant.option1}}">L</span></div>
                                   <div class="mini-cart_main-text-size">Size <span li-object="product.selected_or_first_available_variant.option2" x-text="product.selected_or_first_available_variant.option2">L</span></div>
                                   <div class="mini-cart_line-item_quantity">
                                     <a li-element="mini-cart-item-decrease" href="#" class="mini-cart_line-item_quantity-adjust" :productprop="product" @click="$dispatch('decreasecartitem', { product: product.key, quantity: product.quantity, action: 'decrease' })">-</a><input li-element="mini-cart-item-quantity" class="mini-cart_line-item_quantity-adjust" value="1" :productprop="product" @input="$dispatch('setcartitem', { product: product.key, quantity: product.quantity })" x-model="product.quantity">
