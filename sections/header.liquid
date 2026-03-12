@@ -676,7 +676,7 @@
                           <div class="mini-cart_line-item">
                             <ul role="list" class="mini-cart_line-item_list w-list-unstyled">
                               <template x-for="product in products" :key="product.key">
-                                <div x-text="product.key"></div>
+                                <div x-text="product.selected_or_first_available_variant"></div>
     <li li-element="mini-cart-item" class="mini-cart_line-item_item"><img src="../images/product-apparel-2.svg" loading="lazy" alt="" class="mini-cart_line-item_img" x-bind:src="product.image">
                                 <div class="mini-cart_line-item_product-info">
                                   <div class="product-info_layout">
