@@ -29,7 +29,7 @@
         "mini_cart_modal_animation_easing": "ease",
         "mini_cart_modal_animation_duration": 300,
         "mini_cart_free_shipping": true,
-        "mini_cart_free_shipping_threshold": 80,
+        "mini_cart_free_shipping_threshold": 600,
         "aria_label_open_mini_cart": "Open Mini Cart",
         "aria_label_close_mini_cart": "Close Mini Cart",
         "aria_label_remove_product": "Remove Product",
