@@ -679,6 +679,7 @@
     <li li-element="mini-cart-item" class="mini-cart_line-item_item"><img src="../images/product-apparel-2.svg" loading="lazy" alt="" class="mini-cart_line-item_img" x-bind:src="product.image">
                                 <div class="mini-cart_line-item_product-info">
                                   <div class="product-info_layout">
+                                    {{ product }}
                                     <div li-js-object="product.title" class="mini-cart_main-text-size" x-text="product.title">Product Title</div>
                                     <div class="mini-cart_line-item_price">
                                       <div li-js-price="product.price" class="mini-cart_main-text-size text-weight-light" x-text="LiquifyHelper.moneyFormat(product.price, true, '{{ shop.money_with_currency_format }}')">14,99 $</div>
@@ -690,7 +691,7 @@
     </template>
                                     </div>
                                   </div>
-                                  <div class="mini-cart_main-text-size" li-js-object="product.selected_or_first_available_variant.option1" x-text="selectedVariant">L</div>
+                                  <div class="mini-cart_main-text-size" li-js-object="product.selected_or_first_available_variant.option1" x-text="">L</div>
 
                                   <div class="mini-cart_main-text-size">Colour <span li-js-object="product.selected_or_first_available_variant.option1" x-text="product.selected_or_first_available_variant.option1">L</span></div>
                                   <div class="mini-cart_main-text-size">Size <span li-js-object="product.selected_or_first_available_variant.option2" x-text="product.selected_or_first_available_variant.option2">L</span></div>
