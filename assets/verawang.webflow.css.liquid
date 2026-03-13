@@ -5727,14 +5727,18 @@ figcaption {
 }
 
 .swiper-pagination-bullet {
-  border: 2px solid #fff;
+  border: 2px solid #000;
   border-radius: 50%;
   width: 8px;
   height: 8px;
 }
 
+.swiper-pagination-bullet.is-active {
+  background-color: #000;
+}
+
 .swiper-pagination_wrapper {
-  mix-blend-mode: difference;
+  z-index: 5;
   background-color: #000;
   height: 0;
   position: sticky;
