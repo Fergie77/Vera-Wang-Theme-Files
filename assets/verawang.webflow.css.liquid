@@ -905,8 +905,16 @@ figcaption {
 .section_footer {
   border-top: 1px solid var(--base-color-neutral--neutral-lighter);
   color: var(--text-color--text-primary);
+  flex-flow: column;
+  justify-content: space-between;
+  min-height: 100svh;
   margin-top: auto;
   padding-top: 2.71429rem;
+  display: flex;
+}
+
+.section_account {
+  padding-top: 5rem;
 }
 
 .cart_grid-wrapper {
@@ -1581,7 +1589,7 @@ figcaption {
 
 .mini-cart_line-item_img {
   aspect-ratio: 173 / 209;
-  border: 1px solid var(--base-color-neutral--neutral-lighter);
+  border: 1px none var(--base-color-neutral--neutral-lighter);
   background-color: var(--base-color-neutral--neutral-lightest);
   object-fit: cover;
   width: 12rem;
@@ -1943,8 +1951,8 @@ figcaption {
 }
 
 .nav_mini-cart-holder.w--open {
-  -webkit-backdrop-filter: brightness(60%) blur(5px);
-  backdrop-filter: brightness(60%) blur(5px);
+  -webkit-backdrop-filter: brightness(60%) blur(10px);
+  backdrop-filter: brightness(60%) blur(10px);
   display: flex;
 }
 
@@ -6111,6 +6119,11 @@ figcaption {
   font-size: clamp(.75rem, .714286rem + .178571vw, .875rem);
 }
 
+.cart_link {
+  display: flex;
+  position: relative;
+}
+
 @media screen and (max-width: 991px) {
   .padding-medium {
     padding: 1.5rem;
@@ -8698,7 +8711,7 @@ figcaption {
   grid-area: span 1 / span 1 / span 1 / span 1;
 }
 
-#w-node-_4ff72092-e0e6-d591-6af1-5b10f594a629-f594a625, #w-node-_4ff72092-e0e6-d591-6af1-5b10f594a632-f594a625 {
+#w-node-_4ff72092-e0e6-d591-6af1-5b10f594a632-f594a625 {
   grid-area: span 1 / span 3 / span 1 / span 3;
 }
 

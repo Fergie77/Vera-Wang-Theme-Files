@@ -1,13 +1,5 @@
 <div class="padding-global padding-section-small">
           <div class="container-large">
-            <div class="headline-wrapper">
-              <h2 id="w-node-_4ff72092-e0e6-d591-6af1-5b10f594a629-f594a625" class="heading-style-h2">
-{{ section.settings.text_heading }}
-</h2>
-              <a href="{{ routes.root_url }}" li-object:href="routes.root_url" class="text-size-small text-style-link hide-mobile-landscape"><span>
-{{ section.settings.text_continue_shopping }}
-</span></a>
-            </div>
             {% if cart.item_count > 0 %}    <div li-if="cart.item_count > 0" class="cart_form-block w-form">
     
               {% form 'cart', cart, class: 'cart_grid-wrapper' %}
@@ -33,7 +25,7 @@
                                     
                     
                             <div id="w-node-_4ff72092-e0e6-d591-6af1-5b10f594a63c-f594a625" class="display-inlineflex">
-                      <a href="{{ item.url }}" li-object:href="item.url" id="w-node-_4ff72092-e0e6-d591-6af1-5b10f594a63d-f594a625" class="w-inline-block"><img src="{{ item.image | image_url: width: 200 }}" li-object:src="item.image | image_url: width: 200" alt="" class="cart_image"></a>
+                      <a href="{{ item.url }}" li-object:href="item.url" id="w-node-_4ff72092-e0e6-d591-6af1-5b10f594a63d-f594a625" class="cart_link w-inline-block"><img src="{{ item.image | image_url: width: 200 }}" li-object:src="item.image | image_url: width: 200" alt="" class="cart_image"></a>
                       <div class="cart_info-order">
                         <a href="{{ item.url }}" li-object:href="item.url" li-object="item.title" class="text-size-regular">{{ item.title }}</a>
                         <div class="hide">
@@ -90,7 +82,7 @@
                               <div li-object="cart.original_total_price | money" class="text-style-strikethrough">{{ cart.original_total_price | money }}</div>
                                 </div>
 {% endif %}
-                            <div li-object="cart.total_price | money" class="heading-style-h3">{{ cart.total_price | money }}</div>
+                            <div li-object="cart.total_price | money">{{ cart.total_price | money }}</div>
                           </div>
                         </div>
                         {% if cart.total_discounts > 0 %}    <div li-if="cart.total_discounts > 0" class="cart_details-wrapper">
@@ -142,18 +134,6 @@
     "class": "section_account",
     "settings": [
         {
-            "id": "text_heading",
-            "type": "text",
-            "label": "Heading",
-            "default": "Cart"
-        },
-        {
-            "id": "text_continue_shopping",
-            "type": "text",
-            "label": "Continue shopping",
-            "default": "Continue shopping"
-        },
-        {
             "id": "text_product",
             "type": "text",
             "label": "Product",
@@ -187,7 +167,7 @@
             "id": "text_sum_inkl_vat",
             "type": "text",
             "label": "Sum (inkl. Vat.)",
-            "default": "Sum (inkl. Vat.)"
+            "default": "Subtotal"
         },
         {
             "id": "text_discount",
