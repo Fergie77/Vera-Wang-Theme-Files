@@ -52,6 +52,44 @@
         "text_subheading": "Subheading Copy"
       }
     },
+    "styled_by_vera_dyj8zQ": {
+      "type": "styled_by_vera",
+      "blocks": {
+        "block_CFRp6r": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
+        },
+        "block_TnGYxw": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
+        },
+        "block_MVVEGW": {
+          "type": "block",
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "block_CFRp6r",
+        "block_TnGYxw",
+        "block_MVVEGW"
+      ],
+      "name": "Styled By Vera",
+      "settings": {
+        "text_heading": "Styled By Vera",
+        "url_link": ""
+      }
+    },
     "slide_out_module_rqCxPF": {
       "type": "slide_out_module",
       "blocks": {
@@ -139,6 +177,7 @@
   "order": [
     "product_hero",
     "recommended_products",
+    "styled_by_vera_dyj8zQ",
     "slide_out_module_rqCxPF",
     "slide_out_module_gfP3jn",
     "slide_out_module_GweRKk"
