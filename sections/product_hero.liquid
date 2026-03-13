@@ -3,49 +3,35 @@
 <div li-element="product-variant-container" class="w-layout-grid product-header_layout" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
             <div li-render-custom="target" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136862-5313685d" class="swiper-container is-product-gallery">
               <div class="swiper is-product-gallery">
-                {% assign has_variant_media = false %} {% for media in product.media %}   {% if media.alt contains product.selected_or_first_available_variant.option1 %}     {% assign has_variant_media = true %}   {% endif %} {% endfor %} 
-                <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
-        {% for media in product.media %}                            
-                  
-                            {% if media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'image' %}    <div li-if="media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'image'" class="swiper-slide is-product-gallery">
-    
-                    <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
-                      </div>
+                {% assign has_variant_media = false %} {% for media in product.media %}   {% if media.alt contains product.selected_or_first_available_variant.option1 %}     {% assign has_variant_media = true %}   {% endif %} {% endfor %}<div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
+        {% for media in product.media %}                            {% if media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'image' %}    <div li-if="media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'image'" class="swiper-slide is-product-gallery">
+    <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>    </div>
 {% endif %}
-                            
-                  
                             {% if media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'video' %}    <div li-if="media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'video'" class="swiper-slide is-product-gallery">
-    
-                    <div class="product-header_gallery-lightbox">
-                      <div li-object="media | video_tag: controls: true" class="product-header_gallery-image">{{ media | video_tag: controls: true }}</div>
-                    </div>
-                      </div>
+    <div class="product-header_gallery-lightbox"><div li-object="media | video_tag: controls: true" class="product-header_gallery-image">{{ media | video_tag: controls: true }}</div></div>    </div>
 {% endif %}
-                            
-                
-                    {% endfor %}    </div>
-   
-                <div class="swiper-pagination_wrapper">
-                  <div li-for:inside="media in product.media" class="swiper-pagination">
-        {% for media in product.media %}                            
-                    {% if media.alt contains product.selected_or_first_available_variant.option1 %}
-                            <div class="swiper-pagination-bullet"></div>
-                            
-                    {% endif %}
-                    {% endfor %}    </div>
-                </div>
-              </div>
-            </div>
-            <div class="product-details_wrapper">
-              <a id="w-node-_80eb7b15-ebd5-1617-fdfc-2d1ea1dfd0e5-5313685d" href="{{product.collections.first.url}}" class="product-details_backlink-wrapper w-inline-block">
-                <div class="product-details_backlink"><</div>
-                <p li-object="product.collections.first.title" class="product-details_backlink">{{ product.collections.first.title }}</p>
-              </a>
-              <div li-content-for-theme-blocks="" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136879-5313685d" class="product-header_product-details">
+                    {% endfor %}    </div><div class="swiper-pagination_wrapper"><div li-for:inside="media in product.media" class="swiper-pagination">
+        {% for media in product.media %}                            {% if media.alt contains product.selected_or_first_available_variant.option1 %}    <div li-if="media.alt contains product.selected_or_first_available_variant.option1" class="swiper-pagination-bullet">
+        </div>
+{% endif %}
+                    {% endfor %}    </div></div><div class="w-embed w-script"><script>
+const slides = gsap.utils.toArray('.swiper-slide');
+const bullets = gsap.utils.toArray('.swiper-pagination-bullet');
+function setActive(index) {
+  bullets.forEach((b, i) => b.classList.toggle('is-active', i === index));
+}
+slides.forEach((slide, i) => {
+  ScrollTrigger.create({
+    trigger: slide,
+    start: 'top center',
+    end: 'bottom center',
+    onEnter: () => setActive(i),
+    onEnterBack: () => setActive(i),
+  });
+});
+</script></div></div></div><div class="product-details_wrapper"><a id="w-node-_80eb7b15-ebd5-1617-fdfc-2d1ea1dfd0e5-5313685d" href="{{product.collections.first.url}}" class="product-details_backlink-wrapper w-inline-block"><div class="product-details_backlink"><</div><p li-object="product.collections.first.title" class="product-details_backlink">{{ product.collections.first.title }}</p></a><div li-content-for-theme-blocks="" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136879-5313685d" class="product-header_product-details">
 {% content_for 'blocks' %}
-</div>
-              <div class="hide w-embed w-script">
-                <script>
+</div><div class="hide w-embed w-script"><script>
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[module-link]').forEach(link => {
     link.addEventListener('click', () => {
@@ -74,13 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[module].is-open').forEach(wrapper => closeModule(wrapper));
   });
 });
-</script>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="hide w-embed w-script"><!-- <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script> -->
-          <script> /*
+</script></div></div></div></div><div class="hide w-embed w-script"><!-- <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script> -->
+<script> /*
 function initSwipers() {
   $(".swiper-container").each(function () {
     const container = $(this);
@@ -145,8 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 });
-</script>
-        </div> {% schema %} {
+</script></div> {% schema %} {
     "tag": "section",
     "name": "Product Hero",
     "class": "section_product-header",
