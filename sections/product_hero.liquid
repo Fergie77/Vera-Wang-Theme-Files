@@ -3,11 +3,9 @@
 <div li-element="product-variant-container" class="w-layout-grid product-header_layout" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
             <div li-render-custom="target" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136862-5313685d" class="swiper-container is-product-gallery">
               <div class="swiper is-product-gallery">
+                {% assign has_variant_media = false %} {% for media in product.media %}   {% if media.alt contains product.selected_or_first_available_variant.option1 %}     {% assign has_variant_media = true %}   {% endif %} {% endfor %} %}
                 <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
         {% for media in product.media %}                            
-                  
-                            {% if has_variant_media %}       {% if media.alt contains product.selected_or_first_available_variant.option1 %}         {% assign show_media = true %}       {% else %}         {% assign show_media = false %}       {% endif %}     {% else %}       {% assign show_media = true %}     {% endif %} %}
-                            
                   
                             {% if media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'image' %}    <div li-if="media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'image'" class="swiper-slide is-product-gallery">
     
@@ -24,16 +22,13 @@
                       </div>
 {% endif %}
                             
-                  
-                            <div class="swiper-pagination_wrapper">
-                    <div class="swiper-pagination">
-                      <div class="swiper-pagination-bullet"></div>
-                    </div>
-                  </div>
-                            
                 
                     {% endfor %}    </div>
-                {% assign has_variant_media = false %} {% for media in product.media %}   {% if media.alt contains product.selected_or_first_available_variant.option1 %}     {% assign has_variant_media = true %}   {% endif %} {% endfor %} %}
+                <div class="swiper-pagination_wrapper">
+                  <div class="swiper-pagination">
+                    <div class="swiper-pagination-bullet"></div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="product-details_wrapper">
