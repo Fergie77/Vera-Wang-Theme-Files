@@ -1,66 +1,51 @@
-<div class="padding-global">
-          <div class="container-large">
-            <div li-render-custom-reinit="true" li-render-custom="wrapper" class="product-header_component">
-              <script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
+<div li-render-custom-reinit="true" li-render-custom="wrapper" class="product-header_component">
+          <script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
 <div li-element="product-variant-container" class="w-layout-grid product-header_layout" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
-                <div li-render-custom="target" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136862-5313685d" class="swiper-container is-product-gallery">
-                  <div class="swiper is-product-gallery">
-                    <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
+            <div li-render-custom="target" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136862-5313685d" class="swiper-container is-product-gallery">
+              <div class="swiper is-product-gallery">
+                <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
         {% for media in product.media %}                            
-                      
-                            <div li-cloak="hide" class="hide w-embed">{% if has_variant_media %}
-                        {% if media.alt contains product.selected_or_first_available_variant.option1 %}
-                        {% assign show_media = true %}
-                        {% else %}
-                        {% assign show_media = false %}
-                        {% endif %}
-                        {% else %}
-                        {% assign show_media = true %}
-                        {% endif %}</div>
+                  
+                            {% if has_variant_media %}       {% if media.alt contains product.selected_or_first_available_variant.option1 %}         {% assign show_media = true %}       {% else %}         {% assign show_media = false %}       {% endif %}     {% else %}       {% assign show_media = true %}     {% endif %} %}
                             
-                      
+                  
                             {% if media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'image' %}    <div li-if="media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'image'" class="swiper-slide is-product-gallery">
     
-                        <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
-                          </div>
+                    <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
+                      </div>
 {% endif %}
                             
-                      
+                  
                             {% if media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'video' %}    <div li-if="media.alt contains product.selected_or_first_available_variant.option1 and media.media_type == 'video'" class="swiper-slide is-product-gallery">
     
-                        <div class="product-header_gallery-lightbox">
-                          <div li-object="media | video_tag: controls: true" class="product-header_gallery-image">{{ media | video_tag: controls: true }}</div>
-                        </div>
-                          </div>
+                    <div class="product-header_gallery-lightbox">
+                      <div li-object="media | video_tag: controls: true" class="product-header_gallery-image">{{ media | video_tag: controls: true }}</div>
+                    </div>
+                      </div>
 {% endif %}
                             
-                      
+                  
                             <div class="swiper-pagination_wrapper">
-                        <div class="swiper-pagination">
-                          <div class="swiper-pagination-bullet"></div>
-                        </div>
-                      </div>
-                            
-                    
-                    {% endfor %}    </div>
-                    <div li-cloak="hide" class="hide w-embed">{% assign has_variant_media = false %}
-                      {% for media in product.media %}
-                      {% if media.alt contains product.selected_or_first_available_variant.option1 %}
-                      {% assign has_variant_media = true %}
-                      {% endif %}
-                      {% endfor %}</div>
+                    <div class="swiper-pagination">
+                      <div class="swiper-pagination-bullet"></div>
+                    </div>
                   </div>
-                </div>
-                <div class="product-details_wrapper">
-                  <a id="w-node-_80eb7b15-ebd5-1617-fdfc-2d1ea1dfd0e5-5313685d" href="{{product.collections.first.url}}" class="product-details_backlink-wrapper w-inline-block">
-                    <div class="product-details_backlink"><</div>
-                    <p li-object="product.collections.first.title" class="product-details_backlink">{{ product.collections.first.title }}</p>
-                  </a>
-                  <div li-content-for-theme-blocks="" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136879-5313685d" class="product-header_product-details">
+                            
+                
+                    {% endfor %}    </div>
+                {% assign has_variant_media = false %} {% for media in product.media %}   {% if media.alt contains product.selected_or_first_available_variant.option1 %}     {% assign has_variant_media = true %}   {% endif %} {% endfor %} %}
+              </div>
+            </div>
+            <div class="product-details_wrapper">
+              <a id="w-node-_80eb7b15-ebd5-1617-fdfc-2d1ea1dfd0e5-5313685d" href="{{product.collections.first.url}}" class="product-details_backlink-wrapper w-inline-block">
+                <div class="product-details_backlink"><</div>
+                <p li-object="product.collections.first.title" class="product-details_backlink">{{ product.collections.first.title }}</p>
+              </a>
+              <div li-content-for-theme-blocks="" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136879-5313685d" class="product-header_product-details">
 {% content_for 'blocks' %}
 </div>
-                  <div class="hide w-embed w-script">
-                    <script>
+              <div class="hide w-embed w-script">
+                <script>
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[module-link]').forEach(link => {
     link.addEventListener('click', () => {
@@ -90,8 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
