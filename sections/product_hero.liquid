@@ -24,19 +24,14 @@
                             
                 
                     {% endfor %}    </div>
-                     {% for media in product.media %}                            
-                    
-                            <div>{{ media.id }}</div>
-                            
-                  
-                    {% endfor %}  
+   
                 <div class="swiper-pagination_wrapper">
                   <div li-for:inside="media in product.media" class="swiper-pagination">
         {% for media in product.media %}                            
-                    
+                    {% if media.alt contains product.selected_or_first_available_variant.option1 %}
                             <div class="swiper-pagination-bullet"></div>
                             
-                  
+                    {% endif %}
                     {% endfor %}    </div>
                 </div>
               </div>
