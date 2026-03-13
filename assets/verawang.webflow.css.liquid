@@ -5522,17 +5522,20 @@ figcaption {
 }
 
 .swiper-pagination {
+  left: var(--padding--global);
   z-index: 5;
+  padding-bottom: 2rem;
+  padding-left: var(--padding--global);
   grid-column-gap: .3125rem;
   grid-row-gap: .3125rem;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 2rem;
-  padding-left: 2rem;
   display: flex;
   position: absolute;
-  inset: auto 0% 0;
+  top: auto;
+  bottom: 0;
+  right: auto;
 }
 
 .product-header_links-layout {
