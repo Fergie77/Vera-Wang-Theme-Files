@@ -1,70 +1,146 @@
 <div data-animation="default" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="">
           <div class="nav_container container-large">
+            <div class="nav_dropdown-list-background"></div>
             <nav role="navigation" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86dfd-d5a86df8" class="nav_menu is-page-height-tablet w-nav-menu">
-              {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links">
+              <div class="nav-links_layout">
+                <div class="nav_mobile-image-wrapper"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_mobile-image"></div>
+                {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links" class="hide-tablet">
                                     
-                
+                  
                             {% if link.links.size > 0 %}    <div data-hover="true" data-delay="200" li-if="link.links.size > 0" class="nav_menu-dropdown w-dropdown">
     
-                  <div class="nav_dropdown-toggle w-dropdown-toggle">
-                    <a li-object:href="link.url" href="{{ link.url }}" class="nav_dropdown-link-style w-inline-block">
-                      <div>
-                        <div li-object="link.title" class="nav_link-text">{{ link.title }}</div>
-                      </div>
-                    </a>
-                  </div>
-                  {% if link.links.size > 0  %}    <nav li-if="link.links.size > 0 " class="nav_dropdown-list no-scrollbar w-dropdown-list">
+                    <div class="nav_dropdown-toggle w-dropdown-toggle">
+                      <a li-object:href="link.url" href="{{ link.url }}" class="nav_dropdown-link-style w-inline-block">
+                        <div>
+                          <div li-object="link.title" class="nav_link-text">{{ link.title }}</div>
+                        </div>
+                      </a>
+                    </div>
+                    {% if link.links.size > 0  %}    <nav li-if="link.links.size > 0 " class="nav_dropdown-list no-scrollbar w-dropdown-list">
     
-                    <div class="nav_divider"></div>
-                    <div class="nav_dropdown-list-layout">
-                      <div class="padding-global max-width-full">
-                        <div class="container-large">
-                          <div class="nav_dropdown-grid">
-                            {% for child_link in link.links %}    <div li-for="child_link in link.links" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86e09-d5a86df8">
+                      <div class="nav_divider"></div>
+                      <div class="nav_dropdown-list-layout">
+                        <div class="padding-global max-width-full">
+                          <div class="container-large">
+                            <div class="nav_dropdown-grid">
+                              {% for child_link in link.links %}    <div li-for="child_link in link.links" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86e09-d5a86df8">
                                     
-                              
+                                
                             <a href="{{ child_link.url }}" li-object="child_link.title" li-object:href="child_link.url" class="nav_dropdown-heading w-dropdown-link">{{ child_link.title }}</a>
                             
-                              
+                                
                             {% if child_link.links.size > 0 %}    <div li-if="child_link.links.size > 0">
     
-                                {% for grandchild_link in child_link.links %}    <div li-for="grandchild_link in child_link.links">
+                                  {% for grandchild_link in child_link.links %}    <div li-for="grandchild_link in child_link.links">
                                     
-                                  
+                                    
                             <a href="{{ grandchild_link.url }}" li-object="grandchild_link.title" li-object:href="grandchild_link.url" class="nav_dropdown-link_child w-dropdown-link">{{ grandchild_link.title }}</a>
                             
-                                
+                                  
                         </div>
 {% endfor %}
-                                  </div>
+                                    </div>
 {% endif %}
                             
-                            
+                              
                         </div>
 {% endfor %}
+                            </div>
                           </div>
                         </div>
+                        <a href="{{ section.settings.url_link }}" class="nav_image-wrapper w-inline-block"> {% if section.settings.image_image %} {{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'nav_image' }} {% else %} <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_image"> {% endif %} <p class="nav_image-header">{{ section.settings.text_image_heading }}</p> <p class="nav_image-paragraph">{{ section.settings.text_image_paragraph }}</p> </a>
                       </div>
-                      <a href="{{ section.settings.url_link }}" class="nav_image-wrapper w-inline-block"> {% if section.settings.image_image %} {{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'nav_image' }} {% else %} <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_image"> {% endif %} <p class="nav_image-header">{{ section.settings.text_image_heading }}</p> <p class="nav_image-paragraph">{{ section.settings.text_image_paragraph }}</p> </a>
-                    </div>
-                      </nav>
+                        </nav>
 {% endif %}
-                    </div>
+                      </div>
+{% endif %}
+                            
+                  
+                            {% if link.links.size < 1 %}    <div li-cloak="hide" li-if="link.links.size < 1">
+    
+                    <a li-object:text="link.title" li-object:href="link.url" href="{{ link.url }}" class="nav_dropdown-toggle">
+{{ link.title }}
+</a>
+                      </div>
 {% endif %}
                             
                 
-                            {% if link.links.size < 1 %}    <div li-cloak="hide" li-if="link.links.size < 1">
-    
-                  <a li-object:text="link.title" li-object:href="link.url" href="{{ link.url }}" class="nav_dropdown-toggle">
-{{ link.title }}
-</a>
-                    </div>
-{% endif %}
-                            
-              
                         </div>
 {% endfor %}
-              <div class="nav_dropdown-list-background"></div>
+                <div class="mobile-nav-links_wrapper">
+                  {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links" class="mobile-nav-links_layout">
+                                    
+                    
+                            {% if link.links.size > 0 %}    <div li-if="link.links.size > 0" class="mobile-nav-link_wrapper">
+    
+                      <div class="mobile-nav-link_button">
+                        <div li-object="link.title">{{ link.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 4 7" fill="none" class="mobile-nav-link_icon">
+                          <path d="M0 0L3.47 3.29L0 6.58" fill="black"></path>
+                        </svg>
+                        <div class="mobile-nav-link_checkbox-wrapper"><input type="checkbox" id="checkbox-{{link.handle}}" class="mobile-nav-link_checkbox"></div>
+                      </div>
+                      <div class="mobile-nav-link_panel">
+                        <div class="panel_back-nav-layout"><label for="checkbox-{{link.handle}}" class="back-nav_text">
+                            <p><</p>
+                            <p>Back</p>
+                          </label>
+                          <p class="back-nav_heading">AW/26 Collection</p>
+                        </div>
+                        <div class="mobile-nav-link_wrapper">
+                          <div class="mobile-nav-link_button">
+                            <div>AW/26 Collection</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 4 7" fill="none" class="mobile-nav-link_icon">
+                              <path d="M0 0L3.47 3.29L0 6.58" fill="black"></path>
+                            </svg>
+                            <div class="mobile-nav-link_checkbox-wrapper"><input type="checkbox" class="mobile-nav-link_checkbox"></div>
+                          </div>
+                          <div class="mobile-nav-link_panel">
+                            {% if link.links.size > 0 %}    <div li-if="link.links.size > 0" class="mobile-nav-link_wrapper">
+    
+                              <a href="#" class="mobile-nav-link_button w-inline-block">
+                                <div>AW/26 Collection</div>
+                              </a>
+                                </div>
+{% endif %}
+                          </div>
+                        </div>
+                        {% if link.links.size > 0 %}    <div li-if="link.links.size > 0" class="mobile-nav-link_wrapper">
+    
+                          <a href="#" class="mobile-nav-link_button w-inline-block">
+                            <div>AW/26 Collection</div>
+                          </a>
+                            </div>
+{% endif %}
+                      </div>
+                        </div>
+{% endif %}
+                            
+                    
+                            {% if link.links.size < 1 %}    <div li-if="link.links.size < 1" class="mobile-nav-link_wrapper">
+    
+                      <a href="#" class="mobile-nav-link_button w-inline-block">
+                        <div>AW/26 Collection</div>
+                      </a>
+                        </div>
+{% endif %}
+                            
+                    
+                            <div class="w-embed">
+                      <style>
+.mobile-nav-link_wrapper:has(input:checked) > .mobile-nav-link_panel{
+  transform: translateX(0);
+}
+</style>
+                    </div>
+                            
+                  
+                        </div>
+{% endfor %}
+                  <div class="mobile-nav-links_account-layout">
+                    <a href="#" class="button is-secondary w-button">Log In</a>
+                    <a href="#" class="button w-button">Register</a>
+                  </div>
+                </div>
+              </div>
             </nav>
             <a href="{{ routes.root_url }}" li-object:href="routes.root_url" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86dfb-d5a86df8" class="nav_logo-link w-nav-brand"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 339 46" fill="none" class="nav_logo">
                 <path d="M77.93 30.0198C76.013 33.5164 74.2802 36.431 69.5933 39.5839C67.1104 41.2591 61.9957 43.1562 58.993 43.1453C58.993 43.1453 56.9298 43.1562 55.7141 41.619C54.9938 40.7097 54.4984 39.6569 54.4984 38.2605V21.081H59.9569C60.9668 21.0728 63.753 21.7332 65.2665 23.6465C66.3279 25.0159 67.3108 26.8914 67.327 30.7316H68.4263V11.2598H67.4651C67.3649 14.7915 65.5671 17.5059 63.8288 18.8997C63.114 19.4031 61.6465 20.2068 59.9488 20.2826H54.4984V4.78368C54.4984 2.8135 56.8079 0.919092 59.5968 0.924505C63.4985 0.946155 67.2133 2.15857 69.8586 4.25866C71.9868 5.95279 73.3271 8.60496 74.4805 11.5711H75.3984L74.9517 0.199219H43.3457V0.965099C47.2013 1.27091 47.6643 4.69978 47.6643 5.63616V38.5257C47.6643 39.4594 47.3692 42.4174 43.3457 43.2319V43.987H75.7964L78.8425 30.3148L77.9246 30.0252L77.93 30.0198Z" fill="currentColor"></path>
