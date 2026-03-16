@@ -1,4 +1,4 @@
-<div data-animation="default" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="">
+<div data-animation="over-right" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="">
           <div class="nav_container container-large">
             <div class="nav_dropdown-list-background"></div>
             <nav role="navigation" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86dfd-d5a86df8" class="nav_menu is-page-height-tablet w-nav-menu">
@@ -68,8 +68,8 @@
                         </div>
 {% endfor %}
                 <div class="mobile-nav-links_wrapper">
-                  {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links" class="mobile-nav-links_layout">
-                                    
+                  <div li-for:inside="link in linklists[section.settings.menu].links" class="mobile-nav-links_layout">
+        {% for link in linklists[section.settings.menu].links %}                            
                     
                             {% if link.links.size > 0 %}    <div li-if="link.links.size > 0" class="mobile-nav-link_wrapper">
     
@@ -84,7 +84,7 @@
                             <p><</p>
                             <p>Back</p>
                           </label>
-                          <p class="back-nav_heading">AW/26 Collection</p>
+                          <p li-object="link.title" class="back-nav_heading">{{ link.title }}</p>
                         </div>
                         <div class="mobile-nav-link_wrapper">
                           <div class="mobile-nav-link_button">
@@ -123,18 +123,15 @@
                         </div>
 {% endif %}
                             
-                    
-                            <div class="w-embed">
-                      <style>
+                  
+                    {% endfor %}    </div>
+                  <div class="w-embed">
+                    <style>
 .mobile-nav-link_wrapper:has(input:checked) > .mobile-nav-link_panel{
   transform: translateX(0);
 }
 </style>
-                    </div>
-                            
-                  
-                        </div>
-{% endfor %}
+                  </div>
                   <div class="mobile-nav-links_account-layout">
                     <a href="#" class="button is-secondary w-button">Log In</a>
                     <a href="#" class="button w-button">Register</a>
