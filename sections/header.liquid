@@ -3,7 +3,7 @@
             <div class="nav_dropdown-list-background"></div>
             <nav role="navigation" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86dfd-d5a86df8" class="nav_menu is-page-height-tablet w-nav-menu">
               <div class="nav-links_layout">
-                <div class="nav_mobile-image-wrapper"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_mobile-image"></div>
+                <div class="nav_mobile-image-wrapper show-tablet"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_mobile-image"></div>
                 {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links" class="hide-tablet">
                                     
                   
@@ -67,7 +67,7 @@
                 
                         </div>
 {% endfor %}
-                <div class="mobile-nav-links_wrapper">
+                <div class="mobile-nav-links_wrapper show-tablet">
                   <div li-for:inside="link in linklists[section.settings.menu].links" class="mobile-nav-links_layout">
         {% for link in linklists[section.settings.menu].links %}                            
                     
@@ -77,15 +77,15 @@
                         <div li-object="link.title">{{ link.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 4 7" fill="none" class="mobile-nav-link_icon">
                           <path d="M0 0L3.47 3.29L0 6.58" fill="black"></path>
                         </svg>
-                        <div class="mobile-nav-link_checkbox-wrapper"><input type="checkbox" id="checkbox-{{link.handle}}" class="mobile-nav-link_checkbox"></div>
+                        <div class="mobile-nav-link_checkbox-wrapper"><input type="checkbox" id="checkbox-{{link.handle}}" class="mobile-nav-link_checkbox" checked=""></div>
                       </div>
-                      <div class="mobile-nav-link_panel">
-                        <div class="panel_back-nav-layout"><label for="checkbox-{{link.handle}}" class="back-nav_text">
+                      <div class="mobile-nav-link_panel"><label for="checkbox-{{link.handle}}" class="panel_back-nav-layout">
+                          <div class="back-nav_text">
                             <p><</p>
                             <p>Back</p>
-                          </label>
+                          </div>
                           <p li-object="link.title" class="back-nav_heading">{{ link.title }}</p>
-                        </div>
+                        </label>
                         <div class="mobile-nav-link_wrapper">
                           <div class="mobile-nav-link_button">
                             <div>AW/26 Collection</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 4 7" fill="none" class="mobile-nav-link_icon">
@@ -93,7 +93,13 @@
                             </svg>
                             <div class="mobile-nav-link_checkbox-wrapper"><input type="checkbox" class="mobile-nav-link_checkbox"></div>
                           </div>
-                          <div class="mobile-nav-link_panel">
+                          <div class="mobile-nav-link_panel"><label for="checkbox-{{link.handle}}" class="panel_back-nav-layout">
+                              <div class="back-nav_text">
+                                <p><</p>
+                                <p>Back</p>
+                              </div>
+                              <p li-object="link.title" class="back-nav_heading">{{ link.title }}</p>
+                            </label>
                             {% if link.links.size > 0 %}    <div li-if="link.links.size > 0" class="mobile-nav-link_wrapper">
     
                               <a href="#" class="mobile-nav-link_button w-inline-block">
@@ -845,13 +851,13 @@ color: black;
 .nav_component.scrolling .nav_logo-link{
 color: black;
 }
-.nav_menu:has(.nav_dropdown-toggle.w--open) .nav_dropdown-list-background{
+.nav_container:has(.nav_dropdown-toggle.w--open) .nav_dropdown-list-background{
 background: white !important;
 }
-.nav_menu:has(.nav_dropdown-toggle.w--open) ~ .nav_logo-link .wang-character{
+.nav_container:has(.nav_dropdown-toggle.w--open) ~ .nav_logo-link .wang-character{
 fill: white;
 }
-.nav_menu:has(.nav_dropdown-toggle.w--open) ~ .nav_logo-link{
+.nav_container:has(.nav_dropdown-toggle.w--open) ~ .nav_logo-link{
 color: black;
 }
 </style>
