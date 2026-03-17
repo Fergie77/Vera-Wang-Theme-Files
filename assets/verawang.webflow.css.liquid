@@ -7001,6 +7001,14 @@ figcaption {
     overflow: auto;
   }
 
+  .nav_dropdown-list-background {
+    opacity: 0;
+    -webkit-backdrop-filter: brightness(60%) blur(5px);
+    backdrop-filter: brightness(60%) blur(5px);
+    margin-top: 5rem;
+    transition: opacity .2s ease-in-out;
+  }
+
   .collection-page_custom-padding {
     padding-top: 5rem;
   }
@@ -7945,10 +7953,6 @@ figcaption {
   .header_background-image {
     width: 100%;
     position: relative;
-  }
-
-  .nav_dropdown-list-background {
-    background-color: #fff9;
   }
 
   .product-details_wrapper {
