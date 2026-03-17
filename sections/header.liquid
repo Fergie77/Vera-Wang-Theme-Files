@@ -9,8 +9,8 @@
 {% else %}
 <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_mobile-image">
 {% endif %}</div>
-                  <div li-for:inside="link in linklists[section.settings.menu].links" class="hide-tablet">
-        {% for link in linklists[section.settings.menu].links %}                            
+                  {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links" class="hide-tablet">
+                                    
                     
                             {% if link.links.size > 0 %}    <div data-hover="true" data-delay="200" li-if="link.links.size > 0" class="nav_menu-dropdown w-dropdown">
     
@@ -70,7 +70,8 @@
 {% endif %}
                             
                   
-                    {% endfor %}    </div>
+                        </div>
+{% endfor %}
                   <div class="mobile-nav-links_wrapper show-tablet">
                     <div li-for:inside="link in linklists[section.settings.menu].links" class="mobile-nav-links_layout">
         {% for link in linklists[section.settings.menu].links %}                            
@@ -81,7 +82,7 @@
                           <div li-object="link.title">{{ link.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 4 7" fill="none" class="mobile-nav-link_icon">
                             <path d="M0 0L3.47 3.29L0 6.58" fill="black"></path>
                           </svg>
-                          <div class="mobile-nav-link_checkbox-wrapper"><input type="checkbox" id="checkbox-{{link.handle}}" class="mobile-nav-link_checkbox" checked=""></div>
+                          <div class="mobile-nav-link_checkbox-wrapper"><input type="checkbox" id="checkbox-{{link.handle}}" class="mobile-nav-link_checkbox"></div>
                         </div>
                         <div class="mobile-nav-link_panel"><label for="checkbox-{{link.handle}}" class="panel_back-nav-layout">
                             <div class="back-nav_text">
