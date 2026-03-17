@@ -869,8 +869,20 @@ color: black;
 .nav_component.scrolling .nav_logo-link{
 color: black;
 }
-.nav_container:has(.nav_dropdown-toggle.w--open) .nav_dropdown-list-background{
-background: white !important;
+@media (min-width: 992px) {
+  .nav_container:has(.w--open) .nav_dropdown-list-background {
+    background: white !important;
+  }
+}
+@media (max-width: 991px) {
+  .nav_container:has(.w--open) .nav_dropdown-list-background {
+    background: rgba(0, 0, 0, 0.6) !important;
+  }
+}
+@media (max-width: 767px) {
+  .nav_container:has(.w--open) .nav_dropdown-list-background {
+    background: white !important;
+  }
 }
 .nav_container:has(.nav_dropdown-toggle.w--open) ~ .nav_logo-link .wang-character{
 fill: white;
