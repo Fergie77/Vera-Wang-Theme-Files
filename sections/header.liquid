@@ -101,12 +101,12 @@
                               </svg>
                               <div class="mobile-nav-link_checkbox-wrapper"><input type="checkbox" id="checkbox-{{link.handle}}" class="mobile-nav-link_checkbox"></div>
                             </div>
-                            <div class="mobile-nav-link_panel"><label id="checkbox-{{link.handle}}" class="panel_back-nav-layout">
+                            <div class="mobile-nav-link_panel"><label id="checkbox-{{child_link.handle}}" class="panel_back-nav-layout">
                                 <div class="back-nav_text">
                                   <p><</p>
                                   <p>Back</p>
                                 </div>
-                                <p li-object="link.title" class="back-nav_heading">{{ link.title }}</p>
+                                <p li-object="link.title" class="back-nav_heading">{{ child_link.title }}</p>
                               </label>
                               <div li-for:inside="grandchild_link in child_link.links">
         {% for grandchild_link in child_link.links %}                            
