@@ -3,7 +3,11 @@
             <div class="nav_dropdown-list-background"></div>
             <nav role="navigation" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86dfd-d5a86df8" class="nav_menu is-page-height-tablet w-nav-menu">
               <div class="nav-links_layout">
-                <div class="nav_mobile-image-wrapper show-tablet"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_mobile-image"></div>
+                <div class="nav_mobile-image-wrapper show-tablet">{% if section.settings.image_image %}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'nav_mobile-image' }}
+{% else %}
+<img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_mobile-image">
+{% endif %}</div>
                 {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links" class="hide-tablet">
                                     
                   
@@ -97,7 +101,7 @@
                               </svg>
                               <div class="mobile-nav-link_checkbox-wrapper"><input type="checkbox" id="checkbox-{{link.handle}}" class="mobile-nav-link_checkbox"></div>
                             </div>
-                            <div class="mobile-nav-link_panel"><label for="checkbox-{{link.handle}}" class="panel_back-nav-layout">
+                            <div class="mobile-nav-link_panel"><label id="checkbox-{{link.handle}}" class="panel_back-nav-layout">
                                 <div class="back-nav_text">
                                   <p><</p>
                                   <p>Back</p>
@@ -137,7 +141,9 @@
                     
                             {% if link.links.size < 1 %}    <div li-if="link.links.size < 1" class="mobile-nav-link_wrapper">
     
-                      <a li-object="link.url" href="#" class="mobile-nav-link_button w-inline-block">{{ link.url }}</a>
+                      <a li-object:href="link.url" href="{{ link.url }}" class="mobile-nav-link_button w-inline-block">
+                        <div li-object="link.title">{{ link.title }}</div>
+                      </a>
                         </div>
 {% endif %}
                             
@@ -898,14 +904,14 @@ color: black;
     ],
     "settings": [
         {
-            "id": "url_link",
-            "type": "url",
-            "label": "Link"
-        },
-        {
             "id": "image_image",
             "type": "image_picker",
             "label": "Image"
+        },
+        {
+            "id": "url_link",
+            "type": "url",
+            "label": "Link"
         },
         {
             "id": "text_image_heading",
