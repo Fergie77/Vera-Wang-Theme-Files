@@ -133,7 +133,7 @@
                                   <div class="fs_selectcustom-2_label">Sort by:</div>
                                   <div fs-selectcustom-element="label" class="fs_selectcustom-2_text">Select option</div>
                                 </div>
-                                <nav class="fs_selectcustom-2_list w-dropdown-list"><select id="sort-by" li-for:inside="option in collection.sort_options" class="sort_select filter_checkbox hide">
+                                <nav class="fs_selectcustom-2_list w-dropdown-list"><select id="sort-by-2" li-for:inside="option in collection.sort_options" class="sort_select filter_checkbox hide">
         {% for option in collection.sort_options %}                            
                                     
                             <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% elsif option.value == collection.default_sort_by %}selected{% endif %}>{{ option.name }}</option>
@@ -372,6 +372,11 @@
   }
   // Update sort_by query parameter on select change
   document.querySelector('#sort-by').addEventListener('change', function(e) {
+    var value = e.target.value;
+    Shopify.queryParams.sort_by = value;
+    location.search = new URLSearchParams(Shopify.queryParams).toString();
+  });
+  document.querySelector('#sort-by-2').addEventListener('change', function(e) {
     var value = e.target.value;
     Shopify.queryParams.sort_by = value;
     location.search = new URLSearchParams(Shopify.queryParams).toString();
