@@ -7069,6 +7069,7 @@ figcaption {
     z-index: 2;
     background-color: #fff;
     flex-flow: column;
+    justify-content: space-between;
     width: 65%;
     height: 100%;
     margin-left: auto;
@@ -7077,14 +7078,10 @@ figcaption {
     position: relative;
   }
 
-  .nav_mobile-image-wrapper {
-    padding: var(--padding--global);
-  }
-
   .mobile-nav-links_layout {
     border-top: 1px solid #d8d8d8;
     flex-flow: column;
-    flex: 1;
+    height: 100%;
     display: flex;
   }
 
@@ -7198,6 +7195,12 @@ figcaption {
     left: 0;
     right: 0;
     overflow: hidden;
+  }
+
+  .mobile-nav_wrapper {
+    flex-flow: column;
+    display: flex;
+    overflow: scroll;
   }
 }
 
@@ -8241,6 +8244,7 @@ figcaption {
   }
 
   .nav_menu.is-page-height-tablet {
+    padding-top: 3.6rem;
     padding-left: 0%;
     padding-right: 0%;
   }
