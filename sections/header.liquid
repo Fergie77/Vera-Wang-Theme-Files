@@ -3,8 +3,8 @@
             <div class="nav_dropdown-list-background"></div>
             <nav role="navigation" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86dfd-d5a86df8" class="nav_menu is-page-height-tablet w-nav-menu">
               <div class="nav-links_layout">
-                <div class="nav_mobile-image-wrapper show-tablet">{% if section.settings.image_image %}
-{{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'nav_mobile-image' }}
+                <div class="nav_mobile-image-wrapper show-tablet">{% if section.settings.image_mobile_image %}
+{{ section.settings.image_mobile_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'nav_mobile-image' }}
 {% else %}
 <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_mobile-image">
 {% endif %}</div>
@@ -904,14 +904,19 @@ color: black;
     ],
     "settings": [
         {
-            "id": "image_image",
+            "id": "image_mobile_image",
             "type": "image_picker",
-            "label": "Image"
+            "label": "Mobile Image"
         },
         {
             "id": "url_link",
             "type": "url",
             "label": "Link"
+        },
+        {
+            "id": "image_image",
+            "type": "image_picker",
+            "label": "Image"
         },
         {
             "id": "text_image_heading",
