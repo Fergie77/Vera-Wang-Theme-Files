@@ -188,15 +188,7 @@
                         {% for product in collection.products limit:12 %}    <div li-for="product in collection.products limit:12" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
                           
-                            <div li-cloak="hide" class="hide w-embed">{% assign active_colours = '' %}
-                            {% for filter in collection.filters %}
-                            {% if filter.label | downcase == 'colour' %}
-                            {% for filter_value in filter.active_values %}
-                            {% assign active_colours = active_colours | append: filter_value.label | append: '|' %}
-                            {% endfor %}
-                            {% endif %}
-                            {% endfor %}
-                            {% assign color_index = nil %}
+                            <div li-cloak="hide" class="hide w-embed">{% assign color_index = nil %}
                             {% for option in product.options %}
                             {% assign option_lower = option | downcase %}
                             {% if option_lower == 'colour' %}
@@ -210,25 +202,15 @@
                                     
                             
                             <div li-cloak="hide" class="hide w-embed">{% assign colour_value = variant.options[color_index] %}
-                              {% assign color_images = product.images | where: 'alt', colour_value %}
-                              {% assign colour_key = colour_value | append: '|' %}
-                              {% if active_colours == '' or active_colours contains colour_key %}
-                              {% assign colour_passes_filter = 'true' %}
-                              {% else %}
-                              {% assign colour_passes_filter = 'false' %}
-                              {% endif %}</div>
+                              {% assign color_images = product.images | where: 'alt', colour_value %}</div>
+                            test
                             
-                            
-                            {% if colour_passes_filter == 'true' %}    <div li-if="colour_passes_filter == 'true'">
+                            {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
     
-                              {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
-    
-                                <div li-cloak="hide" class="hide w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}</div>
-                                {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
-                                  </div>
-{% endunless %}
+                              <div li-cloak="hide" class="hide w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}</div>
+                              {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
                                 </div>
-{% endif %}
+{% endunless %}
                             
                           
                         </div>
