@@ -214,20 +214,20 @@
                               {% assign color_images = product.images | where: 'alt', colour_value %}
                               {% assign colour_key = colour_value | append: '|' %}
                               {% if active_colours == '' or active_colours contains colour_key %}
-                              {% assign colour_passes_filter = 'true' %}
+                              {% unless seen_colours contains colour_value %}
+                              {% assign show_variant = 'true' %}
                               {% else %}
-                              {% assign colour_passes_filter = 'false' %}
+                              {% assign show_variant = 'false' %}
+                              {% endunless %}
+                              {% else %}
+                              {% assign show_variant = 'false' %}
                               {% endif %}</div>
                             
                             
-                            {% if colour_passes_filter == 'true' %}    <div li-if="colour_passes_filter == 'true'">
+                            {% if show_variant == 'true' %}    <div li-if="show_variant == 'true'">
     
-                              {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
-    
-                                <div li-cloak="hide" class="hide w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}</div>
-                                {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
-                                  </div>
-{% endunless %}
+                              <div li-cloak="hide" class="hide w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}</div>
+                              {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
                                 </div>
 {% endif %}
                             
