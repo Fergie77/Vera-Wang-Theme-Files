@@ -35,11 +35,10 @@
                     </div>
                   </div>
                   <div class="product-item_variants-wrapper">
-                    {% if product.has_only_default_variant == true %}    <p li-if="product.has_only_default_variant == true" class="product-item_subtitle text-weight-normal">
+                    {% if product.has_only_default_variant == true %}    <p li-if="product.has_only_default_variant == true" class="product-item_subtitle text-weight-normal hide">
     1 Colour    </p>
 {% endif %}
-                    {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list">
-    
+                    <div class="product-header_option-list">
                       <div class="hide w-embed">{% assign color_index = nil %}
                         {% for option in product.options %}
                         {% if option | downcase == 'color' %}
@@ -69,8 +68,7 @@
                         </div>
 {% endfor %}
                       </div>
-                        </div>
-{% endif %}
+                    </div>
                   </div>
                 </a>
               </div>
