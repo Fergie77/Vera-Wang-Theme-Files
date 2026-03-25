@@ -18,20 +18,31 @@
         </div>
 {% endif %}
                     {% endfor %}    </div></div><div class="w-embed w-script"><script>
-const slides = gsap.utils.toArray('.swiper-slide');
-const bullets = gsap.utils.toArray('.swiper-pagination-bullet');
-function setActive(index) {
-  bullets.forEach((b, i) => b.classList.toggle('is-active', i === index));
-}
-slides.forEach((slide, i) => {
-  ScrollTrigger.create({
-    trigger: slide,
-    start: 'top center',
-    end: 'bottom center',
-    onEnter: () => setActive(i),
-    onEnterBack: () => setActive(i),
+function initGallery() {
+  ScrollTrigger.getAll()
+    .filter(st => st.vars._gallery)
+    .forEach(st => st.kill());
+
+  const slides = gsap.utils.toArray('.swiper-slide.is-product-gallery');
+  const bullets = gsap.utils.toArray('.swiper-pagination-bullet');
+
+  function setActive(index) {
+    bullets.forEach((b, i) => b.classList.toggle('is-active', i === index));
+  }
+
+  slides.forEach((slide, i) => {
+    ScrollTrigger.create({
+      trigger: slide,
+      start: 'top center',
+      end: 'bottom center',
+      onEnter: () => setActive(i),
+      onEnterBack: () => setActive(i),
+      vars: { _gallery: true },
+    });
   });
-});
+}
+
+initGallery();
 </script></div></div></div><div class="product-details_wrapper"><a id="w-node-_80eb7b15-ebd5-1617-fdfc-2d1ea1dfd0e5-5313685d" href="{{product.collections.first.url}}" class="product-details_backlink-wrapper w-inline-block"><div class="product-details_backlink"><</div><p li-object="product.collections.first.title" class="product-details_backlink">{{ product.collections.first.title }}</p></a><div li-content-for-theme-blocks="" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136879-5313685d" class="product-header_product-details">
 {% content_for 'blocks' %}
 </div><div class="hide w-embed w-script"><script>
