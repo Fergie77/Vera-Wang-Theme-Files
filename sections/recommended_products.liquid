@@ -1,20 +1,35 @@
-<div data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related" class="padding-global padding-section-medium product-recommendations"><div class="container-large"><div class="product_component"><div class="headline-wrapper"><div class="product_heading-wrapper"><div class="product_heading"><h2 class="product-section_heading">
+<div data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related" class="padding-global padding-section-medium product-recommendations">
+      <div class="container-large">
+        <div class="product_component">
+          <div class="headline-wrapper">
+            <div class="product_heading-wrapper">
+              <div class="product_heading">
+                <h2 class="product-section_heading">
 {{ section.settings.text_heading }}
-</h2><p class="product-section_subheading">
+</h2>
+                <p class="product-section_subheading">
 {{ section.settings.text_subheading }}
-</p></div></div></div><div class="product_list-wrapper is-four-column"><ul role="list" class="product_list w-list-unstyled">{% for product in recommendations.products %}    <li li-for="product in recommendations.products" class="product_list-item">
-                                    {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
+</p>
+              </div>
+            </div>
+          </div>
+          <div class="product_list-wrapper is-four-column">
+            <ul role="list" class="product_list w-list-unstyled">
+              {% for product in recommendations.products %}    <li li-for="product in recommendations.products" class="product_list-item">
+                                    
+                
+                            {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
                             
-            
+              
                         </li>
 {% endfor %}
             </ul>
           </div>
         </div>
-  </div>
-  </div>
-  <div class="hide w-embed w-script">
-    <script>
+      </div>
+    </div>
+    <div class="hide w-embed w-script">
+      <script>
   document.addEventListener('DOMContentLoaded', function() {
     const productRecommendationsSection = document.querySelector('.product-recommendations');
     const url = productRecommendationsSection.dataset.url;
@@ -33,7 +48,7 @@
     });
   });
 </script>
-  </div> {% schema %} {
+    </div> {% schema %} {
     "tag": "section",
     "name": "Recommended Products",
     "class": "section_product-recommended",
