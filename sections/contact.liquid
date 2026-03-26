@@ -1,89 +1,112 @@
-<div class="padding-global padding-section-medium">
-          <div class="container-large">
-            <div class="w-layout-grid social-sign-up_component">
-              <div class="contact_content">
-                <div class="margin-bottom margin-small">
-                  <h1 class="heading-style-h2">
-{{ section.settings.text_heading }}
-</h1>
+<div class="padding-global">
+            <div class="container-large">
+              <div class="social-sign-up_grid">
+                <div class="social-sign-up_wrapper">
+                  <div class="contact_component">
+                    <div class="social-sign-up_heading-layout">
+                      <h2 class="contact_heading">
+{{ section.settings.text_headline }}
+</h2>
+                    </div>
+                    <div class="contact_form-block w-form">
+                      {% form 'contact', return_to: '/', class: 'contact_form' %}
+<div class="form_field-wrapper"><input class="form_input text-size-small w-input" maxlength="256" name="contact[first_name]" data-name="First Name" placeholder="First Name" type="text" id="First-Name" required=""></div>
+                        <div class="form_field-wrapper"><input class="form_input text-size-small w-input" maxlength="256" name="contact[last_name]" data-name="Last Name" placeholder="Last Name" type="text" id="Last-Name" required=""></div>
+                        <div class="form_field-wrapper"><input class="form_input text-size-small w-input" maxlength="256" name="contact[email]" data-name="Email" placeholder="Email" type="email" id="Email" required=""></div>
+                        <div class="form_field-wrapper">
+                          <div class="fs_selectcustom-1_component">
+                            <div li-cloak="hide" class="fs_selectcustom-1_embed w-embed w-script"><!--  [Finsweet Attributes] Select Custom  -->
+                              <script>(()=>{var t="https://cdn.jsdelivr.net/npm/@finsweet/attributes-selectcustom@1/selectcustom.js",e=document.querySelector(`script[src="${t}"]`);e||(e=document.createElement("script"),e.async=!0,e.src=t,document.head.append(e));})();</script>
+                            </div>
+                            <div data-delay="0" data-hover="false" fs-selectcustom-element="dropdown" data-w-id="af75b3f6-b053-e841-7e6b-92f700ea18f6" class="form_dropdown w-dropdown">
+                              <div class="form_dropdown-toggle w-dropdown-toggle">
+                                <p class="fs_selectcustom-1_text text-size-small">Select option</p><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 7 5" fill="none" class="form_dropdown-icon">
+                                  <path d="M0 0H1.05741L2.27871 1.75769L3.5 0L4.72129 1.75769L5.94259 0H7L3.5 5L0 0Z" fill="#C1BFBF"></path>
+                                </svg>
+                              </div>
+                              <nav class="fs_selectcustom-1_list w-dropdown-list"><select id="Select-field-1" name="Select-field-1" data-name="Select field 1" class="fs_selectcustom-1_field w-select">
+                                  <option value="">Select one...</option>
+                                  <option value="First">First choice</option>
+                                  <option value="Second">Second choice</option>
+                                  <option value="Third">Third choice</option>
+                                </select>
+                                <a href="#" class="fs_selectcustom-1_link w-dropdown-link">Select link</a>
+                              </nav>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="contact_message-eyebrow">Message (Please include order number)</p><textarea placeholder="Write your message here" maxlength="5000" id="Message" name="Message" data-name="Message" class="form_textarea w-node-cc41915a-3108-ae78-08a5-79c039e7aab9-1d7bcbea w-input"></textarea>
+                        <div class="margin-vertical margin-small"><label id="Contact-5-Checkbox" class="w-checkbox form_checkbox" name="contact[checkbox]">
+                            <div class="w-checkbox-input w-checkbox-input--inputType-custom form_checkbox-icon"></div><input id="Checkbox" name="Checkbox" type="checkbox" required="" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1"><span for="Checkbox" class="form_checkbox-label w-form-label">
+{{ section.settings.text_checkbox }}
+</span>
+                          </label></div><input type="submit" data-wait="Please wait..." id="w-node-_9a3c0516-fc80-a352-7d80-378711932031-1d7bcbea" class="button is-alternate w-button" value="Submit">
+                      {% endform %}
+                      <div class="success-message w-form-done">
+                        <div class="success-text">Thank you! Your submission has been received!</div>
+                      </div>
+                      <div class="error-message w-form-fail">
+                        <div class="error-text">Oops! Something went wrong while submitting the form.</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p class="text-size-medium">
-{{ section.settings.text_paragraph }}
-</p>
-              </div>
-              <div class="contact_form-block w-form">
-                {% form 'contact', return_to: '/', class: 'contact_form' %}
-<div class="form_field-wrapper"><label for="First-Name-2" class="form_field-label">
-{{ section.settings.text_first_name }}
-</label><input class="form_input w-input" maxlength="256" name="contact[first_name]" data-name="First Name 2" placeholder="" type="text" id="First-Name-2" required=""></div>
-                  <div class="form_field-wrapper"><label for="Last-Name-2" class="form_field-label">
-{{ section.settings.text_last_name }}
-</label><input class="form_input w-input" maxlength="256" name="contact[last_name]" data-name="Last Name 2" placeholder="" type="text" id="Last-Name-2" required=""></div>
-                  <div class="form_field-wrapper"><label for="Email-2" class="form_field-label">
-{{ section.settings.text_email }}
-</label><input class="form_input w-input" maxlength="256" name="contact[email]" data-name="Email 2" placeholder="" type="email" id="Email-2" required=""></div>
-                  <div class="form_field-wrapper"><label for="Message-2" class="form_field-label">
-{{ section.settings.text_message }}
-</label><textarea class="form_input is-text-area w-input" maxlength="5000" name="contact[body]" data-name="Message 2" placeholder="" id="Message-2" required=""></textarea></div>
-                  <div class="margin-bottom margin-xsmall"><label id="Contact-5-Checkbox" class="w-checkbox form_checkbox" name="contact[checkbox]">
-                      <div class="w-checkbox-input w-checkbox-input--inputType-custom form_checkbox-icon"></div><input id="Checkbox-2" type="checkbox" name="Checkbox-2" data-name="Checkbox 2" required="" style="opacity:0;position:absolute;z-index:-1"><div for="Checkbox-2" class="form_checkbox-label text-size-small w-form-label"> {{ section.settings.richtext_i_accept_the_terms }} </div>
-                    </label></div><input type="submit" data-wait="Please wait..." id="w-node-_6ca8e057-6645-9d42-e1be-60491d7bcc0d-1d7bcbea" class="button w-button" value="Submit">
-                {% endform %}
-                <div class="success-message w-form-done">
-                  <div class="success-text">Thank you! Your submission has been received!</div>
-                </div>
-                <div class="error-message w-form-fail">
-                  <div class="error-text">Oops! Something went wrong while submitting the form.</div>
-                </div>
+                <div id="w-node-_9a3c0516-fc80-a352-7d80-378711932041-1d7bcbea" class="social-sign-up_image-wrapper grid-break {{section.settings.image_position}}">{% if section.settings.image_image %}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'content_image' }}
+{% else %}
+<img alt="" src="{{ 'image.svg' | asset_url }}" loading="lazy" class="content_image">
+{% endif %}</div>
               </div>
             </div>
-          </div>
-        </div> {% schema %} {
+          </div> {% schema %} {
     "tag": "section",
     "name": "Contact",
-    "class": "section_contact",
+    "class": "section_social-sign-up background-color-primary",
     "settings": [
         {
-            "id": "text_heading",
+            "id": "text_headline",
             "type": "text",
-            "label": "Heading",
-            "default": "Contact us"
+            "label": "Headline",
+            "default": "Contact Us"
         },
         {
-            "id": "text_paragraph",
+            "id": "text_checkbox",
             "type": "text",
-            "label": "Paragraph",
-            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            "label": "Checkbox",
+            "default": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
         },
         {
-            "id": "text_first_name",
-            "type": "text",
-            "label": "First Name",
-            "default": "First Name"
+            "id": "image_image",
+            "type": "image_picker",
+            "label": "Image"
         },
         {
-            "id": "text_last_name",
-            "type": "text",
-            "label": "Last Name",
-            "default": "Last Name"
+            "type": "header",
+            "content": "Image Position"
         },
         {
-            "id": "text_email",
-            "type": "text",
-            "label": "Email",
-            "default": "Email"
-        },
-        {
-            "id": "text_message",
-            "type": "text",
-            "label": "Message",
-            "default": "Message"
-        },
-        {
-            "id": "richtext_i_accept_the_terms",
-            "type": "richtext",
-            "label": "I accept the Terms",
-            "default": "<p>I accept the Terms<\/p>"
+            "type": "select",
+            "id": "image_position",
+            "label": "Image position",
+            "options": [
+                {
+                    "value": "is-left",
+                    "label": "Left"
+                },
+                {
+                    "value": "is-right",
+                    "label": "Right"
+                },
+                {
+                    "value": "is-left is-spun",
+                    "label": "Left Image Rotated"
+                },
+                {
+                    "value": "is-right is-spun",
+                    "label": "Right Image Rotated"
+                }
+            ],
+            "default": "is-left"
         }
     ],
     "presets": [
