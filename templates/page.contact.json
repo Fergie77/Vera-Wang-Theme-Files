@@ -1,12 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "contact": {
-            "type": "contact"
-        }
-    },
-    "layout": "theme",
-    "wrapper": "main.main-wrapper",
-    "order": [
-        "contact"
-    ]
+  "sections": {
+    "contact": {
+      "type": "contact",
+      "settings": {
+        "text_headline": "Contact Us",
+        "text_checkbox": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email.",
+        "image_image": "shopify://shop_images/Frame_175.png",
+        "image_position": "is-right is-spun"
+      }
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "contact"
+  ]
 }
