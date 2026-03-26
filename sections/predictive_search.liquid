@@ -38,14 +38,16 @@
                                           <div class="text-style-muted">Products</div>
                                         </div>
                                         <ul role="list" class="predictive-search_product-list w-list-unstyled">
-                                          {% for product in predictive_search.resources.products %}    <li li-for="product in predictive_search.resources.products" class="predictive-search_produt-item">
+                                          {% for product in predictive_search.resources.products %}    <li li-for="product in predictive_search.resources.products" class="mini-cart_line-item_item">
                                     
                                             
-                            <a li-object:href="product.url" href="{{ product.url }}" class="predictive-search_line-item w-inline-block">
-                                              <div class="predictive-search_image-wrapper"><img li-object:src="product.featured_media | image_url: width: 150" li-object:alt="product.featured_image.alt" alt="{{ product.featured_image.alt }}" src="{{ product.featured_media | image_url: width: 150 }}" loading="lazy" class="predictive-search_image"></div>
-                                              <div class="predictive-search_product-info">
-                                                <div class="text-size-regular text-weight-bold"><span li-object="product.title">{{ product.title }}</span></div>
-                                                <div class="text-size-small"><span li-object="product.price | money">{{ product.price | money }}</span></div>
+                            <a li-object:href="product.url" href="{{ product.url }}" class="mini-cart_line-item_item w-inline-block">
+                                              <div class="mini-cart_line-item_img"><img li-object:src="product.featured_media | image_url: width: 150" li-object:alt="product.featured_image.alt" alt="{{ product.featured_image.alt }}" src="{{ product.featured_media | image_url: width: 150 }}" loading="lazy" class="predictive-search_image"></div>
+                                              <div class="mini-cart_line-item_product-info">
+                                                <div class="product-info_layout">
+                                                  <div class="text-size-regular text-weight-bold"><span li-object="product.title" class="product-info_heading">{{ product.title }}</span></div>
+                                                  <div class="text-size-small"><span li-object="product.price | money" class="mini-cart_main-text-size text-weight-light">{{ product.price | money }}</span></div>
+                                                </div>
                                               </div>
                                             </a>
                             
@@ -115,11 +117,13 @@
 <li class="predictive-search_produt-item">
     
                                             
-    <a li-object:href="product.url" href="{{ product.url }}" class="predictive-search_line-item w-inline-block">
-                                              <div class="predictive-search_image-wrapper"><img li-object:src="product.featured_image | img_url: 'master'" li-object:alt="product.featured_image.alt" alt="{{ product.featured_image.alt }}" src="{{ product.featured_image | img_url: 'master' }}" loading="lazy" class="predictive-search_image"></div>
-                                              <div class="predictive-search_product-info">
-                                                <div class="text-size-regular text-weight-bold"><span li-object="product.title">{{ product.title }}</span></div>
-                                                <div class="text-size-small"><span li-object="product.price | money">{{ product.price | money }}</span></div>
+    <a li-object:href="product.url" href="{{ product.url }}" class="mini-cart_line-item_item w-inline-block">
+                                              <div class="mini-cart_line-item_img"><img li-object:src="product.featured_image | img_url: 'master'" li-object:alt="product.featured_image.alt" alt="{{ product.featured_image.alt }}" src="{{ product.featured_image | img_url: 'master' }}" loading="lazy" class="predictive-search_image"></div>
+                                              <div class="mini-cart_line-item_product-info">
+                                                <div class="product-info_layout">
+                                                  <div class="text-size-regular text-weight-bold"><span li-object="product.title" class="product-info_heading">{{ product.title }}</span></div>
+                                                  <div class="text-size-small"><span li-object="product.price | money">{{ product.price | money }}</span></div>
+                                                </div>
                                               </div>
                                             </a>
     
