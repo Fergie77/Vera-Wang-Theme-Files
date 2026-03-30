@@ -459,6 +459,12 @@ figcaption {
   line-height: 1.2;
 }
 
+.text-rich-text {
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .text-rich-text h1, .text-rich-text h2, .text-rich-text h3, .text-rich-text h4 {
   margin-top: 1.5rem;
   margin-bottom: 1rem;
@@ -4034,10 +4040,16 @@ figcaption {
 }
 
 .article_wrapper {
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
   width: 100%;
-  max-width: 48rem;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 5rem;
+  display: grid;
 }
 
 .li-custom {
@@ -4981,6 +4993,11 @@ figcaption {
   grid-auto-columns: 1fr;
   align-items: center;
   display: grid;
+}
+
+.social-sign-up_grid.is-contact-page {
+  grid-column-gap: 0rem;
+  grid-row-gap: 0rem;
 }
 
 .padding-global-2 {
@@ -6288,6 +6305,21 @@ figcaption {
   font-size: .5rem;
 }
 
+.content-header_image-wrapper {
+  width: 100%;
+  padding: 4rem 1rem;
+  position: sticky;
+  top: 5rem;
+}
+
+.content-header_heading {
+  text-transform: uppercase;
+  writing-mode: vertical-lr;
+  font-family: big-caslon-fb, sans-serif;
+  font-weight: 400;
+  transform: rotate(180deg);
+}
+
 @media screen and (max-width: 991px) {
   .padding-medium {
     padding: 1.5rem;
@@ -6935,6 +6967,14 @@ figcaption {
     grid-template-columns: 1fr 1fr;
   }
 
+  .article_wrapper {
+    grid-column-gap: 4rem;
+    grid-row-gap: 4rem;
+    flex-flow: column;
+    padding-top: 1rem;
+    display: flex;
+  }
+
   .gift_card-logo {
     width: 8.4rem;
     height: 3.6rem;
@@ -7395,6 +7435,11 @@ figcaption {
     grid-auto-flow: row;
     min-height: auto;
   }
+
+  .content-header_image-wrapper {
+    position: relative;
+    top: 0;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -7706,6 +7751,9 @@ figcaption {
   .header_background-image-wrapper {
     flex-flow: column;
     display: flex;
+  }
+
+  .header_background-image-wrapper.is-relative {
     position: relative;
   }
 
@@ -9124,6 +9172,10 @@ figcaption {
 
 #w-node-_6b97875b-5fce-9f5a-43fd-5792b69faf23-4b06a7bd, #w-node-c9d4bc59-fe93-ab91-5f63-22578c137f0c-8c137f09 {
   grid-area: span 1 / span 1 / span 1 / span 1;
+}
+
+#w-node-_21ceba6d-c246-1e44-8f4f-1e1423123a81-5b2f753a {
+  align-self: start;
 }
 
 #w-node-_4ff72092-e0e6-d591-6af1-5b10f594a632-f594a625 {
