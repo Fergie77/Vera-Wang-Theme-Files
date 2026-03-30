@@ -459,12 +459,6 @@ figcaption {
   line-height: 1.2;
 }
 
-.text-rich-text {
-  max-width: 70ch;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .text-rich-text h1, .text-rich-text h2, .text-rich-text h3, .text-rich-text h4 {
   margin-top: 1.5rem;
   margin-bottom: 1rem;
@@ -6314,10 +6308,23 @@ figcaption {
 
 .content-header_heading {
   text-transform: uppercase;
-  writing-mode: vertical-lr;
   font-family: big-caslon-fb, sans-serif;
   font-weight: 400;
+}
+
+.content-header_heading.is-flipped {
+  writing-mode: vertical-lr;
   transform: rotate(180deg);
+}
+
+.article_text-container {
+  grid-column-gap: 3rem;
+  grid-row-gap: 3rem;
+  flex-flow: column;
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
 }
 
 @media screen and (max-width: 991px) {
