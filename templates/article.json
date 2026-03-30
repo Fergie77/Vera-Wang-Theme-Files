@@ -12,7 +12,7 @@
     "article_content": {
       "type": "article_content",
       "settings": {
-        "image_headline": true
+        "image_headline": false
       }
     },
     "related_articles": {
