@@ -11,12 +11,25 @@
 {% endif %}
                 </div>
                 <div li-object="article.content" class="text-rich-text w-richtext">{{ article.content }}</div>
+                
               </div>
             </div>
           </div>
         </section> {% schema %} {
     "tag": "div",
     "name": "Article Content",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Show\/Hide Image"
+        },
+        {
+            "type": "checkbox",
+            "id": "image_headline",
+            "label": "Image Headline",
+            "default": true
+        }
+    ],
     "presets": [
         {
             "name": "Article Content",
