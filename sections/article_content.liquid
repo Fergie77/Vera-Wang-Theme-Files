@@ -13,11 +13,6 @@
 {% endif %}
                 </div>
                 <div class="article_text-container">
-                  {% unless section.settings.image_headline == true %}    <div li-unless="section.settings.image_headline == true">
-    
-                    <h1 li-object="article.title" class="content-header_heading">{{ article.title }}</h1>
-                      </div>
-{% endunless %}
                   <div li-object="article.content" class="text-rich-text w-richtext">{{ article.content }}</div>
                 </div>
                 

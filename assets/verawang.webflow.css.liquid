@@ -2239,6 +2239,7 @@ figcaption {
 
 .header_background-image-wrapper {
   z-index: -1;
+  min-height: 40rem;
   position: absolute;
   inset: 0%;
 }
@@ -6307,8 +6308,10 @@ figcaption {
 }
 
 .content-header_heading {
+  letter-spacing: .03em;
   text-transform: uppercase;
   font-family: big-caslon-fb, sans-serif;
+  font-size: 5.625rem;
   font-weight: 400;
 }
 
@@ -7757,6 +7760,7 @@ figcaption {
 
   .header_background-image-wrapper {
     flex-flow: column;
+    min-height: auto;
     display: flex;
   }
 
@@ -8276,6 +8280,10 @@ figcaption {
   .contact_component {
     grid-row-gap: 3rem;
     grid-template-columns: 1fr;
+  }
+
+  .content-header_image-wrapper {
+    min-height: 30rem;
   }
 }
 
