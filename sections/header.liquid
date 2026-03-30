@@ -160,7 +160,7 @@
                   </div>
                 </div>
                 <div class="mobile-nav-links_account-layout show-tablet">
-                  <a href="#" class="button is-secondary w-button">Log In</a>
+                  <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="button is-secondary w-button">Log In</a>
                   <a href="#" class="button w-button">Register</a>
                 </div>
               </div>
