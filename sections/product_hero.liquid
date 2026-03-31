@@ -55,7 +55,27 @@ function initGallery() {
 initGallery();
 </script></div></div></div><div class="product-details_wrapper"><a id="w-node-_80eb7b15-ebd5-1617-fdfc-2d1ea1dfd0e5-5313685d" href="{{product.collections.first.url}}" class="product-details_backlink-wrapper w-inline-block"><div class="product-details_backlink"><</div><p li-object="product.collections.first.title" class="product-details_backlink">{{ product.collections.first.title }}</p></a><div li-content-for-theme-blocks="" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136879-5313685d" class="product-header_product-details">
 {% content_for 'blocks' %}
-</div><div class="hide w-embed w-script"><script>
+</div><div class="w-embed"><style>
+.overflow-hidden.is-start > :first-child{
+  min-height: 0;
+}
+.overflow-hidden.is-end > :first-child{
+  min-height: 0;
+}
+.overflow-hidden.is-start{
+transition: grid-template-rows 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+.overflow-hidden.is-end{
+transition: grid-template-rows 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+.overflow-hidden.is-end.completed-animation{
+padding-top: 0.5rem;
+padding-bottom: 0.5rem;
+}
+.is-colour-swatch .product-header_radio-button {
+  background-color: var(--swatch);
+}
+</style></div><div class="hide w-embed w-script"><script>
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[module-link]').forEach(link => {
     link.addEventListener('click', () => {
