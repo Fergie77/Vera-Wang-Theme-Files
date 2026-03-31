@@ -62,55 +62,25 @@ initGallery();
     </template><div class="product-header_tag-list"><template x-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
             <div li-js-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price" class="product-item_tag is-red hide">
         Sale        </div>
-    </template></div></div></div></div>{% for block in section.blocks %}
-    {% if block.type == "product-name" %}
-                    <div data-cart-animation="reveal-on-scroll" li-block="Product Name" class="overflow-hidden is-end">
-                                    <h1 li-object:text="product.title" class="product-title">
+    </template></div></div></div></div><div data-cart-animation="reveal-on-scroll" class="overflow-hidden is-end"><h1 li-object:text="product.title" class="product-title">
 {{ product.title }}
-</h1>
-                            </div>
-            {% endif %}
-{% endfor %}{% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list hide-mobile-landscape">
+</h1></div>{% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list hide-mobile-landscape">
     <template x-for="(option, optionKey) in product.options" :key="optionKey">
     <div x-bind:class="(option.toLowerCase()==='colour'||option.toLowerCase()==='color') ? 'is-colour-swatch' : ''" li-element="product-options-loop" class="product-header_option" data-ProductVariantsLoop="true"><div li-element="product-options-name" x-text="option">Variant</div><div class="product-header_radio-list"><template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
     <label x-bind:style="(option.toLowerCase()==='colour'||option.toLowerCase()==='color') ? {'--swatch': variantName} : {}" li-element="product-option-loop" class="product-header_radio w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom product-header_radio-button w-radio-input"></div><input type="radio" li-element="product-option-input" style="opacity:0;position:absolute;z-index:-1" x-on:click="setVariant" :name="option" :data-name="option" :value="variantName" :id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" :checked="selected_or_first_available_variant?.options.includes(variantName)" data-selectorType="radio" :class="firstOptionHasAvailableChildren[variantName] ? '' : 'data-disabled'"><span x-bind:style="(option.toLowerCase()==='colour'||option.toLowerCase()==='color') ? 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)' : ''" li-element="product-option-name" class="text-size-regular text-weight-light w-form-label" for="radio-6" x-text="variantName" :for="variantName">XS</span></label></template></div></div></template>    </div>
-{% endif %}{% for block in section.blocks %}
-    {% if block.type == "product-price" %}
-                    <div data-cart-animation="reveal-on-scroll" li-block="Product Price" class="overflow-hidden is-end">
-                                    <div class="product-header_price-wrapper"><div li-js-price="product.selected_or_first_available_variant.price" class="product-price" x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.price, true, '{{ shop.money_with_currency_format }}')">$55</div><template x-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
+{% endif %}<div data-cart-animation="reveal-on-scroll" class="overflow-hidden is-end"><div class="product-header_price-wrapper"><div li-js-price="product.selected_or_first_available_variant.price" class="product-price" x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.price, true, '{{ shop.money_with_currency_format }}')">$55</div><template x-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
             <div li-js-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
         <div li-js-price="product.selected_or_first_available_variant.compare_at_price" class="product-price text-style-muted text-style-strikethrough" x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.compare_at_price, true, '{{ shop.money_with_currency_format }}')">$55</div>        </div>
     </template><div class="product-header_tag-list hide"><template x-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
             <div li-js-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price" class="product-item_tag is-red">
         Sale        </div>
-    </template></div></div>
-                            </div>
-            {% endif %}
-{% endfor %}{% for block in section.blocks %}
-    {% if block.type == "description-mobile" %}
-                    <div data-cart-animation="reveal-on-scroll" li-block="Description Mobile" class="overflow-hidden is-end show-mobile-landscape">
-                                    <div class="product-header_description"><div li-object="product.description" class="text-rich-text max-width-large w-richtext">{{ product.description }}</div><div class="product-header_links-layout"><a module-link="product-details" href="#" class="product-header_link cta-text">Product Details</a><a module-link="size-guide" href="#" class="product-header_link cta-text">Size & Fit Guide</a><a module-link="shipping" href="#" class="product-header_link cta-text">Shipping and Returns</a></div></div>
-                            </div>
-            {% endif %}
-{% endfor %}{% for block in section.blocks %}
-    {% if block.type == "add-to-cart" %}
-                    <div li-block="Add to Cart" class="overflow-hidden">
-                                    <div class="product-header_add-to-cart-wrapper"><input class="form_input hide w-input" maxlength="256" name="properties[Note]" data-name="Field" placeholder="Note" type="text" id="field"><template x-if="selected_or_first_available_variant.available">
+    </template></div></div></div><div data-cart-animation="reveal-on-scroll" class="overflow-hidden is-end show-mobile-landscape"><div class="product-header_description"><div li-object="product.description" class="text-rich-text max-width-large w-richtext">{{ product.description }}</div><div class="product-header_links-layout"><a module-link="product-details" href="#" class="product-header_link cta-text">Product Details</a><a module-link="size-guide" href="#" class="product-header_link cta-text">Size & Fit Guide</a><a module-link="shipping" href="#" class="product-header_link cta-text">Shipping and Returns</a></div></div></div><div class="overflow-hidden"><div class="product-header_add-to-cart-wrapper"><input class="form_input hide w-input" maxlength="256" name="properties[Note]" data-name="Field" placeholder="Note" type="text" id="field"><template x-if="selected_or_first_available_variant.available">
             <div li-js-if="selected_or_first_available_variant.available" class="product-header_buy-wrappper">
         <input class="form_input is-quantity hide w-input" maxlength="256" name="quantity-4" li-element="add-to-cart-quantity" data-name="Quantity 4" placeholder="1" type="number" id="quantity-4" required="" x-model="quantity"><a li-element="add-to-cart" href="#" class="button max-width-full is-dark-mobile w-button" @click="addToCart($event, true)" :disabled="!addToCartButton">Add to cart</a>        </div>
     </template><template x-if="!selected_or_first_available_variant.available">
             <div li-js-if="!selected_or_first_available_variant.available" class="product-header_out-of-stock">
         <a href="#" class="button is-secondary max-width-full pointer-events-off w-button">Not in Stock</a>        </div>
-    </template></div>
-                            </div>
-            {% endif %}
-{% endfor %}{% for block in section.blocks %}
-    {% if block.type == "description-desktop" %}
-                    <div li-block="Description Desktop" class="overflow-hidden is-end hide-mobile-landscape">
-                                    <div class="product-header_description"><div li-object="product.description" class="text-rich-text max-width-large w-richtext">{{ product.description }}</div><div class="product-header_links-layout"><a module-link="product-details" href="#" class="product-header_link">Product Details</a><a module-link="size-guide" href="#" class="product-header_link">Size & Fit Guide</a><a module-link="shipping" href="#" class="product-header_link">Shipping and Returns</a></div></div>
-                            </div>
-            {% endif %}
-{% endfor %}</div>{% endform %}<div class="w-form-done"><div>Thank you! Your submission has been received!</div></div><div class="w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div></div><div li-cloak="hide" class="w-embed"><style>
+    </template></div></div><div class="overflow-hidden is-end hide-mobile-landscape"><div class="product-header_description"><div li-object="product.description" class="text-rich-text max-width-large w-richtext">{{ product.description }}</div><div class="product-header_links-layout"><a module-link="product-details" href="#" class="product-header_link">Product Details</a><a module-link="size-guide" href="#" class="product-header_link">Size & Fit Guide</a><a module-link="shipping" href="#" class="product-header_link">Shipping and Returns</a></div></div></div></div>{% endform %}<div class="w-form-done"><div>Thank you! Your submission has been received!</div></div><div class="w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div></div><div li-cloak="hide" class="w-embed"><style>
 .overflow-hidden.is-start > :first-child{
   min-height: 0;
 }
@@ -249,54 +219,11 @@ document.addEventListener("DOMContentLoaded", () => {
     "tag": "section",
     "name": "Product Hero",
     "class": "section_product-header",
-    "blocks": [
-        {
-            "name": "Product Name",
-            "type": "product-name",
-            "settings": null
-        },
-        {
-            "name": "Product Price",
-            "type": "product-price",
-            "settings": null
-        },
-        {
-            "name": "Description Mobile",
-            "type": "description-mobile",
-            "settings": null
-        },
-        {
-            "name": "Add to Cart",
-            "type": "add-to-cart",
-            "settings": null
-        },
-        {
-            "name": "Description Desktop",
-            "type": "description-desktop",
-            "settings": null
-        }
-    ],
     "presets": [
         {
             "name": "Product Hero",
             "category": "Liquify",
-            "blocks": [
-                {
-                    "type": "product-name"
-                },
-                {
-                    "type": "product-price"
-                },
-                {
-                    "type": "description-mobile"
-                },
-                {
-                    "type": "add-to-cart"
-                },
-                {
-                    "type": "description-desktop"
-                }
-            ]
+            "blocks": []
         }
     ],
     "enabled_on": {
