@@ -12,15 +12,9 @@
     "product_hero": {
       "type": "product_hero",
       "blocks": {
-        "description_mobile_TiH9fU": {
-          "type": "description-mobile",
-          "name": "Description Mobile",
-          "settings": {},
-          "blocks": {}
-        },
-        "description_desktop_tCrYBW": {
-          "type": "description-desktop",
-          "name": "Description Desktop",
+        "product-name": {
+          "type": "product-name",
+          "name": "Product Name",
           "settings": {},
           "blocks": {}
         },
@@ -30,9 +24,9 @@
           "settings": {},
           "blocks": {}
         },
-        "product-name": {
-          "type": "product-name",
-          "name": "Product Name",
+        "description_mobile_TiH9fU": {
+          "type": "description-mobile",
+          "name": "Description Mobile",
           "settings": {},
           "blocks": {}
         },
@@ -47,15 +41,21 @@
           "name": "Add to Cart",
           "settings": {},
           "blocks": {}
+        },
+        "description_desktop_tCrYBW": {
+          "type": "description-desktop",
+          "name": "Description Desktop",
+          "settings": {},
+          "blocks": {}
         }
       },
       "block_order": [
-        "description_mobile_TiH9fU",
-        "description_desktop_tCrYBW",
-        "mobile_variants_WmNyyn",
         "product-name",
+        "mobile_variants_WmNyyn",
+        "description_mobile_TiH9fU",
         "product-price",
-        "add-to-cart"
+        "add-to-cart",
+        "description_desktop_tCrYBW"
       ],
       "settings": {}
     },
