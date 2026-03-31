@@ -1,12 +1,11 @@
 <div li-block="Add to Cart" class="overflow-hidden" {{ block.shopify_attributes }}>
-                    <div class="product-header_form-block w-form">{% form 'product', product, class: 'product-header_default-state' %}
-<div class="product-header_add-to-cart-wrapper"><input class="form_input hide w-input" maxlength="256" name="properties[Note]" data-name="Field" placeholder="Note" type="text" id="field"><template x-if="selected_or_first_available_variant.available">
+                    <div class="product-header_add-to-cart-wrapper"><input class="form_input hide w-input" maxlength="256" name="properties[Note]" data-name="Field" placeholder="Note" type="text" id="field"><template x-if="selected_or_first_available_variant.available">
             <div li-js-if="selected_or_first_available_variant.available" class="product-header_buy-wrappper">
         <input class="form_input is-quantity hide w-input" maxlength="256" name="quantity-4" li-element="add-to-cart-quantity" data-name="Quantity 4" placeholder="1" type="number" id="quantity-4" required="" x-model="quantity"><a li-element="add-to-cart" href="#" class="button max-width-full is-dark-mobile w-button" @click="addToCart($event, true)" :disabled="!addToCartButton">Add to cart</a>        </div>
     </template><template x-if="!selected_or_first_available_variant.available">
             <div li-js-if="!selected_or_first_available_variant.available" class="product-header_out-of-stock">
         <a href="#" class="button is-secondary max-width-full pointer-events-off w-button">Not in Stock</a>        </div>
-    </template></div>{% endform %}<div class="hide w-form-done"><div>Thank you! Your submission has been received!</div></div><div class="hide w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div></div>
+    </template></div>
                 </div> {% schema %} {
     "name": "Add to Cart",
     "settings": [],
