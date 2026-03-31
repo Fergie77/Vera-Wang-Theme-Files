@@ -41,7 +41,8 @@
                     <div class="product-header_option-list">
                       <div class="hide w-embed">{% assign color_index = nil %}
                         {% for option in product.options %}
-                        {% if option | downcase == 'color' %}
+                        {% assign option_downcase = option | downcase %}
+                        {% if option_downcase == 'color' or option_downcase == 'colour' %}
                         {% assign color_index = forloop.index0 %}
                         {% endif %}
                         {% endfor %}
