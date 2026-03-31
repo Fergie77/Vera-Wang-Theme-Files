@@ -18,12 +18,6 @@
           "settings": {},
           "blocks": {}
         },
-        "mobile_variants_WmNyyn": {
-          "type": "mobile-variants",
-          "name": "Mobile Variants",
-          "settings": {},
-          "blocks": {}
-        },
         "description_mobile_TiH9fU": {
           "type": "description-mobile",
           "name": "Description Mobile",
@@ -51,7 +45,6 @@
       },
       "block_order": [
         "product-name",
-        "mobile_variants_WmNyyn",
         "description_mobile_TiH9fU",
         "product-price",
         "add-to-cart",
