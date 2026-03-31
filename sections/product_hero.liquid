@@ -58,12 +58,19 @@ padding-bottom: 0.5rem;
   height: 24px;
   border-radius: 50%;
   background-color: var(--swatch) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.is-colour-swatch input:checked ~ .product-header_radio-button,
+.is-colour-swatch .w--redirected-checked.product-header_radio-button {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000 !important;
 }
 
 .is-colour-swatch .product-header_radio-list {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 12px;
 }
 
 .is-colour-swatch .product-header_radio {
