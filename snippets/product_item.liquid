@@ -60,7 +60,7 @@
                       {% if has_colour %}    <div li-if="has_colour" class="product-header_option">
     
                         <div class="product-header_radio-list">
-                          {% for variant in product.variants %}    <div li-for="variant in product.variants">
+                          {% for variant in product.variants %}    <div li-for="variant in product.variants" class="display-contents">
                                     
                             
                             {% assign colour_value = variant.options[color_index] %}
