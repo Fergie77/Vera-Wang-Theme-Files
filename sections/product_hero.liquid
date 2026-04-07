@@ -62,7 +62,7 @@ initGallery();
     </template><div class="product-header_tag-list"><template x-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
             <div li-js-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price" class="product-item_tag is-red hide">
         Sale        </div>
-    </template></div></div></div></div><div data-cart-animation="reveal-on-scroll" class="overflow-hidden is-end"><h1 li-object:text="product.title" class="product-title">
+    </template></div></div></div></div><div><div data-cart-animation="reveal-on-scroll" class="overflow-hidden is-end"><h1 li-object:text="product.title" class="product-title">
 {{ product.title }}
 </h1></div><div data-cart-animation="reveal-on-scroll" class="overflow-hidden is-end"><div class="product-header_price-wrapper"><div li-js-price="product.selected_or_first_available_variant.price" class="product-price" x-text="LiquifyHelper.moneyFormat(product.selected_or_first_available_variant.price, true, '{{ shop.money_with_currency_format }}')">$55</div><template x-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
             <div li-js-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
@@ -70,7 +70,7 @@ initGallery();
     </template><div class="product-header_tag-list hide"><template x-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price">
             <div li-js-if="product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price" class="product-item_tag is-red">
         Sale        </div>
-    </template></div></div></div>{% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list">
+    </template></div></div></div></div>{% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list">
     <template x-for="(option, optionKey) in product.options" :key="optionKey">
     <div x-bind:class="(option.toLowerCase()==='colour'||option.toLowerCase()==='color') ? 'is-colour-swatch' : ''" li-element="product-options-loop" class="product-header_option" data-ProductVariantsLoop="true"><div x-text="(option.toLowerCase()==='colour'||option.toLowerCase()==='color')   ? option + ': ' + (selected_or_first_available_variant?.options[optionKey] ?? '')   : option + ':'">Variant:</div><div class="product-header_radio-list"><template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
     <label x-bind:style="(option.toLowerCase()==='colour'||option.toLowerCase()==='color') ? {'--swatch': variantName} : {}" li-element="product-option-loop" class="product-header_radio w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom product-header_radio-button w-radio-input"></div><input type="radio" li-element="product-option-input" style="opacity:0;position:absolute;z-index:-1" x-on:click="setVariant" :name="option" :data-name="option" :value="variantName" :id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" :checked="selected_or_first_available_variant?.options.includes(variantName)" data-selectorType="radio" :class="firstOptionHasAvailableChildren[variantName] ? '' : 'data-disabled'"><span x-bind:style="(option.toLowerCase()==='colour'||option.toLowerCase()==='color') ? 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)' : ''" li-element="product-option-name" class="text-size-regular text-weight-light w-form-label" for="radio-6" x-text="variantName" :for="variantName">XS</span></label></template></div></div></template>    </div>
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 .product-header_option {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.25rem;
 }
 .product-header_option.is-colour-swatch {
   flex-direction: column;
