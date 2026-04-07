@@ -66,7 +66,7 @@
                             {% assign colour_value = variant.options[color_index] %}
                             
                             
-                            {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value" class="display-contents">
+                            {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
     
                               {% assign seen_colours = seen_colours | append: colour_value | append: '|' %}
                               <div class="product-header_radio-layout">
