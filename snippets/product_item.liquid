@@ -62,7 +62,7 @@
                         {% endfor %}
                         {% assign seen_colours = '' %}</div>
   
-                      {% if has_colour%}    <div li-if="colour_index != nil" class="product-header_option">
+                      {% if has_colour %}    <div li-if="has_colour" class="product-header_option">
     
                         {% for variant in product.variants %}    <div li-for="variant in product.variants">
                                     
