@@ -55,7 +55,8 @@
                         {% endif %}
                         {% endfor %}
                         {% assign seen_colours = '' %}</div>
-                      <div class="product-header_option">
+                      {% if colour_index != nil %}    <div li-if="colour_index != nil" class="product-header_option">
+    
                         {% for variant in product.variants %}    <div li-for="variant in product.variants">
                                     
                           
@@ -76,7 +77,8 @@
                         
                         </div>
 {% endfor %}
-                      </div>
+                          </div>
+{% endif %}
                     </div>
                   </div>
                 </a>
