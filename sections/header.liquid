@@ -1,6 +1,7 @@
 <div data-animation="over-right" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="">
           <div class="nav_container container-large">
             <div class="nav_dropdown-list-background"></div>
+            <div class="nav_dropdown-list-blurred-background"></div>
             <nav role="navigation" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86dfd-d5a86df8" class="nav_menu is-page-height-tablet w-nav-menu">
               <div class="nav-links_layout">
                 <div class="mobile-nav_wrapper">
@@ -869,15 +870,23 @@
         
         <div class="w-embed">
           <style>
-.section_navbar.scrolling .nav_logo-link{
-color: black;
+.section_navbar.scrolling .nav_logo-link {
+  color: black;
 }
-.nav_component.scrolling .nav_logo-link{
-color: black;
+.nav_component.scrolling .nav_logo-link {
+  color: black;
 }
 @media (min-width: 992px) {
+  .nav_dropdown-list-blurred-background {
+    transition: opacity 0.3s;
+  }
   .nav_container:has(.w--open) .nav_dropdown-list-background {
     background: white !important;
+  }
+  .nav_container:has(.w--open) .nav_dropdown-list-blurred-background {
+    opacity: 1;
+    backdrop-filter: blur(8px) grayscale(1) brightness(0.5);
+     transition: opacity 0.3s;
   }
 }
 @media (max-width: 991px) {
@@ -891,11 +900,13 @@ color: black;
     background: white !important;
   }
 }
-.nav_container:has(.nav_dropdown-toggle.w--open) ~ .nav_logo-link .wang-character{
-fill: white;
+.nav_container:has(.nav_dropdown-toggle.w--open)
+  ~ .nav_logo-link
+  .wang-character {
+  fill: white;
 }
-.nav_container:has(.nav_dropdown-toggle.w--open) ~ .nav_logo-link{
-color: black;
+.nav_container:has(.nav_dropdown-toggle.w--open) ~ .nav_logo-link {
+  color: black;
 }
 </style>
         </div> {% schema %} {
