@@ -51,8 +51,9 @@
                         {% assign has_colour = false %}
                         {% assign color_index = nil %}
                         {% for option in product.options %}
-                          {{ option }}
+                          
                         {% assign option_downcase = option | downcase %}
+                        {{ option_downcase }}
                         {% if option_downcase == 'color' or option_downcase == 'colour' %}
                         {% assign color_index = forloop.index0 %}
                         {% assign has_colour = true %}
