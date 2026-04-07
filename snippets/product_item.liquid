@@ -68,7 +68,8 @@
                                     
                           
                             {% assign colour_value = variant.options[color_index] %}
-                            
+                            DEBUG: index={{ color_index }} value={{ colour_value }}<br>
+  ...
                           
                             {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
     
