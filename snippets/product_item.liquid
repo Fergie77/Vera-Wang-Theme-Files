@@ -48,19 +48,15 @@
 {% endif %}
                     <div class="product-header_option-list">
                       <div class=" w-embed">
-                        {% assign has_colour = false %}
-                        {% assign color_index = nil %}
-                        {% for option in product.options %}
-                          
-                        {% assign option_downcase = option | downcase %}
-                       
-                        {% if option_downcase == 'color' or option_downcase == 'colour' %}
-                          test
-                        {% assign color_index = forloop.index0 %}
-                        {% assign has_colour = true %}
-                        {% endif %}
-                        {% endfor %}
-                        {% assign seen_colours = '' %}</div>
+                       {% assign has_colour = false %}
+{% assign color_index = nil %}
+{% for option in product.options %}
+  {% assign option_downcase = option | downcase %}
+  {% if option_downcase == 'color' or option_downcase == 'colour' %}
+    {% assign color_index = forloop.index0 %}
+    {% assign has_colour = true %}
+  {% endif %}
+{% endfor %}</div>
   
                       {% if has_colour %}    <div li-if="has_colour" class="product-header_option">
     
@@ -68,8 +64,7 @@
                                     
                           
                             {% assign colour_value = variant.options[color_index] %}
-                            DEBUG: index={{ color_index }} value={{ colour_value }}<br>
-  ...
+                            
                           
                             {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
     
