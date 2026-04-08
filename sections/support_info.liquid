@@ -6,22 +6,20 @@
                   <div class="padding-global">
                     <div class="container-large">
                       <div class="filter_feed-header">
-                        <div class="collections-menu_layout">
-                          <div li-for:inside="link in linklists[section.settings.menu].links">
+                        <div li-for:inside="link in linklists[section.settings.menu].links" class="collections-menu_layout">
         {% for link in linklists[section.settings.menu].links %}                            
-                            
+                          
                             {% for child_link in link.links %}    <div li-for="child_link in link.links" class="collections-menu_item">
                                     
-                              
+                            
                             <a li-object="child_link.title" li-object:href="child_link.url" href="{{ child_link.url }}" class="collections-menu_link">{{ child_link.title }}</a>
                             
-                            
+                          
                         </div>
 {% endfor %}
                             
-                          
+                        
                     {% endfor %}    </div>
-                        </div>
                       </div>
                     </div>
                   </div>
