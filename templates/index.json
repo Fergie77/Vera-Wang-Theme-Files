@@ -16,8 +16,8 @@
         "text_link_text": "",
         "text_color": "#ffffff",
         "image_image_right": "shopify://shop_images/image_130.jpg",
-        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR. NOW AVAILABLE ONLINE AND IN RETAIL  </p>",
-        "url_link": ""
+        "richtext_paragraph": "<p>VERA WANG READY TO WEAR NOW AVAILABLE ONLINE</p>",
+        "url_link": "shopify://collections/all"
       }
     },
     "featured_products": {
@@ -47,6 +47,9 @@
     "featured_wide": {
       "type": "featured_wide",
       "settings": {
+        "url_cta_link": "",
+        "text_heading": "Handbags",
+        "text_cta_text": "Call to action button",
         "url_link": ""
       }
     },
