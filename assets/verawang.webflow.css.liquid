@@ -5666,6 +5666,7 @@ figcaption {
 
 .dropdown_list {
   padding-top: 1rem;
+  padding-bottom: 1rem;
   font-size: clamp(.625rem, .589286rem + .178571vw, .75rem);
 }
 
@@ -6422,14 +6423,15 @@ figcaption {
 }
 
 .support-dropdown_list-wrapper {
-  height: 0;
-  transition: height .2s ease-in-out;
+  height: auto;
+  max-height: 0;
+  transition: max-height .2s ease-in-out;
   position: relative;
   overflow: scroll;
 }
 
 .support-dropdown_list-wrapper.is-open {
-  height: 20rem;
+  max-height: 20rem;
 }
 
 @media screen and (max-width: 991px) {

@@ -7,19 +7,21 @@
                     <div class="container-large">
                       <div class="filter_feed-header">
                         <div class="collections-menu_layout">
-                          <div>
-                            {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links" class="collections-menu_item">
+                          {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links">
+                                    
+                            
+                            {% for child_link in link.links %}    <div li-for="child_link in link.links" class="collections-menu_item">
                                     
                               
-                            {% for child_link in link.links %}    <a li-for="child_link in link.links" href="#" class="collections-menu_link">
-                                    Delivery & Shipping
-                        </a>
-{% endfor %}
+                            <a li-object="child_link.title" li-object:href="child_link.url" href="{{ child_link.url }}" class="collections-menu_link">{{ child_link.title }}</a>
                             
                             
                         </div>
 {% endfor %}
-                          </div>
+                            
+                          
+                        </div>
+{% endfor %}
                         </div>
                       </div>
                     </div>
@@ -50,7 +52,7 @@
                     </a>
                                     
                     
-                                    <div class="support-dropdown_list-wrapper is-open">
+                                    <div class="support-dropdown_list-wrapper">
                       <div class="dropdown_list w-richtext"> {{ block.settings.richtext_content }} </div>
                     </div>
                                     
