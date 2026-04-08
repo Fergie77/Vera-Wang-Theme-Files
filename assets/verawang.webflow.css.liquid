@@ -6373,9 +6373,12 @@ figcaption {
 .support_layout {
   grid-column-gap: 10rem;
   grid-row-gap: 10rem;
+  grid-template-rows: auto auto;
+  grid-template-columns: .5fr 1fr;
+  grid-auto-columns: 1fr;
   justify-content: flex-start;
   margin-bottom: 3rem;
-  display: flex;
+  display: grid;
 }
 
 .support-dropdowns_wrapper {
@@ -7559,6 +7562,13 @@ figcaption {
 
   .nav_dropdown-list-blurred-background {
     pointer-events: none;
+  }
+
+  .support_layout {
+    grid-column-gap: 3rem;
+    grid-row-gap: 3rem;
+    flex-flow: column;
+    display: flex;
   }
 }
 
@@ -9159,6 +9169,11 @@ figcaption {
 
   .content-header_heading {
     font-size: 3.6875rem;
+  }
+
+  .support_layout {
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
   }
 }
 
