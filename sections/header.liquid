@@ -27,7 +27,9 @@
                                 {% for child_link in link.links %}    <div li-for="child_link in link.links" id="w-node-_339062b0-bb44-b5ab-1265-6ef95233a0c5-d5a86df8">
                                     
                                   
-                            <a li-object="child_link.title" li-object:href="child_link.url" href="{{ child_link.url }}" class="nav_dropdown-heading">{{ child_link.title }}</a>
+                            <div class="margin-bottom margin-large">
+                                    <a li-object="child_link.title" li-object:href="child_link.url" href="{{ child_link.url }}" class="nav_dropdown-heading">{{ child_link.title }}</a>
+                                  </div>
                             
                                   
                             {% if child_link.links.size > 0 %}    <div li-if="child_link.links.size > 0">
