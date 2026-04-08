@@ -33,7 +33,8 @@
         "support-dropdown"
       ],
       "settings": {
-        "richtext_content": ""
+        "richtext_content": "",
+        "menu": "support-pages"
       }
     }
   },
