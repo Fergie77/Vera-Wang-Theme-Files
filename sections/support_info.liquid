@@ -7,8 +7,8 @@
                     <div class="container-large">
                       <div class="filter_feed-header">
                         <div class="collections-menu_layout">
-                          {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links">
-                                    
+                          <div li-for:inside="link in linklists[section.settings.menu].links">
+        {% for link in linklists[section.settings.menu].links %}                            
                             
                             {% for child_link in link.links %}    <div li-for="child_link in link.links" class="collections-menu_item">
                                     
@@ -20,8 +20,7 @@
 {% endfor %}
                             
                           
-                        </div>
-{% endfor %}
+                    {% endfor %}    </div>
                         </div>
                       </div>
                     </div>
