@@ -12,6 +12,13 @@
     "support_info": {
       "type": "support_info",
       "blocks": {
+        "support_dropdown_mPTGam": {
+          "type": "support-dropdown",
+          "settings": {
+            "text_heading": "Description",
+            "richtext_content": "<p>In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique. ‍ Product description here 100% material composition Colour: here Washing instructions go here Made in Country Loose fit Model is 189cm/6'2 and is wearing a size M Styled by Vera</p>"
+          }
+        },
         "support_dropdown_aJtJdj": {
           "type": "support-dropdown",
           "settings": {
@@ -29,6 +36,7 @@
         }
       },
       "block_order": [
+        "support_dropdown_mPTGam",
         "support_dropdown_aJtJdj",
         "support-dropdown"
       ],
