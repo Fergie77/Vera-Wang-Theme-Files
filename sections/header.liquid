@@ -876,19 +876,19 @@
   .nav_dropdown-list-blurred-background {
     transition: opacity 0.3s;
   }
-.nav_menu-dropdown {
-  position: relative;
-}
-.nav_menu-dropdown .nav_dropdown-list {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-.nav_menu-dropdown:hover .nav_dropdown-list,
-.nav_menu-dropdown:focus-within .nav_dropdown-list {
-  opacity: 1;
-  pointer-events: auto;
-}
+  .nav_menu-dropdown {
+    position: relative;
+  }
+  .nav_menu-dropdown .nav_dropdown-list {
+    opacity: 0 !important;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .nav_menu-dropdown:hover .nav_dropdown-list,
+  .nav_menu-dropdown:focus-within .nav_dropdown-list {
+    opacity: 1 !important;
+    pointer-events: auto;
+  }
   .nav_container:has(.w--open) .nav_dropdown-list-background {
     background: white !important;
   }
