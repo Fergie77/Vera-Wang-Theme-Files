@@ -912,7 +912,7 @@ figcaption {
 }
 
 .section_footer {
-  border-top: 1px solid var(--base-color-neutral--neutral-lighter);
+  border-top: 1px none var(--base-color-neutral--neutral-lighter);
   color: var(--text-color--text-primary);
   flex-flow: column;
   justify-content: space-between;
@@ -5665,6 +5665,7 @@ figcaption {
 }
 
 .dropdown_list {
+  padding-top: 1rem;
   font-size: clamp(.625rem, .589286rem + .178571vw, .75rem);
 }
 
@@ -6360,6 +6361,75 @@ figcaption {
   pointer-events: none;
   position: fixed;
   inset: 0%;
+}
+
+.support_heading {
+  text-transform: uppercase;
+  font-family: big-caslon-fb, sans-serif;
+  line-height: 1;
+}
+
+.support_layout {
+  grid-column-gap: 10rem;
+  grid-row-gap: 10rem;
+  justify-content: flex-start;
+  margin-bottom: 3rem;
+  display: flex;
+}
+
+.support-dropdowns_wrapper {
+  max-width: 80ch;
+}
+
+.support-dropdowns_layout {
+  flex-flow: column;
+  display: flex;
+}
+
+.support-dropdown_title {
+  text-transform: none;
+  font-family: Helvetica Now Var, Arial, sans-serif;
+  font-size: .875rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.dropdown_svg {
+  width: 100%;
+}
+
+.support-dropdown_icon {
+  justify-content: center;
+  align-items: center;
+  width: .8125rem;
+  height: auto;
+  display: flex;
+  position: relative;
+}
+
+.support-dropdown_icon.is-open {
+  transform-style: preserve-3d;
+  transform: rotateX(180deg)rotateY(0)rotateZ(0);
+}
+
+.support-dropdown_toggle {
+  border-bottom: 1px solid #000;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  display: flex;
+}
+
+.support-dropdown_list-wrapper {
+  height: 0;
+  transition: height .2s ease-in-out;
+  position: relative;
+  overflow: scroll;
+}
+
+.support-dropdown_list-wrapper.is-open {
+  height: 20rem;
 }
 
 @media screen and (max-width: 991px) {
@@ -9525,6 +9595,10 @@ figcaption {
 
 #w-node-_55111fc2-c8ed-42b9-7043-dc445ae85d27-4c01d569 {
   grid-area: 3 / 2 / 4 / 3;
+}
+
+#w-node-_86299e64-37b8-354f-f82f-7f862aaee015-b649071f {
+  grid-area: span 1 / span 1 / span 1 / span 1;
 }
 
 @media screen and (max-width: 991px) {
