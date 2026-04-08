@@ -6,16 +6,15 @@
                   <div class="padding-global">
                     <div class="container-large">
                       <div class="filter_feed-header">
-                        {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links" class="collections-menu_layout">
-                                    
+                        <div li-for:inside="link in linklists[section.settings.menu].links" class="collections-menu_layout">
+        {% for link in linklists[section.settings.menu].links %}                            
                           
                             <div class="collections-menu_item">
                             <a li-object="link.title" li-object:href="link.url" href="{{ link.url }}" class="collections-menu_link">{{ link.title }}</a>
                           </div>
                             
                         
-                        </div>
-{% endfor %}
+                    {% endfor %}    </div>
                       </div>
                     </div>
                   </div>
