@@ -1,21 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "support_info": {
-            "type": "support_info",
-            "blocks": {
-                "support-dropdown": {
-                    "type": "support-dropdown",
-                    "name": "Support Dropdown"
-                }
-            },
-            "block_order": [
-                "support-dropdown"
-            ]
+  "sections": {
+    "support_info": {
+      "type": "support_info",
+      "blocks": {
+        "support-dropdown": {
+          "type": "support-dropdown",
+          "name": "Support Dropdown",
+          "settings": {
+            "text_heading": "Description",
+            "richtext_content": "<p>In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique. ‍ Product description here 100% material composition Colour: here Washing instructions go here Made in Country Loose fit Model is 189cm/6'2 and is wearing a size M Styled by Vera</p>"
+          }
         }
-    },
-    "layout": "theme",
-    "wrapper": "main.main-wrapper",
-    "order": [
-        "support_info"
-    ]
+      },
+      "block_order": [
+        "support-dropdown"
+      ],
+      "settings": {
+        "richtext_content": "",
+        "menu": "support-pages"
+      }
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "support_info"
+  ]
 }
