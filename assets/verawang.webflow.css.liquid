@@ -1861,14 +1861,14 @@ figcaption {
 
 .nav_dropdown-list.no-scrollbar {
   opacity: 0;
-  pointer-events: none;
-  background-color: #fff0;
+  pointer-events: auto;
+  background-color: #fff;
   flex-flow: wrap;
   width: 100%;
   padding-top: 4rem;
   display: flex;
   position: fixed;
-  inset: 0%;
+  inset: 0% 0% 15%;
 }
 
 .nav_dropdown-list.no-scrollbar.w--open {
@@ -7251,6 +7251,7 @@ figcaption {
   }
 
   .nav_dropdown-list-background {
+    z-index: 0;
     opacity: 0;
     -webkit-backdrop-filter: brightness(60%) blur(5px);
     backdrop-filter: brightness(60%) blur(5px);
@@ -7474,6 +7475,10 @@ figcaption {
   .content-header_image-wrapper {
     position: relative;
     top: 0;
+  }
+
+  .nav_dropdown-list-blurred-background {
+    pointer-events: none;
   }
 }
 
@@ -9189,7 +9194,7 @@ figcaption {
   place-self: center start;
 }
 
-#w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86e09-d5a86df8 {
+#w-node-_339062b0-bb44-b5ab-1265-6ef95233a0c5-d5a86df8 {
   justify-self: start;
 }
 
