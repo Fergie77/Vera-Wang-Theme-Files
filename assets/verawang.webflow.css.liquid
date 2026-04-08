@@ -1927,6 +1927,7 @@ figcaption {
 
 .nav_shop-icon {
   cursor: pointer;
+  color: inherit;
   justify-content: center;
   align-items: center;
   padding: 0;
@@ -1943,7 +1944,6 @@ figcaption {
 }
 
 .nav_shop-quantity {
-  color: var(--link-color--link-secondary);
   border-radius: 100%;
   justify-content: center;
   align-items: center;
@@ -6350,6 +6350,8 @@ figcaption {
 .nav_dropdown-list-blurred-background {
   z-index: 1;
   opacity: 0;
+  -webkit-backdrop-filter: brightness(50%) blur(5px);
+  backdrop-filter: brightness(50%) blur(5px);
   position: fixed;
   inset: 0%;
 }
