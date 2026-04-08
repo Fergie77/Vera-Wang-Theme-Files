@@ -1,0 +1,21 @@
+{
+    "sections": {
+        "support_info": {
+            "type": "support_info",
+            "blocks": {
+                "support-dropdown": {
+                    "type": "support-dropdown",
+                    "name": "Support Dropdown"
+                }
+            },
+            "block_order": [
+                "support-dropdown"
+            ]
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "support_info"
+    ]
+}
