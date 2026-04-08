@@ -13,26 +13,22 @@
                   {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links" class="hide-tablet">
                                     
                     
-                            {% if link.links.size > 0 %}    <div data-hover="true" data-delay="200" li-if="link.links.size > 0" class="nav_menu-dropdown w-dropdown">
+                            {% if link.links.size > 0 %}    <div li-if="link.links.size > 0" class="nav_menu-dropdown">
     
-                      <div class="nav_dropdown-toggle w-dropdown-toggle">
-                        <a li-object:href="link.url" href="{{ link.url }}" class="nav_dropdown-link-style w-inline-block">
-                          <div>
-                            <div li-object="link.title" class="nav_link-text">{{ link.title }}</div>
-                          </div>
-                        </a>
-                      </div>
-                      {% if link.links.size > 0  %}    <nav li-if="link.links.size > 0 " class="nav_dropdown-list no-scrollbar w-dropdown-list">
+                      <a li-object:href="link.url" href="{{ link.url }}" class="nav_dropdown-toggle w-inline-block">
+                        <div>Womenswear</div>
+                      </a>
+                      {% if link.links.size > 0  %}    <div li-if="link.links.size > 0 " class="nav_dropdown-list no-scrollbar">
     
                         <div class="nav_divider"></div>
                         <div class="nav_dropdown-list-layout">
                           <div class="padding-global max-width-full">
                             <div class="container-large">
                               <div class="nav_dropdown-grid">
-                                {% for child_link in link.links %}    <div li-for="child_link in link.links" id="w-node-_9132635a-7891-b0d1-9b20-ecb0d5a86e09-d5a86df8">
+                                {% for child_link in link.links %}    <div li-for="child_link in link.links" id="w-node-_339062b0-bb44-b5ab-1265-6ef95233a0c5-d5a86df8">
                                     
                                   
-                            <a href="{{ child_link.url }}" li-object="child_link.title" li-object:href="child_link.url" class="nav_dropdown-heading w-dropdown-link">{{ child_link.title }}</a>
+                            <a li-object="child_link.title" li-object:href="child_link.url" href="{{ child_link.url }}" class="nav_dropdown-heading">{{ child_link.title }}</a>
                             
                                   
                             {% if child_link.links.size > 0 %}    <div li-if="child_link.links.size > 0">
@@ -40,7 +36,7 @@
                                     {% for grandchild_link in child_link.links %}    <div li-for="grandchild_link in child_link.links">
                                     
                                       
-                            <a href="{{ grandchild_link.url }}" li-object="grandchild_link.title" li-object:href="grandchild_link.url" class="nav_dropdown-link_child w-dropdown-link">{{ grandchild_link.title }}</a>
+                            <a li-object="grandchild_link.title" li-object:href="grandchild_link.url" href="{{ grandchild_link.url }}" class="nav_dropdown-link_child">{{ grandchild_link.title }}</a>
                             
                                     
                         </div>
@@ -56,7 +52,7 @@
                           </div>
                           <a href="{{ section.settings.url_link }}" class="nav_image-wrapper w-inline-block"> {% if section.settings.image_image %} {{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'nav_image' }} {% else %} <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="nav_image"> {% endif %} <p class="nav_image-header">{{ section.settings.text_image_heading }}</p> <p class="nav_image-paragraph">{{ section.settings.text_image_paragraph }}</p> </a>
                         </div>
-                          </nav>
+                          </div>
 {% endif %}
                         </div>
 {% endif %}
@@ -880,13 +876,25 @@
   .nav_dropdown-list-blurred-background {
     transition: opacity 0.3s;
   }
+.nav_menu-dropdown {
+  position: relative;
+}
+.nav_menu-dropdown .nav_dropdown-list {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.nav_menu-dropdown:hover .nav_dropdown-list,
+.nav_menu-dropdown:focus-within .nav_dropdown-list {
+  opacity: 1;
+  pointer-events: auto;
+}
   .nav_container:has(.w--open) .nav_dropdown-list-background {
     background: white !important;
   }
   .nav_container:has(.w--open) .nav_dropdown-list-blurred-background {
     opacity: 1;
     backdrop-filter: blur(8px) grayscale(1) brightness(0.5);
-     transition: opacity 0.3s;
   }
 }
 @media (max-width: 991px) {
