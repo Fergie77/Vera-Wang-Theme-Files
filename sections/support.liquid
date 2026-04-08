@@ -1,0 +1,133 @@
+<div class="collection-page_custom-padding">
+          <div>
+            <div class="filter_layout">
+              <div id="w-node-_86299e64-37b8-354f-f82f-7f862aaee015-b649071f" class="filter_feed">
+                <div class="filter_feed-heading_wrapper">
+                  <div class="padding-global">
+                    <div class="container-large">
+                      <div class="filter_feed-header">
+                        <div class="collections-menu_layout">
+                          <div>
+                            {% for link in linklists[section.settings.menu].links %}    <div li-for="link in linklists[section.settings.menu].links" class="collections-menu_item">
+                                    
+                              
+                            {% for child_link in link.links %}    <a li-for="child_link in link.links" href="#" class="collections-menu_link">
+                                    Delivery & Shipping
+                        </a>
+{% endfor %}
+                            
+                            
+                        </div>
+{% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="support_layout">
+              <h1 class="support_heading">Delivery<br>& Shipping</h1>
+              <div class="support-dropdowns_wrapper">
+                <div class="support-dropdowns_layout">
+                  {% for block in section.blocks %}
+    {% if block.type == "support-dropdown" %}
+                    <div li-block="Support Dropdown" class="dropdown_wrapper">
+                                    
+                    
+                                    <a href="#" class="support-dropdown_toggle w-inline-block">
+                      <h2 class="support-dropdown_title">
+{{ block.settings.text_heading }}
+</h2>
+                      <div class="support-dropdown_icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 13 9" fill="none" class="dropdown_svg">
+                          <path d="M0 0H1.96377L4.23188 3.16384L6.5 0L8.76812 3.16384L11.0362 0H13L6.5 9L0 0Z" fill="#C1BFBF"></path>
+                        </svg></div>
+                    </a>
+                                    
+                    
+                                    <div class="support-dropdown_list-wrapper is-open">
+                      <div class="dropdown_list w-richtext"> {{ block.settings.richtext_content }} </div>
+                    </div>
+                                    
+                    
+                                    <div class="hide w-embed w-script">
+                      <script>
+  (function () {
+    const root = document.currentScript.closest('.dropdown_wrapper');
+    const toggle = root.querySelector('.support-dropdown_toggle');
+    const list = root.querySelector('.support-dropdown_list-wrapper');
+    const icon = root.querySelector('.support-dropdown_icon');
+    if (!window.Webflow || !window.Webflow.env('editor')) {
+      list.classList.remove('is-open');
+    }
+    toggle.addEventListener('click', () => {
+      list.classList.toggle('is-open');
+      icon.classList.toggle('is-open');
+    });
+  })();
+</script>
+                    </div>
+                                    
+                  
+                            </div>
+            {% endif %}
+{% endfor %}
+                  <div class="text-rich-text w-richtext"> {{ section.settings.richtext_content }} </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Support",
+    "class": "section_filter",
+    "blocks": [
+        {
+            "name": "Support Dropdown",
+            "type": "support-dropdown",
+            "settings": [
+                {
+                    "id": "text_heading",
+                    "type": "text",
+                    "label": "Heading",
+                    "default": "Description"
+                },
+                {
+                    "id": "richtext_content",
+                    "type": "richtext",
+                    "label": "Content",
+                    "default": "<p>In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique. \u200d Product description here 100% material composition Colour: here Washing instructions go here Made in Country Loose fit Model is 189cm\/6'2 and is wearing a size M Styled by Vera<\/p>"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "id": "richtext_content",
+            "type": "richtext",
+            "label": "Content",
+            "default": "<p>Heading 1 Heading 2 Heading 3 Heading 4 Heading 5 Heading 6 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Block quote Ordered list Item 1 Item 2 Item 3 Unordered list Item A Item B Item C <a <\/p>"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Support",
+            "category": "Liquify",
+            "blocks": [
+                {
+                    "type": "support-dropdown"
+                }
+            ]
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "collection"
+        ]
+    }
+} {% endschema %}
