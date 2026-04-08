@@ -36,11 +36,11 @@
     "cta_1": {
       "type": "cta_1",
       "settings": {
-        "url_link": "",
+        "url_link": "shopify://collections/all",
         "text_eyebrow_text": "THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE",
-        "text_heading": "Heading Copy",
-        "text_sub_heading": "Subhead Copy",
-        "text_link_text": "Call to action link",
+        "text_heading": "Autumn Winter 2026",
+        "text_sub_heading": "Elevated Contemporary Womenswear",
+        "text_link_text": "Explore New Season",
         "image_image": "shopify://shop_images/image_120.jpg"
       }
     },
