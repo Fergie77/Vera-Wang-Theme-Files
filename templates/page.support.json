@@ -1,21 +1,22 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "support": {
-            "type": "support",
-            "blocks": {
-                "support-dropdown": {
-                    "type": "support-dropdown",
-                    "name": "Support Dropdown"
-                }
-            },
-            "block_order": [
-                "support-dropdown"
-            ]
-        }
-    },
-    "layout": "theme",
-    "wrapper": "main.main-wrapper",
-    "order": [
-        "support"
-    ]
+  "sections": {
+    "default": {
+      "type": "default",
+      "settings": {}
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "default"
+  ]
 }
