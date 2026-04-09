@@ -328,7 +328,7 @@
 <li class="predictive-search_produt-item">
     
                                             
-    <a li-object:href="product.url" href="{{ product.url }}" class="mini-cart_line-item_item w-inline-block">test
+    <a li-object:href="product.url" href="{{ product.url }}" class="mini-cart_line-item_item w-inline-block">
                                               <div class="mini-cart_line-item_img"><img li-object:src="product.featured_image | img_url: 'master'" li-object:alt="product.featured_image.alt" alt="{{ product.featured_image.alt }}" src="{{ product.featured_image | img_url: 'master' }}" loading="lazy" class="predictive-search_image"></div>
                                               <div class="mini-cart_line-item_product-info">
                                                 <div class="product-info_layout">
@@ -786,7 +786,6 @@
                           <div class="mini-cart_line-item">
                             <ul role="list" class="mini-cart_line-item_list w-list-unstyled">
                               <template x-for="product in products" :key="product.key">
-    <li li-element="mini-cart-item" class="mini-cart_line-item_item"><img src="../images/product-apparel-2.svg" loading="lazy" alt="" class="mini-cart_line-item_img" x-bind:src="product.image">
                                 <div class="mini-cart_line-item_product-info">
                                   <div class="product-info_wrapper">
                                     <div class="product-info_layout">
