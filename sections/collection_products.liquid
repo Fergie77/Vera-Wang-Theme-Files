@@ -10,7 +10,7 @@
 {{ section.settings.text_filter }}
 </div>
                       <a li-object:href="collection.url" href="{{ collection.url }}" class="button is-link hide-tablet w-inline-block">
-                        <div>
+                        <div class="hide">
 {{ section.settings.text_clear_all }}
 </div>
                       </a>
@@ -29,7 +29,7 @@
                             {% if filter.values.size > 1 %}    <div li-if="filter.values.size > 1">
     
                             <div class="filter_filter-group-heading">
-                              <div li-object="filter.label" class="text-size-medium text-weight-semibold">{{ filter.label }}</div>
+                              <div li-object="filter.label" class="text-size-medium">{{ filter.label }}</div>
                             </div>
                             <div class="filter_list">
                               {% for filter_value in filter.values %}    <div li-for="filter_value in filter.values" class="filter_item">
@@ -61,31 +61,26 @@
                   <div class="padding-global">
                     <div class="container-large">
                       <div li-cloak="hide" class="w-embed">{% assign main_nav = linklists['main-menu'] %}
-{% assign active_section = blank %}
-{% assign active_group = blank %}
-
-{% for section_link in main_nav.links %}
-  {% if section_link.active or section_link.child_active %}
-    {% assign active_section = section_link %}
-
-    {% for group_link in section_link.links %}
-      {% if group_link.active or group_link.child_active %}
-        {% assign active_group = group_link %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-
-    {% break %}
-  {% endif %}
-{% endfor %}
-
-{% assign submenu_links = blank %}
-
-{% if active_group != blank and active_group.links != blank %}
-  {% assign submenu_links = active_group.links %}
-{% elsif active_section != blank and active_section.links != blank %}
-  {% assign submenu_links = active_section.links %}
-{% endif %}</div>
+                        {% assign active_section = blank %}
+                        {% assign active_group = blank %}
+                        {% for section_link in main_nav.links %}
+                        {% if section_link.active or section_link.child_active %}
+                        {% assign active_section = section_link %}
+                        {% for group_link in section_link.links %}
+                        {% if group_link.active or group_link.child_active %}
+                        {% assign active_group = group_link %}
+                        {% break %}
+                        {% endif %}
+                        {% endfor %}
+                        {% break %}
+                        {% endif %}
+                        {% endfor %}
+                        {% assign submenu_links = blank %}
+                        {% if active_group != blank and active_group.links != blank %}
+                        {% assign submenu_links = active_group.links %}
+                        {% elsif active_section != blank and active_section.links != blank %}
+                        {% assign submenu_links = active_section.links %}
+                        {% endif %}</div>
                       <div class="filter_feed-header">
                         {% unless submenu_links != blank %}    <div li-cloak="hide" li-unless="submenu_links != blank">
         </div>
