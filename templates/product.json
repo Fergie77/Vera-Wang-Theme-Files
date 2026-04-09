@@ -11,45 +11,6 @@
   "sections": {
     "product_hero": {
       "type": "product_hero",
-      "blocks": {
-        "product-name": {
-          "type": "product-name",
-          "name": "Product Name",
-          "settings": {},
-          "blocks": {}
-        },
-        "description_mobile_TiH9fU": {
-          "type": "description-mobile",
-          "name": "Description Mobile",
-          "settings": {},
-          "blocks": {}
-        },
-        "product-price": {
-          "type": "product-price",
-          "name": "Product Price",
-          "settings": {},
-          "blocks": {}
-        },
-        "add-to-cart": {
-          "type": "add-to-cart",
-          "name": "Add to Cart",
-          "settings": {},
-          "blocks": {}
-        },
-        "description_desktop_tCrYBW": {
-          "type": "description-desktop",
-          "name": "Description Desktop",
-          "settings": {},
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "product-name",
-        "description_mobile_TiH9fU",
-        "product-price",
-        "add-to-cart",
-        "description_desktop_tCrYBW"
-      ],
       "settings": {}
     },
     "recommended_products": {
@@ -66,7 +27,8 @@
           "type": "block",
           "name": "Block",
           "settings": {
-            "url_link": ""
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_797.jpg"
           },
           "blocks": {}
         },
@@ -74,14 +36,16 @@
           "type": "block",
           "name": "Block",
           "settings": {
-            "url_link": ""
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_796.jpg"
           },
           "blocks": {}
         },
         "block_MVVEGW": {
           "type": "block",
           "settings": {
-            "url_link": ""
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_798.jpg"
           },
           "blocks": {}
         }
