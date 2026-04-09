@@ -60,38 +60,41 @@
                 <div class="filter_feed-heading_wrapper">
                   <div class="padding-global">
                     <div class="container-large">
+                      <div li-cloak="hide" class="w-embed">{% assign main_nav = linklists['main-menu'] %}
+                        {% assign active_section = blank %}
+                        {% assign active_group = blank %}
+                        {% for section_link in main_nav.links %}
+                        {% if section_link.active %}
+                        {% assign active_section = section_link %}
+                        {% for group_link in section_link.links %}
+                        {% if group_link.active %}
+                        {% assign active_group = group_link %}
+                        {% break %}
+                        {% endif %}
+                        {% for child_link in group_link.links %}
+                        {% if child_link.active %}
+                        {% assign active_group = group_link %}
+                        {% break %}
+                        {% endif %}
+                        {% endfor %}
+                        {% if active_group != blank %}
+                        {% break %}
+                        {% endif %}
+                        {% endfor %}
+                        {% break %}
+                        {% endif %}
+                        {% endfor %}
+                        {% assign submenu_links = blank %}
+                        {% if active_group != blank and active_group.links != blank %}
+                        {% assign submenu_links = active_group.links %}
+                        {% elsif active_section != blank and active_section.links != blank %}
+                        {% assign submenu_links = active_section.links %}
+                        {% endif %}</div>
                       <div class="filter_feed-header">
-                        <div li-cloak="hide" class="w-embed">{% assign main_nav = linklists['main-menu'] %}
-                          {% assign active_section = blank %}
-                          {% assign active_group = blank %}
-                          {% for section_link in main_nav.links %}
-                          {% if section_link.active %}
-                          {% assign active_section = section_link %}
-                          {% for group_link in section_link.links %}
-                          {% if group_link.active %}
-                          {% assign active_group = group_link %}
-                          {% break %}
-                          {% endif %}
-                          {% for child_link in group_link.links %}
-                          {% if child_link.active %}
-                          {% assign active_group = group_link %}
-                          {% break %}
-                          {% endif %}
-                          {% endfor %}
-                          {% if active_group != blank %}
-                          {% break %}
-                          {% endif %}
-                          {% endfor %}
-                          {% break %}
-                          {% endif %}
-                          {% endfor %}
-                          {% assign submenu_links = blank %}
-                          {% if active_group != blank and active_group.links != blank %}
-                          {% assign submenu_links = active_group.links %}
-                          {% elsif active_section != blank and active_section.links != blank %}
-                          {% assign submenu_links = active_section.links %}
-                          {% endif %}</div>
-                        {% if submenu_links != blank %}    <div li-if="sub_collections != blank" class="collections-menu_layout">
+                        {% unless submenu_links != blank %}    <div li-cloak="hide" li-unless="submenu_links != blank">
+        </div>
+{% endunless %}
+                        {% if submenu_links != blank %}    <div li-if="submenu_links != blank" class="collections-menu_layout">
     
                           {% for menu_link in submenu_links %}    <div li-for="menu_link in submenu_links" class="collections-menu_item">
                                     
@@ -209,7 +212,27 @@
                         </div>
 {% endfor %}
                       </div>
-                      <p class="results-text"><span li-object="collection.products_count">{{ collection.products_count }}</span> Results</p>
+                      <div>
+                        <div li-cloak="hide" class="w-embed">{% assign color_variant_count = 0 %}
+                          {% for product in collection.products %}
+                          {% assign color_index = nil %}
+                          {% for option in product.options %}
+                          {% assign option_name = option | downcase %}
+                          {% if option_name == 'color' or option_name == 'colour' %}
+                          {% assign color_index = forloop.index0 %}
+                          {% break %}
+                          {% endif %}
+                          {% endfor %}
+                          {% if color_index != nil %}
+                          {% for variant in product.variants %}
+                          {% if variant.options[color_index] != blank %}
+                          {% assign color_variant_count = color_variant_count | plus: 1 %}
+                          {% endif %}
+                          {% endfor %}
+                          {% endif %}
+                          {% endfor %}</div>
+                        <p class="results-text"><span li-object="color_variant_count">{{ color_variant_count }}</span> Results</p>
+                      </div>
                     </div>
                   </div>
                 </div>
