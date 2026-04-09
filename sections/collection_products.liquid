@@ -62,19 +62,24 @@
                     <div class="container-large">
                       <div class="filter_feed-header">
                         <div class="collections-menu_layout">
-                          {% for collectionRef in collections %}    <div li-for="collectionRef in collections" class="collections-menu_item">
+                          {% assign sub_collections = collection.metafields.custom.sub_collections.value %}
+                          {% if sub_collections != blank %}    <div li-if="sub_collections != blank">
+    
+                            {% for sub_collection in sub_collections %}    <div li-for="sub_collection in sub_collections" class="collections-menu_item">
                                     
+                              
+                            <a li-object="sub_collection.title | link_to: sub_collection.url" href="#" class="collections-menu_link">{{ sub_collection.title | link_to: sub_collection.url }}</a>
                             
-                            <a li-object="collectionRef.title | link_to: collectionRef.url" href="#" class="collections-menu_link">{{ collectionRef.title | link_to: collectionRef.url }}</a>
-                            
-                            
-                            {% if collection.handle == collectionRef.handle %}    <div li-if="collection.handle == collectionRef.handle" class="is-current-collection">
+                              
+                            {% if collection.handle == sub_collection.handle %}    <div li-if="collection.handle == sub_collection.handle" class="is-current-collection">
         </div>
 {% endif %}
                             
-                          
+                            
                         </div>
 {% endfor %}
+                              </div>
+{% endif %}
                         </div>
                         <div class="sort-and-filter_wrapper hide-tablet">
                           <a href="#" class="filter_tablet-filters-button w-inline-block">
