@@ -61,16 +61,45 @@
                   <div class="padding-global">
                     <div class="container-large">
                       <div class="filter_feed-header">
-                        {% assign sub_collections = collection.metafields.custom.sub_collections.value %}
+                        <div li-cloak="hide" class="w-embed">{% assign main_nav = linklists['main-menu'] %}
+                          {% assign active_section = blank %}
+                          {% assign active_group = blank %}
+                          {% for section_link in main_nav.links %}
+                          {% if section_link.active %}
+                          {% assign active_section = section_link %}
+                          {% for group_link in section_link.links %}
+                          {% if group_link.active %}
+                          {% assign active_group = group_link %}
+                          {% break %}
+                          {% endif %}
+                          {% for child_link in group_link.links %}
+                          {% if child_link.active %}
+                          {% assign active_group = group_link %}
+                          {% break %}
+                          {% endif %}
+                          {% endfor %}
+                          {% if active_group != blank %}
+                          {% break %}
+                          {% endif %}
+                          {% endfor %}
+                          {% break %}
+                          {% endif %}
+                          {% endfor %}
+                          {% assign submenu_links = blank %}
+                          {% if active_group != blank and active_group.links != blank %}
+                          {% assign submenu_links = active_group.links %}
+                          {% elsif active_section != blank and active_section.links != blank %}
+                          {% assign submenu_links = active_section.links %}
+                          {% endif %}</div>
                         {% if sub_collections != blank %}    <div li-if="sub_collections != blank" class="collections-menu_layout">
     
-                          {% for sub_collection in sub_collections %}    <div li-for="sub_collection in sub_collections" class="collections-menu_item">
+                          {% for menu_link in submenu_links %}    <div li-for="menu_link in submenu_links" class="collections-menu_item">
                                     
                             
-                            <a li-object="sub_collection.title | link_to: sub_collection.url" href="#" class="collections-menu_link">{{ sub_collection.title | link_to: sub_collection.url }}</a>
+                            <a li-object="menu_link.title | link_to: menu_link.url" href="#" class="collections-menu_link">{{ menu_link.title | link_to: menu_link.url }}</a>
                             
                             
-                            {% if collection.handle == sub_collection.handle %}    <div li-if="collection.handle == sub_collection.handle" class="is-current-collection">
+                            {% if collection.handle == menu_link.handle %}    <div li-if="collection.handle == menu_link.handle" class="is-current-collection">
         </div>
 {% endif %}
                             
