@@ -2854,6 +2854,8 @@ figcaption {
 .filter_form {
   background-color: #0000;
   min-width: 15rem;
+  max-height: 100svh;
+  overflow: auto;
 }
 
 .filter_form-header {
@@ -3974,8 +3976,6 @@ figcaption {
   flex-flow: wrap;
   justify-content: flex-end;
   align-items: center;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
   line-height: 1;
   display: flex;
 }
@@ -3983,7 +3983,11 @@ figcaption {
 .footer_legal-link {
   color: var(--text-color--text-primary);
   text-transform: uppercase;
-  font-size: .857143rem;
+  margin-top: -.5rem;
+  margin-bottom: -.5rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  font-size: .75rem;
 }
 
 .footer_link-list {
@@ -4017,7 +4021,10 @@ figcaption {
 .li-lang_dd-toggle {
   color: var(--text-color--text-primary);
   border: 1px solid #ffffff45;
+  margin-top: -.5rem;
+  margin-bottom: -.5rem;
   padding: .5rem 1rem .5rem 0;
+  font-size: .75rem;
   display: flex;
 }
 
@@ -4026,7 +4033,7 @@ figcaption {
 }
 
 .li-lang_dd-toggle-icon {
-  width: 1rem;
+  width: .75rem;
   color: var(--text-color--text-primary);
   object-fit: contain;
   margin-left: .4em;
@@ -5203,6 +5210,8 @@ figcaption {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
   display: grid;
 }
 
