@@ -91,7 +91,7 @@
                           {% elsif active_section != blank and active_section.links != blank %}
                           {% assign submenu_links = active_section.links %}
                           {% endif %}</div>
-                        {% if sub_collections != blank %}    <div li-if="sub_collections != blank" class="collections-menu_layout">
+                        {% if submenu_links != blank %}    <div li-if="sub_collections != blank" class="collections-menu_layout">
     
                           {% for menu_link in submenu_links %}    <div li-for="menu_link in submenu_links" class="collections-menu_item">
                                     
