@@ -429,7 +429,7 @@
                               </div>
 {% endif %}
                           <ul role="list" class="mini-cart_item-list w-list-unstyled">
-                            <emplate x-for="product in products" :key="product.key">
+                            <template x-for="product in products" :key="product.key">
     <li li-element="mini-cart-item" class="mini-cart_item">
                               <div class="mini-cart_image-wrap"><img alt="" src="https://cdn.prod.website-files.com/670e011c25fd5165d7afb2de/670e011d25fd5165d7afb3e6_placholder-3.svg" loading="lazy" class="mini-cart_item-image" x-bind:src="product.image ? product.image : (product.featured_image ? product.featured_image.url : '')" x-bind:alt="product.product_title"></div>
                               <div class="mini-cart_item-info">
