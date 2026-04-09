@@ -29,11 +29,18 @@
                     <div class="hide w-embed w-script">
               <script>
   (function () {
-    const root = document.currentScript.closest('.dropdown_wrapper');
+    const script = document.currentScript;
+    const root = script ? script.closest('.dropdown_wrapper') : null;
+    if (!root) return;
     const toggle = root.querySelector('.dropdown_toggle');
     const list = root.querySelector('.dropdown_list-wrapper');
     const iconInner = root.querySelector('.dropdown_icon-inner.is-top');
-    if (!window.Webflow || !window.Webflow.env('editor')) {
+    if (!toggle || !list || !iconInner) return;
+    const isWebflowEditor =
+      window.Webflow &&
+      typeof window.Webflow.env === 'function' &&
+      window.Webflow.env('editor');
+    if (!isWebflowEditor) {
       list.classList.remove('is-open');
     }
     toggle.addEventListener('click', () => {
