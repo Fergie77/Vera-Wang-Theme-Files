@@ -64,21 +64,19 @@
                         {% assign sub_collections = collection.metafields.custom.sub_collections.value %}
                         {% if sub_collections != blank %}    <div li-if="sub_collections != blank" class="collections-menu_layout">
     
-                          <div>
-                            {% for sub_collection in sub_collections %}    <div li-for="sub_collection in sub_collections" class="collections-menu_item">
+                          {% for sub_collection in sub_collections %}    <div li-for="sub_collection in sub_collections" class="collections-menu_item">
                                     
-                              
+                            
                             <a li-object="sub_collection.title | link_to: sub_collection.url" href="#" class="collections-menu_link">{{ sub_collection.title | link_to: sub_collection.url }}</a>
                             
-                              
+                            
                             {% if collection.handle == sub_collection.handle %}    <div li-if="collection.handle == sub_collection.handle" class="is-current-collection">
         </div>
 {% endif %}
                             
-                            
+                          
                         </div>
 {% endfor %}
-                          </div>
                             </div>
 {% endif %}
                         <div class="sort-and-filter_wrapper hide-tablet">
