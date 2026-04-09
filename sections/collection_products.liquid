@@ -61,10 +61,10 @@
                   <div class="padding-global">
                     <div class="container-large">
                       <div class="filter_feed-header">
-                        <div class="collections-menu_layout">
-                          {% assign sub_collections = collection.metafields.custom.sub_collections.value %}
-                          {% if sub_collections != blank %}    <div li-if="sub_collections != blank">
+                        {% assign sub_collections = collection.metafields.custom.sub_collections.value %}
+                        {% if sub_collections != blank %}    <div li-if="sub_collections != blank" class="collections-menu_layout">
     
+                          <div>
                             {% for sub_collection in sub_collections %}    <div li-for="sub_collection in sub_collections" class="collections-menu_item">
                                     
                               
@@ -78,9 +78,9 @@
                             
                         </div>
 {% endfor %}
-                              </div>
+                          </div>
+                            </div>
 {% endif %}
-                        </div>
                         <div class="sort-and-filter_wrapper hide-tablet">
                           <a href="#" class="filter_tablet-filters-button w-inline-block">
                             <div>Filter</div>
