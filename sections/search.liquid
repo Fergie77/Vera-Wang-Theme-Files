@@ -16,7 +16,7 @@
 {{ section.settings.text_filter }}
 </div>
                       <a li-object:href="routes.search_url" href="{{ routes.search_url }}" class="button is-link hide-tablet w-inline-block">
-                        <div>
+                        <div class="hide">
 {{ section.settings.text_clear_all }}
 </div>
                       </a>
@@ -35,7 +35,7 @@
                             {% if filter.values.size > 1 %}    <div li-if="filter.values.size > 1">
     
                             <div class="filter_filter-group-heading">
-                              <div li-object="filter.label" class="text-size-medium text-weight-semibold">{{ filter.label }}</div>
+                              <div li-object="filter.label" class="text-size-medium">{{ filter.label }}</div>
                             </div>
                             <div class="filter_list">
                               {% for filter_value in filter.values %}    <div li-for="filter_value in filter.values" class="filter_item">
