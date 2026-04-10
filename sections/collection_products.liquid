@@ -204,19 +204,18 @@
 {% endfor %}
                       </div>
                       <div>
-                        <div li-cloak="hide" class="w-embed">
-                          {% assign color_variant_count = 0 %}
-{% for product in collection.products %}
-  {% assign color_index = 0 %}
-  {% assign seen = '' %}
-  {% for variant in product.variants %}
-    {% assign cv = variant.options[color_index] %}
-    {% unless seen contains cv %}
-      {% assign seen = seen | append: cv | append: '|' %}
-      {% assign color_variant_count = color_variant_count | plus: 1 %}
-    {% endunless %}
-  {% endfor %}
-{% endfor %}</div>
+                        <div li-cloak="hide" class="w-embed">{% assign color_variant_count = 0 %}
+                          {% for product in collection.products %}
+                          {% assign color_index = 0 %}
+                          {% assign seen = '' %}
+                          {% for variant in product.variants %}
+                          {% assign cv = variant.options[color_index] %}
+                          {% unless seen contains cv %}
+                          {% assign seen = seen | append: cv | append: '|' %}
+                          {% assign color_variant_count = color_variant_count | plus: 1 %}
+                          {% endunless %}
+                          {% endfor %}
+                          {% endfor %}</div>
                         <p class="results-text"><span li-object="color_variant_count">{{ color_variant_count }}</span> Results</p>
                       </div>
                     </div>
@@ -230,24 +229,23 @@
                                     
                           
                             <div li-cloak="hide" class="hide w-embed">{% assign active_colours = '' %}
-{% assign colour_filter_names = 'colour,color,couleur,farbe,colore,kleur,färg,kolor,cor,culoare,barva,farva,väri,värv,szín,spalva,krāsa,boja,farba,dath,kulur,χρώμα,цвят,culori' | split: ',' %}
-{% for filter in collection.filters %}
-  {% assign filter_label = filter.label | downcase %}
-  {% if colour_filter_names contains filter_label %}
-    {% for filter_value in filter.active_values %}
-      {% assign active_colours = active_colours | append: filter_value.label | append: '|' %}
-    {% endfor %}
-  {% endif %}
-{% endfor %}
-{% assign color_index = 0 %}
-{% assign seen_colours = '' %}</div>
+                            {% assign colour_filter_names = 'colour,color,couleur,farbe,colore,kleur,färg,kolor,cor,culoare,barva,farva,väri,värv,szín,spalva,krāsa,boja,farba,dath,kulur,χρώμα,цвят,culori' | split: ',' %}
+                            {% for filter in collection.filters %}
+                            {% assign filter_label = filter.label | downcase %}
+                            {% if colour_filter_names contains filter_label %}
+                            {% for filter_value in filter.active_values %}
+                            {% assign active_colours = active_colours | append: filter_value.label | append: '|' %}
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+                            {% assign color_index = 0 %}
+                            {% assign seen_colours = '' %}</div>
                             
                           
                             {% for variant in product.variants %}    <div li-for="variant in product.variants" class="display-contents">
                                     
                             
                             <div li-cloak="hide" class="hide w-embed">{% assign colour_value = variant.options[color_index] %}
-                              {% assign color_images = product.images | where: 'alt', colour_value %}
                               {% assign colour_key = colour_value | append: '|' %}
                               {% if active_colours == '' or active_colours contains colour_key %}
                               {% unless seen_colours contains colour_value %}
