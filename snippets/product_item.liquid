@@ -65,8 +65,8 @@
                       {% if has_colour %}    <div li-if="has_colour" class="product-header_option">
     
                         <div class="product-header_radio-list">
-                          {% for variant in product.variants %}    <div li-for="variant in product.variants" class="display-contents">
-                                    
+                          <div li-for:inside="variant in product.variants" class="display-contents">
+        {% for variant in product.variants %}                            
                             
                             <div class="display-contents-special w-embed">{% assign colour_value = variant.options[color_index] %}
                               {% assign colour_css = colour_value | downcase %}
@@ -79,7 +79,7 @@
                               {% endfor %}</div>
                             
                             
-                            {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value" class="display-contents">
+                            {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
     
                               {% assign seen_colours = seen_colours | append: colour_value | append: '|' %}
                               <div class="product-header_radio-layout">
@@ -89,8 +89,7 @@
 {% endunless %}
                             
                           
-                        </div>
-{% endfor %}
+                    {% endfor %}    </div>
                         </div>
                           </div>
 {% endif %}
