@@ -11,9 +11,10 @@
 {% endfor %}
   {% assign primary_image = nil %}
 {% assign secondary_image = nil %}
+{% assign colour_value_lower = colour_value | downcase %}
 {% for image in product.images %}
   {% assign image_alt_lower = image.alt | downcase %}
-  {% if image_alt_lower contains colour_css %}
+  {% if image_alt_lower contains colour_css or image_alt_lower contains colour_value_lower %}
     {% if primary_image == nil %}
       {% assign primary_image = image %}
     {% elsif secondary_image == nil %}
