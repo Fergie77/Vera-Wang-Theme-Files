@@ -204,24 +204,19 @@
 {% endfor %}
                       </div>
                       <div>
-                        <div li-cloak="hide" class="w-embed">{% assign color_variant_count = 0 %}
-                          {% for product in collection.products %}
-                          {% assign color_index = nil %}
-                          {% for option in product.options %}
-                          {% assign option_name = option | downcase %}
-                          {% if option_name == 'color' or option_name == 'colour' %}
-                          {% assign color_index = forloop.index0 %}
-                          {% break %}
-                          {% endif %}
-                          {% endfor %}
-                          {% if color_index != nil %}
-                          {% for variant in product.variants %}
-                          {% if variant.options[color_index] != blank %}
-                          {% assign color_variant_count = color_variant_count | plus: 1 %}
-                          {% endif %}
-                          {% endfor %}
-                          {% endif %}
-                          {% endfor %}</div>
+                        <div li-cloak="hide" class="w-embed">
+                          {% assign color_variant_count = 0 %}
+{% for product in collection.products %}
+  {% assign color_index = 0 %}
+  {% assign seen = '' %}
+  {% for variant in product.variants %}
+    {% assign cv = variant.options[color_index] %}
+    {% unless seen contains cv %}
+      {% assign seen = seen | append: cv | append: '|' %}
+      {% assign color_variant_count = color_variant_count | plus: 1 %}
+    {% endunless %}
+  {% endfor %}
+{% endfor %}</div>
                         <p class="results-text"><span li-object="color_variant_count">{{ color_variant_count }}</span> Results</p>
                       </div>
                     </div>
@@ -237,7 +232,7 @@
                             <div li-cloak="hide" class="hide w-embed">{% assign active_colours = '' %}
                             {% for filter in collection.filters %}
                             {% assign filter_label = filter.label | downcase %}
-                            {% if filter_label == 'colour' %}
+                            {% if forloop.index0 == 0 %}
                             {% for filter_value in filter.active_values %}
                             {% assign active_colours = active_colours | append: filter_value.label | append: '|' %}
                             {% endfor %}
