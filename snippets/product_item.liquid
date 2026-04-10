@@ -12,7 +12,8 @@
   {% assign primary_image = nil %}
 {% assign secondary_image = nil %}
 {% for image in product.images %}
-  {% if image.alt contains colour_css %}
+  {% assign image_alt_lower = image.alt | downcase %}
+  {% if image_alt_lower contains colour_css %}
     {% if primary_image == nil %}
       {% assign primary_image = image %}
     {% elsif secondary_image == nil %}
