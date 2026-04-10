@@ -2647,8 +2647,12 @@ figcaption {
   grid-column-gap: .625rem;
   grid-row-gap: .625rem;
   flex-wrap: wrap;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
   padding-left: .1rem;
-  display: flex;
+  display: grid;
 }
 
 .product-header_radio-button {
