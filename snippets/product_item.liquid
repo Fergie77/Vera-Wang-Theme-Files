@@ -65,8 +65,8 @@
                       {% if has_colour %}    <div li-if="has_colour" class="product-header_option">
     
                         <div class="product-header_radio-list">
-                          {% for variant in product.variants %}    <div li-for="variant in product.variants" class="display-contents">
-                                    
+                          <div li-for:inside="variant in product.variants" class="display-contents">
+        {% for variant in product.variants %}                            
                             
                             {% assign colour_value = variant.options[color_index]  %}
                             
@@ -92,8 +92,7 @@
 {% endunless %}
                             
                           
-                        </div>
-{% endfor %}
+                    {% endfor %}    </div>
                         </div>
                           </div>
 {% endif %}
