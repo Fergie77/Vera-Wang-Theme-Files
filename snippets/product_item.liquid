@@ -1,6 +1,5 @@
 <script src="{{ 'li_custom.js' | asset_url }}" type="text/javascript"></script>
-<div li-element="product-variant-container" class="product-item_component" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)"><div class="product-item_image-link"><div li-cloak="hide" class="hide w-embed">
-{% assign colour_map = 'noir:black|noire:black|blanc:white|blanche:white|weiss:white|weiß:white|schwarz:black|crème:cream|gris:grey|grise:grey|grau:grey|bleu:blue|bleue:blue|blau:blue|rouge:red|rot:red|vert:green|verte:green|grün:green|rose:pink|rosa:pink|jaune:yellow|gelb:yellow|orange:orange|violet:purple|violette:purple|lila:purple|marron:brown|braun:brown|navy:navy|ivoire:ivory|elfenbein:ivory|crema:cream|nero:black|nera:black|bianco:white|bianca:white|grigio:grey|grigia:grey|rosso:red|rossa:red|verde:green|azzurro:blue|azzurra:blue|giallo:yellow|gialla:yellow|zwart:black|wit:white|grijs:grey|rood:red|groen:green|blauw:blue|geel:yellow|beige:beige' | split: '|' %}
+<div li-element="product-variant-container" class="product-item_component" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)"><div class="product-item_image-link"><div li-cloak="hide" class="hide w-embed">{% assign colour_map = 'noir:black|noire:black|blanc:white|blanche:white|weiss:white|weiß:white|schwarz:black|crème:cream|gris:grey|grise:grey|grau:grey|bleu:blue|bleue:blue|blau:blue|rouge:red|rot:red|vert:green|verte:green|grün:green|rose:pink|rosa:pink|jaune:yellow|gelb:yellow|orange:orange|violet:purple|violette:purple|lila:purple|marron:brown|braun:brown|navy:navy|ivoire:ivory|elfenbein:ivory|crema:cream|nero:black|nera:black|bianco:white|bianca:white|grigio:grey|grigia:grey|rosso:red|rossa:red|verde:green|azzurro:blue|azzurra:blue|giallo:yellow|gialla:yellow|zwart:black|wit:white|grijs:grey|rood:red|groen:green|blauw:blue|geel:yellow|beige:beige' | split: '|' %}
 {% assign colour_css = colour_value | downcase %}
 {% for pair in colour_map %}
   {% assign parts = pair | split: ':' %}
@@ -9,7 +8,7 @@
     {% break %}
   {% endif %}
 {% endfor %}
-  {% assign primary_image = nil %}
+{% assign primary_image = nil %}
 {% assign secondary_image = nil %}
 {% assign colour_value_lower = colour_value | downcase %}
 {% for image in product.images %}
@@ -27,7 +26,7 @@
   {% assign secondary_image = product.images[1] %}
 {% endif %}</div><a li-object:href=" product.url | append: '?variant=' | append: variant.id" href="{{  product.url | append: '?variant=' | append: variant.id }}" class="product-item_image-wrapper w-inline-block"><img li-object:alt="primary_image.alt" loading="lazy" li-object:src="primary_image | image_url: width: 450" src="{{ primary_image | image_url: width: 450 }}" alt="{{ primary_image.alt }}" class="product-item_image is-primary">
                   {% if secondary_image %}    <div li-if="secondary_image">
-    <img li-object:alt="product.images[1].alt" loading="lazy" li-object:src="product.images[1] | image_url: width: 450" src="{{ product.images[1] | image_url: width: 450 }}" alt="{{ product.images[1].alt }}" class="product-item_image is-secondary">    </div>
+    <img li-object:alt="secondary_image.alt" loading="lazy" li-object:src="secondary_image | image_url: width: 450" src="{{ secondary_image | image_url: width: 450 }}" alt="{{ secondary_image.alt }}" class="product-item_image is-secondary">    </div>
 {% endif %}
                   </a>
                   <div class="product-item_tag_list">
@@ -59,28 +58,18 @@
     1 Colour    </p>
 {% endif %}
                     <div class="product-header_option-list">
-                      <div class="hide w-embed">
-                        {% assign color_index = 0 %}
-{% assign has_colour = true %}
-{% assign seen_colours = '' %}
-{% assign colour_map = 'noir:black|noire:black|blanc:white|blanche:white|weiss:white|weiß:white|schwarz:black|crème:cream|gris:grey|grise:grey|grau:grey|bleu:blue|bleue:blue|blau:blue|rouge:red|rot:red|vert:green|verte:green|grün:green|rose:pink|rosa:pink|jaune:yellow|gelb:yellow|orange:orange|violet:purple|violette:purple|lila:purple|marron:brown|braun:brown|navy:navy|ivoire:ivory|elfenbein:ivory|crema:cream|nero:black|nera:black|bianco:white|bianca:white|grigio:grey|grigia:grey|rosso:red|rossa:red|verde:green|azzurro:blue|azzurra:blue|giallo:yellow|gialla:yellow|zwart:black|wit:white|grijs:grey|rood:red|groen:green|blauw:blue|geel:yellow|beige:beige' | split: '|' %}
-                      </div>
+                      <div class="hide w-embed">{% assign color_index = 0 %}
+                        {% assign has_colour = true %}
+                        {% assign seen_colours = '' %}
+                        {% assign colour_map = 'noir:black|noire:black|blanc:white|blanche:white|weiss:white|weiß:white|schwarz:black|crème:cream|gris:grey|grise:grey|grau:grey|bleu:blue|bleue:blue|blau:blue|rouge:red|rot:red|vert:green|verte:green|grün:green|rose:pink|rosa:pink|jaune:yellow|gelb:yellow|orange:orange|violet:purple|violette:purple|lila:purple|marron:brown|braun:brown|navy:navy|ivoire:ivory|elfenbein:ivory|crema:cream|nero:black|nera:black|bianco:white|bianca:white|grigio:grey|grigia:grey|rosso:red|rossa:red|verde:green|azzurro:blue|azzurra:blue|giallo:yellow|gialla:yellow|zwart:black|wit:white|grijs:grey|rood:red|groen:green|blauw:blue|geel:yellow|beige:beige' | split: '|' %}</div>
                       {% if has_colour %}    <div li-if="has_colour" class="product-header_option">
     
                         <div class="product-header_radio-list">
                           {% for variant in product.variants %}    <div li-for="variant in product.variants" class="display-contents">
                                     
                             
-                            {% assign colour_value = variant.options[color_index] %}
+                            {% assign colour_value = variant.options[color_index]  %}
                             
-                            {% assign colour_css = colour_value | downcase %}
-{% for pair in colour_map %}
-  {% assign parts = pair | split: ':' %}
-  {% if parts[0] == colour_css %}
-    {% assign colour_css = parts[1] %}
-    {% break %}
-  {% endif %}
-{% endfor %}
                             
                             {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
     
