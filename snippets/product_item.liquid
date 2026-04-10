@@ -47,19 +47,11 @@
     1 Colour    </p>
 {% endif %}
                     <div class="product-header_option-list">
-                      <div class="hide w-embed">{% assign color_index = 0 %}
-                        {% assign has_colour = true %}
-                        {% assign seen_colours = '' %}
-                      {% assign colour_map = 'noir:black|blanc:white|weiss:white|weiß:white|schwarz:black|beige:beige|crème:cream|gris:grey|grau:grey|bleu:blue|blau:blue|rouge:red|rot:red|vert:green|grün:green|rose:pink|rosa:pink|jaune:yellow|gelb:yellow|orange:orange|violet:purple|lila:purple|marron:brown|braun:brown|navy:navy|ivoire:ivory|elfenbein:ivory|crema:cream|nero:black|bianco:white|grigio:grey|rosso:red|verde:green|azzurro:blue|giallo:yellow|beige:beige|zwart:black|wit:white|grijs:grey|rood:red|groen:green|blauw:blue|geel:yellow' | split: '|' %}
-{% assign colour_css = colour_value | downcase %}
-{% for pair in colour_map %}
-  {% assign parts = pair | split: ':' %}
-  {% if parts[0] == colour_css %}
-    {% assign colour_css = parts[1] %}
-    {% break %}
-  {% endif %}
-{% endfor %}
-                      
+                      <div class="hide w-embed">
+                        {% assign color_index = 0 %}
+{% assign has_colour = true %}
+{% assign seen_colours = '' %}
+{% assign colour_map = 'noir:black|blanc:white|weiss:white|weiß:white|schwarz:black|beige:beige|crème:cream|gris:grey|grau:grey|bleu:blue|blau:blue|rouge:red|rot:red|vert:green|grün:green|rose:pink|rosa:pink|jaune:yellow|gelb:yellow|orange:orange|violet:purple|lila:purple|marron:brown|braun:brown|navy:navy|ivoire:ivory|elfenbein:ivory|crema:cream|nero:black|bianco:white|grigio:grey|rosso:red|verde:green|azzurro:blue|giallo:yellow|zwart:black|wit:white|grijs:grey|rood:red|groen:green|blauw:blue|geel:yellow' | split: '|' %}
                       </div>
                       {% if has_colour %}    <div li-if="has_colour" class="product-header_option">
     
@@ -69,6 +61,14 @@
                             
                             {% assign colour_value = variant.options[color_index] %}
                             
+                            {% assign colour_css = colour_value | downcase %}
+{% for pair in colour_map %}
+  {% assign parts = pair | split: ':' %}
+  {% if parts[0] == colour_css %}
+    {% assign colour_css = parts[1] %}
+    {% break %}
+  {% endif %}
+{% endfor %}
                             
                             {% unless seen_colours contains colour_value %}    <div li-unless="seen_colours contains colour_value">
     
