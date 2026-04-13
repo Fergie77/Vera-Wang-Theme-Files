@@ -159,6 +159,11 @@
         "image_image": "shopify://shop_images/Frame_175.png",
         "image_position": "is-right is-spun"
       }
+    },
+    "scrolling_nav_animat_7x74Y4": {
+      "type": "scrolling_nav_animat",
+      "name": "Scrolling Nav Animat",
+      "settings": {}
     }
   },
   "layout": "theme",
@@ -174,6 +179,7 @@
     "featured_3",
     "custom_liquid",
     "spacer_9hz6eA",
-    "content_2"
+    "content_2",
+    "scrolling_nav_animat_7x74Y4"
   ]
 }
