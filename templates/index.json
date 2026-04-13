@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "nav_settings_ngLfGL": {
+      "type": "nav_settings",
+      "name": "Nav Settings",
+      "settings": {
+        "nav_logo_color": "black",
+        "nav_scroll_animation": true
+      }
+    },
     "image_with_text": {
       "type": "image_with_text",
       "settings": {
@@ -164,6 +172,7 @@
   "layout": "theme",
   "wrapper": "main.main-wrapper",
   "order": [
+    "nav_settings_ngLfGL",
     "image_with_text",
     "featured_products",
     "cta_1",
