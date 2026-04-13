@@ -24,7 +24,7 @@
         "collection_search_bestseller_limit": 6,
         "menu": "main-menu",
         "nav_logo_color": "black",
-        "nav_scroll_animation": false
+        "nav_scroll_animation": true
       }
     }
   },
