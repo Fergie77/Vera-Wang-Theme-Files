@@ -18,7 +18,7 @@
         "image_position": "is-right is-spun"
       }
     },
-    "white_logo_zJrPhq": {
+    "white_logo_DKyLBA": {
       "type": "white_logo",
       "name": "white-logo",
       "settings": {}
@@ -28,6 +28,6 @@
   "wrapper": "main.main-wrapper",
   "order": [
     "contact",
-    "white_logo_zJrPhq"
+    "white_logo_DKyLBA"
   ]
 }

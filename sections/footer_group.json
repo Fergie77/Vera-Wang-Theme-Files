@@ -10,32 +10,6 @@
 {
   "type": "footer",
   "name": "Footer Group",
-  "sections": {
-    "footer": {
-      "type": "footer",
-      "blocks": {
-        "social_media_mpyCPT": {
-          "type": "social-media",
-          "settings": {
-            "text_social_text": "Lorem Ipsum",
-            "url_link": "https://instagram.com"
-          }
-        }
-      },
-      "block_order": [
-        "social_media_mpyCPT"
-      ],
-      "settings": {
-        "text_heading": "Join our Newsletter(Replace with Klaviyo)",
-        "text_checkbox": "By subscribing you agree to with our Privacy Policy and provide consent to receive updates from our company.",
-        "placeholder_text": "Email address",
-        "menu_1": "online-services",
-        "menu_2": "brand",
-        "menu_3": "legal"
-      }
-    }
-  },
-  "order": [
-    "footer"
-  ]
+  "sections": {},
+  "order": []
 }
