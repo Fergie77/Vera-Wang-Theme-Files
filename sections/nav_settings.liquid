@@ -1,15 +1,20 @@
 <div class="w-embed w-script">
           <script>
-  document.querySelector('.nav_component').classList.add('{{ section.settings.nav_logo_color }}-logo');
-  {% if section.settings.nav_scroll_animation %}
-  gsap.registerPlugin(ScrollTrigger);
-  ScrollTrigger.create({
-    start: "top -5%",
-    onEnter: () => document.querySelector(".section_navbar").classList.add("scrolling"),
-    onLeaveBack: () => document.querySelector(".section_navbar").classList.remove("scrolling"),
-  });
-  {% endif %}
-</script>
+{% unless section.settings.nav_logo_color == 'split' %}
+  <script>
+    document.querySelector('.nav_component').classList.add('{{ section.settings.nav_logo_color }}-logo');
+  </script>
+          {% endunless %}
+          {% if section.settings.nav_scroll_animation %}
+          <script>
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.create({
+      start: "top -5%",
+      onEnter: () => document.querySelector(".section_navbar").classList.add("scrolling"),
+      onLeaveBack: () => document.querySelector(".section_navbar").classList.remove("scrolling"),
+    });
+  </script>
+          {% endif %}
         </div> {% schema %} {
     "tag": "div",
     "name": "Nav Settings",
@@ -19,30 +24,41 @@
             "content": "Nav Colour"
         },
         {
-            "type": "header",
-            "content": "Nav Colour"
-        },
-        {
-            "type": "select",
-            "id": "nav_logo_color",
-            "label": "Nav logo colour",
-            "options": [
+            "name": "Nav Settings",
+            "tag": null,
+            "settings": [
                 {
-                    "value": "white",
-                    "label": "White"
+                    "type": "select",
+                    "id": "nav_logo_color",
+                    "label": "Nav logo colour",
+                    "options": [
+                        {
+                            "value": "split",
+                            "label": "Split (default)"
+                        },
+                        {
+                            "value": "white",
+                            "label": "White"
+                        },
+                        {
+                            "value": "black",
+                            "label": "Black"
+                        }
+                    ],
+                    "default": "split"
                 },
                 {
-                    "value": "black",
-                    "label": "Black"
+                    "type": "checkbox",
+                    "id": "nav_scroll_animation",
+                    "label": "Enable scroll animation",
+                    "default": true
                 }
             ],
-            "default": "black"
-        },
-        {
-            "type": "checkbox",
-            "id": "nav_scroll_animation",
-            "label": "Enable scroll animation",
-            "default": true
+            "presets": [
+                {
+                    "name": "Nav Settings"
+                }
+            ]
         }
     ],
     "presets": [
