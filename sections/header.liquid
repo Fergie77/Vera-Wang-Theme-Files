@@ -873,6 +873,19 @@
 .nav_component.scrolling .nav_logo-link {
   color: black;
 }
+.nav_component.white-logo .wang-character {
+  color: white;
+}
+.nav_component.white-logo .nav_shop-icons {
+  color: white;
+}
+.nav_component.white-logo .nav_dropdown-toggle {
+  color: white;
+}
+.nav_component.white-logo .nav_menu-dropdown.is-hovered .nav_dropdown-toggle,
+.nav_component.white-logo .nav_menu-dropdown.is-open .nav_dropdown-toggle {
+  color: black;
+}
 @media (min-width: 992px) {
   .nav_dropdown-list-blurred-background {
     transition: opacity 0.3s;
@@ -886,51 +899,73 @@
     transition: opacity 0.3s ease;
     transform: translate(0, 0) !important;
   }
-  .nav_menu-dropdown:hover .nav_dropdown-list,
-  .nav_menu-dropdown:focus-within .nav_dropdown-list {
+  .nav_menu-dropdown.is-hovered .nav_dropdown-list,
+  .nav_menu-dropdown.is-open .nav_dropdown-list {
     opacity: 1 !important;
     pointer-events: auto;
   }
-  .nav_container:has(.nav_menu-dropdown:hover) > .nav_logo-link {
+  .nav_container:has(.nav_menu-dropdown.is-hovered) > .nav_logo-link,
+  .nav_container:has(.nav_menu-dropdown.is-open) > .nav_logo-link {
     color: black;
   }
-  .nav_container:has(.nav_menu-dropdown:hover) > .nav_shop-icons {
+  .nav_container:has(.nav_menu-dropdown.is-hovered) > .nav_shop-icons,
+  .nav_container:has(.nav_menu-dropdown.is-open) > .nav_shop-icons {
     color: white;
   }
-  .nav_container:has(.nav_menu-dropdown:hover) > .nav_logo-link .wang-character{
+  .nav_container:has(.nav_menu-dropdown.is-hovered) > .nav_logo-link .wang-character,
+  .nav_container:has(.nav_menu-dropdown.is-open) > .nav_logo-link .wang-character {
     fill: white;
   }
-  .nav_container:has(.nav_menu-dropdown:hover) > .nav_dropdown-list-blurred-background {
+  .nav_container:has(.nav_menu-dropdown.is-hovered) > .nav_dropdown-list-blurred-background,
+  .nav_container:has(.nav_menu-dropdown.is-open) > .nav_dropdown-list-blurred-background {
     opacity: 1;
   }
-  .nav_container:has(.w--open) .nav_dropdown-list-background {
+  .nav_container:has(.nav_menu-dropdown.is-open) .nav_dropdown-list-background {
     background: white !important;
   }
-  .nav_container:has(.w--open) .nav_dropdown-list-blurred-background {
+  .nav_container:has(.nav_menu-dropdown.is-open) .nav_dropdown-list-blurred-background {
     opacity: 1;
     backdrop-filter: blur(8px) grayscale(1) brightness(0.5);
   }
 }
 @media (max-width: 991px) {
-  .nav_container:has(.w--open) .nav_dropdown-list-background {
+  .nav_container:has(.nav_menu-dropdown.is-open) .nav_dropdown-list-background {
     background: rgba(0, 0, 0, 0.6) !important;
     opacity: 1;
   }
 }
 @media (max-width: 767px) {
-  .nav_container:has(.w--open) .nav_dropdown-list-background {
+  .nav_container:has(.nav_menu-dropdown.is-open) .nav_dropdown-list-background {
     background: white !important;
   }
 }
-.nav_container:has(.nav_dropdown-toggle.w--open)
-  ~ .nav_logo-link
-  .wang-character {
+.nav_container:has(.nav_menu-dropdown.is-open) ~ .nav_logo-link .wang-character {
   fill: white;
 }
-.nav_container:has(.nav_dropdown-toggle.w--open) ~ .nav_logo-link {
+.nav_container:has(.nav_menu-dropdown.is-open) ~ .nav_logo-link {
   color: black;
 }
 </style>
+        </div>
+        <div class="w-embed w-script">
+          <script>
+document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
+  const toggle = dropdown.querySelector('.nav_dropdown-toggle');
+  dropdown.addEventListener('mouseenter', () => dropdown.classList.add('is-hovered'));
+  dropdown.addEventListener('mouseleave', () => dropdown.classList.remove('is-hovered'));
+  toggle.addEventListener('click', () => {
+    const isOpen = dropdown.classList.contains('is-open');
+    document.querySelectorAll('.nav_menu-dropdown.is-open').forEach(d => d.classList.remove('is-open'));
+    if (!isOpen) dropdown.classList.add('is-open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) dropdown.classList.remove('is-open');
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') dropdown.classList.remove('is-open');
+  });
+});
+</script>
         </div> {% schema %} {
     "tag": "div",
     "name": "Header",
