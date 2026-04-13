@@ -13,7 +13,7 @@
       "type": "nav_settings",
       "name": "Nav Settings",
       "settings": {
-        "nav_logo_color": "white",
+        "nav_logo_color": "split",
         "nav_scroll_animation": true
       }
     },
