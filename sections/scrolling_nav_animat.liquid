@@ -1,0 +1,20 @@
+<div class="w-embed w-script">
+          <script>
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.create({
+  start: "top -5%",
+  onEnter: () => document.querySelector(".section_navbar").classList.add("scrolling"),
+  onLeaveBack: () => document.querySelector(".section_navbar").classList.remove("scrolling"),
+});
+</script>
+        </div> {% schema %} {
+    "tag": "div",
+    "name": "Scrolling Nav Animat",
+    "presets": [
+        {
+            "name": "Scrolling Nav Animat",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}
