@@ -865,8 +865,7 @@
           </div>
         </div>
         
-        
-        <div class="w-embed">
+        <div class="hide w-embed">
           <style>
 .section_navbar.scrolling .nav_logo-link {
   color: black;
@@ -948,7 +947,7 @@
 }
 </style>
         </div>
-        <div class="w-embed w-script">
+        <div class="hide w-embed w-script">
           <script>
 document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
   const toggle = dropdown.querySelector('.nav_dropdown-toggle');
@@ -966,19 +965,6 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
     if (e.key === 'Escape') dropdown.classList.remove('is-open');
   });
 });
-</script>
-        </div>
-        <div class="w-embed w-script">
-          <script>
-  document.querySelector('.nav_component').classList.add('{{ section.settings.nav_logo_color }}-logo');
-  {% if section.settings.nav_scroll_animation %}
-  gsap.registerPlugin(ScrollTrigger);
-  ScrollTrigger.create({
-    start: "top -5%",
-    onEnter: () => document.querySelector(".section_navbar").classList.add("scrolling"),
-    onLeaveBack: () => document.querySelector(".section_navbar").classList.remove("scrolling"),
-  });
-  {% endif %}
 </script>
         </div> {% schema %} {
     "tag": "div",
@@ -1060,36 +1046,6 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
             "id": "menu",
             "label": "Menu",
             "default": "main-menu"
-        },
-        {
-            "type": "header",
-            "content": "Nav Colour"
-        },
-        {
-            "type": "header",
-            "content": "Nav Colour"
-        },
-        {
-            "type": "select",
-            "id": "nav_logo_color",
-            "label": "Nav logo colour",
-            "options": [
-                {
-                    "value": "white",
-                    "label": "White"
-                },
-                {
-                    "value": "black",
-                    "label": "Black"
-                }
-            ],
-            "default": "black"
-        },
-        {
-            "type": "checkbox",
-            "id": "nav_scroll_animation",
-            "label": "Enable scroll animation",
-            "default": true
         }
     ],
     "presets": [
