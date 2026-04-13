@@ -13,8 +13,8 @@
       "type": "nav_settings",
       "name": "Nav Settings",
       "settings": {
-        "nav_logo_color": "split",
-        "nav_scroll_animation": false
+        "nav_logo_color": "black",
+        "nav_scroll_animation": true
       }
     },
     "image_with_text": {
