@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "nav_settings": {
+      "type": "nav_settings",
+      "settings": {
+        "nav_logo_color": "split",
+        "nav_scroll_animation": true
+      }
+    },
     "product_hero": {
       "type": "product_hero",
       "settings": {}
@@ -146,6 +153,7 @@
   "layout": "theme",
   "wrapper": "main.main-wrapper",
   "order": [
+    "nav_settings",
     "product_hero",
     "recommended_products",
     "styled_by_vera_dyj8zQ",
