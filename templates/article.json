@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "nav_settings": {
+      "type": "nav_settings",
+      "settings": {
+        "nav_logo_color": "split",
+        "nav_scroll_animation": true
+      }
+    },
     "article_content": {
       "type": "article_content",
       "settings": {
@@ -25,6 +32,7 @@
   "layout": "theme",
   "wrapper": "main.main-wrapper",
   "order": [
+    "nav_settings",
     "article_content",
     "related_articles"
   ]
