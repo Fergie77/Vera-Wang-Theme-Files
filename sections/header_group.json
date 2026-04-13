@@ -23,7 +23,8 @@
         "collection_search_bestseller": "",
         "collection_search_bestseller_limit": 6,
         "menu": "main-menu",
-        "always_black_logo": true
+        "nav_logo_color": "black",
+        "nav_scroll_animation": false
       }
     }
   },
