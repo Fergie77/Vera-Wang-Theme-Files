@@ -1,12 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "look_book": {
-            "type": "look_book"
-        }
+  "sections": {
+    "nav_settings": {
+      "type": "nav_settings",
+      "settings": {
+        "nav_logo_color": "split",
+        "nav_scroll_animation": true
+      }
     },
-    "layout": "page.look-book",
-    "wrapper": "div.main-wrapper",
-    "order": [
-        "look_book"
-    ]
+    "look_book": {
+      "type": "look_book",
+      "settings": {}
+    }
+  },
+  "layout": "page.look-book",
+  "wrapper": "div.main-wrapper",
+  "order": [
+    "nav_settings",
+    "look_book"
+  ]
 }
