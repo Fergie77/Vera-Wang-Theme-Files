@@ -12,13 +12,23 @@
     "nav_settings": {
       "type": "nav_settings",
       "settings": {
-        "nav_logo_color": "split",
+        "nav_logo_color": "black",
         "nav_scroll_animation": true
       }
     },
     "cart": {
       "type": "cart",
-      "settings": {}
+      "settings": {
+        "text_product": "Product",
+        "text_quantity": "Quantity",
+        "text_price": "Price",
+        "text_remove": "Remove",
+        "text_summary": "Summary",
+        "text_sum_inkl_vat": "Subtotal",
+        "text_discount": "Discount",
+        "text_comment": "Comment",
+        "text_cart_empty": "No Products yet."
+      }
     }
   },
   "layout": "theme",
