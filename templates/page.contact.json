@@ -17,11 +17,17 @@
         "image_image": "shopify://shop_images/Frame_175.png",
         "image_position": "is-right is-spun"
       }
+    },
+    "black_logo_yUkccK": {
+      "type": "black_logo",
+      "name": "black-logo",
+      "settings": {}
     }
   },
   "layout": "theme",
   "wrapper": "main.main-wrapper",
   "order": [
-    "contact"
+    "contact",
+    "black_logo_yUkccK"
   ]
 }
