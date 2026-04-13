@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "nav_settings_AGk6ke": {
+      "type": "nav_settings",
+      "name": "Nav Settings",
+      "settings": {
+        "nav_logo_color": "white",
+        "nav_scroll_animation": true
+      }
+    },
     "contact": {
       "type": "contact",
       "settings": {
@@ -22,6 +30,7 @@
   "layout": "theme",
   "wrapper": "main.main-wrapper",
   "order": [
+    "nav_settings_AGk6ke",
     "contact"
   ]
 }
