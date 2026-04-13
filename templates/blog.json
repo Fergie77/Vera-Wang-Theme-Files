@@ -12,7 +12,7 @@
     "nav_settings": {
       "type": "nav_settings",
       "settings": {
-        "nav_logo_color": "split",
+        "nav_logo_color": "black",
         "nav_scroll_animation": true
       }
     },
