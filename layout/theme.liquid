@@ -137,16 +137,6 @@ End Google Tag Manager  -->
     {% sections 'header_group' %}
     {{ content_for_layout }}
     {% sections 'footer_group' %}
-    <div class="w-embed w-script">
-      <script>
-gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.create({
-  start: "top -5%",
-  onEnter: () => document.querySelector(".section_navbar").classList.add("scrolling"),
-  onLeaveBack: () => document.querySelector(".section_navbar").classList.remove("scrolling"),
-});
-</script>
-    </div>
   </div>
   <div class="layout-grid_wrapper padding-global">
     <div class="w-embed">
