@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "nav_settings": {
+      "type": "nav_settings",
+      "settings": {
+        "nav_logo_color": "split",
+        "nav_scroll_animation": true
+      }
+    },
     "support_info": {
       "type": "support_info",
       "blocks": {
@@ -27,6 +34,7 @@
   "layout": "theme",
   "wrapper": "main.main-wrapper",
   "order": [
+    "nav_settings",
     "support_info"
   ]
 }
