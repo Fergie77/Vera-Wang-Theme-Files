@@ -867,14 +867,33 @@
         
         <div class="hide w-embed">
           <style>
+/* Default scrolling behaviour */
 .section_navbar.scrolling .nav_logo-link {
   color: black;
 }
-.nav_component.scrolling .nav_logo-link {
-  color: black;
+/* Nav background on scroll */
+.section_navbar.scrolling .nav_component {
+  background: white;
 }
-.nav_component.white-logo .wang-character {
+.section_navbar.scrolling .nav_component.white-logo {
+  background: black;
+}
+.section_navbar.scrolling .nav_component.black-logo {
+  background: white;
+}
+/* white-logo + scrolling: override the global black rule, keep elements white */
+.section_navbar.scrolling .nav_component.white-logo .nav_logo-link {
   color: white;
+}
+.section_navbar.scrolling .nav_component.white-logo .nav_shop-icons {
+  color: white;
+}
+.section_navbar.scrolling .nav_component.white-logo .nav_dropdown-toggle {
+  color: white;
+}
+/* white-logo */
+.nav_component.white-logo .wang-character {
+  fill: white;
 }
 .nav_component.white-logo .nav_shop-icons {
   color: white;
@@ -884,6 +903,19 @@
 }
 .nav_component.white-logo .nav_menu-dropdown.is-hovered .nav_dropdown-toggle,
 .nav_component.white-logo .nav_menu-dropdown.is-open .nav_dropdown-toggle {
+  color: black;
+}
+/* black-logo */
+.nav_component.black-logo .nav_logo-link {
+  color: black;
+}
+.nav_component.black-logo .wang-character {
+  fill: black;
+}
+.nav_component.black-logo .nav_shop-icons {
+  color: black;
+}
+.nav_component.black-logo .nav_dropdown-toggle {
   color: black;
 }
 @media (min-width: 992px) {
