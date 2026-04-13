@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "nav_settings": {
+      "type": "nav_settings",
+      "settings": {
+        "nav_logo_color": "split",
+        "nav_scroll_animation": true
+      }
+    },
     "collection_products": {
       "type": "collection_products",
       "blocks": {
@@ -40,6 +47,7 @@
   "layout": "theme",
   "wrapper": "main.main-wrapper",
   "order": [
+    "nav_settings",
     "collection_products",
     "black_logo_UNcdNb"
   ]
