@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "nav_settings": {
+      "type": "nav_settings",
+      "settings": {
+        "nav_logo_color": "split",
+        "nav_scroll_animation": true
+      }
+    },
     "landing_hero": {
       "type": "landing_hero",
       "settings": {}
@@ -17,6 +24,7 @@
   "layout": "page.old-home-2",
   "wrapper": "div.main-wrapper",
   "order": [
+    "nav_settings",
     "landing_hero"
   ]
 }
