@@ -1,12 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "404": {
-            "type": "404"
-        }
+  "sections": {
+    "nav_settings": {
+      "type": "nav_settings",
+      "settings": {
+        "nav_logo_color": "split",
+        "nav_scroll_animation": true
+      }
     },
-    "layout": "theme",
-    "wrapper": "main.main-wrapper",
-    "order": [
-        "404"
-    ]
+    "404": {
+      "type": "404",
+      "settings": {}
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "nav_settings",
+    "404"
+  ]
 }
