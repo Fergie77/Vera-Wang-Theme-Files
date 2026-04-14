@@ -14,7 +14,7 @@
               <div class="featured-products-component_layout">
                 <a id="w-node-_38ec51fc-5cb6-9c7f-e7ce-d4409a525315-4e4cbfad" href="{{ section.settings.url_button_link }}" class="featured-products_collection-link-wrapper w-inline-block"> {% if section.settings.image_image %} {{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'featured-products_collection-image' }} {% else %} <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="featured-products_collection-image"> {% endif %} <div class="cta-text is-absolute" style="color:{{section.settings.text_color}}">{{ section.settings.text_link_text }}</div> </a>
                 <div id="w-node-f727b04f-0fb7-b1ec-5db9-c7264e4cbfb9-4e4cbfad" class="product_list-wrapper w-dyn-list swiper">
-                  <div role="list" class="product_list w-dyn-items swiper-wrapper">
+                  <div role="list" class="swiper-wrapper w-dyn-items">
                     {% for product in section.settings.collection_collection.products limit: section.settings.collection_collection_limit %}
 <div role="listitem" class="product_list-item w-dyn-item swiper-slide">
     
