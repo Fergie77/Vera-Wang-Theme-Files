@@ -176,8 +176,8 @@
                 <div data-hover="false" data-delay="0" class="nav_dropdown w-dropdown">
                   <div class="nav_shop-icon w-dropdown-toggle">
                     <p class="nav_link-text hide-tablet">Search</p><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 10 10" fill="none" class="search-icon show-tablet">
-                      <circle cx="5.45947" cy="4" r="3.35" stroke="black" stroke-width="1.3"></circle>
-                      <path d="M3.45947 6.5L0.459473 9.5" stroke="black" stroke-width="1.3"></path>
+                      <circle cx="5.45947" cy="4" r="3.35" stroke="currentColor" stroke-width="1.3"></circle>
+                      <path d="M3.45947 6.5L0.459473 9.5" stroke-width="1.3" stroke="currentColor"></path>
                     </svg>
                   </div>
                   <nav class="nav_predictive-search-holder w-dropdown-list">
@@ -973,9 +973,16 @@
   }
 }
 @media (max-width: 991px) {
-    .nav_component {
-  background: white;
-}
+  .nav_component.white-logo .nav_logo-link {
+    color: white;
+  }
+  .nav_component.white-logo #TOP path,
+  .nav_component.white-logo #BOTTOM path {
+    fill: white !important;
+  }
+  .nav_component {
+    background: white;
+  }
   .nav_component.white-logo {
     background: black;
   }
@@ -999,6 +1006,10 @@
   }
   .section_navbar.scrolling .nav_component.white-logo .wang-character {
     fill: white;
+  }
+  .section_navbar.scrolling .nav_component.white-logo #TOP path,
+  .section_navbar.scrolling .nav_component.white-logo #BOTTOM path {
+    fill: white !important;
   }
   .nav_container:has(.nav_menu-dropdown.is-open) .nav_dropdown-list-background {
     background: rgba(0, 0, 0, 0.6) !important;
