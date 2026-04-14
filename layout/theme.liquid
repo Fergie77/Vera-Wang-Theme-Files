@@ -212,10 +212,13 @@ const mq = window.matchMedia('(max-width: 776px)');
 let swiper;
 function initSwiper() {
   if (mq.matches && !swiper) {
-    swiper = new Swiper('.product_list', {
-      slidesPerView: '1.2',
-  spaceBetween: 8,
-  grabCursor: true,
+    swiper = new Swiper('.product_list-wrapper', {
+      slidesPerView: 1.2,
+      spaceBetween: 16,
+      grabCursor: true,
+      mousewheel: {
+    forceToAxis: true,
+  },
     });
   } else if (!mq.matches && swiper) {
     swiper.destroy(true, true);
