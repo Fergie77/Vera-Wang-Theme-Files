@@ -82,9 +82,6 @@
                         {% assign submenu_links = active_section.links %}
                         {% endif %}</div>
                       <div class="filter_feed-header">
-                        {% unless submenu_links != blank %}    <div li-cloak="hide" li-unless="submenu_links != blank">
-        </div>
-{% endunless %}
                         <div class="collections-menu_layout">
                           <div class="collections-menu_item">
                             <a li-object="search.terms | escape " href="#" class="collections-menu_link">{{ search.terms | escape  }}</a>
