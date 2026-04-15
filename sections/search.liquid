@@ -1,11 +1,5 @@
-<div class="padding-global padding-section-medium">
+<div class="collection-page_custom-padding">
           <div class="container-large">
-            <div class="filters_top">
-              <div class="filter_headline">
-                <h1 li-object="search.terms | escape " class="heading-style-h2">{{ search.terms | escape  }}</h1>
-              </div>
-              <div class="spacer-large"></div>
-            </div>
             {% paginate search.results by 50 %}
     <div li-paginate:by="50" li-paginate="search.results" class="filter_layout" by="50">
               <div id="w-node-_678e0483-bbe4-e79a-1722-b169c587feae-c587feae" class="filter_filters-wrapper">
@@ -62,60 +56,100 @@
                 </form>
                 <a data-w-id="678e0483-bbe4-e79a-1722-b169c587fede" href="#" class="filter_tablet-modal-close-button w-inline-block"><img src="https://uploads-ssl.webflow.com/624380709031623bfe4aee60/624380709031623afe4aee7e_icon_close-modal.svg" alt="" class="icon-1x1-small"></a>
               </div>
-              <a data-w-id="63614b06-d13c-4caa-b5ce-a7c7ab356686" href="#" class="filter_tablet-filters-button w-inline-block"><img alt="" loading="lazy" src="https://uploads-ssl.webflow.com/624380709031623bfe4aee60/62942b9f00484cf074e6f851_icon-filters.svg" class="button-icon-left">
-                <div>Filters</div>
-              </a>
               <div id="w-node-_63614b06-d13c-4caa-b5ce-a7c7ab35668a-ab35667c" class="filter_feed">
-                <div class="filter_feed-header">
-                  <div class="filter_tags-wrapper">
-                    {% for filters in search.filters %}    <div li-for="filters in search.filters" class="filter_tags-inner-wrapper">
-                                    
-                      
-                            {% for filter_value in filters.active_values %}    <div li-for="filter_value in filters.active_values" class="filter_tag">
-                                    
-                        
-                            <div li-object="filter_value.label">{{ filter_value.label }}</div>
-                            
-                        
-                            <a aria-label="Remove Filter" li-object:href="filter_value.url_to_remove" href="{{ filter_value.url_to_remove }}" class="filter_close w-inline-block">
-                          <div class="filter_close-icon w-embed"><svg width="100%" height="100%" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M17.1266 16.773L16.7729 17.1266C16.5777 17.3218 16.2611 17.3218 16.0658 17.1266L12 13.0607L7.9341 17.1265C7.73888 17.3218 7.42229 17.3218 7.22702 17.1265L6.87347 16.773C6.6782 16.5777 6.6782 16.2612 6.87347 16.0659L10.9394 12L6.87347 7.93413C6.6782 7.73891 6.6782 7.42232 6.87347 7.22705L7.22702 6.8735C7.42228 6.67824 7.73888 6.67824 7.9341 6.8735L12 10.9394L16.0658 6.8735C16.2611 6.67824 16.5777 6.67824 16.7729 6.8735L17.1266 7.22705C17.3218 7.42231 17.3218 7.73891 17.1266 7.93413L13.0607 12L17.1266 16.0659C17.3218 16.2612 17.3218 16.5777 17.1266 16.773Z" fill="currentColor"></path>
-                            </svg></div>
-                        </a>
-                            
-                      
+                <div class="filter_feed-heading_wrapper">
+                  <div class="padding-global">
+                    <div class="container-large">
+                      <div li-cloak="hide" class="w-embed">{% assign main_nav = linklists['main-menu'] %}
+                        {% assign active_section = blank %}
+                        {% assign active_group = blank %}
+                        {% for section_link in main_nav.links %}
+                        {% if section_link.active or section_link.child_active %}
+                        {% assign active_section = section_link %}
+                        {% for group_link in section_link.links %}
+                        {% if group_link.active or group_link.child_active %}
+                        {% assign active_group = group_link %}
+                        {% break %}
+                        {% endif %}
+                        {% endfor %}
+                        {% break %}
+                        {% endif %}
+                        {% endfor %}
+                        {% assign submenu_links = blank %}
+                        {% if active_group != blank and active_group.links != blank %}
+                        {% assign submenu_links = active_group.links %}
+                        {% elsif active_section != blank and active_section.links != blank %}
+                        {% assign submenu_links = active_section.links %}
+                        {% endif %}</div>
+                      <div class="filter_feed-header">
+                        {% unless submenu_links != blank %}    <div li-cloak="hide" li-unless="submenu_links != blank">
+        </div>
+{% endunless %}
+                        <div class="collections-menu_layout">
+                          <div class="collections-menu_item">
+                            <a li-object="search.terms | escape " href="#" class="collections-menu_link">{{ search.terms | escape  }}</a>
+                            <div class="is-current-collection"></div>
+                          </div>
                         </div>
-{% endfor %}
+                        <div class="sort-and-filter_wrapper hide-tablet">
+                          <a href="#" class="filter_tablet-filters-button w-inline-block">
+                            <div>Filter</div>
+                          </a>
+                          <div class="sort-form w-form">
+                            <form id="email-form-2" name="email-form-2" data-name="Email Form 2" method="get" data-wf-page-id="68e64cde361aeb3efeb34c9b" data-wf-element-id="56eebf9b-7dec-d60d-48b5-3b70ce1618ed">
+                              <div class="fs_selectcustom-2_component">
+                                <div class="fs_selectcustom-2_embed w-embed w-script"><!--  [Finsweet Attributes] Select Custom  -->
+                                  <script>(()=>{var t="https://cdn.jsdelivr.net/npm/@finsweet/attributes-selectcustom@1/selectcustom.js",e=document.querySelector(`script[src="${t}"]`);e||(e=document.createElement("script"),e.async=!0,e.src=t,document.head.append(e));})();</script>
+                                </div>
+                                <div data-delay="0" data-hover="false" fs-selectcustom-element="dropdown" class="fs_selectcustom-2_dropdown w-dropdown">
+                                  <div class="fs_selectcustom-2_toggle w-dropdown-toggle">
+                                    <div class="fs_selectcustom-2_label">Sort by:</div>
+                                    <div fs-selectcustom-element="label" class="fs_selectcustom-2_text">Select option</div>
+                                  </div>
+                                  <nav class="fs_selectcustom-2_list w-dropdown-list"><select id="sort-by" li-for:inside="option in collection.sort_options" class="sort_select filter_checkbox hide">
+        {% for option in collection.sort_options %}                            
+                                      
+                            <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% elsif option.value == collection.default_sort_by %}selected{% endif %}>{{ option.name }}</option>
                             
-                    
-                        </div>
-{% endfor %}
-                  </div><select id="sort-by" li-for:inside="option in search.sort_options" class="sort_select filter_checkbox">
-        {% for option in search.sort_options %}                            
-                    
-                            <option value="{{ option.value }}" {% if option.value == search.sort_by %}selected{% elsif option.value == search.default_sort_by %}selected{% endif %}>{{ option.name }}</option>
-                            
-                  
+                                    
                     {% endfor %}    </select>
+                                    <a href="#" class="fs_selectcustom-2_link w-dropdown-link">Select link</a>
+                                  </nav>
+                                </div>
+                              </div>
+                            </form>
+                            <div class="w-form-done">
+                              <div>Thank you! Your submission has been received!</div>
+                            </div>
+                            <div class="w-form-fail">
+                              <div>Oops! Something went wrong while submitting the form.</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="filter_product-list-wrapper w-dyn-list">
-                  <div role="list" class="filter_product-list w-dyn-items">
-                    {% for product in search.results %}    <div li-for="product in search.results" role="listitem" class="filter_product-list-item w-dyn-item">
+                <div class="padding-global">
+                  <div class="filter_product-list-wrapper w-dyn-list">
+                    <div role="list" class="filter_product-list w-dyn-items">
+                      {% for product in search.results %}    <div li-for="product in search.results" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
-                      
+                        
                             {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
                             
-                    
+                      
                         </div>
 {% endfor %}
-                  </div>
-                  {% if search.results == blank %}    <div li-if="search.results == blank" class="filter_empty w-dyn-empty">
+                    </div>
+                    {% if search.results == blank %}    <div li-if="search.results == blank" class="filter_empty w-dyn-empty">
     
-                    <div class="heading-style-h6">No results found.</div>
-                    <div class="spacer-xxsmall"></div>
-                    <div>There are no results with this criteria. Try changing your search.</div>
-                      </div>
+                      <div class="heading-style-h6">No results found.</div>
+                      <div class="spacer-xxsmall"></div>
+                      <div>There are no results with this criteria. Try changing your search.</div>
+                        </div>
 {% endif %}
+                  </div>
                 </div>
                 {% if paginate.pages > 1 %}    <nav li-if="paginate.pages > 1" class="pagination_component">
     
