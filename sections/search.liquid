@@ -103,10 +103,10 @@
                                     <div class="fs_selectcustom-2_label">Sort by:</div>
                                     <div fs-selectcustom-element="label" class="fs_selectcustom-2_text">Select option</div>
                                   </div>
-                                  <nav class="fs_selectcustom-2_list w-dropdown-list"><select id="sort-by" li-for:inside="option in collection.sort_options" class="sort_select filter_checkbox hide">
-        {% for option in collection.sort_options %}                            
+                                  <nav class="fs_selectcustom-2_list w-dropdown-list"><select id="sort-by" li-for:inside="option in search.sort_options" class="sort_select filter_checkbox hide">
+        {% for option in search.sort_options %}                            
                                       
-                            <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% elsif option.value == collection.default_sort_by %}selected{% endif %}>{{ option.name }}</option>
+                            <option value="{{ option.value }}" {% if option.value == search.sort_by %}selected{% elsif option.value == search.default_sort_by %}selected{% endif %}>{{ option.name }}</option>
                             
                                     
                     {% endfor %}    </select>
