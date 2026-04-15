@@ -27,12 +27,12 @@
       ],
       "name": "Footer",
       "settings": {
-        "text_heading": "Join our Newsletter<br>(Replace with Klaviyo)",
-        "text_checkbox": "By subscribing you agree to with our <a href=\"#\"><span>Privacy Policy</span></a> and provide consent to receive updates from our company.",
+        "text_heading": "Join our Newsletter(Replace with Klaviyo)",
+        "text_checkbox": "By subscribing you agree to with our Privacy Policy and provide consent to receive updates from our company.",
         "placeholder_text": "Email address",
-        "menu_1": "footer",
-        "menu_2": "footer",
-        "menu_3": "footer"
+        "menu_1": "online-services",
+        "menu_2": "brand",
+        "menu_3": "legal"
       }
     }
   },
