@@ -7,9 +7,6 @@
                     <h2 id="w-node-_6327b60e-44ca-c0c8-eaac-83b50b20f8e6-feb34c80" class="product-section_heading is-large">
 {{ section.settings.text_heading }}
 </h2>
-                    <p id="w-node-_6327b60e-44ca-c0c8-eaac-83b50b20f8e8-feb34c80" class="product-section_subheading is-small">
-{{ section.settings.text_paragraph }}
-</p>
                     <p id="w-node-_6327b60e-44ca-c0c8-eaac-83b50b20f8ea-feb34c80" class="cta-text">
 {{ section.settings.text_link_text }}
 </p>
@@ -34,7 +31,7 @@
                     </div>
                   </div>
                 </div>
-                <div id="w-node-a96a619b-ba2d-8598-5535-0e3f407f9f82-feb34c80" class="featured-products_collection-link-wrapper">{% if section.settings.image_link_image %}
+                <div id="w-node-a96a619b-ba2d-8598-5535-0e3f407f9f82-feb34c80" class="featured-products_collection-link-wrapper is-first">{% if section.settings.image_link_image %}
 {{ section.settings.image_link_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'featured-products_collection-image' }}
 {% else %}
 <img loading="lazy" alt="" src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" class="featured-products_collection-image">
@@ -50,19 +47,13 @@
         </div> {% schema %} {
     "tag": "section",
     "name": "Featured 2",
-    "class": "section_product",
+    "class": "section_product remove-top-padding",
     "settings": [
         {
             "id": "text_heading",
             "type": "text",
             "label": "Heading",
             "default": "Shoes"
-        },
-        {
-            "id": "text_paragraph",
-            "type": "text",
-            "label": "Paragraph",
-            "default": "Lorem ipsum dolor sit amet consecteturadipiscing elit Vestibulumelementum elit sit amet dictum tempus"
         },
         {
             "id": "text_link_text",
