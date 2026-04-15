@@ -1,6 +1,8 @@
-{%  for article in blog.articles%}
-article.title
-{% endfor %}
+{% paginate article in blog.articles by 50 %}
+
+{{article.title}}
+
+{% endpaginate %}
 
 {% paginate article in blog.articles by 50 %}
     <div li-paginate:by="50" li-paginate="article in blog.articles" class="padding-global padding-section-small" by="50">
