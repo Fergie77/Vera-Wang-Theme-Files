@@ -1,15 +1,20 @@
 <style>
+
+.main-wrapper{
+view-transition-name: main;
+}
+
 @view-transition {
   navigation: auto;
 }
 
 /* Outgoing page slides left */
-::view-transition-old(body) {
+::view-transition-old(main) {
   animation: slide-out 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Incoming page slides in from right */
-::view-transition-new(body) {
+::view-transition-new(main) {
   animation: slide-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
