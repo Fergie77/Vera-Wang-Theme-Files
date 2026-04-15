@@ -1,30 +1,9 @@
 <style>
 
-.main-wrapper{
-view-transition-name: main;
-}
-
 @view-transition {
   navigation: auto;
 }
 
-/* Outgoing page slides left */
-::view-transition-old(main) {
-  animation: slide-out 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Incoming page slides in from right */
-::view-transition-new(main) {
-  animation: slide-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes slide-out {
-  to { transform: translateX(2rem); opacity: 0; }
-}
-
-@keyframes slide-in {
-  from { transform: translateX(-2rem); opacity: 0; }
-}
   [li-cloak_disabled="hide"] { display: none !important; }
   [x-cloak] { display: none !important; }
   html { font-size: calc(0.8125rem + 0.20833333333333331vw); }
