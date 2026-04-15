@@ -129,6 +129,9 @@ End Google Tag Manager  -->
 </style>
 <script src="{{ 'li_helper.js' | asset_url }}" type="text/javascript"></script>{{ content_for_header }}</head>
 <body class="body">
+
+
+
   <div class="page-wrapper">
     {% render 'global_styles' %}
     {% sections 'header_group' %}
@@ -227,5 +230,19 @@ function initSwiper() {
 mq.addEventListener('change', initSwiper);
 initSwiper();
 </script>
+
+<script>
+  const mq = window.matchMedia('(min-width: 768px)');
+
+mq.addEventListener('change', () => {
+  if (!document.startViewTransition) return;
+
+  document.startViewTransition(() => {
+    // Nothing needs to happen here — the browser will
+    // capture before/after and animate the layout delta
+  });
+});
+</script>
+
 </body>
 </html>

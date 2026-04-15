@@ -4,6 +4,12 @@
   navigation: auto;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
   [li-cloak_disabled="hide"] { display: none !important; }
   [x-cloak] { display: none !important; }
   html { font-size: calc(0.8125rem + 0.20833333333333331vw); }
