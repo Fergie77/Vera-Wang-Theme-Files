@@ -33,6 +33,125 @@
                 
                     {% endfor %}    </div>
               </div>
+              <div class="footer-dropdown_wrapper"><button class="footer-dropdown_toggle">
+                  <div li-object="section.settings.menu_1.title" class="footer-dropdown_heading">{{ section.settings.menu_1.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 13 9" fill="none" class="footer-dropdown_icon">
+                    <path d="M0 0H1.96377L4.23188 3.16384L6.5 0L8.76812 3.16384L11.0362 0H13L6.5 9L0 0Z" fill="#C1BFBF"></path>
+                  </svg>
+                </button>
+                <div class="footer-dropdown_list">
+                  <div li-for:inside="link in linklists[section.settings.menu_1].links" class="footer-dropdown_link-wrapper">
+        {% for link in linklists[section.settings.menu_1].links %}                            
+                    
+                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer-dropdown_link">{{ link.title }}</a>
+                            
+                  
+                    {% endfor %}    </div>
+                </div>
+                <div class="w-embed w-script">
+                  <script>
+  (function () {
+    const script = document.currentScript;
+    const root = script ? script.closest('.footer-dropdown_wrapper') : null;
+    if (!root) return;
+    const toggle = root.querySelector('.footer-dropdown_toggle');
+    const list = root.querySelector('.footer-dropdown_list');
+    const iconInner = root.querySelector('.footer-dropdown_icon');
+    if (!toggle || !list || !iconInner) return;
+    const isWebflowEditor =
+      window.Webflow &&
+      typeof window.Webflow.env === 'function' &&
+      window.Webflow.env('editor');
+    if (!isWebflowEditor) {
+      list.classList.remove('is-open');
+    }
+    toggle.addEventListener('click', () => {
+      list.classList.toggle('is-open');
+      iconInner.classList.toggle('is-open');
+    });
+  })();
+</script>
+                </div>
+              </div>
+              <div class="footer-dropdown_wrapper">
+                <div class="footer-dropdown_toggle">
+                  <div li-object="section.settings.menu_2.title" class="footer-dropdown_heading">{{ section.settings.menu_2.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 13 9" fill="none" class="footer-dropdown_icon">
+                    <path d="M0 0H1.96377L4.23188 3.16384L6.5 0L8.76812 3.16384L11.0362 0H13L6.5 9L0 0Z" fill="#C1BFBF"></path>
+                  </svg>
+                </div>
+                <div class="footer-dropdown_list">
+                  <div li-for:inside="link in linklists[section.settings.menu_2].links" class="footer-dropdown_link-wrapper">
+        {% for link in linklists[section.settings.menu_2].links %}                            
+                    
+                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer-dropdown_link">{{ link.title }}</a>
+                            
+                  
+                    {% endfor %}    </div>
+                </div>
+                <div class="w-embed w-script">
+                  <script>
+  (function () {
+    const script = document.currentScript;
+    const root = script ? script.closest('.footer-dropdown_wrapper') : null;
+    if (!root) return;
+    const toggle = root.querySelector('.footer-dropdown_toggle');
+    const list = root.querySelector('.footer-dropdown_list');
+    const iconInner = root.querySelector('.footer-dropdown_icon');
+    if (!toggle || !list || !iconInner) return;
+    const isWebflowEditor =
+      window.Webflow &&
+      typeof window.Webflow.env === 'function' &&
+      window.Webflow.env('editor');
+    if (!isWebflowEditor) {
+      list.classList.remove('is-open');
+    }
+    toggle.addEventListener('click', () => {
+      list.classList.toggle('is-open');
+      iconInner.classList.toggle('is-open');
+    });
+  })();
+</script>
+                </div>
+              </div>
+              <div class="footer-dropdown_wrapper">
+                <div class="footer-dropdown_toggle">
+                  <div li-object="section.settings.menu_3.title" class="footer-dropdown_heading">{{ section.settings.menu_3.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 13 9" fill="none" class="footer-dropdown_icon">
+                    <path d="M0 0H1.96377L4.23188 3.16384L6.5 0L8.76812 3.16384L11.0362 0H13L6.5 9L0 0Z" fill="#C1BFBF"></path>
+                  </svg>
+                </div>
+                <div class="footer-dropdown_list">
+                  <div li-for:inside="link in linklists[section.settings.menu_3].links" class="footer-dropdown_link-wrapper">
+        {% for link in linklists[section.settings.menu_3].links %}                            
+                    
+                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer-dropdown_link">{{ link.title }}</a>
+                            
+                  
+                    {% endfor %}    </div>
+                </div>
+                <div class="w-embed w-script">
+                  <script>
+  (function () {
+    const script = document.currentScript;
+    const root = script ? script.closest('.footer-dropdown_wrapper') : null;
+    if (!root) return;
+    const toggle = root.querySelector('.footer-dropdown_toggle');
+    const list = root.querySelector('.footer-dropdown_list');
+    const iconInner = root.querySelector('.footer-dropdown_icon');
+    if (!toggle || !list || !iconInner) return;
+    const isWebflowEditor =
+      window.Webflow &&
+      typeof window.Webflow.env === 'function' &&
+      window.Webflow.env('editor');
+    if (!isWebflowEditor) {
+      list.classList.remove('is-open');
+    }
+    toggle.addEventListener('click', () => {
+      list.classList.toggle('is-open');
+      iconInner.classList.toggle('is-open');
+    });
+  })();
+</script>
+                </div>
+              </div>
             </div>
             <div id="w-node-_5eccf730-c887-5204-0e0c-693f99a7329a-99a7328f" class="footer_newsletter">
               <h2 class="footer_heading">
