@@ -2644,6 +2644,7 @@ figcaption {
 
 .product-header_radio {
   color: var(--base-color-neutral--black);
+  cursor: pointer;
   margin-bottom: 0;
   padding: 0;
   line-height: 1;
@@ -6525,6 +6526,10 @@ figcaption {
   font-size: clamp(.75rem, .714286rem + .178571vw, .875rem);
 }
 
+.footer-dropdown_icon.is-open {
+  transform-style: preserve-3d;
+}
+
 @media screen and (max-width: 991px) {
   .padding-medium {
     padding: 1.5rem;
@@ -7980,6 +7985,7 @@ figcaption {
   .footer_link-column {
     grid-column-gap: .75rem;
     grid-row-gap: .75rem;
+    display: none;
   }
 
   .filter_product-list {
@@ -8068,13 +8074,18 @@ figcaption {
     padding-bottom: 5rem;
   }
 
+  .footer_newsletter {
+    padding-right: 0;
+  }
+
   .footer_icon-grid {
     grid-template-columns: 1fr;
   }
 
   .footer_link-grid {
-    grid-column-gap: 5vw;
-    grid-row-gap: 5vw;
+    grid-column-gap: 0vw;
+    grid-row-gap: 0vw;
+    border-top: 1px solid #000;
     grid-template-rows: min-content;
     grid-template-columns: 1fr;
   }
@@ -8646,6 +8657,60 @@ figcaption {
     width: 100%;
     min-height: 0;
     display: flex;
+  }
+
+  .footer-dropdown_wrapper {
+    border-top: 1px #000;
+    border-bottom: 1px solid #000;
+  }
+
+  .footer-dropdown_toggle {
+    cursor: pointer;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+  }
+
+  .footer-dropdown_icon {
+    width: .8125rem;
+  }
+
+  .footer-dropdown_icon.is-open {
+    transform: rotateX(180deg)rotateY(0)rotateZ(0);
+  }
+
+  .footer-dropdown_heading {
+    font-variation-settings: "wght" 500, "wdth" 100, "opsz" 12;
+    text-transform: uppercase;
+    font-size: .875rem;
+    font-weight: 500;
+  }
+
+  .footer-dropdown_list {
+    grid-column-gap: 0rem;
+    grid-row-gap: 0rem;
+    flex-flow: column;
+    max-height: 0;
+    transition: max-height .3s;
+    display: flex;
+    overflow: clip;
+  }
+
+  .footer-dropdown_list.is-open {
+    height: auto;
+    max-height: 40rem;
+  }
+
+  .footer-dropdown_link {
+    font-variation-settings: "wght" 300, "wdth" 100, "opsz" 12;
+    text-transform: uppercase;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: .6875rem;
+    line-height: 1;
+    display: block;
   }
 }
 
