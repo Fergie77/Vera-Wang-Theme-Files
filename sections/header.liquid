@@ -16,7 +16,7 @@
                             {% if link.links.size > 0 %}    <div li-if="link.links.size > 0" class="nav_menu-dropdown">
     
                       <a li-object:href="link.url" href="{{ link.url }}" class="nav_dropdown-toggle w-inline-block">
-                        <div>Womenswear</div>
+                        <div class="text-block">Womenswear</div>
                       </a>
                       {% if link.links.size > 0  %}    <div li-if="link.links.size > 0 " class="nav_dropdown-list no-scrollbar">
     
@@ -757,7 +757,7 @@
 });
 
 </script>
-<div data-hover="false" data-delay="0" li-element="mini-cart" class="nav_dropdown w-dropdown" x-data="handleMinicart()" x-init="getCart()" @cartupdated.window="getCart()" @setcartitem.window="updateCartItemQuantity($event.detail.product, $event.detail.quantity)" @increasecartitem.window="increaseCartItemQuantity($event.detail.product, $event.detail.quantity)" @decreasecartitem.window="decreaseCartItemQuantity($event.detail.product, $event.detail.quantity)" @toggleminicart.window="toggleMiniCart()" @showcartmessage.window="showCartMessage" @getcartitems.window="returnCartItems">
+<div data-hover="false" data-delay="500" li-element="mini-cart" class="nav_dropdown w-dropdown" x-data="handleMinicart()" x-init="getCart()" @cartupdated.window="getCart()" @setcartitem.window="updateCartItemQuantity($event.detail.product, $event.detail.quantity)" @increasecartitem.window="increaseCartItemQuantity($event.detail.product, $event.detail.quantity)" @decreasecartitem.window="decreaseCartItemQuantity($event.detail.product, $event.detail.quantity)" @toggleminicart.window="toggleMiniCart()" @showcartmessage.window="showCartMessage" @getcartitems.window="returnCartItems">
                   <div li-element="mini-cart-toggle" class="nav_shop-icon w-dropdown-toggle" @click="$dispatch('cartupdated.window')">
                     <p class="nav_link-text hide-tablet">Cart (<span li-element="mini-cart-item-count" class="nav_shop-quantity" x-data="{ items: 0 }" x-text="items" @carttotalitems.window="items = event.detail">1</span>)</p><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 14 14" fill="none" class="cart-icon show-tablet">
                       <path d="M9.0758 4.19055L9.4958 10.3805H5.0958H0.695801L1.1158 4.19055C1.1258 3.97055 1.3058 3.81055 1.5258 3.81055H8.6658C8.8858 3.81055 9.0658 3.98055 9.0758 4.19055Z" stroke="currentColor" stroke-width="1.3" class="cart-icon_bag"></path>
@@ -808,7 +808,7 @@
                                     <a li-element="mini-cart-item-decrease" href="#" class="mini-cart_line-item_quantity-adjust" :productprop="product" @click="$dispatch('decreasecartitem', { product: product.key, quantity: product.quantity, action: 'decrease' })">-</a><input li-element="mini-cart-item-quantity" class="mini-cart_line-item_quantity-adjust" value="1" :productprop="product" @input="$dispatch('setcartitem', { product: product.key, quantity: product.quantity })" x-model="product.quantity">
                                     <a li-element="mini-cart-item-increase" href="#" class="mini-cart_line-item_quantity-adjust" :productprop="product" @click="$dispatch('increasecartitem', { product: product.key, quantity: product.quantity, action: 'increase' })">+</a>
                                   </div>
-                                  <a li-element="mini-cart-item-remove" href="#" class="cta-text" :productprop="product" @click="$dispatch('setcartitem', { product: product.key, quantity: 0 })">Remove</a>
+                                  <a li-element="mini-cart-item-remove" href="#" class="cta-text text-style-muted" :productprop="product" @click="$dispatch('setcartitem', { product: product.key, quantity: 0 })">Remove</a>
                                 </div>
                               </li></template>
                             </ul>
