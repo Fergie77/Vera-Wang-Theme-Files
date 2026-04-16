@@ -7965,27 +7965,7 @@ figcaption {
     top: 5rem;
   }
 
-  /* Mini-cart slide-in animation — mirrors slide-out_wrapper */
-.nav_mini-cart-holder {
-  display: flex;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .2s;
-}
-
-.nav_mini-cart-holder.w--open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.nav_mini-cart-holder .mini-cart_component {
-  transform: translate(120%);
-  transition: transform .3s ease-in-out;
-}
-
-.nav_mini-cart-holder.w--open .mini-cart_component {
-  transform: translate(0%);
-}
+  
 
   .nav_mini-cart-close {
     display: none;
@@ -9981,4 +9961,26 @@ figcaption {
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+}
+
+/* Mini-cart slide-in animation — mirrors slide-out_wrapper */
+.nav_mini-cart-holder {
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+
+.nav_mini-cart-holder.w--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav_mini-cart-holder .mini-cart_component {
+  transform: translate(120%);
+  transition: transform .3s ease-in-out;
+}
+
+.nav_mini-cart-holder.w--open .mini-cart_component {
+  transform: translate(0%);
 }
