@@ -808,7 +808,7 @@
                                     <a li-element="mini-cart-item-decrease" href="#" class="mini-cart_line-item_quantity-adjust" :productprop="product" @click="$dispatch('decreasecartitem', { product: product.key, quantity: product.quantity, action: 'decrease' })">-</a><input li-element="mini-cart-item-quantity" class="mini-cart_line-item_quantity-adjust" value="1" :productprop="product" @input="$dispatch('setcartitem', { product: product.key, quantity: product.quantity })" x-model="product.quantity">
                                     <a li-element="mini-cart-item-increase" href="#" class="mini-cart_line-item_quantity-adjust" :productprop="product" @click="$dispatch('increasecartitem', { product: product.key, quantity: product.quantity, action: 'increase' })">+</a>
                                   </div>
-                                  <a li-element="mini-cart-item-remove" href="#" class="cta-text text-style-muted" :productprop="product" @click="$dispatch('setcartitem', { product: product.key, quantity: 0 })">Remove</a>
+                                  <a li-element="mini-cart-item-remove" href="#" class="cta-text text-style-muted text-size-small" :productprop="product" @click="$dispatch('setcartitem', { product: product.key, quantity: 0 })">Remove</a>
                                 </div>
                               </li></template>
                             </ul>
