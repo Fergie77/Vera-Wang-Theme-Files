@@ -1032,6 +1032,31 @@
 .nav_container:has(.nav_menu-dropdown.is-open) ~ .nav_logo-link {
   color: black;
 }
+/* Mini-cart slide-in animation &mdash; mirrors slide-out_wrapper */
+.nav_mini-cart-holder {
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+.nav_mini-cart-holder.w--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.nav_mini-cart-holder .mini-cart_component {
+  transform: translate(120%);
+  transition: transform .3s ease-in-out;
+}
+.nav_mini-cart-holder.w--open .mini-cart_component {
+  transform: translate(0%);
+}
+.nav_mini-cart-holder .nav_logo-link.is-slide-out {
+  opacity: 0 !important;
+  transition: opacity .5s ease-in-out 0.3s;
+}
+.nav_mini-cart-holder.w--open .nav_logo-link.is-slide-out {
+  opacity: 1 !important;
+}
 </style>
         </div>
         <div class="hide w-embed w-script">
