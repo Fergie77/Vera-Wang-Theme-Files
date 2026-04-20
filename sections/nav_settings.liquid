@@ -1,9 +1,4 @@
-<div class="w-embed w-script">{% unless section.settings.nav_logo_color == 'split' %}
-          <script>
-  document.querySelector('.nav_component').classList.add('{{ section.settings.nav_logo_color }}-logo');
-</script>
-          {% endunless %}
-          {% if section.settings.nav_scroll_animation %}
+<div class="w-embed w-script">{% if section.settings.nav_scroll_animation %}
           <script>
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.create({
@@ -20,26 +15,6 @@
         {
             "type": "header",
             "content": "Nav Colour"
-        },
-        {
-            "type": "select",
-            "id": "nav_logo_color",
-            "label": "Nav logo colour",
-            "options": [
-                {
-                    "value": "split",
-                    "label": "Split (default)"
-                },
-                {
-                    "value": "white",
-                    "label": "White"
-                },
-                {
-                    "value": "black",
-                    "label": "Black"
-                }
-            ],
-            "default": "split"
         },
         {
             "type": "checkbox",
