@@ -1,9 +1,9 @@
-{% assign ll = page.metafields.nav.left_link_color %}
-        {% assign lb = page.metafields.nav.left_bg_color %}
-        {% assign rl = page.metafields.nav.right_link_color %}
-        {% assign rb = page.metafields.nav.right_bg_color %}
-        {% assign sl = page.metafields.nav.scroll_link_color %}
-        {% assign sb = page.metafields.nav.scroll_bg_color %}
+<div class="li-custom w-embed">{% assign ll = page.metafields.nav.left_link_color | default: section.settings.nav_left_link %}
+          {% assign lb = page.metafields.nav.left_bg_color | default: section.settings.nav_left_bg %}
+          {% assign rl = page.metafields.nav.right_link_color | default: section.settings.nav_right_link %}
+          {% assign rb = page.metafields.nav.right_bg_color | default: section.settings.nav_right_bg %}
+          {% assign sl = page.metafields.nav.scroll_link_color | default: section.settings.nav_scroll_link %}
+          {% assign sb = page.metafields.nav.scroll_bg_color | default: section.settings.nav_scroll_bg %}</div>
         <div data-animation="over-right" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="" style="--nav-left-link: {{ ll }}; --nav-left-bg: {{ lb }}; --nav-right-link: {{ rl }}; --nav-right-bg: {{ rb }}; --nav-scroll-link: {{ sl }}; --nav-scroll-bg: {{ sb }};">
           <div class="nav_container container-large">
             <div class="nav_dropdown-list-background"></div>
