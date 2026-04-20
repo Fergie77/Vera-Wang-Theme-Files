@@ -206,7 +206,7 @@
                       <div>
                         <div li-cloak="hide" class="w-embed">{% assign color_variant_count = 0 %}
                           {% for product in collection.products %}
-                          {% assign color_index = 0 %}
+                          {% assign color_index = 1 %}
                           {% assign seen = '' %}
                           {% for variant in product.variants %}
                           {% assign cv = variant.options[color_index] %}
@@ -238,7 +238,7 @@
                             {% endfor %}
                             {% endif %}
                             {% endfor %}
-                            {% assign color_index = 0 %}
+                            {% assign color_index = 1 %}
                             {% assign seen_colours = '' %}</div>
                             
                           
