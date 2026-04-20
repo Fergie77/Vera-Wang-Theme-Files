@@ -19,12 +19,16 @@
         "image_image": "shopify://shop_images/image_776_5e16d5c8-0390-4da4-ae60-a7bfe23a5b6f.jpg",
         "text_image_heading": "AW/26",
         "text_image_paragraph": "Lorem ipsum dolor sit amet consectetur adipiscing elit Vestibulum elementum elit sit amet dictum tempus",
-        "text_search": "Search",
         "collection_search_bestseller": "",
         "collection_search_bestseller_limit": 6,
-        "menu": "main-menu",
-        "nav_logo_color": "white",
-        "nav_scroll_animation": false
+        "nav_left_link": "#ffffff",
+        "nav_left_bg": "rgba(0,0,0,0)",
+        "nav_right_link": "#000000",
+        "nav_right_bg": "#ffffff",
+        "nav_scroll_link": "#000000",
+        "nav_scroll_bg": "#ffffff",
+        "nav_scroll_animation": true,
+        "menu": "main-menu"
       }
     }
   },
