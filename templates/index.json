@@ -20,12 +20,22 @@
     "image_with_text": {
       "type": "image_with_text",
       "settings": {
-        "image_image_left": "shopify://shop_images/image_61.jpg",
+        "image_image_left": "shopify://shop_images/VW_Tests_1.11.3_copy.jpg",
         "text_link_text": "",
         "text_color": "#ffffff",
-        "image_image_right": "shopify://shop_images/image_130.jpg",
+        "image_image_right": "shopify://shop_images/VW_Tests_1.7.1_copy.jpg",
         "richtext_paragraph": "<p>VERA WANG READY TO WEAR NOW AVAILABLE ONLINE</p>",
         "url_link": "shopify://collections/all"
+      }
+    },
+    "full_width_hero_BQ89WJ": {
+      "type": "full_width_hero",
+      "name": "Full Width Hero",
+      "settings": {
+        "image_image": "shopify://shop_images/VW_Tests_1.11.3.jpg",
+        "text_link_text": "Shop the collection",
+        "text_color": "#ffffff",
+        "url_link": ""
       }
     },
     "featured_products": {
@@ -106,7 +116,6 @@
       "type": "featured_2",
       "settings": {
         "text_heading": "Shoes",
-        "text_paragraph": "Lorem ipsum dolor sit amet consecteturadipiscing elit Vestibulumelementum elit sit amet dictum tempus",
         "text_link_text": "View More",
         "collection_collection": "dresses",
         "collection_collection_limit": 2,
@@ -174,6 +183,7 @@
   "order": [
     "nav_settings_ngLfGL",
     "image_with_text",
+    "full_width_hero_BQ89WJ",
     "featured_products",
     "cta_1",
     "featured_wide",
