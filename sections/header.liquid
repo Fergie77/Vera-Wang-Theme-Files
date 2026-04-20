@@ -1,8 +1,10 @@
-{% assign fg = page.metafields.nav.fg_color | default: section.settings.nav_fg %}
-        {% assign bg = page.metafields.nav.bg_color | default: section.settings.nav_bg %}
-        {% assign scroll_fg = page.metafields.nav.scroll_fg_color | default: section.settings.nav_scroll_fg %}
-        {% assign scroll_bg = page.metafields.nav.scroll_bg_color | default: section.settings.nav_scroll_bg %}
-        <div data-animation="over-right" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="" style="--nav-fg: {{ fg }}; --nav-bg: {{ bg }}; --nav-scroll-fg: {{ scroll_fg }}; --nav-scroll-bg: {{ scroll_bg }};">
+{% assign ll = page.metafields.nav.left_link_color %}
+        {% assign lb = page.metafields.nav.left_bg_color %}
+        {% assign rl = page.metafields.nav.right_link_color %}
+        {% assign rb = page.metafields.nav.right_bg_color %}
+        {% assign sl = page.metafields.nav.scroll_link_color %}
+        {% assign sb = page.metafields.nav.scroll_bg_color %}
+        <div data-animation="over-right" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="" style="--nav-left-link: {{ ll }}; --nav-left-bg: {{ lb }}; --nav-right-link: {{ rl }}; --nav-right-bg: {{ rb }}; --nav-scroll-link: {{ sl }}; --nav-scroll-bg: {{ sb }};">
           <div class="nav_container container-large">
             <div class="nav_dropdown-list-background"></div>
             <div class="nav_dropdown-list-blurred-background"></div>
@@ -880,39 +882,41 @@ document.addEventListener('click', (e) => {
         
         <div class="hide w-embed">
           <style>
-/* &#9472;&#9472; Defaults (set per-page via inline style on .nav_component) &#9472;&#9472; */
+/* &#9472;&#9472; Variables & split background &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 .nav_component {
-  --nav-fg: black;
-  --nav-bg: transparent;
-  --nav-scroll-fg: black;
-  --nav-scroll-bg: white;
-  background: var(--nav-bg);
+  --nav-left-link:   black;
+  --nav-left-bg:     white;
+  --nav-right-link:  black;
+  --nav-right-bg:    white;
+  --nav-scroll-link: black;
+  --nav-scroll-bg:   white;
+  background: linear-gradient(to right, var(--nav-left-bg) 50%, var(--nav-right-bg) 50%);
 }
-.nav_component .nav_logo-link     { color: var(--nav-fg); }
-.nav_component .wang-character    { fill:  var(--nav-fg); }
-.nav_component .nav_shop-icons    { color: var(--nav-fg); }
-.nav_component .nav_dropdown-toggle { color: var(--nav-fg); }
-/* &#9472;&#9472; Scrolling &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+/* &#9472;&#9472; Element colours &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+.nav_dropdown-toggle          { color: var(--nav-left-link) !important; }
+.nav_logo-link                { color: var(--nav-left-link); }
+.wang-character               { fill:  var(--nav-right-link); }
+.nav_shop-icons               { color: var(--nav-right-link); }
+/* &#9472;&#9472; Scrolled &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 .section_navbar.scrolling .nav_component {
   background: var(--nav-scroll-bg);
 }
-.section_navbar.scrolling .nav_component .nav_logo-link,
-.section_navbar.scrolling .nav_component .nav_shop-icons,
-.section_navbar.scrolling .nav_component .nav_dropdown-toggle {
-  color: var(--nav-scroll-fg);
-}
-.section_navbar.scrolling .nav_component .wang-character {
-  fill: var(--nav-scroll-fg);
-}
-/* &#9472;&#9472; Desktop &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+.section_navbar.scrolling .nav_dropdown-toggle { color: var(--nav-scroll-link) !important; }
+.section_navbar.scrolling .nav_logo-link       { color: var(--nav-scroll-link); }
+.section_navbar.scrolling .wang-character      { fill:  var(--nav-scroll-link); }
+.section_navbar.scrolling .nav_shop-icons      { color: var(--nav-scroll-link); }
+/* &#9472;&#9472; Dropdown open overrides &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 @media (min-width: 992px) {
   .nav_component {
     transition: background 0.3s ease;
   }
-  .nav_component .nav_logo-link,
-  .nav_component .nav_shop-icons,
-  .nav_component .nav_dropdown-toggle {
+  .nav_dropdown-toggle,
+  .nav_logo-link,
+  .nav_shop-icons {
     transition: color 0.3s ease;
+  }
+  .wang-character {
+    transition: fill 0.3s ease;
   }
   .nav_dropdown-list-blurred-background {
     transition: opacity 0.3s;
@@ -931,7 +935,7 @@ document.addEventListener('click', (e) => {
     opacity: 1 !important;
     pointer-events: auto;
   }
-  /* Dropdown open &mdash; intentionally hardcoded black/white regardless of page scheme */
+  /* Dropdown open &mdash; hardcoded, overrides theme colours */
   .nav_container:has(.nav_menu-dropdown.is-hovered) > .nav_logo-link,
   .nav_container:has(.nav_menu-dropdown.is-open) > .nav_logo-link {
     color: black;
@@ -958,37 +962,24 @@ document.addEventListener('click', (e) => {
 }
 /* &#9472;&#9472; Mobile &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 @media (max-width: 991px) {
+  /* On mobile the split collapses &mdash; use left side as the single colour */
   .nav_component {
-    background: var(--nav-bg, white);
+    background: var(--nav-left-bg);
   }
-  .nav_component .nav_logo-link {
-    color: var(--nav-fg);
-  }
-  .nav_component .wang-character {
-    fill: var(--nav-fg);
-  }
+  .nav_component .nav_logo-link { color: var(--nav-left-link); }
+  .nav_component .wang-character { fill: var(--nav-left-link); }
   .nav_component #TOP path,
-  .nav_component #BOTTOM path {
-    fill: var(--nav-fg) !important;
-  }
+  .nav_component #BOTTOM path   { fill: var(--nav-left-link) !important; }
   .nav_component .cart-icon_dot {
-    fill: var(--nav-fg) !important;
-    stroke: var(--nav-bg) !important;
+    fill: var(--nav-left-link) !important;
+    stroke: var(--nav-left-bg) !important;
     transition: fill 0.3s ease, stroke 0.3s ease;
   }
-  .section_navbar.scrolling .nav_component {
-    background: var(--nav-scroll-bg);
-  }
-  .section_navbar.scrolling .nav_component .nav_logo-link {
-    color: var(--nav-scroll-fg);
-  }
-  .section_navbar.scrolling .nav_component .wang-character {
-    fill: var(--nav-scroll-fg);
-  }
+  .section_navbar.scrolling .nav_component             { background: var(--nav-scroll-bg); }
+  .section_navbar.scrolling .nav_component .nav_logo-link { color: var(--nav-scroll-link); }
+  .section_navbar.scrolling .nav_component .wang-character { fill: var(--nav-scroll-link); }
   .section_navbar.scrolling .nav_component #TOP path,
-  .section_navbar.scrolling .nav_component #BOTTOM path {
-    fill: var(--nav-scroll-fg) !important;
-  }
+  .section_navbar.scrolling .nav_component #BOTTOM path { fill: var(--nav-scroll-link) !important; }
   .nav_container:has(.nav_menu-dropdown.is-open) .nav_dropdown-list-background {
     background: rgba(0, 0, 0, 0.6) !important;
     opacity: 1;
@@ -998,13 +989,6 @@ document.addEventListener('click', (e) => {
   .nav_container:has(.nav_menu-dropdown.is-open) .nav_dropdown-list-background {
     background: white !important;
   }
-}
-/* &#9472;&#9472; Logo sibling of open dropdown &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-.nav_container:has(.nav_menu-dropdown.is-open) ~ .nav_logo-link .wang-character {
-  fill: white;
-}
-.nav_container:has(.nav_menu-dropdown.is-open) ~ .nav_logo-link {
-  color: black;
 }
 /* &#9472;&#9472; Mini-cart &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 .nav_mini-cart-holder {
@@ -1120,30 +1104,6 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
         {
             "type": "header",
             "content": "Nav Colour"
-        },
-        {
-            "type": "color",
-            "id": "nav_fg",
-            "label": "Nav foreground",
-            "default": "#000000"
-        },
-        {
-            "type": "color",
-            "id": "nav_bg",
-            "label": "Nav background",
-            "default": "#ffffff"
-        },
-        {
-            "type": "color",
-            "id": "nav_scroll_fg",
-            "label": "Nav foreground (scrolled)",
-            "default": "#000000"
-        },
-        {
-            "type": "color",
-            "id": "nav_scroll_bg",
-            "label": "Nav background (scrolled)",
-            "default": "#ffffff"
         },
         {
             "type": "header",
