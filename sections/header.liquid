@@ -1,4 +1,8 @@
-<div data-animation="over-right" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="">
+{% assign fg = page.metafields.nav.fg_color | default: section.settings.nav_fg %}
+        {% assign bg = page.metafields.nav.bg_color | default: section.settings.nav_bg %}
+        {% assign scroll_fg = page.metafields.nav.scroll_fg_color | default: section.settings.nav_scroll_fg %}
+        {% assign scroll_bg = page.metafields.nav.scroll_bg_color | default: section.settings.nav_scroll_bg %}
+        <div data-animation="over-right" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="" style="--nav-fg: {{ fg }}; --nav-bg: {{ bg }}; --nav-scroll-fg: {{ scroll_fg }}; --nav-scroll-bg: {{ scroll_bg }};">
           <div class="nav_container container-large">
             <div class="nav_dropdown-list-background"></div>
             <div class="nav_dropdown-list-blurred-background"></div>
@@ -319,6 +323,8 @@
 {% endunless %}
                             </div>
                           </div>
+                          <div class="nav_predictive-search-close-blur"></div>
+                          <div class="nav_predictive-search-close-button"></div>
                         </form>
                         <div class="hide w-form-done">
                           <div>Thank you! Your submission has been received!</div>
@@ -333,13 +339,39 @@
                   <script>
 const input = document.querySelector('#search-input');
 const overflow = document.querySelector('.predictive-search_overflow');
-const closeBtn = document.querySelector('.predictive-search_close');
-input.addEventListener('focus', () => overflow.classList.add('is-open'));
-closeBtn.addEventListener('click', () => overflow.classList.remove('is-open'));
+const closePanel = document.querySelector('.nav_predictive-search-close-blur');
+const closeButton = document.querySelector('.nav_predictive-search-close-button');
+function open() {
+  overflow.classList.add('is-open');
+  closePanel.classList.add('is-open');
+}
+function close() {
+  overflow.classList.remove('is-open');
+  closePanel.classList.remove('is-open');
+}
+input.addEventListener('focus', open);
+input.addEventListener('click', (e) => e.stopPropagation());
+closePanel.addEventListener('click', close);
+closeButton.addEventListener('click', close);
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') overflow.classList.remove('is-open');
+  if (e.key === 'Escape') close();
+});
+document.addEventListener('click', (e) => {
+  if (!overflow.contains(e.target)) close();
 });
 </script>
+                </div>
+                <div class="w-embed">
+                  <style>
+#search-input {
+  border: none;
+  border-bottom: 1px solid currentColor;
+  outline: none;
+}
+#search-input:focus {
+  border-bottom: 2px solid #000;
+}
+</style>
                 </div>
               </div>
               {% if shop.customer_accounts_optional %}    <div li-if="shop.customer_accounts_optional" class="nav_account hide-tablet">
@@ -845,66 +877,37 @@ document.addEventListener('keydown', (e) => {
           </div>
         </div>
         
+        
         <div class="hide w-embed">
           <style>
-/* Default scrolling behaviour */
-.section_navbar.scrolling .nav_logo-link {
-  color: black;
+/* &#9472;&#9472; Defaults (set per-page via inline style on .nav_component) &#9472;&#9472; */
+.nav_component {
+  --nav-fg: black;
+  --nav-bg: transparent;
+  --nav-scroll-fg: black;
+  --nav-scroll-bg: white;
+  background: var(--nav-bg);
 }
-/* Nav background on scroll */
+.nav_component .nav_logo-link     { color: var(--nav-fg); }
+.nav_component .wang-character    { fill:  var(--nav-fg); }
+.nav_component .nav_shop-icons    { color: var(--nav-fg); }
+.nav_component .nav_dropdown-toggle { color: var(--nav-fg); }
+/* &#9472;&#9472; Scrolling &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 .section_navbar.scrolling .nav_component {
-  background: white;
+  background: var(--nav-scroll-bg);
 }
-.section_navbar.scrolling .nav_component.white-logo {
-  background: black;
+.section_navbar.scrolling .nav_component .nav_logo-link,
+.section_navbar.scrolling .nav_component .nav_shop-icons,
+.section_navbar.scrolling .nav_component .nav_dropdown-toggle {
+  color: var(--nav-scroll-fg);
 }
-.section_navbar.scrolling .nav_component.black-logo {
-  background: white;
+.section_navbar.scrolling .nav_component .wang-character {
+  fill: var(--nav-scroll-fg);
 }
-/* white-logo + scrolling: override the global black rule, keep elements white */
-.section_navbar.scrolling .nav_component.white-logo .nav_logo-link {
-  color: white;
-}
-.section_navbar.scrolling .nav_component.white-logo .nav_shop-icons {
-  color: white;
-}
-.section_navbar.scrolling .nav_component.white-logo .nav_dropdown-toggle {
-  color: white;
-}
-/* white-logo */
-.nav_component.white-logo .wang-character {
-  fill: white;
-}
-.nav_component.white-logo .nav_shop-icons {
-  color: white;
-}
-.nav_component.white-logo .nav_dropdown-toggle {
-  color: white !important;
-}
-.section_navbar.scrolling .nav_component.white-logo:has(.nav_menu-dropdown.is-open) .nav_logo-link,
-.section_navbar.scrolling .nav_component.white-logo:has(.nav_menu-dropdown.is-hovered) .nav_logo-link {
-  color: black;
-}
-.nav_component.white-logo:has(.nav_menu-dropdown.is-hovered) .nav_dropdown-toggle,
-.nav_component.white-logo:has(.nav_menu-dropdown.is-open) .nav_dropdown-toggle {
-  color: black !important;
-}
-/* black-logo */
-.nav_component.black-logo .nav_logo-link {
-  color: black;
-}
-.nav_component.black-logo .wang-character {
-  fill: black;
-}
-.nav_component.black-logo .nav_shop-icons {
-  color: black;
-}
-.nav_component.black-logo .nav_dropdown-toggle {
-  color: black;
-}
+/* &#9472;&#9472; Desktop &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 @media (min-width: 992px) {
   .nav_component {
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.3s ease;
   }
   .nav_component .nav_logo-link,
   .nav_component .nav_shop-icons,
@@ -928,6 +931,7 @@ document.addEventListener('keydown', (e) => {
     opacity: 1 !important;
     pointer-events: auto;
   }
+  /* Dropdown open &mdash; intentionally hardcoded black/white regardless of page scheme */
   .nav_container:has(.nav_menu-dropdown.is-hovered) > .nav_logo-link,
   .nav_container:has(.nav_menu-dropdown.is-open) > .nav_logo-link {
     color: black;
@@ -952,49 +956,38 @@ document.addEventListener('keydown', (e) => {
     backdrop-filter: blur(8px) grayscale(1) brightness(0.5);
   }
 }
+/* &#9472;&#9472; Mobile &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 @media (max-width: 991px) {
-  .nav_component.white-logo .nav_logo-link {
-    color: white;
-  }
-  .nav_component.white-logo #TOP path,
-  .nav_component.white-logo #BOTTOM path {
-    fill: white !important;
-  }
   .nav_component {
-    background: white;
+    background: var(--nav-bg, white);
   }
-  .nav_component.white-logo {
-    background: black;
+  .nav_component .nav_logo-link {
+    color: var(--nav-fg);
   }
-  .nav_component.black-logo {
-    background: white;
+  .nav_component .wang-character {
+    fill: var(--nav-fg);
+  }
+  .nav_component #TOP path,
+  .nav_component #BOTTOM path {
+    fill: var(--nav-fg) !important;
+  }
+  .nav_component .cart-icon_dot {
+    fill: var(--nav-fg) !important;
+    stroke: var(--nav-bg) !important;
+    transition: fill 0.3s ease, stroke 0.3s ease;
   }
   .section_navbar.scrolling .nav_component {
-    background: white;
+    background: var(--nav-scroll-bg);
   }
   .section_navbar.scrolling .nav_component .nav_logo-link {
-    color: black;
+    color: var(--nav-scroll-fg);
   }
   .section_navbar.scrolling .nav_component .wang-character {
-    fill: black;
+    fill: var(--nav-scroll-fg);
   }
-  .section_navbar.scrolling .nav_component.white-logo {
-    background: black;
-  }
-  .section_navbar.scrolling .nav_component.white-logo .nav_logo-link {
-    color: white;
-  }
-  .section_navbar.scrolling .nav_component.white-logo .wang-character {
-    fill: white;
-  }
-  .section_navbar.scrolling .nav_component.white-logo #TOP path,
-  .section_navbar.scrolling .nav_component.white-logo #BOTTOM path {
-    fill: white !important;
-  }
-  .nav_component.white-logo .cart-icon_dot {
-    fill: white !important;
-    stroke: black !important;
-    transition: fill 0.3s ease, stroke 0.3s ease;
+  .section_navbar.scrolling .nav_component #TOP path,
+  .section_navbar.scrolling .nav_component #BOTTOM path {
+    fill: var(--nav-scroll-fg) !important;
   }
   .nav_container:has(.nav_menu-dropdown.is-open) .nav_dropdown-list-background {
     background: rgba(0, 0, 0, 0.6) !important;
@@ -1006,18 +999,19 @@ document.addEventListener('keydown', (e) => {
     background: white !important;
   }
 }
+/* &#9472;&#9472; Logo sibling of open dropdown &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 .nav_container:has(.nav_menu-dropdown.is-open) ~ .nav_logo-link .wang-character {
   fill: white;
 }
 .nav_container:has(.nav_menu-dropdown.is-open) ~ .nav_logo-link {
   color: black;
 }
-/* Mini-cart slide-in animation &mdash; mirrors slide-out_wrapper */
+/* &#9472;&#9472; Mini-cart &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 .nav_mini-cart-holder {
   display: flex;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 .nav_mini-cart-holder.w--open {
   opacity: 1;
@@ -1025,14 +1019,14 @@ document.addEventListener('keydown', (e) => {
 }
 .nav_mini-cart-holder .mini-cart_component {
   transform: translate(120%);
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 .nav_mini-cart-holder.w--open .mini-cart_component {
   transform: translate(0%);
 }
 .nav_mini-cart-holder .nav_logo-link.is-slide-out {
   opacity: 0 !important;
-  transition: opacity .5s ease-in-out 0.3s;
+  transition: opacity 0.5s ease-in-out 0.3s;
 }
 .nav_mini-cart-holder.w--open .nav_logo-link.is-slide-out {
   opacity: 1 !important;
@@ -1122,6 +1116,34 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
             "step": 1,
             "label": "Limit: Search - Bestseller",
             "default": 6
+        },
+        {
+            "type": "header",
+            "content": "Nav Colour"
+        },
+        {
+            "type": "color",
+            "id": "nav_fg",
+            "label": "Nav foreground",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "nav_bg",
+            "label": "Nav background",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "nav_scroll_fg",
+            "label": "Nav foreground (scrolled)",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "nav_scroll_bg",
+            "label": "Nav background (scrolled)",
+            "default": "#ffffff"
         },
         {
             "type": "header",
