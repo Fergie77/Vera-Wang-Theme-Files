@@ -105,6 +105,7 @@ function initGallery() {
   const slides = gsap.utils.toArray('.swiper-slide.is-product-gallery');
   const bullets = gsap.utils.toArray('.swiper-pagination-bullet');
   function setActive(index) {
+    console.log(bullets)
     bullets.forEach((b, i) => b.classList.toggle('is-active', i === index));
   }
   slides.forEach((slide, i) => {
@@ -117,7 +118,7 @@ function initGallery() {
       vars: { _gallery: true },
     });
   });
-  setActive(1);
+  setActive(0);
 }
 initGallery();
 </script>
