@@ -29,7 +29,7 @@
                 <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
         {% for media in product.media %}                            
                   
-                            {% assign media_alt_lower = media.alt | downcase %} %}
+                            {% assign media_alt_lower = media.alt | downcase %}
                             
                   
                             {% if has_variant_media == false and media.media_type == 'image' %}    <div li-if="has_variant_media == false and media.media_type == 'image'" class="swiper-slide is-product-gallery">
