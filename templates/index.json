@@ -13,7 +13,6 @@
       "type": "nav_settings",
       "name": "Nav Settings",
       "settings": {
-        "nav_logo_color": "split",
         "nav_scroll_animation": true
       }
     },
@@ -21,11 +20,11 @@
       "type": "image_with_text",
       "settings": {
         "image_image_left": "shopify://shop_images/VW_Tests_1.7.1_copy.jpg",
-        "text_link_text": "",
+        "text_cta_text": "Shop the collection",
         "text_color": "#ffffff",
         "image_image_right": "shopify://shop_images/VW_Tests_1.11.3_copy.jpg",
         "richtext_paragraph": "<p>VERA WANG READY TO WEAR NOW AVAILABLE ONLINE</p>",
-        "url_link": "shopify://collections/all"
+        "url_cta_link": ""
       }
     },
     "featured_products": {
@@ -44,12 +43,13 @@
     "cta_1": {
       "type": "cta_1",
       "settings": {
-        "url_link": "shopify://collections/all",
+        "url_cta_link": "",
         "text_eyebrow_text": "ELEVATED CONTEMPORARY WOMENSWEAR",
         "text_heading": "Autumn Winter 2026",
         "text_sub_heading": "Subheading",
-        "text_link_text": "Explore New Season",
-        "image_image": "shopify://shop_images/image_120.jpg"
+        "text_cta_text": "Call to action link",
+        "image_image": "shopify://shop_images/image_120.jpg",
+        "text_link_text": "Explore New Season"
       }
     },
     "featured_wide": {
@@ -57,8 +57,7 @@
       "settings": {
         "url_cta_link": "",
         "text_heading": "Handbags",
-        "text_cta_text": "Call to action button",
-        "url_link": ""
+        "text_cta_text": "Call to action button"
       }
     },
     "styled_by_vera": {
@@ -98,19 +97,20 @@
         "block"
       ],
       "settings": {
-        "text_heading": "Styled By Vera",
-        "url_link": ""
+        "text_heading": "Styled By Vera Wang",
+        "text_cta_text": "Explore The Looks",
+        "url_cta_link": ""
       }
     },
     "featured_2": {
       "type": "featured_2",
       "settings": {
         "text_heading": "Shoes",
-        "text_link_text": "View More",
+        "text_cta_text": "View More",
         "collection_collection": "dresses",
         "collection_collection_limit": 2,
         "image_link_image": "shopify://shop_images/image_147.jpg",
-        "text_link_image_text": ""
+        "text_cta_image_text": "Shop the collection"
       }
     },
     "blog_posts": {
@@ -119,8 +119,7 @@
         "text_heading": "Diary",
         "article_article": "diary/diary-post-1",
         "text_cta_text": "Read More",
-        "text_button_text": "See More",
-        "url_button_link": "shopify://blogs/diary"
+        "url_cta_link": ""
       }
     },
     "featured_3": {
