@@ -20,7 +20,7 @@
       "type": "image_with_text",
       "settings": {
         "image_image_left": "shopify://shop_images/VW_Tests_1.7.1_copy.jpg",
-        "text_cta_text": "Shop the collection",
+        "text_cta_text": "",
         "text_color": "#ffffff",
         "image_image_right": "shopify://shop_images/VW_Tests_1.11.3_copy.jpg",
         "richtext_paragraph": "<p>VERA WANG READY TO WEAR NOW AVAILABLE ONLINE</p>",
@@ -34,7 +34,7 @@
         "text_subheading": "Ready To Wear",
         "url_button_link": "",
         "image_image": "shopify://shop_images/image_129.jpg",
-        "text_link_text": "Shop the collection",
+        "text_link_text": "",
         "text_color": "#ffffff",
         "collection_collection": "dresses",
         "collection_collection_limit": 6
@@ -47,7 +47,7 @@
         "text_eyebrow_text": "ELEVATED CONTEMPORARY WOMENSWEAR",
         "text_heading": "Autumn Winter 2026",
         "text_sub_heading": "Subheading",
-        "text_cta_text": "Call to action link",
+        "text_cta_text": "Explore New Season",
         "image_image": "shopify://shop_images/image_120.jpg",
         "text_link_text": "Explore New Season"
       }
@@ -57,7 +57,8 @@
       "settings": {
         "url_cta_link": "",
         "text_heading": "Handbags",
-        "text_cta_text": "Call to action button"
+        "text_cta_text": "Discover Handbags",
+        "image_background_image": "shopify://shop_images/Untitled-5_2.jpg"
       }
     },
     "styled_by_vera": {
@@ -116,7 +117,7 @@
     "blog_posts": {
       "type": "blog_posts",
       "settings": {
-        "text_heading": "Diary",
+        "text_heading": "Vera's World",
         "article_article": "diary/diary-post-1",
         "text_cta_text": "Read More",
         "url_cta_link": ""
