@@ -377,6 +377,7 @@ input.addEventListener('blur', () => {
 input.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     close();
+    input.setSelectionRange(0, 0);
     input.blur();
   }
 });
