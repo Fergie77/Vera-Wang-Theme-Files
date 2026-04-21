@@ -13,7 +13,7 @@
                   <div>No items found.</div>
                 </div>
               </div>
-              <a href="{{ section.settings.url_link }}" class="cta-text"> View All The Looks </a>
+              <a href="{{ section.settings.url_cta_link }}" class="cta-text"> {{ section.settings.text_cta_text }} </a>
             </div>
           </div>
         </div> {% schema %} {
@@ -36,9 +36,15 @@
             "default": "Styled By Vera"
         },
         {
-            "id": "url_link",
+            "id": "text_cta_text",
+            "type": "text",
+            "label": "CTA Text",
+            "default": "View All The Looks"
+        },
+        {
+            "id": "url_cta_link",
             "type": "url",
-            "label": "Link"
+            "label": "CTA Link"
         }
     ],
     "presets": [
