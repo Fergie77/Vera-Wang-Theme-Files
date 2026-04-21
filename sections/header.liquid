@@ -1,9 +1,21 @@
-<div class="li-custom w-embed">{% assign ll = page.metafields.nav.left_link_color | default: section.settings.nav_left_link %}
-          {% assign lb = page.metafields.nav.left_bg_color | default: section.settings.nav_left_bg %}
-          {% assign rl = page.metafields.nav.right_link_color | default: section.settings.nav_right_link %}
-          {% assign rb = page.metafields.nav.right_bg_color | default: section.settings.nav_right_bg %}
-          {% assign sl = page.metafields.nav.scroll_link_color | default: section.settings.nav_scroll_link %}
-          {% assign sb = page.metafields.nav.scroll_bg_color | default: section.settings.nav_scroll_bg %}</div>
+<div class="li-custom w-embed">{% assign _ll = section.settings.nav_left_link %}
+          {% assign _lb = section.settings.nav_left_bg %}
+          {% assign _rl = section.settings.nav_right_link %}
+          {% assign _rb = section.settings.nav_right_bg %}
+          {% assign _sl = section.settings.nav_scroll_link %}
+          {% assign _sb = section.settings.nav_scroll_bg %}
+          {% if template.name == 'product' %}
+          {% assign _ll = '#000000' %}
+          {% assign _lb = '#ffffff' %}
+          {% assign _rl = '#000000' %}
+          {% assign _rb = '#ffffff' %}
+          {% endif %}
+          {% assign ll = product.metafields.nav.left_link_color | default: page.metafields.nav.left_link_color | default: _ll %}
+          {% assign lb = product.metafields.nav.left_bg_color | default: page.metafields.nav.left_bg_color | default: _lb %}
+          {% assign rl = product.metafields.nav.right_link_color | default: page.metafields.nav.right_link_color | default: _rl %}
+          {% assign rb = product.metafields.nav.right_bg_color | default: page.metafields.nav.right_bg_color | default: _rb %}
+          {% assign sl = product.metafields.nav.scroll_link_color | default: page.metafields.nav.scroll_link_color | default: _sl %}
+          {% assign sb = product.metafields.nav.scroll_bg_color | default: page.metafields.nav.scroll_bg_color | default: _sb %}</div>
         <div data-animation="over-right" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="" style="--nav-left-link: {{ ll }}; --nav-left-bg: {{ lb }}; --nav-right-link: {{ rl }}; --nav-right-bg: {{ rb }}; --nav-scroll-link: {{ sl }}; --nav-scroll-bg: {{ sb }};">
           <div class="nav_container container-large">
             <div class="nav_dropdown-list-background"></div>
@@ -893,7 +905,7 @@ document.addEventListener('click', (e) => {
   background: linear-gradient(to right, var(--nav-left-bg) 50%, var(--nav-right-bg) 50%);
 }
 /* &#9472;&#9472; Element colours &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-.nav_dropdown-toggle          { color: var(--nav-left-link) !important; }
+.nav_dropdown-toggle          { color: var(--nav-left-link); }
 .nav_logo-link                { color: var(--nav-left-link); }
 .wang-character               { fill:  var(--nav-right-link); }
 .nav_shop-icons               { color: var(--nav-right-link); }
@@ -936,6 +948,10 @@ document.addEventListener('click', (e) => {
     pointer-events: auto;
   }
   /* Dropdown open &mdash; hardcoded, overrides theme colours */
+  .nav_container:has(.nav_menu-dropdown.is-hovered) > nav .nav_dropdown-toggle,
+.nav_container:has(.nav_menu-dropdown.is-open) > nav .nav_dropdown-toggle {
+  color: black;
+}
   .nav_container:has(.nav_menu-dropdown.is-hovered) > .nav_logo-link,
   .nav_container:has(.nav_menu-dropdown.is-open) > .nav_logo-link {
     color: black;
