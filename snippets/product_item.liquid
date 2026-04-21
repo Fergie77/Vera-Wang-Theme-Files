@@ -62,8 +62,13 @@
 {% endif %}
                             <div class="product-header_option-list">
                               <div class="hide w-embed">{% assign color_index = 1 %}
-                                {% assign has_colour = true %}
-                                {% assign seen_colours = '' %}
+{% assign seen_colours = '' %}
+{% assign test_colour = product.variants.first.options[color_index] %}
+{% if test_colour != blank %}
+  {% assign has_colour = true %}
+{% else %}
+  {% assign has_colour = false %}
+{% endif %}
                                 {% assign colour_map = 'noir:black|noire:black|blanc:white|blanche:white|weiss:white|weiß:white|schwarz:black|crème:cream|gris:grey|grise:grey|grau:grey|bleu:blue|bleue:blue|blau:blue|rouge:red|rot:red|vert:green|verte:green|grün:green|rose:pink|rosa:pink|jaune:yellow|gelb:yellow|orange:orange|violet:purple|violette:purple|lila:purple|marron:brown|braun:brown|navy:navy|ivoire:ivory|elfenbein:ivory|crema:cream|nero:black|nera:black|bianco:white|bianca:white|grigio:grey|grigia:grey|rosso:red|rossa:red|verde:green|azzurro:blue|azzurra:blue|giallo:yellow|gialla:yellow|zwart:black|wit:white|grijs:grey|rood:red|groen:green|blauw:blue|geel:yellow|beige:beige' | split: '|' %}</div>
                               {% if has_colour %}    <div li-if="has_colour" class="product-header_option">
     
