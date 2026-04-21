@@ -70,6 +70,9 @@
                   <div li-for:inside="media in product.media" class="swiper-pagination">
         {% for media in product.media %}                            
                     
+                            {% assign media_alt_lower = media.alt | downcase %}
+                            
+                    
                             {% if media_alt_lower contains colour_option_lower and media.media_type == 'image' %}    <div li-if="media_alt_lower contains colour_option_lower and media.media_type == 'image'" class="swiper-pagination-bullet">
         </div>
 {% endif %}
