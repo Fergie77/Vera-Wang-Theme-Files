@@ -1,22 +1,22 @@
 <div class="padding-global">
-      <div class="container-large">
-        <h2 class="sbv_heading heading-style-h2">
+          <div class="container-large">
+            <h2 class="sbv_heading heading-style-h2">
 {{ section.settings.text_heading }}
 </h2>
-        <div class="spacer-medium"></div>
-        <div class="more_component">
-          <div class="more_list-wrapper w-dyn-list">
-            <div li-content-for-theme-blocks="" role="list" class="more_list w-dyn-items">
+            <div class="spacer-medium"></div>
+            <div class="more_component">
+              <div class="more_list-wrapper w-dyn-list">
+                <div li-content-for-theme-blocks="" role="list" class="more_list w-dyn-items">
 {% content_for 'blocks' %}
 </div>
-            <div class="hide w-dyn-empty">
-              <div>No items found.</div>
+                <div class="hide w-dyn-empty">
+                  <div>No items found.</div>
+                </div>
+              </div>
+              <a href="{{ section.settings.url_link }}" class="cta-text"> View All The Looks </a>
             </div>
           </div>
-          <a href="{{ section.settings.url_link }}" class="cta-text"> View All The Looks </a>
-        </div>
-      </div>
-    </div> {% schema %} {
+        </div> {% schema %} {
     "tag": "section",
     "name": "Styled By Vera",
     "class": "section_sbv",
