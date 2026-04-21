@@ -2,7 +2,11 @@
           <div class="container-large">
             <div class="product_component">
               <div class="featured-products-component_layout">
-                <a id="w-node-_5751e9a0-9e84-68b1-9599-d2caabd01a2a-feb34c80" href="{{ section.settings.url_button_link }}" class="featured-products_collection-link-wrapper is-left is-first w-inline-block"> {% if section.settings.image_image %} {{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'featured-products_collection-image' }} {% else %} <img loading="lazy" alt="" src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" class="featured-products_collection-image"> {% endif %} </a>
+                <a li-object:href="section.settings.collection_collection.url" id="w-node-_5751e9a0-9e84-68b1-9599-d2caabd01a2a-feb34c80" href="{{ section.settings.collection_collection.url }}" class="featured-products_collection-link-wrapper is-left is-first w-inline-block">{% if section.settings.image_image %}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'featured-products_collection-image' }}
+{% else %}
+<img loading="lazy" alt="" src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" class="featured-products_collection-image">
+{% endif %}</a>
                 <div id="w-node-c4a1d7d0-419d-da3a-cc7f-a34717f9655f-feb34c80" class="featured-products_side-layout">
                   <div id="w-node-d32497d5-4f49-dd74-17da-248eba915a2c-feb34c80" class="product_heading-wrapper">
                     <div class="product_heading">
@@ -33,7 +37,9 @@
                       </div>
                     </div>
                   </div>
-                  <a li-object:href="section.settings.collection_collection.url" id="w-node-_6559c0f8-0042-93b2-42b4-a73b849e71eb-feb34c80" href="{{ section.settings.collection_collection.url }}" class="cta-text text-align-center">View More</a>
+                  <a li-object:href="section.settings.collection_collection.url" id="w-node-_6559c0f8-0042-93b2-42b4-a73b849e71eb-feb34c80" href="{{ section.settings.href_sectionsettingscollection_collectionurl }}" class="cta-text text-align-center" href="#">
+{{ section.settings.text_cta_text }}
+</a>
                 </div>
               </div>
             </div>
@@ -43,11 +49,6 @@
     "name": "Featured 3",
     "class": "section_product remove-top-padding",
     "settings": [
-        {
-            "id": "url_button_link",
-            "type": "url",
-            "label": "Button-Link"
-        },
         {
             "id": "image_image",
             "type": "image_picker",
@@ -78,6 +79,17 @@
             "step": 1,
             "label": "Limit: Collection",
             "default": 6
+        },
+        {
+            "id": "text_cta_text",
+            "type": "text",
+            "label": "CTA Text",
+            "default": "View More"
+        },
+        {
+            "id": "href_sectionsettingscollection_collectionurl",
+            "type": "text",
+            "label": "section.settings.collection_collection.url"
         }
     ],
     "presets": [
