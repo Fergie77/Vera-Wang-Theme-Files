@@ -353,8 +353,8 @@
                   <script>
 const input = document.querySelector('#search-input');
 const overflow = document.querySelector('.predictive-search_overflow');
-const closePanel = document.querySelector('.nav_predictive-search-close-blur');
-const closeButton = document.querySelector('.nav_predictive-search-close-button');
+const closePanel = document.querySelector('.nav-predictive-search_close-blur');
+const closeButton = document.querySelector('.nav-predictive-search_close-button');
 function open() {
   overflow.classList.add('is-open');
   closePanel.classList.add('is-open');
@@ -364,14 +364,15 @@ function close() {
   closePanel.classList.remove('is-open');
 }
 input.addEventListener('focus', open);
-input.addEventListener('click', (e) => e.stopPropagation());
+input.addEventListener('blur', () => {
+  setTimeout(() => {
+    if (!overflow.contains(document.activeElement)) close();
+  }, 0);
+});
 closePanel.addEventListener('click', close);
 closeButton.addEventListener('click', close);
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') close();
-});
-document.addEventListener('click', (e) => {
-  if (!overflow.contains(e.target)) close();
 });
 </script>
                 </div>
@@ -379,11 +380,11 @@ document.addEventListener('click', (e) => {
                   <style>
 #search-input {
   border: none;
-  border-bottom: 1px solid currentColor;
+  border-bottom: 0.5px solid currentColor;
   outline: none;
 }
 #search-input:focus {
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid #000;
 }
 </style>
                 </div>
