@@ -111,7 +111,7 @@
         "collection_collection": "dresses",
         "collection_collection_limit": 2,
         "image_link_image": "shopify://shop_images/image_147.jpg",
-        "text_cta_image_text": "Shop the collection"
+        "text_cta_image_text": ""
       }
     },
     "blog_posts": {
@@ -128,8 +128,8 @@
       "settings": {
         "url_button_link": "",
         "image_image": "shopify://shop_images/Frame_157.jpg",
-        "text_heading": "Handbags Headline",
-        "text_subheading": "Subheading Copy",
+        "text_heading": "Handbags",
+        "text_subheading": "Made in italy",
         "collection_collection": "bags",
         "collection_collection_limit": 2
       }
@@ -154,7 +154,7 @@
           "type": "social-sign-up",
           "name": "Social Sign Up",
           "settings": {
-            "text_headline": "Social Sign Up",
+            "text_headline": "Join us",
             "text_checkbox": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
           }
         }
