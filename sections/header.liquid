@@ -355,25 +355,34 @@ const input = document.querySelector('#search-input');
 const overflow = document.querySelector('.predictive-search_overflow');
 const closePanel = document.querySelector('.nav-predictive-search_close-blur');
 const closeButton = document.querySelector('.nav-predictive-search_close-button');
+
 function open() {
   overflow.classList.add('is-open');
   closePanel.classList.add('is-open');
 }
+
 function close() {
   overflow.classList.remove('is-open');
   closePanel.classList.remove('is-open');
 }
+
 input.addEventListener('focus', open);
+
 input.addEventListener('blur', () => {
   setTimeout(() => {
     if (!overflow.contains(document.activeElement)) close();
   }, 0);
 });
+
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    close();
+    input.blur();
+  }
+});
+
 closePanel.addEventListener('click', close);
 closeButton.addEventListener('click', close);
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') close();
-});
 </script>
                 </div>
                 <div class="w-embed">
