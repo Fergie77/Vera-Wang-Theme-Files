@@ -1,134 +1,54 @@
 <div class="padding-global">
-        <div class="container-large">
-          <div class="footer_divider hide-mobile-landscape"></div>
-          <div class="footer_main-wrapper">
-            <div id="w-node-_5eccf730-c887-5204-0e0c-693f99a73293-99a7328f" class="footer_link-grid">
-              <div class="footer_link-column">
-                <div li-object="section.settings.menu_1.title" class="footer_link-heading">{{ section.settings.menu_1.title }}</div>
-                <div li-for:inside="link in linklists[section.settings.menu_1].links" class="footer_link-list">
-        {% for link in linklists[section.settings.menu_1].links %}                            
-                  
-                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer_link">{{ link.title }}</a>
-                            
-                
-                    {% endfor %}    </div>
-              </div>
-              <div class="footer_link-column">
-                <div li-object="section.settings.menu_2.title" class="footer_link-heading">{{ section.settings.menu_2.title }}</div>
-                <div li-for:inside="link in linklists[section.settings.menu_2].links" class="footer_link-list">
-        {% for link in linklists[section.settings.menu_2].links %}                            
-                  
-                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer_link">{{ link.title }}</a>
-                            
-                
-                    {% endfor %}    </div>
-              </div>
-              <div class="footer_link-column">
-                <div li-object="section.settings.menu_3.title" class="footer_link-heading">{{ section.settings.menu_3.title }}</div>
-                <div li-for:inside="link in linklists[section.settings.menu_3].links" class="footer_link-list">
-        {% for link in linklists[section.settings.menu_3].links %}                            
-                  
-                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer_link">{{ link.title }}</a>
-                            
-                
-                    {% endfor %}    </div>
-              </div>
-              <div class="footer-dropdown_wrapper"><button class="footer-dropdown_toggle">
-                  <div li-object="section.settings.menu_1.title" class="footer-dropdown_heading">{{ section.settings.menu_1.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 13 9" fill="none" class="footer-dropdown_icon">
-                    <path d="M0 0H1.96377L4.23188 3.16384L6.5 0L8.76812 3.16384L11.0362 0H13L6.5 9L0 0Z" fill="#C1BFBF"></path>
-                  </svg>
-                </button>
-                <div class="footer-dropdown_list">
-                  <div li-for:inside="link in linklists[section.settings.menu_1].links" class="footer-dropdown_link-wrapper">
+          <div class="container-large">
+            <div class="footer_divider hide-mobile-landscape"></div>
+            <div class="footer_main-wrapper">
+              <div id="w-node-_5eccf730-c887-5204-0e0c-693f99a73293-99a7328f" class="footer_link-grid">
+                <div class="footer_link-column">
+                  <div li-object="section.settings.menu_1.title" class="footer_link-heading">{{ section.settings.menu_1.title }}</div>
+                  <div li-for:inside="link in linklists[section.settings.menu_1].links" class="footer_link-list">
         {% for link in linklists[section.settings.menu_1].links %}                            
                     
-                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer-dropdown_link">{{ link.title }}</a>
+                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer_link">{{ link.title }}</a>
                             
                   
                     {% endfor %}    </div>
                 </div>
-                <div class="w-embed w-script">
-                  <script>
-  (function () {
-    const script = document.currentScript;
-    const root = script ? script.closest('.footer-dropdown_wrapper') : null;
-    if (!root) return;
-    const toggle = root.querySelector('.footer-dropdown_toggle');
-    const list = root.querySelector('.footer-dropdown_list');
-    const iconInner = root.querySelector('.footer-dropdown_icon');
-    if (!toggle || !list || !iconInner) return;
-    const isWebflowEditor =
-      window.Webflow &&
-      typeof window.Webflow.env === 'function' &&
-      window.Webflow.env('editor');
-    if (!isWebflowEditor) {
-      list.classList.remove('is-open');
-    }
-    toggle.addEventListener('click', () => {
-      list.classList.toggle('is-open');
-      iconInner.classList.toggle('is-open');
-    });
-  })();
-</script>
-                </div>
-              </div>
-              <div class="footer-dropdown_wrapper">
-                <div class="footer-dropdown_toggle">
-                  <div li-object="section.settings.menu_2.title" class="footer-dropdown_heading">{{ section.settings.menu_2.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 13 9" fill="none" class="footer-dropdown_icon">
-                    <path d="M0 0H1.96377L4.23188 3.16384L6.5 0L8.76812 3.16384L11.0362 0H13L6.5 9L0 0Z" fill="#C1BFBF"></path>
-                  </svg>
-                </div>
-                <div class="footer-dropdown_list">
-                  <div li-for:inside="link in linklists[section.settings.menu_2].links" class="footer-dropdown_link-wrapper">
+                <div class="footer_link-column">
+                  <div li-object="section.settings.menu_2.title" class="footer_link-heading">{{ section.settings.menu_2.title }}</div>
+                  <div li-for:inside="link in linklists[section.settings.menu_2].links" class="footer_link-list">
         {% for link in linklists[section.settings.menu_2].links %}                            
                     
-                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer-dropdown_link">{{ link.title }}</a>
+                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer_link">{{ link.title }}</a>
                             
                   
                     {% endfor %}    </div>
                 </div>
-                <div class="w-embed w-script">
-                  <script>
-  (function () {
-    const script = document.currentScript;
-    const root = script ? script.closest('.footer-dropdown_wrapper') : null;
-    if (!root) return;
-    const toggle = root.querySelector('.footer-dropdown_toggle');
-    const list = root.querySelector('.footer-dropdown_list');
-    const iconInner = root.querySelector('.footer-dropdown_icon');
-    if (!toggle || !list || !iconInner) return;
-    const isWebflowEditor =
-      window.Webflow &&
-      typeof window.Webflow.env === 'function' &&
-      window.Webflow.env('editor');
-    if (!isWebflowEditor) {
-      list.classList.remove('is-open');
-    }
-    toggle.addEventListener('click', () => {
-      list.classList.toggle('is-open');
-      iconInner.classList.toggle('is-open');
-    });
-  })();
-</script>
-                </div>
-              </div>
-              <div class="footer-dropdown_wrapper">
-                <div class="footer-dropdown_toggle">
-                  <div li-object="section.settings.menu_3.title" class="footer-dropdown_heading">{{ section.settings.menu_3.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 13 9" fill="none" class="footer-dropdown_icon">
-                    <path d="M0 0H1.96377L4.23188 3.16384L6.5 0L8.76812 3.16384L11.0362 0H13L6.5 9L0 0Z" fill="#C1BFBF"></path>
-                  </svg>
-                </div>
-                <div class="footer-dropdown_list">
-                  <div li-for:inside="link in linklists[section.settings.menu_3].links" class="footer-dropdown_link-wrapper">
+                <div class="footer_link-column">
+                  <div li-object="section.settings.menu_3.title" class="footer_link-heading">{{ section.settings.menu_3.title }}</div>
+                  <div li-for:inside="link in linklists[section.settings.menu_3].links" class="footer_link-list">
         {% for link in linklists[section.settings.menu_3].links %}                            
                     
-                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer-dropdown_link">{{ link.title }}</a>
+                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer_link">{{ link.title }}</a>
                             
                   
                     {% endfor %}    </div>
                 </div>
-                <div class="w-embed w-script">
-                  <script>
+                <div class="footer-dropdown_wrapper"><button class="footer-dropdown_toggle">
+                    <div li-object="section.settings.menu_1.title" class="footer-dropdown_heading">{{ section.settings.menu_1.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 13 9" fill="none" class="footer-dropdown_icon">
+                      <path d="M0 0H1.96377L4.23188 3.16384L6.5 0L8.76812 3.16384L11.0362 0H13L6.5 9L0 0Z" fill="#C1BFBF"></path>
+                    </svg>
+                  </button>
+                  <div class="footer-dropdown_list">
+                    <div li-for:inside="link in linklists[section.settings.menu_1].links" class="footer-dropdown_link-wrapper">
+        {% for link in linklists[section.settings.menu_1].links %}                            
+                      
+                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer-dropdown_link">{{ link.title }}</a>
+                            
+                    
+                    {% endfor %}    </div>
+                  </div>
+                  <div class="w-embed w-script">
+                    <script>
   (function () {
     const script = document.currentScript;
     const root = script ? script.closest('.footer-dropdown_wrapper') : null;
@@ -150,97 +70,177 @@
     });
   })();
 </script>
+                  </div>
+                </div>
+                <div class="footer-dropdown_wrapper">
+                  <div class="footer-dropdown_toggle">
+                    <div li-object="section.settings.menu_2.title" class="footer-dropdown_heading">{{ section.settings.menu_2.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 13 9" fill="none" class="footer-dropdown_icon">
+                      <path d="M0 0H1.96377L4.23188 3.16384L6.5 0L8.76812 3.16384L11.0362 0H13L6.5 9L0 0Z" fill="#C1BFBF"></path>
+                    </svg>
+                  </div>
+                  <div class="footer-dropdown_list">
+                    <div li-for:inside="link in linklists[section.settings.menu_2].links" class="footer-dropdown_link-wrapper">
+        {% for link in linklists[section.settings.menu_2].links %}                            
+                      
+                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer-dropdown_link">{{ link.title }}</a>
+                            
+                    
+                    {% endfor %}    </div>
+                  </div>
+                  <div class="w-embed w-script">
+                    <script>
+  (function () {
+    const script = document.currentScript;
+    const root = script ? script.closest('.footer-dropdown_wrapper') : null;
+    if (!root) return;
+    const toggle = root.querySelector('.footer-dropdown_toggle');
+    const list = root.querySelector('.footer-dropdown_list');
+    const iconInner = root.querySelector('.footer-dropdown_icon');
+    if (!toggle || !list || !iconInner) return;
+    const isWebflowEditor =
+      window.Webflow &&
+      typeof window.Webflow.env === 'function' &&
+      window.Webflow.env('editor');
+    if (!isWebflowEditor) {
+      list.classList.remove('is-open');
+    }
+    toggle.addEventListener('click', () => {
+      list.classList.toggle('is-open');
+      iconInner.classList.toggle('is-open');
+    });
+  })();
+</script>
+                  </div>
+                </div>
+                <div class="footer-dropdown_wrapper">
+                  <div class="footer-dropdown_toggle">
+                    <div li-object="section.settings.menu_3.title" class="footer-dropdown_heading">{{ section.settings.menu_3.title }}</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 13 9" fill="none" class="footer-dropdown_icon">
+                      <path d="M0 0H1.96377L4.23188 3.16384L6.5 0L8.76812 3.16384L11.0362 0H13L6.5 9L0 0Z" fill="#C1BFBF"></path>
+                    </svg>
+                  </div>
+                  <div class="footer-dropdown_list">
+                    <div li-for:inside="link in linklists[section.settings.menu_3].links" class="footer-dropdown_link-wrapper">
+        {% for link in linklists[section.settings.menu_3].links %}                            
+                      
+                            <a li-object:href="link.url" li-object="link.title" href="{{ link.url }}" class="footer-dropdown_link">{{ link.title }}</a>
+                            
+                    
+                    {% endfor %}    </div>
+                  </div>
+                  <div class="w-embed w-script">
+                    <script>
+  (function () {
+    const script = document.currentScript;
+    const root = script ? script.closest('.footer-dropdown_wrapper') : null;
+    if (!root) return;
+    const toggle = root.querySelector('.footer-dropdown_toggle');
+    const list = root.querySelector('.footer-dropdown_list');
+    const iconInner = root.querySelector('.footer-dropdown_icon');
+    if (!toggle || !list || !iconInner) return;
+    const isWebflowEditor =
+      window.Webflow &&
+      typeof window.Webflow.env === 'function' &&
+      window.Webflow.env('editor');
+    if (!isWebflowEditor) {
+      list.classList.remove('is-open');
+    }
+    toggle.addEventListener('click', () => {
+      list.classList.toggle('is-open');
+      iconInner.classList.toggle('is-open');
+    });
+  })();
+</script>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div id="w-node-_5eccf730-c887-5204-0e0c-693f99a7329a-99a7328f" class="footer_newsletter">
-              <h2 class="footer_heading">
+              <div id="w-node-_5eccf730-c887-5204-0e0c-693f99a7329a-99a7328f" class="footer_newsletter">
+                <h2 class="footer_heading">
 {{ section.settings.text_heading }}
 </h2>
-              <p class="footer_subheading">Sign up to join the Vera Wang mailing list for exclusive content, events, promotions and more.</p>
-              <div class="footer_form-block w-form">
-                {% form 'customer', return_to: '/', class: 'footer_form' %}
+                <p class="footer_subheading">Sign up to join the Vera Wang mailing list for exclusive content, events, promotions and more.</p>
+                <div class="footer_form-block w-form">
+                  {% form 'customer', return_to: '/', class: 'footer_form' %}
 <div class="form_field-wrapper"><label for="Email" class="form_hidden-label">Your E-Mail-Address</label><input class="form_input is-alternate w-input" maxlength="256" name="contact[email]" data-name="Email" placeholder="{{ section.settings.placeholder_text }}" type="email" id="Email" required=""></div>
-                  <div li-object="form.errors | default_errors" class="text-size-tiny text-color-red">{{ form.errors | default_errors }}</div>
-                  <div id="w-node-_5eccf730-c887-5204-0e0c-693f99a732a5-99a7328f" class="hide w-embed"><input type="hidden" name="contact[accepts_marketing]" value="false"></div><label id="w-node-_5eccf730-c887-5204-0e0c-693f99a732a6-99a7328f" class="w-checkbox form_checkbox" name="contact[accepts_marketing]"><input type="checkbox" name="Accepts-Marketing-2" id="Accepts-Marketing-2" data-name="Accepts Marketing 2" class="w-checkbox-input form_checkbox-icon"><span class="form_checkbox-label text-size-tiny w-form-label" for="Accepts-Marketing-2">
+                    <div li-object="form.errors | default_errors" class="text-size-tiny text-color-red">{{ form.errors | default_errors }}</div>
+                    <div id="w-node-_5eccf730-c887-5204-0e0c-693f99a732a5-99a7328f" class="hide w-embed"><input type="hidden" name="contact[accepts_marketing]" value="false"></div><label id="w-node-_5eccf730-c887-5204-0e0c-693f99a732a6-99a7328f" class="w-checkbox form_checkbox" name="contact[accepts_marketing]"><input type="checkbox" name="Accepts-Marketing-2" id="Accepts-Marketing-2" data-name="Accepts Marketing 2" class="w-checkbox-input form_checkbox-icon"><span class="form_checkbox-label text-size-tiny w-form-label" for="Accepts-Marketing-2">
 {{ section.settings.text_checkbox }}
 </span></label><input type="submit" data-wait="" id="w-node-_5eccf730-c887-5204-0e0c-693f99a732ae-99a7328f" class="button w-button" value="Subscribe to Newsletter">
-                {% endform %}
-                <div class="hide w-form-done">
-                  <div>Thank you! Your submission has been received!</div>
+                  {% endform %}
+                  <div class="hide w-form-done">
+                    <div>Thank you! Your submission has been received!</div>
+                  </div>
+                  <div class="hide w-form-fail">
+                    <div>Oops! Something went wrong while submitting the form.</div>
+                  </div>
                 </div>
-                <div class="hide w-form-fail">
-                  <div>Oops! Something went wrong while submitting the form.</div>
-                </div>
-              </div>
-              <div class="footer_icon-row">
-                {% for block in section.blocks %}
+                <div class="footer_icon-row">
+                  {% for block in section.blocks %}
     {% if block.type == "social-media" %}
                     <div li-block="Social-Media" class="footer_icon-item">
                                     
-                  
+                    
                                     <a href="{{ block.settings.url_link }}" target="_blank" class="cta-text w-inline-block"> {{ block.settings.text_social_text }} </a>
                                     
-                
+                  
                             </div>
             {% endif %}
 {% endfor %}
-              </div>
-            </div><svg id="w-node-_4ebff85c-cb9e-7270-592e-092cc609f210-99a7328f" xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 69 47" fill="none" class="footer_emblem">
-              <path d="M0 0H10.4231L22.4615 16.5223L34.5 0L46.5385 16.5223L58.5769 0H69L34.5 47L0 0Z" fill="black"></path>
-            </svg>
+                </div>
+              </div><svg id="w-node-_4ebff85c-cb9e-7270-592e-092cc609f210-99a7328f" xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 69 47" fill="none" class="footer_emblem">
+                <path d="M0 0H10.4231L22.4615 16.5223L34.5 0L46.5385 16.5223L58.5769 0H69L34.5 47L0 0Z" fill="black"></path>
+              </svg>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="padding-global">
-        <div class="container-large">
-          <div class="footer_sub-footer">
-            <a href="{{ routes.root_url }}" li-object:href="routes.root_url" class="footer_logo-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 657 88" fill="none">
-                <g clip-path="url(#clip0_2355_2138)">
-                  <path d="M151.283 58.6401C147.562 65.4695 144.198 71.1624 135.1 77.3205C130.28 80.5925 120.352 84.2979 114.523 84.2768C114.523 84.2768 110.518 84.2979 108.158 81.2955C106.76 79.5195 105.798 77.4632 105.798 74.7357V41.1807H116.394C118.354 41.1648 123.763 42.4546 126.701 46.1917C128.761 48.8664 130.669 52.5296 130.701 60.0303H132.835V21.9981H130.969C130.774 28.8962 127.284 34.198 123.91 36.9202C122.522 37.9034 119.674 39.4733 116.378 39.6213H105.798V9.34888C105.798 5.50073 110.281 1.80059 115.695 1.81116C123.269 1.85345 130.48 4.22154 135.615 8.32341C139.746 11.6324 142.348 16.8126 144.587 22.606H146.369L145.502 0.394531H84.1484V1.89045C91.633 2.48776 92.5318 9.18502 92.5318 11.0139V75.2537C92.5318 77.0774 91.9589 82.8549 84.1484 84.446V85.9207H147.142L153.055 59.2163L151.273 58.6507L151.283 58.6401Z" fill="black"></path>
-                  <path d="M337.609 17.0188C336.295 13.0067 336.621 10.5488 338.555 7.40895C341.872 2.03845 347.028 1.86402 347.028 1.86402V0.394531H312.428V1.89573C312.428 1.89573 317.962 1.01299 322.656 13.2816L347.922 85.9154H349.871L368.551 21.3902L389.759 85.9154H391.835C391.835 85.9154 413.38 25.9361 418.457 13.2816C423.35 1.09756 428.88 1.89573 428.88 1.89573V0.394531H407.314V1.86402C409.921 1.95388 412.807 2.51947 414.399 4.31668C418.005 8.38156 415.419 14.7881 415.104 15.729L397.091 65.0202C394.999 58.7141 375.353 3.87795 374.207 0.394531H374.233H372.278L353.524 65.0202L337.604 17.0188H337.609Z" fill="black"></path>
-                  <path d="M271.047 0.394531C271.047 0.394531 246.964 60.3844 241.787 73.0389C241.178 74.5349 240.479 75.8511 239.853 77.0245C238.628 79.0279 235.806 83.5844 232.941 84.9745C232.589 85.1596 230.939 85.593 230.019 85.5771C224.085 85.704 220.522 77.8386 218.083 71.8496L214.656 63.3551C210.251 52.593 205.016 44.6271 198.688 41.5349C204.464 41.4239 209.668 41.3604 214.004 39.2355C219.681 36.4392 222.44 30.5507 222.44 22.9918C222.44 17.1033 219.717 11.3364 214.95 7.13408C210.046 2.79434 203.277 0.431533 195.913 0.394531H160.629V1.89045C168.114 2.48776 169.018 9.18502 169.018 11.0139V75.2485C169.018 77.0721 168.445 82.8549 160.629 84.4407V85.9207H190.589V84.4407C182.778 82.8549 182.205 77.0721 182.205 75.2485V41.6194H187.777C191.614 41.6194 194.089 43.6017 197.91 53.3753L203.051 66.7276C206.167 74.926 213.121 87.8977 226.13 88.0034H226.156C230.413 88.0034 233.683 86.37 234.455 85.9577L255.579 85.9154V84.4618C252.919 84.372 247.916 84.0284 245.892 81.7026C242.292 77.5637 244.652 71.5325 244.972 70.5968L251.059 55.3047H280.845L285.948 69.3071C287.262 73.3191 286.936 75.777 285.002 78.9169C281.686 84.2874 276.535 84.4618 276.535 84.4618V85.9154H309.653V84.4248C309.653 84.4248 303.918 85.3076 299.225 73.0389L273.066 0.394531H271.042H271.047ZM194.031 40.2081H182.2V11.0087C182.2 10.2263 182.363 8.56657 183.13 6.8645C185.821 1.61029 193.09 1.93802 193.09 1.93802C202.809 1.98559 208.759 10.2422 208.79 22.6271C208.79 22.6271 208.974 33.199 202.872 37.6973C200.706 39.2936 197.29 40.2028 194.037 40.2028M253.934 48.0577L264.152 22.6218L266.653 16.3897L278.201 48.0577H253.934Z" fill="black"></path>
-                  <path d="M57.4744 0.392578V1.86206C60.1339 1.95192 63.072 2.51752 64.6909 4.31473C68.3701 8.3796 65.7315 14.7861 65.4109 15.727L43.8613 69.5959C42.7944 66.7679 25.0343 19.665 24.1513 17.0221C22.8163 13.0048 23.1422 10.5521 25.1184 7.41228C28.498 2.04179 33.754 1.86735 33.754 1.86735V0.392578H0V1.89378C0 1.89378 5.84467 1.01103 10.6276 13.2797C15.8416 26.6689 38.0587 85.9135 38.0587 85.9135H39.5567C39.5567 85.9135 63.7238 25.9659 68.8273 13.2797C73.5998 1.40748 79.4497 1.89378 79.4497 1.89378V0.392578H57.4744Z" fill="black"></path>
-                  <path d="M547.896 0.394531V1.9063C551.922 1.99088 554.934 3.27007 557.262 5.30515C560.253 7.93754 562.119 12.0341 562.119 17.8751V65.9294L514.347 0.394531H492.824V1.90102C495.662 2.00145 498.332 2.91592 500.844 5.08314C503.225 7.13408 503.993 9.93562 503.993 12.4094V68.4402C503.993 74.2811 502.121 78.3724 499.131 81.0101C496.818 83.0399 493.822 84.3138 489.828 84.4089C488.85 84.3984 483.647 83.8222 479.563 73.0389L453.409 0.394531H451.385C451.385 0.394531 422.041 73.2345 421.999 73.3349C421.416 74.7093 420.028 77.9073 417.037 81.6286C414.047 84.7578 411.697 84.4301 411.697 84.4301V85.9207H435.917V84.4671C433.257 84.3772 428.248 84.0337 426.23 81.7078C422.625 77.569 424.99 71.5377 425.31 70.6021L431.392 55.31H461.177L466.286 69.3124C467.595 73.3244 467.274 75.7823 465.335 78.9222C462.018 84.2927 456.862 84.4671 456.862 84.4671V85.9207H520.423V84.4195C516.402 84.3349 513.385 83.0558 511.062 81.0207C508.066 78.3883 506.2 74.2917 506.2 68.4508V13.8525L560.605 85.9154H564.326V17.8804C564.326 12.0394 566.197 7.94811 569.188 5.31044C571.511 3.27007 574.528 1.99088 578.549 1.91159V0.394531H547.885H547.896ZM434.282 48.0577L444.495 22.6218L447.002 16.3897L458.549 48.0577H434.282Z" fill="black"></path>
-                  <path d="M648.863 54.94C648.863 53.1164 649.462 47.3336 656.999 45.7478V44.2783H623.692V45.7478C627.576 45.8271 630.866 46.7997 633.11 48.8401C635.996 51.4777 635.928 55.8756 635.928 61.7166V66.9708C635.928 66.9708 636.459 79.8579 625.699 84.1077C613.695 88.8598 603.771 83.7536 596.949 71.0462C590.132 58.3442 593.228 28.3994 595.472 21.0573C597.711 13.7098 601.38 3.15386 615.019 2.23411C628.659 1.31436 638.188 14.8357 640.101 17.5897C642.009 20.3437 645.262 25.0059 646.729 28.7694L648.374 28.2038L643.838 -0.00183105C643.838 -0.00183105 639.097 2.18125 632.18 2.13368C625.269 2.08082 620.286 0.0140267 614.562 0.34704C608.844 0.680053 601.285 2.44026 592.608 10.7022C583.93 18.9641 578.968 34.3725 579.683 47.4287C580.398 60.485 586.074 73.7473 594.752 80.3812C603.43 87.0097 612.202 88.9496 622.02 87.1101C631.844 85.2759 636.327 81.9088 641.284 80.5345C646.24 79.1548 647.191 78.7478 651.149 78.4941L651.196 76.8132C651.196 76.8132 648.847 76.3533 648.847 66.2519V54.94H648.863Z" fill="black"></path>
-                </g>
-                <defs>
-                  <clippath id="clip0_2355_2138">
-                    <rect width="657" height="88" fill="white"></rect>
-                  </clippath>
-                </defs>
-              </svg></a>
-            <div class="footer_divider"></div>
-            <div id="w-node-d3c79d1e-5728-0139-f8a8-b55d04c65927-99a7328f" class="footer_legal-wrapper">
-              <p id="w-node-f853398b-682e-bc34-dbb9-08bf44a5be88-99a7328f" class="copyright-text">Copyright <span class="year">2025</span>. All Rights Reserved. Vera Wang <span class="year">2025</span>. Operated by Batra Group Ltd.</p>
-              <div class="hide w-embed w-script">
-                <script>document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());</script>
-              </div>
-              <div id="w-node-_28136b33-74f6-6da6-e09c-4eaac719b1f2-99a7328f" class="footer_language-links-wrapper">{% if localization.available_languages.size > 1 %}    <localization-form li-if="localization.available_languages.size > 1" class="li-lang_wrapper">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="footer_sub-footer">
+              <a href="{{ routes.root_url }}" li-object:href="routes.root_url" class="footer_logo-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 657 88" fill="none">
+                  <g clip-path="url(#clip0_2355_2138)">
+                    <path d="M151.283 58.6401C147.562 65.4695 144.198 71.1624 135.1 77.3205C130.28 80.5925 120.352 84.2979 114.523 84.2768C114.523 84.2768 110.518 84.2979 108.158 81.2955C106.76 79.5195 105.798 77.4632 105.798 74.7357V41.1807H116.394C118.354 41.1648 123.763 42.4546 126.701 46.1917C128.761 48.8664 130.669 52.5296 130.701 60.0303H132.835V21.9981H130.969C130.774 28.8962 127.284 34.198 123.91 36.9202C122.522 37.9034 119.674 39.4733 116.378 39.6213H105.798V9.34888C105.798 5.50073 110.281 1.80059 115.695 1.81116C123.269 1.85345 130.48 4.22154 135.615 8.32341C139.746 11.6324 142.348 16.8126 144.587 22.606H146.369L145.502 0.394531H84.1484V1.89045C91.633 2.48776 92.5318 9.18502 92.5318 11.0139V75.2537C92.5318 77.0774 91.9589 82.8549 84.1484 84.446V85.9207H147.142L153.055 59.2163L151.273 58.6507L151.283 58.6401Z" fill="black"></path>
+                    <path d="M337.609 17.0188C336.295 13.0067 336.621 10.5488 338.555 7.40895C341.872 2.03845 347.028 1.86402 347.028 1.86402V0.394531H312.428V1.89573C312.428 1.89573 317.962 1.01299 322.656 13.2816L347.922 85.9154H349.871L368.551 21.3902L389.759 85.9154H391.835C391.835 85.9154 413.38 25.9361 418.457 13.2816C423.35 1.09756 428.88 1.89573 428.88 1.89573V0.394531H407.314V1.86402C409.921 1.95388 412.807 2.51947 414.399 4.31668C418.005 8.38156 415.419 14.7881 415.104 15.729L397.091 65.0202C394.999 58.7141 375.353 3.87795 374.207 0.394531H374.233H372.278L353.524 65.0202L337.604 17.0188H337.609Z" fill="black"></path>
+                    <path d="M271.047 0.394531C271.047 0.394531 246.964 60.3844 241.787 73.0389C241.178 74.5349 240.479 75.8511 239.853 77.0245C238.628 79.0279 235.806 83.5844 232.941 84.9745C232.589 85.1596 230.939 85.593 230.019 85.5771C224.085 85.704 220.522 77.8386 218.083 71.8496L214.656 63.3551C210.251 52.593 205.016 44.6271 198.688 41.5349C204.464 41.4239 209.668 41.3604 214.004 39.2355C219.681 36.4392 222.44 30.5507 222.44 22.9918C222.44 17.1033 219.717 11.3364 214.95 7.13408C210.046 2.79434 203.277 0.431533 195.913 0.394531H160.629V1.89045C168.114 2.48776 169.018 9.18502 169.018 11.0139V75.2485C169.018 77.0721 168.445 82.8549 160.629 84.4407V85.9207H190.589V84.4407C182.778 82.8549 182.205 77.0721 182.205 75.2485V41.6194H187.777C191.614 41.6194 194.089 43.6017 197.91 53.3753L203.051 66.7276C206.167 74.926 213.121 87.8977 226.13 88.0034H226.156C230.413 88.0034 233.683 86.37 234.455 85.9577L255.579 85.9154V84.4618C252.919 84.372 247.916 84.0284 245.892 81.7026C242.292 77.5637 244.652 71.5325 244.972 70.5968L251.059 55.3047H280.845L285.948 69.3071C287.262 73.3191 286.936 75.777 285.002 78.9169C281.686 84.2874 276.535 84.4618 276.535 84.4618V85.9154H309.653V84.4248C309.653 84.4248 303.918 85.3076 299.225 73.0389L273.066 0.394531H271.042H271.047ZM194.031 40.2081H182.2V11.0087C182.2 10.2263 182.363 8.56657 183.13 6.8645C185.821 1.61029 193.09 1.93802 193.09 1.93802C202.809 1.98559 208.759 10.2422 208.79 22.6271C208.79 22.6271 208.974 33.199 202.872 37.6973C200.706 39.2936 197.29 40.2028 194.037 40.2028M253.934 48.0577L264.152 22.6218L266.653 16.3897L278.201 48.0577H253.934Z" fill="black"></path>
+                    <path d="M57.4744 0.392578V1.86206C60.1339 1.95192 63.072 2.51752 64.6909 4.31473C68.3701 8.3796 65.7315 14.7861 65.4109 15.727L43.8613 69.5959C42.7944 66.7679 25.0343 19.665 24.1513 17.0221C22.8163 13.0048 23.1422 10.5521 25.1184 7.41228C28.498 2.04179 33.754 1.86735 33.754 1.86735V0.392578H0V1.89378C0 1.89378 5.84467 1.01103 10.6276 13.2797C15.8416 26.6689 38.0587 85.9135 38.0587 85.9135H39.5567C39.5567 85.9135 63.7238 25.9659 68.8273 13.2797C73.5998 1.40748 79.4497 1.89378 79.4497 1.89378V0.392578H57.4744Z" fill="black"></path>
+                    <path d="M547.896 0.394531V1.9063C551.922 1.99088 554.934 3.27007 557.262 5.30515C560.253 7.93754 562.119 12.0341 562.119 17.8751V65.9294L514.347 0.394531H492.824V1.90102C495.662 2.00145 498.332 2.91592 500.844 5.08314C503.225 7.13408 503.993 9.93562 503.993 12.4094V68.4402C503.993 74.2811 502.121 78.3724 499.131 81.0101C496.818 83.0399 493.822 84.3138 489.828 84.4089C488.85 84.3984 483.647 83.8222 479.563 73.0389L453.409 0.394531H451.385C451.385 0.394531 422.041 73.2345 421.999 73.3349C421.416 74.7093 420.028 77.9073 417.037 81.6286C414.047 84.7578 411.697 84.4301 411.697 84.4301V85.9207H435.917V84.4671C433.257 84.3772 428.248 84.0337 426.23 81.7078C422.625 77.569 424.99 71.5377 425.31 70.6021L431.392 55.31H461.177L466.286 69.3124C467.595 73.3244 467.274 75.7823 465.335 78.9222C462.018 84.2927 456.862 84.4671 456.862 84.4671V85.9207H520.423V84.4195C516.402 84.3349 513.385 83.0558 511.062 81.0207C508.066 78.3883 506.2 74.2917 506.2 68.4508V13.8525L560.605 85.9154H564.326V17.8804C564.326 12.0394 566.197 7.94811 569.188 5.31044C571.511 3.27007 574.528 1.99088 578.549 1.91159V0.394531H547.885H547.896ZM434.282 48.0577L444.495 22.6218L447.002 16.3897L458.549 48.0577H434.282Z" fill="black"></path>
+                    <path d="M648.863 54.94C648.863 53.1164 649.462 47.3336 656.999 45.7478V44.2783H623.692V45.7478C627.576 45.8271 630.866 46.7997 633.11 48.8401C635.996 51.4777 635.928 55.8756 635.928 61.7166V66.9708C635.928 66.9708 636.459 79.8579 625.699 84.1077C613.695 88.8598 603.771 83.7536 596.949 71.0462C590.132 58.3442 593.228 28.3994 595.472 21.0573C597.711 13.7098 601.38 3.15386 615.019 2.23411C628.659 1.31436 638.188 14.8357 640.101 17.5897C642.009 20.3437 645.262 25.0059 646.729 28.7694L648.374 28.2038L643.838 -0.00183105C643.838 -0.00183105 639.097 2.18125 632.18 2.13368C625.269 2.08082 620.286 0.0140267 614.562 0.34704C608.844 0.680053 601.285 2.44026 592.608 10.7022C583.93 18.9641 578.968 34.3725 579.683 47.4287C580.398 60.485 586.074 73.7473 594.752 80.3812C603.43 87.0097 612.202 88.9496 622.02 87.1101C631.844 85.2759 636.327 81.9088 641.284 80.5345C646.24 79.1548 647.191 78.7478 651.149 78.4941L651.196 76.8132C651.196 76.8132 648.847 76.3533 648.847 66.2519V54.94H648.863Z" fill="black"></path>
+                  </g>
+                  <defs>
+                    <clippath id="clip0_2355_2138">
+                      <rect width="657" height="88" fill="white"></rect>
+                    </clippath>
+                  </defs>
+                </svg></a>
+              <div class="footer_divider"></div>
+              <div id="w-node-d3c79d1e-5728-0139-f8a8-b55d04c65927-99a7328f" class="footer_legal-wrapper">
+                <p id="w-node-f853398b-682e-bc34-dbb9-08bf44a5be88-99a7328f" class="copyright-text">Copyright <span class="year">2025</span>. All Rights Reserved. Vera Wang <span class="year">2025</span>. Operated by Batra Group Ltd.</p>
+                <div class="hide w-embed w-script">
+                  <script>document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());</script>
+                </div>
+                <div id="w-node-_28136b33-74f6-6da6-e09c-4eaac719b1f2-99a7328f" class="footer_language-links-wrapper">{% if localization.available_languages.size > 1 %}    <localization-form li-if="localization.available_languages.size > 1" class="li-lang_wrapper">
     
-                  {% form 'localization', class: 'li-lang_form' %}
+                    {% form 'localization', class: 'li-lang_form' %}
 <div data-hover="true" data-delay="500" class="li-lang_dropdown w-dropdown">
-                      <div lang="{{ localization.language.iso_code }}" class="li-lang_dd-toggle w-dropdown-toggle">
-                        <div li-object="localization.language.endonym_name | capitalize">{{ localization.language.endonym_name | capitalize }}</div>
-                        <div class="li-lang_dd-toggle-icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd" d="M2.55806 6.29544C2.46043 6.19781 2.46043 6.03952 2.55806 5.94189L3.44195 5.058C3.53958 4.96037 3.69787 4.96037 3.7955 5.058L8.00001 9.26251L12.2045 5.058C12.3021 4.96037 12.4604 4.96037 12.5581 5.058L13.4419 5.94189C13.5396 6.03952 13.5396 6.19781 13.4419 6.29544L8.17678 11.5606C8.07915 11.6582 7.92086 11.6582 7.82323 11.5606L2.55806 6.29544Z" fill="currentColor"></path>
-                          </svg></div>
-                      </div>
-                      <nav li-for:inside="language in localization.available_languages" class="li-lang_dd-list w-dropdown-list">
+                        <div lang="{{ localization.language.iso_code }}" class="li-lang_dd-toggle w-dropdown-toggle">
+                          <div li-object="localization.language.endonym_name | capitalize">{{ localization.language.endonym_name | capitalize }}</div>
+                          <div class="li-lang_dd-toggle-icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path clip-rule="evenodd" d="M2.55806 6.29544C2.46043 6.19781 2.46043 6.03952 2.55806 5.94189L3.44195 5.058C3.53958 4.96037 3.69787 4.96037 3.7955 5.058L8.00001 9.26251L12.2045 5.058C12.3021 4.96037 12.4604 4.96037 12.5581 5.058L13.4419 5.94189C13.5396 6.03952 13.5396 6.19781 13.4419 6.29544L8.17678 11.5606C8.07915 11.6582 7.92086 11.6582 7.82323 11.5606L2.55806 6.29544Z" fill="currentColor"></path>
+                            </svg></div>
+                        </div>
+                        <nav li-for:inside="language in localization.available_languages" class="li-lang_dd-list w-dropdown-list">
         {% for language in localization.available_languages %}                            
-                        
+                          
                             {% unless localization.language.iso_code == language.iso_code %}    <div li-unless="localization.language.iso_code == language.iso_code" class="li-lang_dd-list-item">
     
-                          <a href="#" li-object="language.endonym_name | capitalize" lang="{{ language.iso_code }}" hreflang="{{ language.iso_code }}" data-value="{{ language.iso_code }}" class="li-lang_dd-link w-dropdown-link">{{ language.endonym_name | capitalize }}</a>
-                            </div>
+                            <a href="#" li-object="language.endonym_name | capitalize" lang="{{ language.iso_code }}" hreflang="{{ language.iso_code }}" data-value="{{ language.iso_code }}" class="li-lang_dd-link w-dropdown-link">{{ language.endonym_name | capitalize }}</a>
+                              </div>
 {% endunless %}
                             
-                      
+                        
                     {% endfor %}    </nav>
-                    </div><input type="hidden" name="language_code" class="li-lang_hidden-input" value="{{ localization.language.iso_code }}">
-                  {% endform %}
-                  <div class="li-lang_script w-embed w-script">
-                    <script>
+                      </div><input type="hidden" name="language_code" class="li-lang_hidden-input" value="{{ localization.language.iso_code }}">
+                    {% endform %}
+                    <div class="li-lang_script w-embed w-script">
+                      <script>
 class LocalizationForm extends HTMLElement {
   constructor() {
     super();
@@ -258,13 +258,13 @@ class LocalizationForm extends HTMLElement {
 }
 customElements.define('localization-form', LocalizationForm);
 </script>
-                  </div>
-                    </localization-form>
+                    </div>
+                      </localization-form>
 {% endif %}</div>
+              </div>
             </div>
           </div>
-        </div>
-      </div> {% schema %} {
+        </div> {% schema %} {
     "tag": "footer",
     "name": "Footer",
     "class": "section_footer",
