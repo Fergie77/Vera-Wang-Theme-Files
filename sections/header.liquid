@@ -369,11 +369,15 @@ input.addEventListener('blur', () => {
     if (!overflow.contains(document.activeElement)) close();
   }, 0);
 });
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    close();
+    input.setSelectionRange(0, 0);
+    input.blur();
+  }
+});
 closePanel.addEventListener('click', close);
 closeButton.addEventListener('click', close);
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') close();
-});
 </script>
                 </div>
                 <div class="w-embed">
