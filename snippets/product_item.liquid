@@ -87,7 +87,6 @@
                                       {% assign seen_colours = seen_colours | append: colour_value | append: '|' %}
                                       <div class="product-header_radio-layout">
                                         {% assign dot_colour = variant.metafields.custom.colour_hex | default: colour_css %}
-                                        {{ dot_colour }}
                                         <div class="product-item_variant-colour" style="background: {{ dot_colour }}"></div>
                                       </div>
                                         </div>
