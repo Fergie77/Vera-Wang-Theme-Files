@@ -105,7 +105,6 @@ function initGallery() {
   const slides = gsap.utils.toArray('.swiper-slide.is-product-gallery');
   const bullets = gsap.utils.toArray('.swiper-pagination-bullet');
   function setActive(index) {
-    console.log(bullets)
     bullets.forEach((b, i) => b.classList.toggle('is-active', i === index));
   }
   slides.forEach((slide, i) => {
@@ -118,7 +117,6 @@ function initGallery() {
       vars: { _gallery: true },
     });
   });
-  setActive(0);
 }
 initGallery();
 </script>
@@ -304,8 +302,12 @@ padding-bottom: 0.5rem;
   height: 16px;
 }
 .swiper-pagination-bullet{
-  background: none !important;
+  background: black;
   opacity: 1 !important;
+}
+.swiper-pagination-bullet.is-active{
+  background: white;
+  border-color: black;
 }
 </style>
               </div>
