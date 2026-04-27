@@ -11,7 +11,9 @@
   "sections": {
     "collection_alt_hero": {
       "type": "collection_alt_hero",
-      "settings": {}
+      "settings": {
+        "text_heading": "AW/26"
+      }
     },
     "collection_products": {
       "type": "collection_products",
@@ -19,13 +21,21 @@
         "featured-wide": {
           "type": "featured-wide",
           "name": "Featured Wide",
-          "settings": {}
+          "settings": {
+            "text_heading": "Handbags",
+            "text_cta_text": "Call to action button",
+            "url_link": ""
+          }
         }
       },
       "block_order": [
         "featured-wide"
       ],
-      "settings": {}
+      "settings": {
+        "text_filter": "Filters",
+        "text_clear_all": "Clear all",
+        "text_products_shown": "Products shown"
+      }
     },
     "black_logo": {
       "type": "black_logo",
