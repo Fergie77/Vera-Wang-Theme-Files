@@ -37,7 +37,7 @@
                             {% if product.selected_or_first_available_variant.available != true %}    <div li-if="product.selected_or_first_available_variant.available != true" class="product-item_tag">
     Not in Stock    </div>
 {% endif %}
-                            {% if product.compare_at_price_max > product.price %}    <div li-if="product.compare_at_price_max > product.price" class="product-item_tag is-red">
+                            {% if product.compare_at_price_max > product.price %}    <div li-if="product.compare_at_price_max > product.price" class="product-item_tag is-black">
     Sale    </div>
 {% endif %}
                           </div>

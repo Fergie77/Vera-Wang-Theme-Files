@@ -46,8 +46,7 @@
   --text-color--text-error: var(--base-color-system--error-red-dark);
   --base-color-system--success-green-dark: #17660f;
   --divider-colour: #d8d8d8;
-  --base-color-system--error-red: #f8e4e4;
-  --base-color-system--error-red-dark: #9b1313;
+  --base-color-neutral--neutral-light: #aaa;
   --border-radius--medium: .5rem;
   --background-color--background-error: var(--base-color-system--error-red);
   --background-color--background-warning: var(--base-color-system--warning-yellow);
@@ -59,7 +58,6 @@
   --black-area-height: 50%;
   --relume-library-lite--rl-white: white;
   --relume-library-lite--rl-black: black;
-  --base-color-neutral--neutral-light: #aaa;
   --h1: clamp(2.0625 * 1rem, ((2.0625 - ((3.75 - 2.0625) / (90 - 20) * 20)) * 1rem + ((3.75 - 2.0625) / (90 - 20)) * 100vw), 3.75 * 1rem);
   --h2: clamp(.8 * 1rem, ((.8 - ((2.125 - .8) / (90 - 20) * 20)) * 1rem + ((2.125 - .8) / (90 - 20)) * 100vw), 2.125 * 1rem);
   --white-area-height: 50%;
@@ -75,6 +73,8 @@
   --base-color-system--success-green: #cef5ca;
   --base-color-system--warning-yellow: #fcf8d8;
   --base-color-system--warning-yellow-dark: #5e5515;
+  --base-color-system--error-red: #f8e4e4;
+  --base-color-system--error-red-dark: #9b1313;
   --border-color--border-secondary: var(--base-color-brand--blue);
   --border-radius--large: 1rem;
   --link-color--link-primary: var(--base-color-brand--blue);
@@ -2785,16 +2785,19 @@ figcaption {
 }
 
 .product-item_tag {
-  background-color: var(--base-color-neutral--black);
-  color: var(--base-color-neutral--white);
-  padding: .3rem .5rem;
+  background-color: var(--base-color-neutral--neutral-light);
+  color: var(--base-color-neutral--black);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  padding: .5rem 2.5rem;
+  font-family: Gotham, Arial, sans-serif;
   font-size: .85rem;
   font-weight: 500;
 }
 
-.product-item_tag.is-red {
-  background-color: var(--base-color-system--error-red);
-  color: var(--base-color-system--error-red-dark);
+.product-item_tag.is-black {
+  background-color: var(--background-color--background-primary);
+  color: var(--base-color-neutral--white);
 }
 
 .product-header_tag-list {
@@ -4648,7 +4651,7 @@ figcaption {
 
 .featured-products-component_layout {
   grid-column-gap: var(--gap--global);
-  grid-row-gap: 7.6rem;
+  grid-row-gap: 6rem;
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-auto-columns: 1fr;
@@ -4672,6 +4675,10 @@ figcaption {
 .featured-products_collection-link-wrapper.is-left {
   margin-right: 0;
   margin-left: calc(var(--padding--global) * -2);
+}
+
+.featured-products_collection-link-wrapper.is-first.is-collection-page {
+  aspect-ratio: 696 / 700;
 }
 
 .featured-products_collection-image {
@@ -8830,8 +8837,7 @@ figcaption {
     --text-color--text-error: var(--base-color-system--error-red-dark);
     --base-color-system--success-green-dark: #17660f;
     --divider-colour: #d8d8d8;
-    --base-color-system--error-red: #f8e4e4;
-    --base-color-system--error-red-dark: #9b1313;
+    --base-color-neutral--neutral-light: #aaa;
     --border-radius--medium: .5rem;
     --background-color--background-error: var(--base-color-system--error-red);
     --background-color--background-warning: var(--base-color-system--warning-yellow);
@@ -8843,7 +8849,6 @@ figcaption {
     --black-area-height: 50%;
     --relume-library-lite--rl-white: white;
     --relume-library-lite--rl-black: black;
-    --base-color-neutral--neutral-light: #aaa;
     --h1: clamp(2.0625 * 1rem, ((2.0625 - ((3.75 - 2.0625) / (90 - 20) * 20)) * 1rem + ((3.75 - 2.0625) / (90 - 20)) * 100vw), 3.75 * 1rem);
     --h2: clamp(.8 * 1rem, ((.8 - ((2.125 - .8) / (90 - 20) * 20)) * 1rem + ((2.125 - .8) / (90 - 20)) * 100vw), 2.125 * 1rem);
     --white-area-height: 50%;
@@ -8859,6 +8864,8 @@ figcaption {
     --base-color-system--success-green: #cef5ca;
     --base-color-system--warning-yellow: #fcf8d8;
     --base-color-system--warning-yellow-dark: #5e5515;
+    --base-color-system--error-red: #f8e4e4;
+    --base-color-system--error-red-dark: #9b1313;
     --border-color--border-secondary: var(--base-color-brand--blue);
     --border-radius--large: 1rem;
     --link-color--link-primary: var(--base-color-brand--blue);
