@@ -4,17 +4,17 @@
               <div class="featured-products-component_layout">
                 <div id="w-node-fcb9f788-8aa7-977d-a20a-9e1f35e7a95a-87467f30" class="product_heading-wrapper">
                   <div class="product_heading is-grid">
-                    <h2 li-object="collection.title" id="w-node-fcb9f788-8aa7-977d-a20a-9e1f35e7a95c-87467f30" class="product-section_heading is-large">{{ collection.title }}</h2>
+                    <h2 li-object="collection.metafields.custom.season" id="w-node-fcb9f788-8aa7-977d-a20a-9e1f35e7a95c-87467f30" class="product-section_heading is-largest">{{ collection.metafields.custom.season }}</h2>
                   </div>
                 </div>
                 <div id="w-node-fcb9f788-8aa7-977d-a20a-9e1f35e7a961-87467f30" class="slider-mobile-wrapper">
                   <div class="display-contents-desktop">
                     <div class="featured-products_layout">
                       <div class="featured-products_item">
-                        {% render 'product_item', colour_value: colour_value, product: collection.metafields.custom.featured_product_1.value, variant: variant %}
+                        {% render 'product_item', colour_value: colour_value, product: collection.metafields.custom.featured_product_small_1.value, variant: variant %}
                       </div>
                       <div class="featured-products_item">
-                        {% render 'product_item', colour_value: colour_value, product: collection.metafields.custom.featured_product_2.value, variant: variant %}
+                        {% render 'product_item', colour_value: colour_value, product: collection.metafields.custom.featured_product_small_2.value, variant: variant %}
                       </div>
                     </div>
                   </div>
