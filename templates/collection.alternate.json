@@ -16,9 +16,9 @@
     "collection_products": {
       "type": "collection_alt_produ",
       "settings": {
-        "offset_first_products": false,
+        "offset_first_products": true,
         "products_to_show": 6,
-        "products_offset": 2
+        "products_offset": 0
       }
     },
     "black_logo": {
@@ -70,7 +70,7 @@
       "settings": {
         "offset_first_products": false,
         "products_to_show": 50,
-        "products_offset": 1
+        "products_offset": 13
       }
     }
   },
