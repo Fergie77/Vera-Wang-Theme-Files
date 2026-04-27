@@ -1,0 +1,29 @@
+{
+    "sections": {
+        "collection_alt_hero": {
+            "type": "collection_alt_hero"
+        },
+        "collection_products": {
+            "type": "collection_products",
+            "blocks": {
+                "featured-wide": {
+                    "type": "featured-wide",
+                    "name": "Featured Wide"
+                }
+            },
+            "block_order": [
+                "featured-wide"
+            ]
+        },
+        "black_logo": {
+            "type": "black_logo"
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "collection_alt_hero",
+        "collection_products",
+        "black_logo"
+    ]
+}
