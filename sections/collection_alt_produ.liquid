@@ -5,9 +5,9 @@
               <div fs-list-instance="1" id="w-node-_114fb0ba-0892-dc1f-8816-8687f640db58-87467f30" class="filter_feed">
                 <div class="padding-global">
                   <div class="container-large">
-                    <div li-hide="assign vw_shown = 0" li-cloak="hide"></div>
-                    <div li-hide="assign vw_eligible = 0" li-cloak="hide"></div>
-                    <div li-hide="assign max_shown = section.settings.products_to_show" li-cloak="hide"></div>
+                    {% assign vw_shown = 0 %}
+                    {% assign vw_eligible = 0 %}
+                    {% assign max_shown = section.settings.products_to_show %}
                     <div class="filter_product-list-wrapper w-dyn-list">
                       <div role="list" class="filter_product-list w-dyn-items">
                         {% for product in collection.products limit:50 %}    <div li-for="product in collection.products limit:50" role="listitem" class="filter_product-list-item w-dyn-item">
