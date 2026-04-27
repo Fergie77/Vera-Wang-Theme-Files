@@ -11,12 +11,14 @@
                   <a li-object:href="section.settings.collection_collection.url" href="{{ section.settings.collection_collection.url }}" class="product_heading-link w-inline-block"></a>
                 </div>
                 <div id="w-node-fcb9f788-8aa7-977d-a20a-9e1f35e7a961-87467f30" class="slider-mobile-wrapper">
-                  <div id="w-node-fcb9f788-8aa7-977d-a20a-9e1f35e7a962-87467f30" class="display-contents-desktop w-dyn-list">
-                    <div role="list" class="featured-products_layout w-dyn-items">
-                      <div li-object="collection" role="listitem" class="featured-products_item w-dyn-item">{{ collection }}</div>
-                    </div>
-                    <div class="hide w-dyn-empty">
-                      <div>No items found.</div>
+                  <div class="display-contents-desktop">
+                    <div class="featured-products_layout">
+                      <div class="featured-products_item">
+                        {% render 'product_item', colour_value: colour_value, product: featured_product_1, variant: variant %}
+                      </div>
+                      <div class="featured-products_item">
+                        {% render 'product_item', colour_value: colour_value, product: featured_product_2, variant: variant %}
+                      </div>
                     </div>
                   </div>
                 </div>
