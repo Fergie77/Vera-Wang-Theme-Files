@@ -11,12 +11,10 @@
   "sections": {
     "collection_alt_hero": {
       "type": "collection_alt_hero",
-      "settings": {
-        "text_heading": "AW/26"
-      }
+      "settings": {}
     },
     "collection_products": {
-      "type": "collection_products",
+      "type": "collection_alt_produ",
       "blocks": {
         "featured-wide": {
           "type": "featured-wide",
