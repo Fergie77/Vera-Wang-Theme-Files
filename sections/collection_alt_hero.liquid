@@ -26,7 +26,7 @@
                   {% assign featured_product = collection.metafields.custom.featured_product.value %}
                   {% assign featured_product_image = collection.metafields.custom.featured_product_image %}
                  
-                  <div class="featured-products_collection-link-layout"><img li-object:src="" loading="lazy" alt="" src="{{ featured_product_image.value | image_url: width: 200 }}" class="featured-products_collection-image">
+                  <div class="featured-products_collection-link-layout"><img li-object:src="" loading="lazy" alt="" src="{{ featured_product_image.value | image_url: width: 2000 }}" class="featured-products_collection-image">
                     <a li-object:href="featured_product.url" href="{{ featured_product.url }}" class="featured-products_collection-link w-inline-block"></a>
                     <div class="featured-products_heading-wrapper">
                       <h2 li-object="featured_product.title" class="featured-products_heading">{{ featured_product.title }}</h2>
