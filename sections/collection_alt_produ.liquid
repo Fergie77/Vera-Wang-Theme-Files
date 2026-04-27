@@ -6,8 +6,7 @@
                 <div class="padding-global">
                   <div class="container-large">
                     <div li-hide="assign vw_shown = 0" li-cloak="hide"></div>
-                    {% assign vw_shown = 0 %}
-                    {% assign max_shown = section.settings.products_to_show %}
+                    <div li-hide="assign vw_eligible = 0" li-cloak="hide"></div>
                     <div class="filter_product-list-wrapper w-dyn-list">
                       <div role="list" class="filter_product-list w-dyn-items">
                         {% for product in collection.products limit:50 %}    <div li-for="product in collection.products limit:50" role="listitem" class="filter_product-list-item w-dyn-item">
@@ -57,9 +56,10 @@
                               {% endif %}</div>
                             
                             
-                            {% if show_variant == 'true' and vw_shown < max_shown %}    <div li-if="show_variant == 'true' and vw_shown < section.settings.products_to_show">
+                            {% if show_variant == 'true' and vw_eligible > products_offset and vw_shown < max_shown %}    <div li-if="show_variant == 'true' and vw_eligible > products_offset and vw_shown < max_shown">
     
                               <div li-cloak="hide" class="hide w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}
+                                {% assign vw_eligible = vw_eligible | plus: 1 %}
                                 {% assign vw_shown = vw_shown | plus: 1 %}</div>
                               {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
                                 </div>
@@ -106,7 +106,7 @@
     "settings": [
         {
             "type": "header",
-            "content": "Grid Offset"
+            "content": "Product Controls"
         },
         {
             "id": "offset_first_products",
@@ -115,14 +115,20 @@
             "default": false
         },
         {
-            "type": "header",
-            "content": "Product Number"
-        },
-        {
             "id": "products_to_show",
             "type": "number",
             "label": "Products to show",
             "default": 12
+        },
+        {
+            "id": "products_offset",
+            "type": "number",
+            "label": "Start from product",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Product Number"
         }
     ],
     "presets": [
