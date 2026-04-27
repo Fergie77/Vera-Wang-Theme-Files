@@ -25,8 +25,8 @@
                 <div id="w-node-fcb9f788-8aa7-977d-a20a-9e1f35e7a969-87467f30" class="featured-products_collection-link-wrapper is-first">
                   {% assign featured_product = collection.metafields.custom.featured_product.value %}
                   {% assign featured_product_image = collection.metafields.custom.featured_product_image.value %}
-                  {{ featured_product_image }}
-                  <div class="featured-products_collection-link-layout"><img li-object:src="" loading="lazy" alt="" src="{{  }}" class="featured-products_collection-image">
+                  
+                  <div class="featured-products_collection-link-layout"><img li-object:src="" loading="lazy" alt="" src="{{ featured_product_image }}" class="featured-products_collection-image">
                     <a li-object:href="featured_product.url" href="{{ featured_product.url }}" class="featured-products_collection-link w-inline-block"></a>
                     <div class="featured-products_heading-wrapper">
                       <h2 li-object="featured_product.title" class="featured-products_heading">{{ featured_product.title }}</h2>
