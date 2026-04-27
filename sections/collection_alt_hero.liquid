@@ -23,8 +23,8 @@
                   </div>
                 </div>
                 <div id="w-node-fcb9f788-8aa7-977d-a20a-9e1f35e7a969-87467f30" class="featured-products_collection-link-wrapper is-first">
-                  <div li-object="collection.metafields.custom.featured_product.title" li-cloak="hide">{{ collection.metafields.custom.featured_product.value.title }}</div>
-                  {% render 'product_item', product: product %}
+                  {% assign featured_product = collection.metafields.custom.featured_product.value %}
+                  {% render 'product_item', product: featured_product %}
                 </div>
               </div>
             </div>
@@ -39,11 +39,6 @@
             "type": "text",
             "label": "Heading",
             "default": "Shoes"
-        },
-        {
-            "id": "image_link_image",
-            "type": "image_picker",
-            "label": "Link Image"
         }
     ],
     "presets": [
