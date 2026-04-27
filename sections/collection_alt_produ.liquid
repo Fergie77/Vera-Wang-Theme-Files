@@ -54,8 +54,8 @@
                               {% endif %}
                               {% endif %}</div>
                             
-                            
-                            {% if show_variant == 'true' and vw_shown < section.settings.products_to_show %}    <div li-if="show_variant == 'true' and vw_shown < section.settings.products_to_show">
+                            {% assign max_shown = section.settings.products_to_show %}
+                            {% if show_variant == 'true' and vw_shown < max_shown %}    <div li-if="show_variant == 'true' and vw_shown < section.settings.products_to_show">
     
                               <div li-cloak="hide" class="hide w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}
                                 {% assign vw_shown = vw_shown | plus: 1 %}</div>
