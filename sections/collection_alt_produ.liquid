@@ -1,4 +1,14 @@
 <div class="collection-page_custom-padding">
+
+<style>
+@media (min-width: 992px) {
+  .filter_product-list-item:first-child {
+    grid-column-start: 3;
+  }
+}
+
+</style>
+
           <div>
             {% paginate collection.products by 50 %}
     <div li-paginate:by="50" li-paginate="collection.products" class="filter_layout" by="50">
