@@ -333,29 +333,31 @@
                             </header>
             {% endif %}
 {% endfor %}
-                <div class="padding-global">
-                  <div class="container-large">
-                    <div class="filter_product-list-wrapper w-dyn-list">
-                      <div role="list" class="filter_product-list w-dyn-items">
-                        {% for product in collection.products limit:12 offset: 12 %}    <div li-for="product in collection.products limit:12 offset: 12" role="listitem" class="filter_product-list-item w-dyn-item">
+                <section li-section="Full Product Grid">
+                  <div class="padding-global">
+                    <div class="container-large">
+                      <div class="filter_product-list-wrapper w-dyn-list">
+                        <div role="list" class="filter_product-list w-dyn-items">
+                          {% for product in collection.products limit:12 offset: 12 %}    <div li-for="product in collection.products limit:12 offset: 12" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
-                          
+                            
                             {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
                             
-                        
+                          
                         </div>
 {% endfor %}
-                      </div>
-                      {% if collection.products == blank %}    <div li-if="collection.products == blank" class="filter_empty w-dyn-empty">
+                        </div>
+                        {% if collection.products == blank %}    <div li-if="collection.products == blank" class="filter_empty w-dyn-empty">
     
-                        <div class="heading-style-h6">No results found.</div>
-                        <div class="spacer-xxsmall"></div>
-                        <div>There are no results with this criteria. Try changing your search.</div>
-                          </div>
+                          <div class="heading-style-h6">No results found.</div>
+                          <div class="spacer-xxsmall"></div>
+                          <div>There are no results with this criteria. Try changing your search.</div>
+                            </div>
 {% endif %}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </section>
                 {% if paginate.pages > 1 %}    <nav li-if="paginate.pages > 1" class="pagination_component">
     
                   <ul role="list" class="pagination_list w-list-unstyled">
