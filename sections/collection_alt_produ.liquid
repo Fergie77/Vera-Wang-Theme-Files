@@ -58,14 +58,14 @@
                               {% endif %}</div>
                             
                             
-                            {% if show_variant == 'true' and vw_eligible > products_offset and vw_shown < max_shown %}    <div li-if="show_variant == 'true' and vw_eligible > products_offset and vw_shown < max_shown">
+                            {% if show_variant == 'true' %}    <div li-if="show_variant == 'true'">
     
                               <div li-cloak="hide" class="hide w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}
                                 {% assign vw_eligible = vw_eligible | plus: 1 %}</div>
                               {% if vw_eligible > products_offset and vw_shown < max_shown %}    <div li-if="vw_eligible > products_offset and vw_shown < max_shown">
     
-                                {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
                                 {% assign vw_shown = vw_shown | plus: 1 %}
+                                {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
                                   </div>
 {% endif %}
                                 </div>
