@@ -15,29 +15,59 @@
     },
     "collection_products": {
       "type": "collection_alt_produ",
-      "blocks": {
-        "featured-wide": {
-          "type": "featured-wide",
-          "name": "Featured Wide",
-          "settings": {
-            "text_heading": "Handbags",
-            "text_cta_text": "Call to action button",
-            "url_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "featured-wide"
-      ],
       "settings": {
-        "text_filter": "Filters",
-        "text_clear_all": "Clear all",
-        "text_products_shown": "Products shown"
+        "offset_first_products": true
       }
     },
     "black_logo": {
       "type": "black_logo",
       "settings": {}
+    },
+    "styled_by_vera_yNra3b": {
+      "type": "styled_by_vera",
+      "blocks": {
+        "block_EJ6DHV": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
+        },
+        "block_tNRUqc": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
+        },
+        "block_cJtgdU": {
+          "type": "block",
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "block_EJ6DHV",
+        "block_tNRUqc",
+        "block_cJtgdU"
+      ],
+      "name": "Styled By Vera",
+      "settings": {
+        "text_heading": "Styled By Vera Wang",
+        "text_cta_text": "View All The Looks",
+        "url_cta_link": ""
+      }
+    },
+    "collection_alt_produ_Wk34EG": {
+      "type": "collection_alt_produ",
+      "name": "Collection Alt Produ",
+      "settings": {
+        "offset_first_products": false
+      }
     }
   },
   "layout": "theme",
@@ -45,6 +75,8 @@
   "order": [
     "collection_alt_hero",
     "collection_products",
-    "black_logo"
+    "black_logo",
+    "styled_by_vera_yNra3b",
+    "collection_alt_produ_Wk34EG"
   ]
 }
