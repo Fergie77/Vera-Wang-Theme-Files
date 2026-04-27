@@ -12,9 +12,10 @@
                 </div>
                 <div id="w-node-fcb9f788-8aa7-977d-a20a-9e1f35e7a961-87467f30" class="slider-mobile-wrapper">
                   <div class="display-contents-desktop">
+                   
                     <div class="featured-products_layout">
                       <div class="featured-products_item">
-                        {% render 'product_item', colour_value: colour_value, product: featured_product_1, variant: variant %}
+                        {% render 'product_item', colour_value: colour_value, product: collection.variants.custom.featured_product_1, variant: variant %}
                       </div>
                       <div class="featured-products_item">
                         {% render 'product_item', colour_value: colour_value, product: featured_product_2, variant: variant %}
