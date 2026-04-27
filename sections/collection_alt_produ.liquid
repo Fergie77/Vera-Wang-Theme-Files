@@ -8,6 +8,7 @@
                     {% assign vw_shown = 0 %}
                     {% assign vw_eligible = 0 %}
                     {% assign max_shown = section.settings.products_to_show %}
+                    {% assign products_offset = section.settings.products_offset %}
                     <div class="filter_product-list-wrapper w-dyn-list">
                       <div role="list" class="filter_product-list w-dyn-items">
                         {% for product in collection.products limit:50 %}    <div li-for="product in collection.products limit:50" role="listitem" class="filter_product-list-item w-dyn-item">
