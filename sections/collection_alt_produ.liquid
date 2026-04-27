@@ -1,0 +1,342 @@
+<div class="collection-page_custom-padding">
+          <div>
+            {% paginate collection.products by 50 %}
+    <div li-paginate:by="50" li-paginate="collection.products" class="filter_layout" by="50">
+              <div id="w-node-_678e0483-bbe4-e79a-1722-b169c587feae-c587feae" class="filter_filters-wrapper">
+                <form action="{{ routes.search_url }}" method="get" role="search" class="filter_form_component">
+                  <div id="w-node-_265c4342-3d21-e8bf-dfee-efec035c3507-c587feae" class="filter_form">
+                    <div class="filter_form-header">
+                      <div class="filter_heading">
+{{ section.settings.text_filter }}
+</div>
+                      <a li-object:href="collection.url" href="{{ collection.url }}" class="button is-link hide-tablet w-inline-block">
+                        <div class="hide">
+{{ section.settings.text_clear_all }}
+</div>
+                      </a>
+                    </div>
+                    <div class="filter_results-wrapper">
+                      <div class="filter_results-text"><span li-object="collection.all_products_count | append: ' '">{{ collection.all_products_count | append: ' ' }}</span> <span>
+{{ section.settings.text_products_shown }}
+</span></div>
+                    </div>
+                    <div class="filter_form-field-wrapper"><input name="type" type="hidden" class="form_input" value="product"><label for="filter-search" class="form_hidden-label">Search for Products</label><input name="q" placeholder="Search" type="search" id="filter-search" class="form_input" value="{{ search.terms | escape }}"></div>
+                    <div class="filter_scroll-wrapper">
+                      <div class="filter_filter-group-list">
+                        {% for filter in collection.filters %}    <div li-for="filter in collection.filters" class="filter_filter-group">
+                                    
+                          
+                            {% if filter.values.size > 1 %}    <div li-if="filter.values.size > 1">
+    
+                            <div class="filter_filter-group-heading">
+                              <div li-object="filter.label" class="text-size-medium">{{ filter.label }}</div>
+                            </div>
+                            <div class="filter_list">
+                              {% for filter_value in filter.values %}    <div li-for="filter_value in filter.values" class="filter_item">
+                                    
+                                
+                            <a href="{% if filter_value.active %}{{ filter_value.url_to_remove }}{% else %}{{ filter_value.url_to_add }}{% endif %}" class="{% if filter_value.count == 0 and filter_value.active == false %}filter_form_checkbox is-disabled{% else %}filter_form_checkbox{% endif %}">
+                                  <div class="{% if filter_value.active %}filter_form_checkbox-icon is-checked{% else %}filter_form_checkbox-icon{% endif %}"></div>
+                                  <div class="filter_form_checkbox-label"><span li-object="filter_value.label | append: ' '">{{ filter_value.label | append: ' ' }}</span> (<span li-object="filter_value.count">{{ filter_value.count }}</span>)</div>
+                                </a>
+                            
+                              
+                        </div>
+{% endfor %}
+                            </div>
+                              </div>
+{% endif %}
+                            
+                        
+                        </div>
+{% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <a data-w-id="678e0483-bbe4-e79a-1722-b169c587fede" href="#" class="filter_tablet-modal-close-button w-inline-block"><img src="https://uploads-ssl.webflow.com/624380709031623bfe4aee60/624380709031623afe4aee7e_icon_close-modal.svg" alt="" class="icon-1x1-small"></a>
+              </div>
+              <div fs-list-instance="1" id="w-node-_114fb0ba-0892-dc1f-8816-8687f640db58-87467f30" class="filter_feed">
+                <div class="padding-global">
+                  <div class="container-large">
+                    <div class="filter_product-list-wrapper w-dyn-list">
+                      <div role="list" class="filter_product-list w-dyn-items">
+                        {% for product in collection.products limit:12 %}    <div li-for="product in collection.products limit:12" role="listitem" class="filter_product-list-item w-dyn-item">
+                                    
+                          
+                            <div li-cloak="hide" class="hide w-embed">{% assign active_colours = '' %}
+                            {% assign colour_filter_names = 'colour,color,couleur,farbe,colore,kleur,färg,kolor,cor,culoare,barva,farva,väri,värv,szín,spalva,krāsa,boja,farba,dath,kulur,χρώμα,цвят,culori' | split: ',' %}
+                            {% for filter in collection.filters %}
+                            {% assign filter_label = filter.label | downcase %}
+                            {% if colour_filter_names contains filter_label %}
+                            {% for filter_value in filter.active_values %}
+                            {% assign active_colours = active_colours | append: filter_value.label | append: '|' %}
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+                            {% assign color_index = 1 %}
+                            {% assign seen_colours = '' %}
+                            {% assign test_colour = product.variants.first.options[color_index] %}
+                            {% if test_colour != blank %}
+                            {% assign has_colour_option = true %}
+                            {% else %}
+                            {% assign has_colour_option = false %}
+                            {% endif %}</div>
+                            
+                          
+                            {% for variant in product.variants %}    <div li-for="variant in product.variants" class="display-contents">
+                                    
+                            
+                            <div li-cloak="hide" class="hide w-embed">{% assign colour_value = variant.options[color_index] %}
+                              {% if has_colour_option == false %}
+                              {% if seen_colours == '' %}
+                              {% assign show_variant = 'true' %}
+                              {% else %}
+                              {% assign show_variant = 'false' %}
+                              {% endif %}
+                              {% else %}
+                              {% assign colour_key = colour_value | append: '|' %}
+                              {% if active_colours == '' or active_colours contains colour_key %}
+                              {% unless seen_colours contains colour_value %}
+                              {% assign show_variant = 'true' %}
+                              {% else %}
+                              {% assign show_variant = 'false' %}
+                              {% endunless %}
+                              {% else %}
+                              {% assign show_variant = 'false' %}
+                              {% endif %}
+                              {% endif %}</div>
+                            
+                            
+                            {% if show_variant == 'true' %}    <div li-if="show_variant == 'true'">
+    
+                              <div li-cloak="hide" class="hide w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}</div>
+                              {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
+                                </div>
+{% endif %}
+                            
+                          
+                        </div>
+{% endfor %}
+                            
+                        
+                        </div>
+{% endfor %}
+                      </div>
+                      {% if collection.products == blank %}    <div li-if="collection.products == blank" class="filter_empty w-dyn-empty">
+    
+                        <div class="heading-style-h6">No results found.</div>
+                        <div class="spacer-xxsmall"></div>
+                        <div>There are no results with this criteria. Try changing your search.</div>
+                          </div>
+{% endif %}
+                    </div>
+                  </div>
+                </div>
+                {% for block in section.blocks %}
+    {% if block.type == "featured-wide" %}
+                    <header li-block="Featured Wide" class="rl_section_header5">
+                                    
+                  
+                                    <div class="padding-global">
+                    <div>
+                      <div class="header5_component">
+                        <div class="rl_header5_content">
+                          <h1 class="rl_header5_heading">
+{{ block.settings.text_heading }}
+</h1>
+                          <p class="cta-text">
+{{ block.settings.text_cta_text }}
+</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                                    
+                  
+                                    <a href="{{ block.settings.url_link }}" class="rl_section_link w-inline-block"> </a>
+                                    {% if block.settings.image_background_image %}
+{{ block.settings.image_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'rl_section_background-image' }}
+{% else %}
+<img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="rl_section_background-image">
+{% endif %}
+                                    
+                
+                            </header>
+            {% endif %}
+{% endfor %}
+                <div class="padding-global">
+                  <div class="container-large">
+                    <div class="filter_product-list-wrapper w-dyn-list">
+                      <div role="list" class="filter_product-list w-dyn-items">
+                        {% for product in collection.products limit:12 offset: 12 %}    <div li-for="product in collection.products limit:12 offset: 12" role="listitem" class="filter_product-list-item w-dyn-item">
+                                    
+                          
+                            {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
+                            
+                        
+                        </div>
+{% endfor %}
+                      </div>
+                      {% if collection.products == blank %}    <div li-if="collection.products == blank" class="filter_empty w-dyn-empty">
+    
+                        <div class="heading-style-h6">No results found.</div>
+                        <div class="spacer-xxsmall"></div>
+                        <div>There are no results with this criteria. Try changing your search.</div>
+                          </div>
+{% endif %}
+                    </div>
+                  </div>
+                </div>
+                {% if paginate.pages > 1 %}    <nav li-if="paginate.pages > 1" class="pagination_component">
+    
+                  <ul role="list" class="pagination_list w-list-unstyled">
+                    {% if paginate.previous %}    <li li-if="paginate.previous" class="pagination_item">
+    
+                      <a li-object:href="paginate.previous.url" href="{{ paginate.previous.url }}" class="button is-secondary is-icon w-inline-block">
+                        <div class="pagination_arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img">
+                            <path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path>
+                          </svg></div>
+                        <div>Back</div>
+                      </a>
+                        </li>
+{% endif %}
+                    {% if paginate.previous == false %}    <li li-if="paginate.previous == false" class="pagination_item">
+    
+                      <a li-object:href="paginate.previous.url" href="{{ paginate.previous.url }}" class="button is-secondary is-icon text-style-muted pointer-events-off w-inline-block">
+                        <div class="pagination_arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img">
+                            <path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path>
+                          </svg></div>
+                        <div>Back</div>
+                      </a>
+                        </li>
+{% endif %}
+                    {% for part in paginate.parts %}    <li li-for="part in paginate.parts" class="pagination_item">
+                                    
+                      
+                            {% if part.is_link %}    <div li-if="part.is_link">
+    
+                        <a li-object:href="part.url" href="{{ part.url }}" class="pagination_count w-inline-block">
+                          <div li-object="part.title" class="text-style-link">{{ part.title }}</div>
+                        </a>
+                          </div>
+{% endif %}
+                            
+                      
+                            {% if part.is_link == false %}    <div li-if="part.is_link == false">
+    
+                        <div li-object="part.title" class="{% if part.title == paginate.current_page %}text-weight-semibold{% endif %}">{{ part.title }}</div>
+                          </div>
+{% endif %}
+                            
+                    
+                        </li>
+{% endfor %}
+                    {% if paginate.next == false %}    <li li-if="paginate.next == false" class="pagination_item">
+    
+                      <a li-object:href="paginate.next.url" href="{{ paginate.next.url }}" class="button is-secondary is-icon text-style-muted pointer-events-off w-inline-block">
+                        <div>Next</div>
+                        <div class="pagination_arrow is-right w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img">
+                            <path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path>
+                          </svg></div>
+                      </a>
+                        </li>
+{% endif %}
+                    {% if paginate.next %}    <li li-if="paginate.next" class="pagination_item">
+    
+                      <a li-object:href="paginate.next.url" href="{{ paginate.next.url }}" class="button is-secondary is-icon w-inline-block">
+                        <div>Next</div>
+                        <div class="pagination_arrow is-right w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img">
+                            <path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path>
+                          </svg></div>
+                      </a>
+                        </li>
+{% endif %}
+                  </ul>
+                    </nav>
+{% endif %}
+              </div>
+            </div>{% endpaginate %}
+          </div>
+        </div>
+        <div class="hide w-embed w-script">
+          <script>
+  function onSortChange(e) {
+    var params = new URLSearchParams(location.search);
+    params.set('sort_by', e.target.value);
+    location.search = params.toString();
+  }
+  document.querySelector('#sort-by').addEventListener('change', onSortChange);
+  document.querySelector('#sort-by-2').addEventListener('change', onSortChange);
+</script>
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Collection Alt Produ",
+    "class": "section_filter",
+    "blocks": [
+        {
+            "name": "Featured Wide",
+            "type": "featured-wide",
+            "settings": [
+                {
+                    "id": "text_heading",
+                    "type": "text",
+                    "label": "Heading",
+                    "default": "Handbags"
+                },
+                {
+                    "id": "text_cta_text",
+                    "type": "text",
+                    "label": "CTA Text",
+                    "default": "Call to action button"
+                },
+                {
+                    "id": "url_link",
+                    "type": "url",
+                    "label": "Link"
+                },
+                {
+                    "id": "image_background_image",
+                    "type": "image_picker",
+                    "label": "Background Image"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "id": "text_filter",
+            "type": "text",
+            "label": "Filter",
+            "default": "Filters"
+        },
+        {
+            "id": "text_clear_all",
+            "type": "text",
+            "label": "Clear all",
+            "default": "Clear all"
+        },
+        {
+            "id": "text_products_shown",
+            "type": "text",
+            "label": "Products shown",
+            "default": "Products shown"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Collection Alt Produ",
+            "category": "Liquify",
+            "blocks": [
+                {
+                    "type": "featured-wide"
+                }
+            ]
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "collection"
+        ]
+    }
+} {% endschema %}
