@@ -7,6 +7,7 @@
                   <div class="container-large">
                     <div li-hide="assign vw_shown = 0" li-cloak="hide"></div>
                     <div li-hide="assign vw_eligible = 0" li-cloak="hide"></div>
+                    <div li-hide="assign max_shown = section.settings.products_to_show" li-cloak="hide"></div>
                     <div class="filter_product-list-wrapper w-dyn-list">
                       <div role="list" class="filter_product-list w-dyn-items">
                         {% for product in collection.products limit:50 %}    <div li-for="product in collection.products limit:50" role="listitem" class="filter_product-list-item w-dyn-item">
