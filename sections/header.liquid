@@ -983,24 +983,18 @@ closeButton.addEventListener('click', close);
 }
 /* &#9472;&#9472; Mobile &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 @media (max-width: 991px) {
-  /* On mobile the split collapses &mdash; use left side as the single colour */
   .nav_component {
-    background: var(--nav-left-bg);
+    background: var(--nav-scroll-bg);
   }
-  .nav_component .nav_logo-link { color: var(--nav-left-link); }
-  .nav_component .wang-character { fill: var(--nav-left-link); }
+  .nav_component .nav_logo-link { color: var(--nav-scroll-link); }
+  .nav_component .wang-character { fill: var(--nav-scroll-link); }
   .nav_component #TOP path,
-  .nav_component #BOTTOM path   { fill: var(--nav-left-link) !important; }
+  .nav_component #BOTTOM path { fill: var(--nav-scroll-link) !important; }
   .nav_component .cart-icon_dot {
-    fill: var(--nav-left-link) !important;
-    stroke: var(--nav-left-bg) !important;
+    fill: var(--nav-scroll-link) !important;
+    stroke: var(--nav-scroll-bg) !important;
     transition: fill 0.3s ease, stroke 0.3s ease;
   }
-  .section_navbar.scrolling .nav_component             { background: var(--nav-scroll-bg); }
-  .section_navbar.scrolling .nav_component .nav_logo-link { color: var(--nav-scroll-link); }
-  .section_navbar.scrolling .nav_component .wang-character { fill: var(--nav-scroll-link); }
-  .section_navbar.scrolling .nav_component #TOP path,
-  .section_navbar.scrolling .nav_component #BOTTOM path { fill: var(--nav-scroll-link) !important; }
   .nav_container:has(.nav_menu-dropdown.is-open) .nav_dropdown-list-background {
     background: rgba(0, 0, 0, 0.6) !important;
     opacity: 1;
