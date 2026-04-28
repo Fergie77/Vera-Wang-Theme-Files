@@ -3753,6 +3753,10 @@ figcaption {
   padding-top: 5rem;
 }
 
+.section_product.remove-top-padding.is-collection-alt {
+  padding-top: 4.5rem;
+}
+
 .product_component {
   grid-column-gap: 3rem;
   grid-row-gap: 3rem;
@@ -3778,6 +3782,11 @@ figcaption {
   position: relative;
 }
 
+.product_heading-wrapper.align-left {
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
 .product_heading {
   grid-column-gap: .928571rem;
   grid-row-gap: .928571rem;
@@ -3798,6 +3807,10 @@ figcaption {
   grid-auto-columns: 1fr;
   padding-top: 7.6rem;
   display: grid;
+}
+
+.product_heading.is-grid.is-alt {
+  padding-top: 0;
 }
 
 .product_button-row {
@@ -4639,11 +4652,11 @@ figcaption {
 }
 
 .product-section_heading.is-large {
-  font-size: 8vw;
+  font-size: clamp(3.75rem, 2.82143rem + 4.64286vw, 7rem);
 }
 
 .product-section_heading.is-largest {
-  font-size: clamp(3.125rem, 1.33929rem + 8.92857vw, 9.375rem);
+  font-size: clamp(3.75rem, 2.67857rem + 5.35714vw, 7.5rem);
 }
 
 .product-section_subheading {
@@ -4688,7 +4701,7 @@ figcaption {
 }
 
 .featured-products_collection-link-wrapper.is-first.is-collection-page {
-  aspect-ratio: 696 / 700;
+  aspect-ratio: 500 / 300;
 }
 
 .featured-products_collection-image {
@@ -8587,10 +8600,6 @@ figcaption {
     padding: 2rem 8rem;
     position: relative;
     left: 0%;
-  }
-
-  .product-section_heading.is-large {
-    font-size: 5.2rem;
   }
 
   .featured-products-component_layout {
