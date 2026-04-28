@@ -127,7 +127,7 @@ initGallery();
                     {% if product.metafields.custom.alternate_colour_products != blank %}    <div li-if="product.metafields.custom.alternate_colour_products != blank" class="product-header_option is-colour-swatch">
     
                       <div>
-                        <div>Colour:</div>
+                        <div li-object="product.metafields.custom.colour_name | prepend: 'Colour: '">{{ product.metafields.custom.colour_name | prepend: 'Colour: ' }}</div>
                       </div>
                       <div class="product-header_radio-list">
                         {% for colour_product in product.metafields.custom.alternate_colour_products.value %}    <a li-for="colour_product in product.metafields.custom.alternate_colour_products.value" href="{{ colour_product.url }}" style="--swatch: {{ colour_product.metafields.custom.colour_hex }}" class="product-header_radio">
