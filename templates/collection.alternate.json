@@ -68,7 +68,7 @@
       "type": "collection_alt_produ",
       "name": "Collection Alt Produ",
       "settings": {
-        "offset_first_products": true,
+        "offset_first_products": false,
         "products_to_show": 50,
         "products_offset": 6
       }
