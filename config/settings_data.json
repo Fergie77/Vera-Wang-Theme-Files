@@ -42,7 +42,7 @@
           "smartsize_button_label": "--",
           "smartsize_conversion_label_CM": "CM",
           "smartsize_conversion_label_IN": "INCHES",
-          "hide_default_button": true
+          "hide_default_button": false
         }
       }
     }
