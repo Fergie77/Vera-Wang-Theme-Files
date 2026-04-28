@@ -17,13 +17,37 @@
         "social_media_8X6w4X": {
           "type": "social-media",
           "settings": {
-            "text_social_text": "Lorem Ipsum",
+            "text_social_text": "Instagram",
+            "url_link": ""
+          }
+        },
+        "social_media_9PwVPj": {
+          "type": "social-media",
+          "settings": {
+            "text_social_text": "Facebook",
+            "url_link": ""
+          }
+        },
+        "social_media_jDXNmV": {
+          "type": "social-media",
+          "settings": {
+            "text_social_text": "X",
+            "url_link": ""
+          }
+        },
+        "social_media_KBnPNH": {
+          "type": "social-media",
+          "settings": {
+            "text_social_text": "Tiktok",
             "url_link": ""
           }
         }
       },
       "block_order": [
-        "social_media_8X6w4X"
+        "social_media_8X6w4X",
+        "social_media_9PwVPj",
+        "social_media_jDXNmV",
+        "social_media_KBnPNH"
       ],
       "name": "Footer",
       "settings": {
