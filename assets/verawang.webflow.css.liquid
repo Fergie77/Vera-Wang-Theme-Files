@@ -6859,6 +6859,7 @@ figcaption {
   }
 
   .nav_menu-button {
+    z-index: 4;
     display: block;
   }
 
@@ -6974,6 +6975,14 @@ figcaption {
   .product_list {
     grid-column-gap: 2rem;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .predictive-search_overflow.is-fixed {
+    width: 100%;
+  }
+
+  .predictive-search_input {
+    font-size: 1rem;
   }
 
   .nav_predictive-search-holder {
@@ -9155,6 +9164,10 @@ figcaption {
 
   .predictive-search_component {
     width: 100%;
+  }
+
+  .predictive-search_input {
+    font-size: clamp(.625rem, .553571rem + .357143vw, .875rem);
   }
 
   .nav_predictive-search-close-blur {
