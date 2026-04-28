@@ -3,59 +3,17 @@
 <div li-element="product-variant-container" class="w-layout-grid product-header_layout" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)">
             <div li-render-custom="target" id="w-node-_4b0e9b61-6f53-1185-9fdd-143753136862-5313685d" class="swiper-container is-product-gallery">
               <div class="swiper is-product-gallery">
-                <div li-cloak="hide" class="hide w-embed">{% assign has_variant_media = false %}
-                  {% assign colour_option_lower = product.selected_or_first_available_variant.option2 | downcase %}
-                  {% for media in product.media %}
-                  {% assign media_alt_lower = media.alt | downcase %}
-                  {% if media_alt_lower contains colour_option_lower %}
-                  {% assign has_variant_media = true %}
-                  {% endif %}
-                  {% endfor %}
-                  {% assign gallery_count = 0 %}
-                  {% for media in product.media %}
-                  {% assign media_alt_lower = media.alt | downcase %}
-                  {% if has_variant_media %}
-                  {% if media_alt_lower contains colour_option_lower %}
-                  {% if media.media_type == 'image' or media.media_type == 'video' %}
-                  {% assign gallery_count = gallery_count | plus: 1 %}
-                  {% endif %}
-                  {% endif %}
-                  {% else %}
-                  {% if media.media_type == 'image' or media.media_type == 'video' %}
-                  {% assign gallery_count = gallery_count | plus: 1 %}
-                  {% endif %}
-                  {% endif %}
-                  {% endfor %}</div>
                 <div id="my-gallery" li-for:inside="media in product.media" class="swiper-wrapper is-product-gallery">
         {% for media in product.media %}                            
                   
-                            {% assign media_alt_lower = media.alt | downcase %}
-                            
-                  
-                            {% if has_variant_media == false and media.media_type == 'image' %}    <div li-if="has_variant_media == false and media.media_type == 'image'" class="swiper-slide is-product-gallery">
+                            {% if media.media_type == 'image' %}    <div li-if="media.media_type == 'image'" class="swiper-slide is-product-gallery">
     
                     <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
                       </div>
 {% endif %}
                             
                   
-                            {% if media_alt_lower contains colour_option_lower and media.media_type == 'image' %}    <div li-if="media_alt_lower contains colour_option_lower and media.media_type == 'image'" class="swiper-slide is-product-gallery">
-    
-                    <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
-                      </div>
-{% endif %}
-                            
-                  
-                            {% if has_variant_media == false and media.media_type == 'video' %}    <div li-if="has_variant_media == false and media.media_type == 'video'" class="swiper-slide is-product-gallery">
-    
-                    <div class="product-header_gallery-lightbox">
-                      <div li-object="media | video_tag: controls: true" class="product-header_gallery-image">{{ media | video_tag: controls: true }}</div>
-                    </div>
-                      </div>
-{% endif %}
-                            
-                  
-                            {% if media_alt_lower contains colour_option_lower and media.media_type == 'video' %}    <div li-if="media_alt_lower contains colour_option_lower and media.media_type == 'video'" class="swiper-slide is-product-gallery">
+                            {% if media.media_type == 'video' %}    <div li-if="media.media_type == 'video'" class="swiper-slide is-product-gallery">
     
                     <div class="product-header_gallery-lightbox">
                       <div li-object="media | video_tag: controls: true" class="product-header_gallery-image">{{ media | video_tag: controls: true }}</div>
@@ -70,25 +28,12 @@
                   <div li-for:inside="media in product.media" class="swiper-pagination">
         {% for media in product.media %}                            
                     
-                            {% assign media_alt_lower = media.alt | downcase %}
-                            
-                    
-                            {% if media_alt_lower contains colour_option_lower and media.media_type == 'image' %}    <div li-if="media_alt_lower contains colour_option_lower and media.media_type == 'image'" class="swiper-pagination-bullet">
+                            {% if media.media_type == 'image' %}    <div li-if="media.media_type == 'image'" class="swiper-pagination-bullet">
         </div>
 {% endif %}
                             
                     
-                            {% if media_alt_lower contains colour_option_lower and media.media_type == 'video' %}    <div li-if="media_alt_lower contains colour_option_lower and media.media_type == 'video'" class="swiper-pagination-bullet">
-        </div>
-{% endif %}
-                            
-                    
-                            {% if has_variant_media == false and media.media_type == 'image' %}    <div li-if="has_variant_media == false and media.media_type == 'image'" class="swiper-pagination-bullet">
-        </div>
-{% endif %}
-                            
-                    
-                            {% if has_variant_media == false and media.media_type == 'video' %}    <div li-if="has_variant_media == false and media.media_type == 'video'" class="swiper-pagination-bullet">
+                            {% if media.media_type == 'video' %}    <div li-if="media.media_type == 'video'" class="swiper-pagination-bullet">
         </div>
 {% endif %}
                             
@@ -124,23 +69,6 @@ initGallery();
               </div>
             </div>
             <div class="product-details_wrapper">
-              <div li-cloak="hide" class="w-embed w-script">{% assign colour_option_index = 0 %}
-                {% for o in product.options %}
-                {% if o == 'Colour' %}{% assign colour_option_index = forloop.index0 %}{% endif %}
-                {% endfor %}
-                {% assign _seen = '' %}
-                <script>
-window.colourHexMap = {
-  {% for variant in product.variants %}
-    {% assign cv = variant.options[colour_option_index] %}
-    {% unless _seen contains cv %}
-      {% assign _seen = _seen | append: cv | append: '|' %}
-      "{{ cv }}": "{{ variant.metafields.custom.colour_hex | default: cv }}",
-    {% endunless %}
-  {% endfor %}
-};
-</script>
-              </div>
               {% if product.collections.first %}    <a li-if="product.collections.first" id="w-node-_80eb7b15-ebd5-1617-fdfc-2d1ea1dfd0e5-5313685d" href="#" class="product-details_backlink-wrapper w-inline-block">
     
                 <div class="product-details_backlink"><</div>
@@ -196,6 +124,23 @@ window.colourHexMap = {
                         </div>
                       </div>
                     </div>
+                    {% if product.metafields.custom.alternate_colour_products != blank %}    <div li-if="product.metafields.custom.alternate_colour_products != blank" class="product-header_option is-colour-swatch">
+    
+                      <div>
+                        <div>Colour:</div>
+                      </div>
+                      <div class="product-header_radio-list">
+                        {% for colour_product in product.metafields.custom.alternate_colour_products.value %}    <a li-for="colour_product in product.metafields.custom.alternate_colour_products.value" href="#" class="product-header_radio w-inline-block">
+                                    
+                          
+                            <div class="product-header_radio-button"></div>
+                            
+                        
+                        </a>
+{% endfor %}
+                      </div>
+                        </div>
+{% endif %}
                     {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list">
     
                       <template x-for="(option, optionKey) in product.options" :key="optionKey">
@@ -367,12 +312,14 @@ document.addEventListener('DOMContentLoaded', () => {
   gap: 0.25rem;
 }
 .product-header_option.is-colour-swatch {
-  flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+  .is-colour-swatch a.is-active .product-header_radio-button {
+  border: 1px solid black;
 }
 .product-header_option.is-colour-swatch .product-header_radio-list {
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
 }
 .product-header_option:not(.is-colour-swatch) .product-header_radio-list {
   display: flex;
