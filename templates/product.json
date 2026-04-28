@@ -137,6 +137,19 @@
       "settings": {
         "text_module": "shipping"
       }
+    },
+    "1777373558e4c0592a": {
+      "type": "apps",
+      "blocks": {
+        "smartsize_app_block_39MnbV": {
+          "type": "shopify://apps/smartsize/blocks/app-block/465a43e0-6a1a-4d30-b82e-fe6118568705",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "smartsize_app_block_39MnbV"
+      ],
+      "settings": {}
     }
   },
   "layout": "theme",
@@ -148,6 +161,7 @@
     "styled_by_vera_dyj8zQ",
     "slide_out_module_rqCxPF",
     "slide_out_module_gfP3jn",
-    "slide_out_module_GweRKk"
+    "slide_out_module_GweRKk",
+    "1777373558e4c0592a"
   ]
 }
