@@ -12,7 +12,6 @@
     "nav_settings": {
       "type": "nav_settings",
       "settings": {
-        "nav_logo_color": "split",
         "nav_scroll_animation": true
       }
     },
@@ -65,7 +64,8 @@
       "name": "Styled By Vera",
       "settings": {
         "text_heading": "Styled By Vera",
-        "url_link": ""
+        "text_cta_text": "View All The Looks",
+        "url_cta_link": ""
       }
     },
     "slide_out_module_rqCxPF": {
@@ -106,24 +106,13 @@
     "slide_out_module_gfP3jn": {
       "type": "slide_out_module",
       "blocks": {
-        "dropdown_kNqPPE": {
-          "type": "dropdown",
-          "settings": {
-            "text_heading": "Description",
-            "richtext_content": "<p>\n                    In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.\n                    ‍\n                    \n                      Product description here\n                      100% material composition\n                      Colour: here\n                      Washing instructions go here\n                      Made in Country\n                      Loose fit\n</p>"
-          }
-        },
-        "dropdown_4i4nq8": {
-          "type": "dropdown",
-          "settings": {
-            "text_heading": "Description",
-            "richtext_content": "<p>\n                    In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.\n                    ‍\n                    \n                      Product description here\n                      100% material composition\n                      Colour: here\n                      Washing instructions go here\n                      Made in Country\n                      Loose fit\n</p>"
-          }
+        "smartsize_app_block_zBzhUn": {
+          "type": "shopify://apps/smartsize/blocks/app-block/465a43e0-6a1a-4d30-b82e-fe6118568705",
+          "settings": {}
         }
       },
       "block_order": [
-        "dropdown_kNqPPE",
-        "dropdown_4i4nq8"
+        "smartsize_app_block_zBzhUn"
       ],
       "name": "Slide Out Module",
       "settings": {
