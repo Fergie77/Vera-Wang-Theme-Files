@@ -5,75 +5,18 @@
               <div fs-list-instance="1" id="w-node-_114fb0ba-0892-dc1f-8816-8687f640db58-87467f30" class="filter_feed">
                 <div class="padding-global">
                   <div class="container-large">
-                    {% assign vw_shown = 0 %}
-                    {% assign vw_eligible = 0 %}
-                    {% assign max_shown = section.settings.products_to_show %}
-                    {% assign products_offset = section.settings.products_offset %}
                     <div class="filter_product-list-wrapper w-dyn-list">
                       <div role="list" class="filter_product-list w-dyn-items">
-                        {% for product in collection.products limit:50 %}    <div li-for="product in collection.products limit:50" role="listitem" class="filter_product-list-item w-dyn-item">
+                        {% for product in collection.products limit: section.settings.products_to_show offset: section.settings.products_offset %}    <div li-for="product in collection.products limit: section.settings.products_to_show offset: section.settings.products_offset" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
                           
-                            <div li-cloak="hide" class="hide w-embed">{% assign active_colours = '' %}
-                            {% assign colour_filter_names = 'colour,color,couleur,farbe,colore,kleur,färg,kolor,cor,culoare,barva,farva,väri,värv,szín,spalva,krāsa,boja,farba,dath,kulur,χρώμα,цвят,culori' | split: ',' %}
-                            {% for filter in collection.filters %}
-                            {% assign filter_label = filter.label | downcase %}
-                            {% if colour_filter_names contains filter_label %}
-                            {% for filter_value in filter.active_values %}
-                            {% assign active_colours = active_colours | append: filter_value.label | append: '|' %}
-                            {% endfor %}
-                            {% endif %}
-                            {% endfor %}
-                            {% assign color_index = 1 %}
-                            {% assign seen_colours = '' %}
-                            {% assign test_colour = product.variants.first.options[color_index] %}
-                            {% if test_colour != blank %}
-                            {% assign has_colour_option = true %}
-                            {% else %}
-                            {% assign has_colour_option = false %}
-                            {% endif %}</div>
-                            
-                          
-                            {% for variant in product.variants %}    <div li-for="variant in product.variants" class="display-contents">
-                                    
-                            
-                            <div li-cloak="hide" class="hide w-embed">{% assign colour_value = variant.options[color_index] %}
-                              {% if has_colour_option == false %}
-                              {% if seen_colours == '' %}
-                              {% assign show_variant = 'true' %}
-                              {% else %}
-                              {% assign show_variant = 'false' %}
-                              {% endif %}
-                              {% else %}
-                              {% assign colour_key = colour_value | append: '|' %}
-                              {% if active_colours == '' or active_colours contains colour_key %}
-                              {% unless seen_colours contains colour_value %}
-                              {% assign show_variant = 'true' %}
-                              {% else %}
-                              {% assign show_variant = 'false' %}
-                              {% endunless %}
-                              {% else %}
-                              {% assign show_variant = 'false' %}
-                              {% endif %}
-                              {% endif %}</div>
-                            
-                            
-                            {% if show_variant == 'true' %}    <div li-if="show_variant == 'true'">
-    
-                              <div li-cloak="hide" class="hide w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}
-                                {% assign vw_eligible = vw_eligible | plus: 1 %}</div>
-                              {% if vw_eligible > products_offset and vw_shown < max_shown %}    <div li-if="vw_eligible > products_offset and vw_shown < max_shown">
-    
-                                {% assign vw_shown = vw_shown | plus: 1 %}
+                            <div class="display-contents">
+                            <div>
+                              <div>
                                 {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
-                                  </div>
-{% endif %}
-                                </div>
-{% endif %}
-                            
-                          
-                        </div>
-{% endfor %}
+                              </div>
+                            </div>
+                          </div>
                             
                         
                         </div>
