@@ -139,9 +139,8 @@ initGallery();
                         </a>
 {% endfor %}
                       </div>
-                      <style li-cloak="hide"><div>This is some text inside of a div block.</style>    </div>
+                        </div>
 {% endif %}
-                    </div>
                     {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list">
     
                       <template x-for="(option, optionKey) in product.options" :key="optionKey">
@@ -199,8 +198,8 @@ initGallery();
                         </div>
                       </div>
                     </div>
-                  {% endform %}</div>
-                
+                  </div>
+                {% endform %}
                 <div class="w-form-done">
                   <div>Thank you! Your submission has been received!</div>
                 </div>
@@ -328,10 +327,82 @@ document.addEventListener('DOMContentLoaded', () => {
   flex-wrap: wrap;
   row-gap: 0rem;
 }
+  .is-colour-swatch a.w--current .product-header_radio-button {
+  border: 1px solid black;
+}
 </style>
               </div>
             </div>
-          </div> {% schema %} {
+          </div>
+        </div>
+        <div class="hide w-embed w-script"><!-- <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script> -->
+          <script> /*
+function initSwipers() {
+  $(".swiper-container").each(function () {
+    const container = $(this);
+    const mq = window.matchMedia("(max-width: 767px)");
+    function createSwiper() {
+      return new Swiper(container.find(".swiper.is-product-gallery")[0], {
+        direction: "vertical",
+        mousewheel: { forceToAxis: true },
+        keyboard: { enabled: true, onlyInViewport: true },
+        pagination: {
+          el: container.find(".swiper-pagination")[0],
+          clickable: true,
+          direction: "vertical",
+        },
+        on: {
+          reachEnd: () => document.body.style.overflow = "",
+          fromEdge: () => document.body.style.overflow = "hidden",
+        },
+      });
+    }
+    container
+      .on("mouseenter", () => { if (!mq.matches) document.body.style.overflow = "hidden"; })
+      .on("mouseleave", () => { if (!mq.matches) document.body.style.overflow = ""; });
+    let swiper = mq.matches ? null : createSwiper();
+    mq.addEventListener("change", () => {
+      if (mq.matches) {
+        swiper.destroy(true, true);
+        container.find(".swiper-pagination").empty();
+        document.body.style.overflow = "";
+        swiper = null;
+      } else {
+        swiper = createSwiper();
+      }
+    });
+  });
+}
+document.addEventListener("DOMContentLoaded", initSwipers);
+document.addEventListener("liquify:custom-rendered", initSwipers);
+*/
+document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("change", (e) => {
+    const input = e.target.closest('[li-element="product-option-input"]');
+    if (!input) return;
+    const wrapper = input.closest('[li-render-custom="wrapper"]');
+    if (!wrapper) return;
+    const alpineData = Alpine.$data(wrapper.querySelector('[x-data]') || wrapper);
+    const variantId = alpineData?.selected_or_first_available_variant?.id;
+    if (!variantId) return;
+    const target = wrapper.querySelector('[li-render-custom="target"]');
+    if (!target) return;
+    const sectionId = input.closest('form')?.querySelector('[name="section-id"]')?.value;
+    const productUrl = window.location.pathname;
+    fetch(`${productUrl}?section_id=${sectionId}&variant=${variantId}`)
+      .then(r => r.text())
+      .then(html => {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const newTarget = doc.querySelector('[li-render-custom="target"]');
+        if (newTarget) {
+          target.innerHTML = newTarget.innerHTML;
+          initGallery();
+        }
+      });
+  });
+});
+</script>
+        </div> {% schema %} {
     "tag": "section",
     "name": "Product Hero",
     "class": "section_product-header",
