@@ -220,7 +220,7 @@
                           {% assign color_variant_count = color_variant_count | plus: 1 %}
                           {% endif %}
                           {% endfor %}</div>
-                        <p class="results-text"><span li-object="color_variant_count">{{ color_variant_count }}</span> Results</p>
+                        <p class="results-text"><span li-object="collection.products_count">{{ collection.products_count }}</span> Results</p>
                       </div>
                     </div>
                   </div>
@@ -232,60 +232,11 @@
                         {% for product in collection.products limit:12 %}    <div li-for="product in collection.products limit:12" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
                           
-                            <div li-cloak="hide" class="hide w-embed">{% assign active_colours = '' %}
-                            {% assign colour_filter_names = 'colour,color,couleur,farbe,colore,kleur,färg,kolor,cor,culoare,barva,farva,väri,värv,szín,spalva,krāsa,boja,farba,dath,kulur,χρώμα,цвят,culori' | split: ',' %}
-                            {% for filter in collection.filters %}
-                            {% assign filter_label = filter.label | downcase %}
-                            {% if colour_filter_names contains filter_label %}
-                            {% for filter_value in filter.active_values %}
-                            {% assign active_colours = active_colours | append: filter_value.label | append: '|' %}
-                            {% endfor %}
-                            {% endif %}
-                            {% endfor %}
-                            {% assign color_index = 1 %}
-                            {% assign seen_colours = '' %}
-                            {% assign test_colour = product.variants.first.options[color_index] %}
-                            {% if test_colour != blank %}
-                            {% assign has_colour_option = true %}
-                            {% else %}
-                            {% assign has_colour_option = false %}
-                            {% endif %}</div>
-                            
-                          
-                            {% for variant in product.variants %}    <div li-for="variant in product.variants" class="display-contents">
-                                    
-                            
-                            <div li-cloak="hide" class="hide w-embed">{% assign colour_value = variant.options[color_index] %}
-                              {% if has_colour_option == false %}
-                              {% if seen_colours == '' %}
-                              {% assign show_variant = 'true' %}
-                              {% else %}
-                              {% assign show_variant = 'false' %}
-                              {% endif %}
-                              {% else %}
-                              {% assign colour_key = colour_value | append: '|' %}
-                              {% if active_colours == '' or active_colours contains colour_key %}
-                              {% unless seen_colours contains colour_value %}
-                              {% assign show_variant = 'true' %}
-                              {% else %}
-                              {% assign show_variant = 'false' %}
-                              {% endunless %}
-                              {% else %}
-                              {% assign show_variant = 'false' %}
-                              {% endif %}
-                              {% endif %}</div>
-                            
-                            
-                            {% if show_variant == 'true' %}    <div li-if="show_variant == 'true'">
-    
-                              <div li-cloak="hide" class="hide w-embed">{% assign seen_colours = seen_colours | append: colour_value | append: '|' %}</div>
+                            <div class="display-contents">
+                            <div>
                               {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
-                                </div>
-{% endif %}
-                            
-                          
-                        </div>
-{% endfor %}
+                            </div>
+                          </div>
                             
                         
                         </div>
