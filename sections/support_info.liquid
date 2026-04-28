@@ -11,8 +11,7 @@
                           
                             <div class="collections-menu_item">
                             <a li-object="link.title" li-object:href="link.url" href="{{ link.url }}" class="collections-menu_link">{{ link.title }}</a>
-                  
-                            {% if request.path == link.url %}    <div li-if="request.path == page.url" class="is-current-collection">
+                            {% if request.path == link.url %}    <div li-if="request.path == link.url" class="is-current-collection">
         </div>
 {% endif %}
                           </div>
