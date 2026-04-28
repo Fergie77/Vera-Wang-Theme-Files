@@ -67,11 +67,15 @@ initGallery();
               </div>
             </div>
             <div class="product-details_wrapper">
-              {% if product.collections.first %}    <a li-if="product.collections.first" id="w-node-_80eb7b15-ebd5-1617-fdfc-2d1ea1dfd0e5-5313685d" href="#" class="product-details_backlink-wrapper w-inline-block">
+              {% if product.collections.first %}    <div li-if="product.collections.first" id="w-node-_81a83675-6f8d-ed5a-3553-4f9fcfc84cb7-5313685d">
     
-                <div class="product-details_backlink"><</div>
-                <p li-object="collection.title | default: product.collections.first.title" class="product-details_backlink">{{ collection.title | default: product.collections.first.title }}</p>
-                  </a>
+                {% if product.collections.first %}    <a href="#" li-if="product.collections.first" class="product-details_backlink-wrapper w-inline-block">
+    
+                  <div class="product-details_backlink"><</div>
+                  <p li-object="collection.title | default: product.collections.first.title" class="product-details_backlink">{{ collection.title | default: product.collections.first.title }}</p>
+                    </a>
+{% endif %}
+                  </div>
 {% endif %}
               <div id="w-node-d1959fe7-fa4d-1046-7a42-2aedfce98ebb-5313685d" class="w-form">
                 {% form 'product', product %}
