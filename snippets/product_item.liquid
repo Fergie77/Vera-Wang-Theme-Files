@@ -67,11 +67,11 @@
                                   <div class="product-header_radio-list">
                                     <div>
                                       <div class="product-header_radio-layout">
-                                        {% for colour_product in product.metafields.custom.alternate_colour_products.value %}    <div li-for="colour_product in product.metafields.custom.alternate_colour_products.value" class="product-item_variant-colour">
+                                        {% for colour_product in product.metafields.custom.alternate_colour_products.value %}    <div style="background:{{ colour_product.metafields.custom.colour_hex }}" li-for="colour_product in product.metafields.custom.alternate_colour_products.value" class="product-item_variant-colour">
                                     
                         </div>
 {% endfor %}
-                                        {% if product.metafields.custom.alternate_colour_products == blank %}    <div li-if="product.metafields.custom.alternate_colour_products == blank" class="product-item_variant-colour">
+                                        {% if product.metafields.custom.alternate_colour_products == blank %}    <div style="background:{{ product.metafields.custom.colour_hex }}" li-if="product.metafields.custom.alternate_colour_products == blank" class="product-item_variant-colour">
         </div>
 {% endif %}
                                       </div>
