@@ -106,9 +106,9 @@
     "featured_2": {
       "type": "featured_2",
       "settings": {
-        "text_heading": "Shoes",
+        "text_heading": "Bags",
         "text_cta_text": "View More",
-        "collection_collection": "shoes",
+        "collection_collection": "bags",
         "collection_collection_limit": 2,
         "image_link_image": "shopify://shop_images/image_147.jpg",
         "text_cta_image_text": ""
@@ -126,12 +126,13 @@
     "featured_3": {
       "type": "featured_3",
       "settings": {
-        "url_button_link": "",
         "image_image": "shopify://shop_images/Frame_157.jpg",
         "text_heading": "Handbags",
         "text_subheading": "Made in italy",
         "collection_collection": "bags",
-        "collection_collection_limit": 2
+        "collection_collection_limit": 2,
+        "text_cta_text": "View More",
+        "href_sectionsettingscollection_collectionurl": ""
       }
     },
     "custom_liquid": {
