@@ -23,8 +23,7 @@
                             
                 
                     {% endfor %}    </div>
-                {% if gallery_count > 1 %}    <div li-if="gallery_count > 1" class="swiper-pagination_wrapper">
-    
+                <div class="swiper-pagination_wrapper">
                   <div li-for:inside="media in product.media" class="swiper-pagination">
         {% for media in product.media %}                            
                     
@@ -39,8 +38,7 @@
                             
                   
                     {% endfor %}    </div>
-                    </div>
-{% endif %}
+                </div>
                 <div class="w-embed w-script">
                   <script>
 function initGallery() {
