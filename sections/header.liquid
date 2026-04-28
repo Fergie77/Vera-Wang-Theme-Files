@@ -4,7 +4,7 @@
           {% assign _rb = section.settings.nav_right_bg %}
           {% assign _sl = section.settings.nav_scroll_link %}
           {% assign _sb = section.settings.nav_scroll_bg %}
-          {% if template.name == 'product' or template.name == 'collection' or template.name == 'article' %}
+          {% if template.name == 'product' or template.name == 'collection' or template.name == 'article' or template.name == 'blog' %}
           {% assign _ll = '#000000' %}
           {% assign _lb = '#ffffff' %}
           {% assign _rl = '#000000' %}
@@ -397,6 +397,9 @@ closeButton.addEventListener('click', close);
 }
 #search-input:focus {
   border-bottom: 1px solid #000;
+}
+#search-input::placeholder {
+  color: black;
 }
 </style>
                 </div>
