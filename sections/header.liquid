@@ -4,7 +4,7 @@
           {% assign _rb = section.settings.nav_right_bg %}
           {% assign _sl = section.settings.nav_scroll_link %}
           {% assign _sb = section.settings.nav_scroll_bg %}
-          {% if template.name == 'product' or template.name == 'collection' %}
+          {% if template.name == 'product' or template.name == 'collection' or template.name == 'blog' %}
           {% assign _ll = '#000000' %}
           {% assign _lb = '#ffffff' %}
           {% assign _rl = '#000000' %}
@@ -1039,6 +1039,9 @@ closeButton.addEventListener('click', close);
   opacity: 1 !important;
 }
 .nav_shop-icons:has(.predictive-search_overflow.is-open) .nav_mini-cart {
+  visibility: hidden;
+}
+.nav_shop-icons:has(.predictive-search_overflow.is-open) .nav_account {
   visibility: hidden;
 }
 </style>
