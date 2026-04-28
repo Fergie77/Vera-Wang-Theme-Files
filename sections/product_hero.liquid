@@ -130,7 +130,7 @@ initGallery();
                         <div>Colour:</div>
                       </div>
                       <div class="product-header_radio-list">
-                        {% for colour_product in product.metafields.custom.alternate_colour_products.value %}    <a li-for="colour_product in product.metafields.custom.alternate_colour_products.value" href="#" class="product-header_radio w-inline-block">
+                        {% for colour_product in product.metafields.custom.alternate_colour_products.value %}    <a li-for="colour_product in product.metafields.custom.alternate_colour_products.value" href="{{ colour_product.url }}" style="--swatch: {{ colour_product.metafields.custom.colour_hex }}" class="product-header_radio">
                                     
                           
                             <div class="product-header_radio-button"></div>
