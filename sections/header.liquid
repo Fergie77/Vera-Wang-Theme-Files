@@ -396,10 +396,10 @@ closeButton.addEventListener('click', close);
   outline: none;
 }
 #search-input:focus {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid currentColor;
 }
 #search-input::placeholder {
-  color: black;
+  color: inherit;
 }
 </style>
                 </div>
@@ -994,9 +994,9 @@ closeButton.addEventListener('click', close);
     opacity: 1;
     backdrop-filter: blur(8px) grayscale(1) brightness(0.5);
   }
-/* ── Search input ──────────────────────────────────────────────── */
-  .nav_container:has(.nav_menu-dropdown.is-open) #search-input { display:none; color: white !important; border-color: red; }
-  .nav_container:has(.nav_menu-dropdown.is-open) #search-input::placeholder { color: red !important; opacity: 1; }
+  /* &#9472;&#9472; Search input &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  #search-input { color: var(--nav-right-link); }
+  #search-input::placeholder { color: var(--nav-right-link) !important; opacity: 1; }
 }
 /* &#9472;&#9472; Mobile &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 @media (max-width: 991px) {
