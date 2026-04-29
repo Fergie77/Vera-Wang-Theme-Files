@@ -1,0 +1,43 @@
+<div class="padding-global">
+          <div class="container-large">
+            <div class="lookbook-intro_layout">
+              <p li-object:text="article.metafields.custom.introduction" class="lookbook-intro_paragraph">
+{{ article.metafields.custom.introduction }}
+</p>
+              <div class="spacer-medium"></div>
+              <div class="more_component">
+                <div class="more_list-wrapper w-dyn-list">
+                  <div li-content-for-theme-blocks="" role="list" class="more_list is-lookbook w-dyn-items">
+{% content_for 'blocks' %}
+</div>
+                  <div class="hide w-dyn-empty">
+                    <div>No items found.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Intro",
+    "class": "section_lookbook-intro",
+    "blocks": [
+        {
+            "type": "block"
+        },
+        {
+            "type": "@app"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Intro",
+            "category": "Liquify",
+            "blocks": [
+                {
+                    "type": "block"
+                }
+            ]
+        }
+    ]
+} {% endschema %}
