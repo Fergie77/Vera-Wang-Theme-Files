@@ -921,7 +921,7 @@ closeButton.addEventListener('click', close);
   background: linear-gradient(to right, var(--nav-left-bg) 50%, var(--nav-right-bg) 50%);
 }
 /* &#9472;&#9472; Element colours &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-.nav_dropdown-toggle          { color: var(--nav-left-link); }
+.nav_dropdown-toggle          { color: var(--nav-left-link); text-decoration-color: var(--nav-left-link); border-bottom-color: var(--nav-left-link); }
 .nav_logo-link                { color: var(--nav-left-link); }
 .wang-character               { fill:  var(--nav-right-link); }
 .nav_shop-icons               { color: var(--nav-right-link); }
@@ -930,7 +930,7 @@ closeButton.addEventListener('click', close);
   background: var(--nav-scroll-bg);
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.08);
 }
-.section_navbar.scrolling .nav_dropdown-toggle { color: var(--nav-scroll-link) !important; }
+.section_navbar.scrolling .nav_dropdown-toggle { color: var(--nav-scroll-link) !important; text-decoration-color: var(--nav-scroll-link) !important; border-bottom-color: var(--nav-scroll-link) !important; }
 .section_navbar.scrolling .nav_logo-link       { color: var(--nav-scroll-link); }
 .section_navbar.scrolling .wang-character      { fill:  var(--nav-scroll-link); }
 .section_navbar.scrolling .nav_shop-icons      { color: var(--nav-scroll-link); }
@@ -966,9 +966,11 @@ closeButton.addEventListener('click', close);
   }
   /* Dropdown open &mdash; hardcoded, overrides theme colours */
   .nav_container:has(.nav_menu-dropdown.is-hovered) > nav .nav_dropdown-toggle,
-.nav_container:has(.nav_menu-dropdown.is-open) > nav .nav_dropdown-toggle {
-  color: black;
-}
+  .nav_container:has(.nav_menu-dropdown.is-open) > nav .nav_dropdown-toggle {
+    color: black;
+    text-decoration-color: black;
+    border-bottom-color: black;
+  }
   .nav_container:has(.nav_menu-dropdown.is-hovered) > .nav_logo-link,
   .nav_container:has(.nav_menu-dropdown.is-open) > .nav_logo-link {
     color: black;
@@ -1047,15 +1049,6 @@ closeButton.addEventListener('click', close);
 }
 .nav_shop-icons:has(.predictive-search_overflow.is-open) .nav_account {
   visibility: hidden;
-}
-  /* &#9472;&#9472; Link hover underline &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-.nav_dropdown-toggle:hover {
-  text-decoration-color: var(--nav-left-link);
-}
-/* &#9472;&#9472; Search input text/placeholder &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-#search-input,
-#search-input::placeholder {
-  color: var(--nav-right-link);
 }
 </style>
         </div>
