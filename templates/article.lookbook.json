@@ -1,41 +1,66 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "lookbook_hero": {
-            "type": "lookbook_hero"
-        },
-        "intro": {
-            "type": "intro",
-            "blocks": {
-                "block": {
-                    "type": "block",
-                    "name": "Block"
-                }
-            },
-            "block_order": [
-                "block"
-            ]
-        },
-        "outfit_1": {
-            "type": "outfit_1"
-        },
-        "outfit_2": {
-            "type": "outfit_2"
-        },
-        "shop_the_look": {
-            "type": "shop_the_look"
-        },
-        "featured_looks": {
-            "type": "featured_looks"
-        }
+  "sections": {
+    "lookbook_hero": {
+      "type": "lookbook_hero",
+      "settings": {
+        "text_heading": "Headline Goes here",
+        "text_subheading": "SPRING SUMMER 26",
+        "text_cta_text": "",
+        "text_color": "#000000",
+        "url_cta_link": ""
+      }
     },
-    "layout": "theme",
-    "wrapper": "main.main-wrapper",
-    "order": [
-        "lookbook_hero",
-        "intro",
-        "outfit_1",
-        "outfit_2",
-        "shop_the_look",
-        "featured_looks"
-    ]
+    "intro": {
+      "type": "intro",
+      "blocks": {
+        "block": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "block"
+      ],
+      "settings": {}
+    },
+    "outfit_1": {
+      "type": "outfit_1",
+      "settings": {}
+    },
+    "outfit_2": {
+      "type": "outfit_2",
+      "settings": {}
+    },
+    "shop_the_look": {
+      "type": "shop_the_look",
+      "settings": {}
+    },
+    "featured_looks": {
+      "type": "featured_looks",
+      "settings": {}
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "lookbook_hero",
+    "intro",
+    "outfit_1",
+    "outfit_2",
+    "shop_the_look",
+    "featured_looks"
+  ]
 }
