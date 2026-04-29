@@ -1,0 +1,41 @@
+{
+    "sections": {
+        "lookbook_hero": {
+            "type": "lookbook_hero"
+        },
+        "intro": {
+            "type": "intro",
+            "blocks": {
+                "block": {
+                    "type": "block",
+                    "name": "Block"
+                }
+            },
+            "block_order": [
+                "block"
+            ]
+        },
+        "outfit_1": {
+            "type": "outfit_1"
+        },
+        "outfit_2": {
+            "type": "outfit_2"
+        },
+        "shop_the_look": {
+            "type": "shop_the_look"
+        },
+        "featured_looks": {
+            "type": "featured_looks"
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "lookbook_hero",
+        "intro",
+        "outfit_1",
+        "outfit_2",
+        "shop_the_look",
+        "featured_looks"
+    ]
+}
