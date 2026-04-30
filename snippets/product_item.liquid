@@ -27,7 +27,7 @@
                             {% assign primary_image = product.images[0] %}
                             {% assign secondary_image = product.images[1] %}
                             {% endif %}</div>
-                          <a li-object:href="collection.url | append: product.url" href="{{ collection.url | append: product.url }}" class="product-item_image-wrapper w-inline-block"><img li-object:alt="primary_image.alt" loading="lazy" li-object:src="primary_image | image_url: width: 1000" src="{{ primary_image | image_url: width: 1000 }}" alt="{{ primary_image.alt }}" class="product-item_image is-primary">
+                          <a li-object:href="collection.url | append: product.url" href="{{ product.url | within: collection }}" class="product-item_image-wrapper w-inline-block"><img li-object:alt="primary_image.alt" loading="lazy" li-object:src="primary_image | image_url: width: 1000" src="{{ primary_image | image_url: width: 1000 }}" alt="{{ primary_image.alt }}" class="product-item_image is-primary">
                             {% if secondary_image %}    <div li-if="secondary_image">
     <img li-object:alt="secondary_image.alt" loading="lazy" li-object:src="secondary_image | image_url: width: 1000" src="{{ secondary_image | image_url: width: 1000 }}" alt="{{ secondary_image.alt }}" class="product-item_image is-secondary">    </div>
 {% endif %}
@@ -43,7 +43,7 @@
                           </div>
                         </div>
                         <div class="spacer-xsmall"></div>
-                        <a li-object:href="collection.url | append: product.url" href="{{ collection.url | append: product.url }}" class="product-item_text-link w-inline-block">
+                        <a li-object:href="collection.url | append: product.url" href="{{ product.url | within: collection }}" class="product-item_text-link w-inline-block">
                           <div class="product-item_details-layout">
                             <div class="product-item_left">
                               <h3 li-object="product.title" class="product-item_title">{{ product.title }}</h3>
