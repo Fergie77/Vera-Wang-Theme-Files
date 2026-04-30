@@ -8214,6 +8214,7 @@ figcaption {
   }
 
   .padding-global.padding-section-medium.remove-mobile {
+    padding-top: 5rem;
     padding-left: 0;
     padding-right: 0;
   }
@@ -9842,6 +9843,11 @@ figcaption {
     align-items: stretch;
   }
 
+  .footer_legal-wrapper {
+    grid-template-columns: 1fr;
+    grid-auto-flow: column;
+  }
+
   .footer_language-links-wrapper {
     justify-content: flex-end;
     align-items: center;
@@ -10533,6 +10539,11 @@ figcaption {
 @media screen and (max-width: 479px) {
   #w-node-f853398b-682e-bc34-dbb9-08bf44a5be88-99a7328f {
     grid-column: span 2 / span 2;
+  }
+
+  #w-node-_28136b33-74f6-6da6-e09c-4eaac719b1f2-99a7328f {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+    justify-self: end;
   }
 
   #w-node-b20e30bd-9cd3-7da4-6e58-bb49e01bdeca-e01bde9f {
