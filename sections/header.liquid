@@ -16,9 +16,12 @@
           {% assign lb_raw = product.metafields.nav.left_bg_color | default: page.metafields.nav.left_bg_color | default: _lb %}
           {% assign rb_raw = product.metafields.nav.right_bg_color | default: page.metafields.nav.right_bg_color | default: _rb %}
           {% assign sb_raw = product.metafields.nav.scroll_bg_color | default: page.metafields.nav.scroll_bg_color | default: _sb %}
-          {% if lb_raw == '#000001' %}{% assign lb = 'transparent' %}{% else %}{% assign lb = lb_raw %}{% endif %}
-          {% if rb_raw == '#000001' %}{% assign rb = 'transparent' %}{% else %}{% assign rb = rb_raw %}{% endif %}
-          {% if sb_raw == '#000001' %}{% assign sb = 'transparent' %}{% else %}{% assign sb = sb_raw %}{% endif %}</div>
+          {% assign lb_check = lb_raw | downcase | remove: '#' %}
+          {% assign rb_check = rb_raw | downcase | remove: '#' %}
+          {% assign sb_check = sb_raw | downcase | remove: '#' %}
+          {% if lb_check == '000001' %}{% assign lb = 'transparent' %}{% else %}{% assign lb = lb_raw %}{% endif %}
+          {% if rb_check == '000001' %}{% assign rb = 'transparent' %}{% else %}{% assign rb = rb_raw %}{% endif %}
+          {% if sb_check == '000001' %}{% assign sb = 'transparent' %}{% else %}{% assign sb = sb_raw %}{% endif %}</div>
         <div data-animation="over-right" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="" style="--nav-left-link: {{ ll }}; --nav-left-bg: {{ lb }}; --nav-right-link: {{ rl }}; --nav-right-bg: {{ rb }}; --nav-scroll-link: {{ sl }}; --nav-scroll-bg: {{ sb }};">
           <div class="nav_container container-large">
             <div class="nav_dropdown-list-background"></div>
@@ -203,6 +206,7 @@
                             <path d="M3.45947 6.5L0.459473 9.5" stroke-width="1.3" stroke="currentColor"></path>
                           </svg>
                           <div id="predictive-search" class="predictive-search_overflow is-fixed">
+                            <div class="predictive-search_mobile-input-holder show-tablet"><label for="" class="form_hidden-label">Search</label><input class="w-input" autocomplete="off" maxlength="256" name="q" data-name="q" placeholder="Search" type="search" id="search-input-mobile"></div>
                             <div li-section="predictive_search" class="predictive-search_section">
                               {% if predictive_search.performed %}    <div li-if="predictive_search.performed" class="predictive-search_conditional">
     
@@ -406,6 +410,7 @@ closeButton.addEventListener('click', close);
 }
 </style>
                 </div>
+                <script>(function(){ var dInput=document.querySelector('.predictive-search_input-holder input[type="search"]'); var mInput=document.querySelector('#search-input-mobile'); var overflow=document.querySelector('.predictive-search_overflow'); var closePanel=document.querySelector('.nav_predictive-search-close-blur'); var closeButton=document.querySelector('.nav_predictive-search-close-button'); function isMob(){return window.matchMedia('(max-width:991px)').matches;} function openSearch(){ if(!overflow)return; overflow.classList.add('is-open'); if(closePanel)closePanel.classList.add('is-open'); requestAnimationFrame(function(){ if(isMob()&&mInput)mInput.focus(); else if(dInput)dInput.focus(); }); } function closeSearch(){ if(overflow)overflow.classList.remove('is-open'); if(closePanel)closePanel.classList.remove('is-open'); } var icon=document.querySelector('.search-icon'); if(icon)icon.addEventListener('click',openSearch); if(closePanel)closePanel.addEventListener('click',closeSearch); if(closeButton)closeButton.addEventListener('click',closeSearch); if(mInput&&dInput){ mInput.addEventListener('input',function(){ dInput.value=mInput.value; dInput.dispatchEvent(new Event('input',{bubbles:true})); }); mInput.addEventListener('keydown',function(e){ if(e.key==='Escape'){closeSearch();mInput.blur();} }); mInput.addEventListener('blur',function(){ setTimeout(function(){ if(overflow&&!overflow.contains(document.activeElement))closeSearch(); },150); }); } })();</script>
               </div>
               {% if shop.customer_accounts_optional %}    <div li-if="shop.customer_accounts_optional" class="nav_account hide-tablet">
     
