@@ -12,13 +12,8 @@
     "nav_settings": {
       "type": "nav_settings",
       "settings": {
-        "nav_logo_color": "black",
         "nav_scroll_animation": true
       }
-    },
-    "blog_hero": {
-      "type": "blog_hero",
-      "settings": {}
     },
     "blog_articles": {
       "type": "blog_articles",
@@ -29,7 +24,6 @@
   "wrapper": "main.main-wrapper",
   "order": [
     "nav_settings",
-    "blog_hero",
     "blog_articles"
   ]
 }
