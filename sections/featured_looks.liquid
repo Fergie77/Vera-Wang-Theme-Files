@@ -2,13 +2,13 @@
           <div class="container-large">
             <div class="featured-looks_wrapper">
               <div class="featured-look_item"><img src="{{ article.metafields.custom.outfit_3_image | image_url: width: 2000 | placeholder: 'detailed-apparel-1' }}" loading="lazy" li-object:src="article.metafields.custom.outfit_3_image | image_url: width: 2000 | placeholder: 'detailed-apparel-1'" alt="" class="featured-look_image">
-                <div li-object:text="article.metafields.custom.outfit_3_text" class="outfit-1_rich-text no-trim featured-look_text w-richtext">
-{{ article.metafields.custom.outfit_3_text }}
+                <div li-object:text="article.metafields.custom.outfit_3_text | metafield_tag" class="outfit-1_rich-text no-trim featured-look_text w-richtext">
+{{ article.metafields.custom.outfit_3_text | metafield_tag }}
 </div>
               </div>
               <div class="featured-look_item"><img src="{{ article.metafields.custom.outfit_4_image | image_url: width: 2000 | placeholder: 'detailed-apparel-1' }}" loading="lazy" li-object:src="article.metafields.custom.outfit_4_image | image_url: width: 2000 | placeholder: 'detailed-apparel-1'" alt="" class="featured-look_image">
-                <div li-object:text="article.metafields.custom.outfit_4_text" class="outfit-1_rich-text no-trim featured-look_text w-richtext">
-{{ article.metafields.custom.outfit_4_text }}
+                <div li-object:text="article.metafields.custom.outfit_4_text | metafield_tag" class="outfit-1_rich-text no-trim featured-look_text w-richtext">
+{{ article.metafields.custom.outfit_4_text | metafield_tag }}
 </div>
               </div>
             </div>
