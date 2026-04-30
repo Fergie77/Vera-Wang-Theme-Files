@@ -11,11 +11,14 @@
           {% assign _rb = '#ffffff' %}
           {% endif %}
           {% assign ll = product.metafields.nav.left_link_color | default: page.metafields.nav.left_link_color | default: _ll %}
-          {% assign lb = product.metafields.nav.left_bg_color | default: page.metafields.nav.left_bg_color | default: _lb %}
           {% assign rl = product.metafields.nav.right_link_color | default: page.metafields.nav.right_link_color | default: _rl %}
-          {% assign rb = product.metafields.nav.right_bg_color | default: page.metafields.nav.right_bg_color | default: _rb %}
           {% assign sl = product.metafields.nav.scroll_link_color | default: page.metafields.nav.scroll_link_color | default: _sl %}
-          {% assign sb = product.metafields.nav.scroll_bg_color | default: page.metafields.nav.scroll_bg_color | default: _sb %}</div>
+          {% assign lb_raw = product.metafields.nav.left_bg_color | default: page.metafields.nav.left_bg_color | default: _lb %}
+          {% assign rb_raw = product.metafields.nav.right_bg_color | default: page.metafields.nav.right_bg_color | default: _rb %}
+          {% assign sb_raw = product.metafields.nav.scroll_bg_color | default: page.metafields.nav.scroll_bg_color | default: _sb %}
+          {% if lb_raw == '#000001' %}{% assign lb = 'transparent' %}{% else %}{% assign lb = lb_raw %}{% endif %}
+          {% if rb_raw == '#000001' %}{% assign rb = 'transparent' %}{% else %}{% assign rb = rb_raw %}{% endif %}
+          {% if sb_raw == '#000001' %}{% assign sb = 'transparent' %}{% else %}{% assign sb = sb_raw %}{% endif %}</div>
         <div data-animation="over-right" class="nav_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="9132635a-7891-b0d1-9b20-ecb0d5a86df9" role="banner" data-duration="400" x-data="" style="--nav-left-link: {{ ll }}; --nav-left-bg: {{ lb }}; --nav-right-link: {{ rl }}; --nav-right-bg: {{ rb }}; --nav-scroll-link: {{ sl }}; --nav-scroll-bg: {{ sb }};">
           <div class="nav_container container-large">
             <div class="nav_dropdown-list-background"></div>
@@ -995,8 +998,8 @@ closeButton.addEventListener('click', close);
     backdrop-filter: blur(8px) grayscale(1) brightness(0.5);
   }
   /* &#9472;&#9472; Search input &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-  #search-input { color: var(--nav-right-link); }
-  #search-input::placeholder { color: var(--nav-right-link) !important; opacity: 1; }
+.nav_container:has(.nav_menu-dropdown.is-open) #search-input { color: white; border-color: white; }
+  .nav_container:has(.nav_menu-dropdown.is-open) #search-input::placeholder { color: white !important; opacity: 1; }
 }
 /* &#9472;&#9472; Mobile &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 @media (max-width: 991px) {
