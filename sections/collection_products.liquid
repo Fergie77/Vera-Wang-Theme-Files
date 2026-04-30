@@ -3,18 +3,8 @@
             {% paginate collection.products by 50 %}
     <div li-paginate:by="50" li-paginate="collection.products" class="filter_layout" by="50">
               <div id="w-node-_678e0483-bbe4-e79a-1722-b169c587feae-c587feae" class="filter_filters-wrapper">
-                <form action="{{ routes.search_url }}" method="get" role="search" class="filter_form_component">
+                <form id="w-node-_7d6f0611-feb8-09ae-67db-04fc34551954-c587feae" action="{{ routes.search_url }}" method="get" role="search" class="filter_form_component">
                   <div id="w-node-_265c4342-3d21-e8bf-dfee-efec035c3507-c587feae" class="filter_form">
-                    <div class="filter_form-header">
-                      <div class="filter_heading">
-{{ section.settings.text_filter }}
-</div>
-                      <a li-object:href="collection.url" href="{{ collection.url }}" class="button is-link hide-tablet w-inline-block">
-                        <div class="hide">
-{{ section.settings.text_clear_all }}
-</div>
-                      </a>
-                    </div>
                     <div class="filter_results-wrapper">
                       <div class="filter_results-text"><span li-object="collection.all_products_count | append: ' '">{{ collection.all_products_count | append: ' ' }}</span> <span>
 {{ section.settings.text_products_shown }}
@@ -26,10 +16,10 @@
                         {% for filter in collection.filters %}    <div li-for="filter in collection.filters" class="filter_filter-group">
                                     
                           
-                            {% if filter.values.size > 1 %}    <div li-if="filter.values.size > 1">
+                            {% if filter.values.size > 1 %}    <div li-if="filter.values.size > 1" class="filter_filter-group-layout">
     
                             <div class="filter_filter-group-heading">
-                              <div li-object="filter.label" class="text-size-medium">{{ filter.label }}</div>
+                              <div li-object="filter.label">{{ filter.label }}</div>
                             </div>
                             <div class="filter_list">
                               {% for filter_value in filter.values %}    <div li-for="filter_value in filter.values" class="filter_item">
@@ -54,7 +44,9 @@
                     </div>
                   </div>
                 </form>
-                <a data-w-id="678e0483-bbe4-e79a-1722-b169c587fede" href="#" class="filter_tablet-modal-close-button w-inline-block"><img src="https://uploads-ssl.webflow.com/624380709031623bfe4aee60/624380709031623afe4aee7e_icon_close-modal.svg" alt="" class="icon-1x1-small"></a>
+                <a id="w-node-_678e0483-bbe4-e79a-1722-b169c587fede-c587feae" data-w-id="678e0483-bbe4-e79a-1722-b169c587fede" href="#" class="filter_tablet-modal-close-button w-inline-block">
+                  <p>Close</p>
+                </a>
               </div>
               <div fs-list-instance="1" id="w-node-f6c1ed66-8f2c-cc0d-fa87-63d3fbb7d543-fbb7d53a" class="filter_feed">
                 <div class="filter_feed-heading_wrapper">
@@ -425,18 +417,6 @@
         }
     ],
     "settings": [
-        {
-            "id": "text_filter",
-            "type": "text",
-            "label": "Filter",
-            "default": "Filters"
-        },
-        {
-            "id": "text_clear_all",
-            "type": "text",
-            "label": "Clear all",
-            "default": "Clear all"
-        },
         {
             "id": "text_products_shown",
             "type": "text",
