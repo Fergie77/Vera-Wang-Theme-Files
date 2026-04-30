@@ -47,19 +47,30 @@ function initGallery() {
     .forEach(st => st.kill());
   const slides = gsap.utils.toArray('.swiper-slide.is-product-gallery');
   const bullets = gsap.utils.toArray('.swiper-pagination-bullet');
+  if (!slides.length) return;
+  function getActiveIndex() {
+    const mid = window.innerHeight / 2;
+    let closest = 0, minDist = Infinity;
+    slides.forEach((slide, i) => {
+      const { top, bottom } = slide.getBoundingClientRect();
+      const dist = Math.abs((top + bottom) / 2 - mid);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    return closest;
+  }
   function setActive(index) {
     bullets.forEach((b, i) => b.classList.toggle('is-active', i === index));
   }
-  slides.forEach((slide, i) => {
-    ScrollTrigger.create({
-      trigger: slide,
-      start: 'top center',
-      end: 'bottom center',
-      onEnter: () => setActive(i),
-      onEnterBack: () => setActive(i),
-      vars: { _gallery: true },
-    });
+  ScrollTrigger.create({
+    trigger: slides[0],
+    endTrigger: slides[slides.length - 1],
+    start: 'top bottom',
+    end: 'bottom top',
+    onUpdate: () => setActive(getActiveIndex()),
+    onToggle: () => setActive(getActiveIndex()),
+    vars: { _gallery: true },
   });
+  setActive(getActiveIndex());
 }
 initGallery();
 </script>
