@@ -1,9 +1,9 @@
 <div class="padding-global">
           <div class="container-large">
-            <div class="shop-the-look_wrapper">
-              <h2 class="shop-the-look_heading">SHOP THE LOOK</h2>
-              <div li-for:inside="product in article.metafields.custom.look_products.value" class="shop-the-look_list">
-        {% for product in article.metafields.custom.look_products.value %}                            
+            <div class="full-collection_layout">
+              <h2 class="shop-the-look_heading">The entire Collection</h2>
+              <div li-for:inside="product in article.metafields.custom.products_collection.value" class="shop-the-look_list">
+        {% for product in article.metafields.custom.products_collection.value %}                            
                 
                             {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
                             
@@ -13,11 +13,11 @@
           </div>
         </div> {% schema %} {
     "tag": "section",
-    "name": "Shop the Look",
-    "class": "section_shop-the-look",
+    "name": "Full Collection",
+    "class": "section_full-collection",
     "presets": [
         {
-            "name": "Shop the Look",
+            "name": "Full Collection",
             "category": "Liquify",
             "blocks": []
         }
