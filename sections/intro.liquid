@@ -7,9 +7,13 @@
               <div class="spacer-medium"></div>
               <div class="more_component">
                 <div class="more_list-wrapper w-dyn-list">
-                  <div li-content-for-theme-blocks="" role="list" class="more_list is-lookbook w-dyn-items">
-{% content_for 'blocks' %}
-</div>
+                  <div role="list" class="more_list is-lookbook w-dyn-items">
+                    <div role="listitem" class="more_item w-dyn-item">
+                      <div li-for:inside="image in article.metafields.custom.images_row" class="more_image-wrapper">
+        {% for image in article.metafields.custom.images_row %}                            <img alt="" loading="lazy" li-object="image | image_url: width: 2000 | placeholder: 'detailed-apparel-1'" src="{{ 'collection-apparel-1.svg' | asset_url }}" class="more_image">
+                    {% endfor %}    </div>
+                    </div>
+                  </div>
                   <div class="hide w-dyn-empty">
                     <div>No items found.</div>
                   </div>
@@ -21,23 +25,11 @@
     "tag": "section",
     "name": "Intro",
     "class": "section_lookbook-intro",
-    "blocks": [
-        {
-            "type": "block"
-        },
-        {
-            "type": "@app"
-        }
-    ],
     "presets": [
         {
             "name": "Intro",
             "category": "Liquify",
-            "blocks": [
-                {
-                    "type": "block"
-                }
-            ]
+            "blocks": []
         }
     ]
 } {% endschema %}
