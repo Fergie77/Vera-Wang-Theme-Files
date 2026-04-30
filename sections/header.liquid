@@ -1077,7 +1077,8 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
   });
 });
 </script>
-        </div> {% schema %} {
+        </div>
+        <script>document.querySelectorAll('.nav_menu-dropdown').forEach(function(dropdown){ var toggle=dropdown.querySelector('.nav_dropdown-toggle'); if(!toggle||toggle.dataset.a11y)return; toggle.dataset.a11y='1'; toggle.setAttribute('aria-haspopup','true'); toggle.setAttribute('aria-expanded','false'); new MutationObserver(function(){ toggle.setAttribute('aria-expanded',String(dropdown.classList.contains('is-open'))); }).observe(dropdown,{attributeFilter:['class']}); toggle.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); var o=dropdown.classList.contains('is-open'); document.querySelectorAll('.nav_menu-dropdown.is-open').forEach(function(d){d.classList.remove('is-open');}); if(!o)dropdown.classList.add('is-open'); } if(e.key==='ArrowDown'){ e.preventDefault(); dropdown.classList.add('is-open'); requestAnimationFrame(function(){ var f=dropdown.querySelector('.nav_dropdown-heading'); if(f)f.focus(); }); } }); dropdown.addEventListener('keydown',function(e){ if(e.key==='Escape'&&dropdown.classList.contains('is-open')){ e.stopPropagation(); dropdown.classList.remove('is-open'); toggle.focus(); } }); dropdown.addEventListener('focusout',function(){ requestAnimationFrame(function(){ if(!dropdown.contains(document.activeElement)){ dropdown.classList.remove('is-open','is-hovered'); } }); }); });</script> {% schema %} {
     "tag": "div",
     "name": "Header",
     "class": "section_navbar",
