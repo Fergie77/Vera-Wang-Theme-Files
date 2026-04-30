@@ -205,9 +205,9 @@
                             <circle cx="5.45947" cy="4" r="3.35" stroke="currentColor" stroke-width="1.3"></circle>
                             <path d="M3.45947 6.5L0.459473 9.5" stroke-width="1.3" stroke="currentColor"></path>
                           </svg>
-                          <div class="predictive-search_mobile-input-holder show-tablet"><label for="" class="form_hidden-label">Search</label><input class="w-input" autocomplete="off" maxlength="256" name="q" data-name="q" placeholder="Search" type="search" id="search-input-mobile"></div>
-                          <div id="predictive-search" class="predictive-search_overflow is-fixed">
-                            <div li-section="predictive_search" class="predictive-search_section">
+                          <div class="predictive-search_overflow is-fixed">
+                            <div class="predictive-search_mobile-input-holder show-tablet"><label for="" class="form_hidden-label">Search</label><input class="w-input" autocomplete="off" maxlength="256" name="q" data-name="q" placeholder="Search" type="search" id="search-input-mobile"></div>
+                            <div id="predictive-search" li-section="predictive_search" class="predictive-search_section">
                               {% if predictive_search.performed %}    <div li-if="predictive_search.performed" class="predictive-search_conditional">
     
                                 {% assign first_column_results_size = predictive_search.resources.queries.size | plus: predictive_search.resources.collections.size | plus: predictive_search.resources.pages.size | plus: predictive_search.resources.articles.size | plus: predictive_search.resources.products.size %}
