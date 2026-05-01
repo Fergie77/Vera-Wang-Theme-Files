@@ -778,6 +778,7 @@ figcaption {
   font-family: Gotham, Arial, sans-serif;
   font-size: clamp(.625rem, .579082rem + .229592vw, .785714rem);
   font-weight: 500;
+  line-height: 1;
   transition-property: background-color, color;
   transition-duration: .2s, .2s;
   transition-timing-function: ease-in-out, ease-in-out;
@@ -2386,6 +2387,10 @@ figcaption {
   position: relative;
 }
 
+.predictive-search_input-holder.hide-tablet {
+  z-index: 3;
+}
+
 .predictive-search_overflow {
   flex: 0 auto;
   max-height: 88vh;
@@ -2411,7 +2416,7 @@ figcaption {
 }
 
 .predictive-search_overflow.is-fixed.is-open {
-  z-index: 0;
+  z-index: 2;
   transform: translate(0);
 }
 
@@ -4163,6 +4168,12 @@ figcaption {
   flex-flow: column;
   margin-top: 2rem;
   font-size: clamp(.75rem, .714286rem + .178571vw, .875rem);
+  display: flex;
+}
+
+.product-header_out-of-stock {
+  grid-column-gap: .5rem;
+  grid-row-gap: .5rem;
   display: flex;
 }
 
