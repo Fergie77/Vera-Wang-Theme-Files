@@ -2,7 +2,7 @@
           <div class="header_background-image is-full-width">
             {% if section.settings.video %}    <div li-if="section.settings.video" class="display-contents">
     
-              <div li-object="section.settings.video | video_tag: controls: false, autoplay:true, width: '100%'" class="header_background-image_item">{{ section.settings.video | video_tag: controls: false, autoplay:true, width: '100%' }}</div>
+              <div li-object="section.settings.video | video_tag: controls: false, autoplay:true, loop:true, width: '100%'" class="header_background-image_item">{{ section.settings.video | video_tag: controls: false, autoplay:true, loop:true, width: '100%' }}</div>
                 </div>
 {% endif %}
             {% unless section.settings.video %}    <div li-unless="section.settings.video" class="display-contents">
