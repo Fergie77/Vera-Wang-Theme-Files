@@ -5,7 +5,7 @@
                 <a li-object:href="section.settings.collection_collection.url" id="w-node-_5751e9a0-9e84-68b1-9599-d2caabd01a2a-feb34c80" href="{{ section.settings.collection_collection.url }}" class="featured-products_collection-link-wrapper is-left is-first w-inline-block">
                   {% if section.settings.video %}    <div li-if="section.settings.video" class="display-contents">
     
-                    <div li-object="section.settings.video | video_tag: controls: false, autoplay:true, width: '100%'" class="featured-products_collection-image">{{ section.settings.video | video_tag: controls: false, autoplay:true, width: '100%' }}</div>
+                    <div li-object="section.settings.video | video_tag: controls: false, autoplay:true, loop:true, width: '100%'" class="featured-products_collection-image">{{ section.settings.video | video_tag: controls: false, autoplay:true, loop:true, width: '100%' }}</div>
                       </div>
 {% endif %}
                   {% unless section.settings.video %}    <div li-unless="section.settings.video" class="display-contents">

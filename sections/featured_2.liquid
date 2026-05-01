@@ -34,7 +34,7 @@
                 <div id="w-node-a96a619b-ba2d-8598-5535-0e3f407f9f82-feb34c80" class="featured-products_collection-link-wrapper is-first">
                   {% if section.settings.video %}    <div li-if="section.settings.video" class="display-contents">
     
-                    <div li-object="section.settings.video | video_tag: controls: false, autoplay:true, width: '100%'" class="featured-products_collection-image">{{ section.settings.video | video_tag: controls: false, autoplay:true, width: '100%' }}</div>
+                    <div li-object="section.settings.video | video_tag: controls: false, autoplay:true, loop:true, width: '100%'" class="featured-products_collection-image">{{ section.settings.video | video_tag: controls: false, autoplay:true, loop:true, width: '100%' }}</div>
                       </div>
 {% endif %}
                   {% unless section.settings.video %}    <div li-unless="section.settings.video" class="display-contents">

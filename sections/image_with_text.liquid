@@ -2,7 +2,7 @@
           <div class="header_background-image">
             {% if section.settings.video_left %}    <div li-if="section.settings.video_left" class="display-contents">
     
-              <div li-object="section.settings.video_left | video_tag: controls: true, width: '100%'" class="header_background-image_item">{{ section.settings.video_left | video_tag: controls: true, width: '100%' }}</div>
+              <div li-object="section.settings.video_left | video_tag: controls: false, autoplay:true, loop:true, width: '100%'" class="header_background-image_item">{{ section.settings.video_left | video_tag: controls: false, autoplay:true, loop:true, width: '100%' }}</div>
                 </div>
 {% endif %}
             <div class="cta-text is-absolute" style="color:{{section.settings.text_color}}">
@@ -21,7 +21,7 @@
           <div class="header_background-image-right-wrapper">
             {% if section.settings.video_right %}    <div li-if="section.settings.video_right" class="display-contents">
     
-              <div li-object="section.settings.video_right | video_tag: controls: false, autoplay:true, width: '100%'" class="header_background-image_item is-right">{{ section.settings.video_right | video_tag: controls: false, autoplay:true, width: '100%' }}</div>
+              <div li-object="section.settings.video_right | video_tag: controls: false, autoplay:true, loop:true, width: '100%'" class="header_background-image_item is-right">{{ section.settings.video_right | video_tag: controls: false, autoplay:true, loop:true, width: '100%' }}</div>
                 </div>
 {% endif %}
             {% unless section.settings.video_right %}    <div li-unless="section.settings.video_right" class="display-contents">

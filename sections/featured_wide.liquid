@@ -2,7 +2,7 @@
         <a href="{{ section.settings.url_cta_link }}" class="rl_section_link w-inline-block"> </a>
         {% if section.settings.background_video %}    <div li-if="section.settings.background_video">
     
-          <div li-object="section.settings.background_video | video_tag: controls: false, autoplay:true, width: '100%'" class="rl_section_background-image">{{ section.settings.background_video | video_tag: controls: false, autoplay:true, width: '100%' }}</div>
+          <div li-object="section.settings.background_video | video_tag: controls: false, autoplay:true, loop:true, width: '100%'" class="rl_section_background-image">{{ section.settings.background_video | video_tag: controls: false, autoplay:true, loop:true, width: '100%' }}</div>
             </div>
 {% endif %}
         {% unless section.settings.background_video %}    <div li-unless="section.settings.background_video">
