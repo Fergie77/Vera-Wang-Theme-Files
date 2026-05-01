@@ -44,12 +44,11 @@
       "type": "cta_1",
       "settings": {
         "url_cta_link": "shopify://collections/aw-26",
-        "text_eyebrow_text": "ELEVATED CONTEMPORARY WOMENSWEAR",
+        "text_label": "THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE",
         "text_heading": "Autumn Winter 2026",
-        "text_sub_heading": "Subheading",
+        "text_subheading": "Subhead Copy",
         "text_cta_text": "Explore New Season",
-        "image_image": "shopify://shop_images/image_120.jpg",
-        "text_link_text": "Explore New Season"
+        "video": "shopify://files/videos/Placeholder Video.mp4"
       }
     },
     "featured_wide": {
@@ -110,7 +109,6 @@
         "text_cta_text": "View More",
         "collection_collection": "bags",
         "collection_collection_limit": 2,
-        "image_link_image": "shopify://shop_images/image_147.jpg",
         "text_cta_image_text": ""
       }
     },
@@ -155,7 +153,7 @@
           "type": "social-sign-up",
           "name": "Social Sign Up",
           "settings": {
-            "text_headline": "Join us",
+            "text_heading": "Join Us",
             "text_checkbox": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
           }
         }
