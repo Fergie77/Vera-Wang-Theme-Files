@@ -1,9 +1,5 @@
 <div class="header_background-image-wrapper is-relative">
-          <div class="header_background-image">{% if section.settings.image_image_left %}
-{{ section.settings.image_image_left | image_url: width: 2000 | image_tag: loading: 'eager', li-unless: 'section.settings.video_left', class: 'header_background-image_item is-left' }}
-{% else %}
- {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-left' }} 
-{% endif %}
+          <div class="header_background-image">
             {% if section.settings.video_left %}    <div li-if="section.settings.video_left">
     
               <div li-object="section.settings.video_left | video_tag: controls: true, width: '100%'" class="header_background-image_item social-sign-up_image-wrapper grid-break is-left">{{ section.settings.video_left | video_tag: controls: true, width: '100%' }}</div>
@@ -13,18 +9,28 @@
 {{ section.settings.text_cta_text }}
 </div>
             
+            {% unless section.settings.video_left %}    <div li-unless="section.settings.video_left">
+    {% if section.settings.image_image_left %}
+{{ section.settings.image_image_left | image_url: width: 2000 | image_tag: loading: 'lazy', class: 'header_background-image_item social-sign-up_image-wrapper grid-break is-left' }}
+{% else %}
+ {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item social-sign-up_image-wrapper grid-break is-left' }} 
+{% endif %}    </div>
+{% endunless %}
             
           </div>
-          <div class="header_background-image-right-wrapper">{% if section.settings.image_image_right %}
-{{ section.settings.image_image_right | image_url: width: 1500 | image_tag: loading: 'eager', li-unless: 'section.settings.video_right', class: 'header_background-image_item is-right' }}
-{% else %}
- {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-right' }} 
-{% endif %}
-            {% if section.settings.video_right %}    <div li-if="section.settings.video_right">
+          <div class="header_background-image-right-wrapper">
+            {% if section.settings.video_right %}    <div li-if="section.settings.video_right" class="display-contents">
     
               <div li-object="section.settings.video_right | video_tag: controls: true, width: '100%'" class="header_background-image_item is-right">{{ section.settings.video_right | video_tag: controls: true, width: '100%' }}</div>
                 </div>
 {% endif %}
+            {% unless section.settings.video_right %}    <div li-unless="section.settings.video_right" class="display-contents">
+    {% if section.settings.image_image_right %}
+{{ section.settings.image_image_right | image_url: width: 1500 | image_tag: loading: 'lazy', class: 'header_background-image_item is-right' }}
+{% else %}
+ {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-right' }} 
+{% endif %}    </div>
+{% endunless %}
             
             <div class="header_card text-color-white">
               <div class="max-width-large">
@@ -38,11 +44,6 @@
     "name": "Image with Text",
     "class": "section_header-home",
     "settings": [
-        {
-            "id": "image_image_left",
-            "type": "image_picker",
-            "label": "Image Left"
-        },
         {
             "id": "text_cta_text",
             "type": "text",
@@ -58,6 +59,11 @@
             "id": "text_color",
             "label": "Text Color",
             "default": "#000000"
+        },
+        {
+            "id": "image_image_left",
+            "type": "image_picker",
+            "label": "Image Left"
         },
         {
             "type": "header",
