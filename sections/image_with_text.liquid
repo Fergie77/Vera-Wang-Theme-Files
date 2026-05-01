@@ -1,6 +1,6 @@
 <div class="header_background-image-wrapper is-relative">
           <div class="header_background-image">{% if section.settings.image_image_left %}
-{{ section.settings.image_image_left | image_url: width: 2000 | image_tag: loading: 'eager', class: 'header_background-image_item is-left' }}
+{{ section.settings.image_image_left | image_url: width: 2000 | image_tag: loading: 'eager', li-object: 'section.settings.video_left | video_tag', class: 'header_background-image_item is-left' }}
 {% else %}
  {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-left' }} 
 {% endif %}
@@ -8,12 +8,14 @@
 {{ section.settings.text_cta_text }}
 </div>
             
+            
           </div>
           <div class="header_background-image-right-wrapper">{% if section.settings.image_image_right %}
-{{ section.settings.image_image_right | image_url: width: 1500 | image_tag: loading: 'eager', class: 'header_background-image_item is-right' }}
+{{ section.settings.image_image_right | image_url: width: 1500 | image_tag: loading: 'eager', li-object: 'section.settings.video_right | video_tag', class: 'header_background-image_item is-right' }}
 {% else %}
  {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-right' }} 
 {% endif %}
+            
             <div class="header_card text-color-white">
               <div class="max-width-large">
                 <div class="header_heading"> {{ section.settings.richtext_paragraph }} </div>
@@ -39,7 +41,7 @@
         },
         {
             "type": "header",
-            "content": "Links"
+            "content": "Text Color"
         },
         {
             "type": "color",
@@ -48,9 +50,27 @@
             "default": "#000000"
         },
         {
+            "type": "header",
+            "content": "Video Left"
+        },
+        {
+            "type": "video",
+            "id": "video_left",
+            "label": "Video Left"
+        },
+        {
             "id": "image_image_right",
             "type": "image_picker",
             "label": "Image Right"
+        },
+        {
+            "type": "header",
+            "content": "Video Right"
+        },
+        {
+            "type": "video",
+            "id": "video_right",
+            "label": "Video Right"
         },
         {
             "id": "richtext_paragraph",
