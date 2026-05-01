@@ -3,9 +3,12 @@
             <div class="product_component">
               <div class="featured-products-component_layout">
                 <a li-object:href="section.settings.collection_collection.url" id="w-node-_5751e9a0-9e84-68b1-9599-d2caabd01a2a-feb34c80" href="{{ section.settings.collection_collection.url }}" class="featured-products_collection-link-wrapper is-left is-first w-inline-block">{% if section.settings.image_image %}
-{{ section.settings.image_image | image_url: width: 1000 | image_tag: li-object: 'section.settings.video | video_tag', loading: 'lazy', class: 'featured-products_collection-image' }}
+{{ section.settings.image_image | image_url: width: 1000 | image_tag: li-unless: 'section.settings.video', loading: 'lazy', class: 'featured-products_collection-image' }}
 {% else %}
-<img li-object="section.settings.video | video_tag" alt="" src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" class="featured-products_collection-image">
+<img li-unless="section.settings.video" alt="" src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" class="featured-products_collection-image">
+{% endif %}
+                  {% if section.settings.video | video_tag %}    <div li-if="section.settings.video" li-object="section.settings.video | video_tag" class="featured-products_collection-image">
+        </div>
 {% endif %}
                   
                 </a>

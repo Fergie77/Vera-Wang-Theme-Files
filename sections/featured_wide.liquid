@@ -1,8 +1,11 @@
 <div class="padding-global" href="{{ section.settings.url_cta_link }}"> <div class="padding-global" href="{{ section.settings.url_cta_link }}"> <div> <div class="header5_component"> <div class="rl_header5_content"> <h1 class="rl_header5_heading">{{ section.settings.text_heading }}</h1> <p class="cta-text">{{ section.settings.text_cta_text }}</p> </div> </div> </div> </div> </div>
         <a href="{{ section.settings.url_cta_link }}" class="rl_section_link w-inline-block"> </a>{% if section.settings.image_background_image %}
-{{ section.settings.image_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', li-object: 'section.settings.background_video | video_tag', class: 'rl_section_background-image' }}
+{{ section.settings.image_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', li-unless: 'section.settings.background_video', class: 'rl_section_background-image' }}
 {% else %}
-<img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" li-object="section.settings.background_video | video_tag" alt="" class="rl_section_background-image">
+<img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" li-unless="section.settings.background_video" alt="" class="rl_section_background-image">
+{% endif %}
+        {% if section.settings.background_video | video_tag %}    <div li-if="section.settings.background_video" li-object="section.settings.background_video | video_tag" class="rl_section_background-image">
+        </div>
 {% endif %} {% schema %} {
     "tag": "header",
     "name": "Featured Wide",
