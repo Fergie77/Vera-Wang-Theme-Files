@@ -4,8 +4,10 @@
 {% else %}
 <img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" li-unless="section.settings.background_video" alt="" class="rl_section_background-image">
 {% endif %}
-        {% if section.settings.background_video | video_tag %}    <div li-if="section.settings.background_video" li-object="section.settings.background_video | video_tag" class="rl_section_background-image">
-        </div>
+        {% if section.settings.background_video %}    <div li-if="section.settings.background_video">
+    
+          <div li-object="section.settings.background_video | video_tag: controls: true, width: '100%'" class="rl_section_background-image">{{ section.settings.background_video | video_tag: controls: true, width: '100%' }}</div>
+            </div>
 {% endif %} {% schema %} {
     "tag": "header",
     "name": "Featured Wide",

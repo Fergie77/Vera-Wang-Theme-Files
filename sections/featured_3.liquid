@@ -7,8 +7,10 @@
 {% else %}
 <img li-unless="section.settings.video" alt="" src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" class="featured-products_collection-image">
 {% endif %}
-                  {% if section.settings.video | video_tag %}    <div li-if="section.settings.video" li-object="section.settings.video | video_tag" class="featured-products_collection-image">
-        </div>
+                  {% if section.settings.video %}    <div li-if="section.settings.video">
+    
+                    <div li-object="section.settings.video | video_tag: controls: true, width: '100%'" class="featured-products_collection-image">{{ section.settings.video | video_tag: controls: true, width: '100%' }}</div>
+                      </div>
 {% endif %}
                   
                 </a>
