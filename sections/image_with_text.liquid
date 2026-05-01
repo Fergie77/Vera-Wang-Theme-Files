@@ -4,8 +4,10 @@
 {% else %}
  {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-left' }} 
 {% endif %}
-            {% if section.settings.video_left | video_tag %}    <div li-if="section.settings.video_left" li-object="section.settings.video_left | video_tag" class="header_background-image_item is-left">
-        </div>
+            {% if section.settings.video_left %}    <div li-if="section.settings.video_left">
+    
+              <div li-object="section.settings.video_left | video_tag: controls: true, width: '100%'" class="header_background-image_item social-sign-up_image-wrapper grid-break is-left">{{ section.settings.video_left | video_tag: controls: true, width: '100%' }}</div>
+                </div>
 {% endif %}
             <div class="cta-text is-absolute" style="color:{{section.settings.text_color}}">
 {{ section.settings.text_cta_text }}
@@ -18,8 +20,10 @@
 {% else %}
  {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-right' }} 
 {% endif %}
-            {% if section.settings.video_right | video_tag %}    <div li-if="section.settings.video_right" li-object="section.settings.video_right | video_tag" class="header_background-image_item is-right">
-        </div>
+            {% if section.settings.video_right %}    <div li-if="section.settings.video_right">
+    
+              <div li-object="section.settings.video_right | video_tag: controls: true, width: '100%'" class="header_background-image_item is-right">{{ section.settings.video_right | video_tag: controls: true, width: '100%' }}</div>
+                </div>
 {% endif %}
             
             <div class="header_card text-color-white">
