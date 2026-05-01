@@ -54,7 +54,7 @@
     "featured_wide": {
       "type": "featured_wide",
       "settings": {
-        "url_cta_link": "",
+        "url_cta_link": "shopify://collections/bags",
         "text_heading": "Handbags",
         "text_cta_text": "Discover Handbags",
         "image_background_image": "shopify://shop_images/Untitled-5_2.jpg",
