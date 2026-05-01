@@ -1,8 +1,11 @@
 <div class="header_background-image-wrapper is-relative">
           <div class="header_background-image is-full-width">{% if section.settings.image_image %}
-{{ section.settings.image_image | image_url: width: 2000 | image_tag: li-object: 'section.settings.video | video_tag', loading: 'eager', class: 'header_background-image_item is-left' }}
+{{ section.settings.image_image | image_url: width: 2000 | image_tag: li-unless: 'section.settings.video', loading: 'eager', class: 'header_background-image_item is-left' }}
 {% else %}
  {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-left' }} 
+{% endif %}
+            {% if section.settings.video | video_tag %}    <div li-if="section.settings.video" li-object="section.settings.video | video_tag" class="header_background-image_item is-left">
+        </div>
 {% endif %}
             
             <div class="hero-text-absolute-wrapper">

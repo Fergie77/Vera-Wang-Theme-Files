@@ -1,8 +1,11 @@
 <div class="header_background-image-wrapper is-relative">
           <div class="header_background-image">{% if section.settings.image_image_left %}
-{{ section.settings.image_image_left | image_url: width: 2000 | image_tag: loading: 'eager', li-object: 'section.settings.video_left | video_tag', class: 'header_background-image_item is-left' }}
+{{ section.settings.image_image_left | image_url: width: 2000 | image_tag: loading: 'eager', li-unless: 'section.settings.video_left', class: 'header_background-image_item is-left' }}
 {% else %}
  {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-left' }} 
+{% endif %}
+            {% if section.settings.video_left | video_tag %}    <div li-if="section.settings.video_left" li-object="section.settings.video_left | video_tag" class="header_background-image_item is-left">
+        </div>
 {% endif %}
             <div class="cta-text is-absolute" style="color:{{section.settings.text_color}}">
 {{ section.settings.text_cta_text }}
@@ -11,9 +14,12 @@
             
           </div>
           <div class="header_background-image-right-wrapper">{% if section.settings.image_image_right %}
-{{ section.settings.image_image_right | image_url: width: 1500 | image_tag: loading: 'eager', li-object: 'section.settings.video_right | video_tag', class: 'header_background-image_item is-right' }}
+{{ section.settings.image_image_right | image_url: width: 1500 | image_tag: loading: 'eager', li-unless: 'section.settings.video_right', class: 'header_background-image_item is-right' }}
 {% else %}
  {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-right' }} 
+{% endif %}
+            {% if section.settings.video_right | video_tag %}    <div li-if="section.settings.video_right" li-object="section.settings.video_right | video_tag" class="header_background-image_item is-right">
+        </div>
 {% endif %}
             
             <div class="header_card text-color-white">
