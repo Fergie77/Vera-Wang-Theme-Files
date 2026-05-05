@@ -1070,13 +1070,16 @@ closeButton.addEventListener('click', close);
   visibility: hidden;
 }
 
-.nav_shop-icons:has(.predictive-search_overflow.is-fixed.is-open) #search-input {
+.nav_container:has(.predictive-search_overflow.is-fixed.is-open) #search-input {
   color: black;
   border-color: black;
 }
-.nav_shop-icons:has(.predictive-search_overflow.is-fixed.is-open) #search-input::placeholder {
+.nav_container:has(.predictive-search_overflow.is-fixed.is-open) #search-input::placeholder {
   color: black;
   opacity: 1;
+}
+.nav_container:has(.predictive-search_overflow.is-fixed.is-open) .wang-character {
+  fill: black;
 }
 
 .predictive-search_overflow.is-fixed.is-open ~ .nav_predictive-search-close-blur {
