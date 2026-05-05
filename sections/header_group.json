@@ -13,7 +13,6 @@
   "sections": {
     "header": {
       "type": "header",
-      "disabled": true,
       "settings": {
         "image_mobile_image": "shopify://shop_images/VW_Tests_1.7.1_copy.jpg",
         "url_link": "shopify://collections/aw-26",
