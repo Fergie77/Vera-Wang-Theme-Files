@@ -9,89 +9,18 @@
  */
 {
   "sections": {
-    "nav_settings": {
-      "type": "nav_settings",
-      "settings": {}
-    },
-    "image_with_text": {
-      "type": "image_with_text",
-      "settings": {}
-    },
-    "full_width_hero": {
-      "type": "full_width_hero",
-      "settings": {}
-    },
-    "featured_products": {
-      "type": "featured_products",
-      "settings": {}
-    },
-    "cta_1": {
-      "type": "cta_1",
-      "settings": {}
-    },
-    "featured_wide": {
-      "type": "featured_wide",
-      "settings": {}
-    },
-    "styled_by_vera": {
-      "type": "styled_by_vera",
-      "blocks": {
-        "block": {
-          "type": "block",
-          "name": "Block",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "block"
-      ],
-      "settings": {}
-    },
-    "featured_2": {
-      "type": "featured_2",
-      "settings": {}
-    },
-    "blog_posts": {
-      "type": "blog_posts",
-      "settings": {}
-    },
-    "featured_3": {
-      "type": "featured_3",
-      "settings": {}
-    },
-    "spacer": {
-      "type": "spacer",
-      "settings": {}
-    },
-    "content_2": {
-      "type": "content_2",
-      "blocks": {
-        "social-sign-up": {
-          "type": "social-sign-up",
-          "name": "Social Sign Up",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "social-sign-up"
-      ],
-      "settings": {}
+    "landing_hero": {
+      "type": "landing_hero",
+      "custom_css": [],
+      "settings": {
+        "text_heading": "Join The List",
+        "text_subheading": "Be the first to view the 2026 Collection"
+      }
     }
   },
   "layout": "theme",
-  "wrapper": "main.main-wrapper",
+  "wrapper": "div.main-wrapper",
   "order": [
-    "nav_settings",
-    "image_with_text",
-    "full_width_hero",
-    "featured_products",
-    "cta_1",
-    "featured_wide",
-    "styled_by_vera",
-    "featured_2",
-    "blog_posts",
-    "featured_3",
-    "spacer",
-    "content_2"
+    "landing_hero"
   ]
 }
