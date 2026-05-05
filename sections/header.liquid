@@ -1066,6 +1066,10 @@ closeButton.addEventListener('click', close);
 .predictive-search_overflow.is-fixed.is-open ~ .nav_predictive-search-close-blur {
   opacity: 1;
 }
+.nav_component:has(.nav_mini-cart-holder.w--open) .nav_logo-link:not(.is-slide-out) {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 </style>
         </div>
         <div class="hide w-embed w-script">
