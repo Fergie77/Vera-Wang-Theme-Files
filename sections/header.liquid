@@ -1069,6 +1069,16 @@ closeButton.addEventListener('click', close);
 .nav_shop-icons:has(.predictive-search_overflow.is-open) .nav_account {
   visibility: hidden;
 }
+
+.nav_shop-icons:has(.predictive-search_overflow.is-fixed.is-open) #search-input {
+  color: black;
+  border-color: black;
+}
+.nav_shop-icons:has(.predictive-search_overflow.is-fixed.is-open) #search-input::placeholder {
+  color: black;
+  opacity: 1;
+}
+
 .predictive-search_overflow.is-fixed.is-open ~ .nav_predictive-search-close-blur {
   opacity: 1;
 }
