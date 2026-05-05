@@ -116,7 +116,7 @@
       "type": "blog_posts",
       "settings": {
         "text_heading": "Diary",
-        "article_article": "",
+        "article_article": "diary/the-history",
         "text_cta_text": "Read More",
         "url_cta_link": ""
       }
