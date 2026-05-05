@@ -137,19 +137,16 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
 }
 
 @media (max-width: 479px) and (orientation: portrait) {
-  .product-item_text-link,
-  .product-item_details-layout,
-  .product-item_left {
-    min-width: 0 !important;
+  .product-item_title {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
-  .product-item_left {
-    overflow: hidden !important;
-  }
-
-  .product-item_title.is-overflowing {
-    display: block !important;
-    white-space: nowrap !important;
+  .product-item_title.is-overflowing > .title-scroll {
+    display: inline-block;
     animation: title-scroll 12s ease-in-out infinite alternate;
   }
 }
