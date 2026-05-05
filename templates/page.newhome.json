@@ -23,7 +23,7 @@
         "image_image_left": "shopify://shop_images/VW_Tests_1.7.1_copy.jpg",
         "image_image_right": "shopify://shop_images/VW_Tests_1.11.3_copy.jpg",
         "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR.<br/>NOW AVAILABLE ONLINE AND IN RETAIL  </p>",
-        "url_cta_link": ""
+        "url_cta_link": "shopify://collections/aw-26"
       }
     },
     "featured_products": {
@@ -124,7 +124,7 @@
     "featured_3": {
       "type": "featured_3",
       "settings": {
-        "image_image": "shopify://shop_images/Frame_157.jpg",
+        "image_image": "shopify://shop_images/Group_60.jpg",
         "text_heading": "Handbags",
         "text_subheading": "Made in Italy",
         "collection_collection": "handbags",
