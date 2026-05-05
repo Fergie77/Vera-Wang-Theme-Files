@@ -230,44 +230,21 @@ End Google Tag Manager (noscript)  -->
   <script src="{{ 'section-rendering.js' | asset_url }}"></script>
   {% render 'search_javascript' %}
 <script>
-console.log('[title-scroll] script loaded');
-
-const checkTitleOverflow = () => {
-  const titles = document.querySelectorAll('.product-item_title');
-  console.log(`[title-scroll] found ${titles.length} titles`);
-  if (!titles.length) return;
-
-  titles.forEach((el, i) => {
-    if (!el.querySelector('.title-scroll')) {
-      const text = el.textContent;
-      el.innerHTML = `<span class="title-scroll">${text}</span>`;
-      console.log(`[title-scroll] #${i} wrapped "${text.slice(0, 30)}"`);
-    }
-
-    const inner = el.querySelector('.title-scroll');
-    const innerW = inner.scrollWidth;
-    const outerW = el.clientWidth;
-    const overflow = innerW - outerW;
-
-    console.log(`[title-scroll] #${i} "${el.textContent.trim().slice(0, 30)}" — inner: ${innerW}, outer: ${outerW}, overflow: ${overflow}`);
-
-    if (overflow > 0) {
-      el.style.setProperty('--scroll-distance', `-${Math.ceil(overflow)}px`);
-      el.classList.add('is-overflowing');
-      console.log(`[title-scroll] #${i} → animating`);
-
-      // Verify the animation is actually applied
-      const animationName = getComputedStyle(inner).animationName;
-      console.log(`[title-scroll] #${i} inner animationName: "${animationName}"`);
-    } else {
-      el.style.removeProperty('--scroll-distance');
-      el.classList.remove('is-overflowing');
-    }
-  });
-};
-
-document.fonts.ready.then(checkTitleOverflow);
-window.addEventListener('resize', checkTitleOverflow);
+const inner = document.querySelector('.product-item_title.is-overflowing > .title-scroll');
+if (!inner) {
+  console.log('[title-scroll] no .is-overflowing element to inspect');
+} else {
+  const cs = getComputedStyle(inner);
+  const parent = inner.parentElement;
+  const parentCS = getComputedStyle(parent);
+  console.log('[title-scroll] inner animationName:', cs.animationName);
+  console.log('[title-scroll] inner animationDuration:', cs.animationDuration);
+  console.log('[title-scroll] inner animationPlayState:', cs.animationPlayState);
+  console.log('[title-scroll] inner --scroll-distance:', cs.getPropertyValue('--scroll-distance'));
+  console.log('[title-scroll] parent --scroll-distance:', parentCS.getPropertyValue('--scroll-distance'));
+  console.log('[title-scroll] parent classList:', parent.className);
+  console.log('[title-scroll] matchMedia matches:', matchMedia('(max-width: 479px) and (orientation: portrait)').matches);
+}
 </script>
   <script>
 const el = document.querySelector('.product_list-wrapper');
