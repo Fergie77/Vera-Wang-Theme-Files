@@ -12,7 +12,6 @@
     "nav_settings": {
       "type": "nav_settings",
       "settings": {
-        "nav_logo_color": "black",
         "nav_scroll_animation": true
       }
     },
@@ -33,9 +32,7 @@
         "featured_wide_DiLN6f"
       ],
       "settings": {
-        "text_filter": "Filters",
-        "text_clear_all": "Clear all",
-        "text_products_shown": "Products shown"
+        "products_before_block": 8
       }
     },
     "black_logo_UNcdNb": {
