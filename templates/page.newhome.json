@@ -42,7 +42,7 @@
     "cta_1": {
       "type": "cta_1",
       "settings": {
-        "url_cta_link": "",
+        "url_cta_link": "shopify://collections/aw-26",
         "text_label": "THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE",
         "text_heading": "Autumn Winter 2026",
         "text_subheading": "Subhead Copy",
@@ -53,7 +53,7 @@
     "featured_wide": {
       "type": "featured_wide",
       "settings": {
-        "url_cta_link": "",
+        "url_cta_link": "shopify://collections/handbags",
         "text_heading": "Handbags",
         "text_cta_text": "Discover Handbags",
         "background_video": "shopify://files/videos/VW_MOTIONTEST_03_CROP.mp4"
