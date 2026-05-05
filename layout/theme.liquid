@@ -227,22 +227,35 @@ End Google Tag Manager (noscript)  -->
   <script src="{{ 'section-rendering.js' | asset_url }}"></script>
   {% render 'search_javascript' %}
 <script>
+console.log('[title-scroll] script loaded');
+
 const checkTitleOverflow = () => {
   const titles = document.querySelectorAll('.product-item_title');
+  console.log(`[title-scroll] found ${titles.length} titles`);
   if (!titles.length) return;
 
-  titles.forEach(el => {
-    // Wrap the text in a span on first run
+  titles.forEach((el, i) => {
     if (!el.querySelector('.title-scroll')) {
-      el.innerHTML = `<span class="title-scroll">${el.textContent}</span>`;
+      const text = el.textContent;
+      el.innerHTML = `<span class="title-scroll">${text}</span>`;
+      console.log(`[title-scroll] #${i} wrapped "${text.slice(0, 30)}"`);
     }
 
     const inner = el.querySelector('.title-scroll');
-    const overflow = inner.scrollWidth - el.clientWidth;
+    const innerW = inner.scrollWidth;
+    const outerW = el.clientWidth;
+    const overflow = innerW - outerW;
+
+    console.log(`[title-scroll] #${i} "${el.textContent.trim().slice(0, 30)}" — inner: ${innerW}, outer: ${outerW}, overflow: ${overflow}`);
 
     if (overflow > 0) {
       el.style.setProperty('--scroll-distance', `-${Math.ceil(overflow)}px`);
       el.classList.add('is-overflowing');
+      console.log(`[title-scroll] #${i} → animating`);
+
+      // Verify the animation is actually applied
+      const animationName = getComputedStyle(inner).animationName;
+      console.log(`[title-scroll] #${i} inner animationName: "${animationName}"`);
     } else {
       el.style.removeProperty('--scroll-distance');
       el.classList.remove('is-overflowing');
