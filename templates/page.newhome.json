@@ -15,6 +15,18 @@
         "nav_scroll_animation": true
       }
     },
+    "full_width_hero_gAhp8b": {
+      "type": "full_width_hero",
+      "name": "Full Width Hero",
+      "settings": {
+        "image_image": "shopify://shop_images/Campaign-Boyfriend-Shirt_VWWASH03-Vw-Tie_VWWASH09-0211_1.jpg",
+        "text_heading": "Headline Goes here",
+        "text_subheading": "SPRING SUMMER 26",
+        "text_cta_text": "Shop the collection",
+        "text_color": "#000000",
+        "url_cta_link": ""
+      }
+    },
     "image_with_text": {
       "type": "image_with_text",
       "settings": {
@@ -166,6 +178,7 @@
   "wrapper": "main.main-wrapper",
   "order": [
     "nav_settings",
+    "full_width_hero_gAhp8b",
     "image_with_text",
     "featured_products",
     "cta_1",
