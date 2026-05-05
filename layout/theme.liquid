@@ -219,17 +219,32 @@ End Google Tag Manager (noscript)  -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="{{ 'section-rendering.js' | asset_url }}"></script>
   {% render 'search_javascript' %}
-  <script>
+<script>
+console.log('[title-scroll] script loaded');
+
 const checkTitleOverflow = () => {
-  document.querySelectorAll('.product-item_title').forEach(el => {
+  const els = document.querySelectorAll('.product-item_title');
+  console.log(`[title-scroll] found ${els.length} .product-item_title elements`);
+
+  if (els.length === 0) {
+    console.warn('[title-scroll] no elements matched — check the class name in the rendered DOM');
+    return;
+  }
+
+  els.forEach((el, i) => {
     const prev = el.style.whiteSpace;
     el.style.whiteSpace = 'nowrap';
-    const overflow = el.scrollWidth - el.clientWidth;
+    const scrollW = el.scrollWidth;
+    const clientW = el.clientWidth;
+    const overflow = scrollW - clientW;
     el.style.whiteSpace = prev;
+
+    console.log(`[title-scroll] #${i} "${el.textContent.trim().slice(0, 30)}" — scrollW: ${scrollW}, clientW: ${clientW}, overflow: ${overflow}px`);
 
     if (overflow > 0) {
       el.style.setProperty('--scroll-distance', `-${overflow}px`);
       el.classList.add('is-overflowing');
+      console.log(`[title-scroll] #${i} → added .is-overflowing, --scroll-distance: -${overflow}px`);
     } else {
       el.style.removeProperty('--scroll-distance');
       el.classList.remove('is-overflowing');
@@ -237,8 +252,25 @@ const checkTitleOverflow = () => {
   });
 };
 
-document.fonts.ready.then(checkTitleOverflow);
-window.addEventListener('resize', checkTitleOverflow);
+console.log('[title-scroll] document.readyState:', document.readyState);
+console.log('[title-scroll] document.fonts available:', !!document.fonts);
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready
+    .then(() => {
+      console.log('[title-scroll] fonts ready — running check');
+      checkTitleOverflow();
+    })
+    .catch(err => console.error('[title-scroll] fonts.ready rejected:', err));
+} else {
+  console.warn('[title-scroll] document.fonts not supported — running immediately');
+  checkTitleOverflow();
+}
+
+window.addEventListener('resize', () => {
+  console.log('[title-scroll] resize fired');
+  checkTitleOverflow();
+});
 </script>
   <script>
 const el = document.querySelector('.product_list-wrapper');
