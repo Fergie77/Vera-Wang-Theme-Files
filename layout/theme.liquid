@@ -130,30 +130,7 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
     background: #000000;
   }
 </style>
-  <style>
-@keyframes title-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(var(--scroll-distance, 0)); }
-}
 
-.product-item_title > .title-scroll {
-  display: inline-block;
-  white-space: nowrap;
-}
-
-@media (max-width: 479px) and (orientation: portrait) {
-  .product-item_title {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-  }
-
-  .product-item_title.is-overflowing > .title-scroll {
-    animation: title-scroll 12s ease-in-out infinite alternate;
-  }
-}
-</style>
 <script src="{{ 'li_helper.js' | asset_url }}" type="text/javascript"></script>{{ content_for_header }}</head>
 <body class="body">
   <div class="page-wrapper">
@@ -229,59 +206,7 @@ End Google Tag Manager (noscript)  -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="{{ 'section-rendering.js' | asset_url }}"></script>
   {% render 'search_javascript' %}
-<script>
-const checkTitleOverflow = () => {
-  const titles = document.querySelectorAll('.product-item_title');
-  if (!titles.length) return;
 
-  // Build an off-screen measurer that inherits font from a real title
-  const measurer = document.createElement('span');
-  Object.assign(measurer.style, {
-    position: 'absolute',
-    visibility: 'hidden',
-    whiteSpace: 'nowrap',
-    left: '-99999px',
-    top: '0',
-    pointerEvents: 'none',
-  });
-  document.body.appendChild(measurer);
-
-  titles.forEach(el => {
-    if (!el.querySelector('.title-scroll')) {
-      el.innerHTML = `<span class="title-scroll">${el.textContent}</span>`;
-    }
-
-    const inner = el.querySelector('.title-scroll');
-    const cs = getComputedStyle(inner);
-
-    // Copy font + spacing properties to measurer
-    measurer.style.font = cs.font;
-    measurer.style.letterSpacing = cs.letterSpacing;
-    measurer.style.textTransform = cs.textTransform;
-    measurer.style.fontKerning = cs.fontKerning;
-    measurer.textContent = inner.textContent;
-
-    const naturalWidth = measurer.getBoundingClientRect().width;
-    const containerWidth = el.clientWidth;
-    const overflow = naturalWidth - containerWidth;
-
-    console.log(`[title-scroll] "${inner.textContent.slice(0, 25)}" — natural: ${naturalWidth.toFixed(1)}, container: ${containerWidth}, overflow: ${overflow.toFixed(1)}`);
-
-    if (overflow > 0) {
-      inner.style.setProperty('--scroll-distance', `-${Math.ceil(overflow)}px`);
-      el.classList.add('is-overflowing');
-    } else {
-      inner.style.removeProperty('--scroll-distance');
-      el.classList.remove('is-overflowing');
-    }
-  });
-
-  document.body.removeChild(measurer);
-};
-
-document.fonts.ready.then(checkTitleOverflow);
-window.addEventListener('resize', checkTitleOverflow);
-</script>
   <script>
 const el = document.querySelector('.product_list-wrapper');
 const wrapper = el.querySelector('.w-dyn-items');
