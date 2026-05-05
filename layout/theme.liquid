@@ -266,9 +266,6 @@ const checkTitleOverflow = () => {
   });
 };
 
-document.fonts.ready.then(checkTitleOverflow);
-window.addEventListener('resize', checkTitleOverflow);
-
 const inner = document.querySelector('.product-item_title.is-overflowing > .title-scroll');
 if (!inner) {
   console.log('[title-scroll] no .is-overflowing element to inspect');
@@ -284,6 +281,11 @@ if (!inner) {
   console.log('[title-scroll] parent classList:', parent.className);
   console.log('[title-scroll] matchMedia matches:', matchMedia('(max-width: 479px) and (orientation: portrait)').matches);
 }
+
+document.fonts.ready.then(checkTitleOverflow);
+window.addEventListener('resize', checkTitleOverflow);
+
+
 </script>
   <script>
 const el = document.querySelector('.product_list-wrapper');
