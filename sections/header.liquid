@@ -852,8 +852,8 @@ closeButton.addEventListener('click', close);
     </template>
                                         </div>
                                       </div>
-                                      <div class="mini-cart_main-text-size text-color-grey"><span>Colour</span> <span li-js-object="product.options_with_values[0].value" class="text-weight-light" x-text="product.options_with_values[0].value">L</span></div>
-                                      <div class="mini-cart_main-text-size text-color-grey"><span>Size</span> <span li-js-object="product.options_with_values[1].value" class="text-weight-light" x-text="product.options_with_values[1].value">L</span></div>
+                                      <div class="mini-cart_main-text-size text-color-grey"><span>Colour</span> <span li-js-object="product.options_with_values[1].value" class="text-weight-light" x-text="product.options_with_values[1].value">L</span></div>
+                                      <div class="mini-cart_main-text-size text-color-grey"><span>Size</span> <span li-js-object="product.options_with_values[0].value" class="text-weight-light" x-text="product.options_with_values[0].value">L</span></div>
                                     </div>
                                     <div class="mini-cart_line-item_quantity">
                                       <a li-element="mini-cart-item-decrease" href="#" class="mini-cart_line-item_quantity-adjust" :productprop="product" @click="$dispatch('decreasecartitem', { product: product.key, quantity: product.quantity, action: 'decrease' })">-</a><input li-element="mini-cart-item-quantity" class="mini-cart_line-item_quantity-adjust" value="1" :productprop="product" @input="$dispatch('setcartitem', { product: product.key, quantity: product.quantity })" x-model="product.quantity">
@@ -1065,6 +1065,10 @@ closeButton.addEventListener('click', close);
 }
 .predictive-search_overflow.is-fixed.is-open ~ .nav_predictive-search-close-blur {
   opacity: 1;
+}
+.nav_component:has(.nav_mini-cart-holder.w--open) .nav_logo-link:not(.is-slide-out) {
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 </style>
         </div>
