@@ -58,9 +58,9 @@
         "url_cta_link": "shopify://collections/aw-26",
         "text_label": "ELEVATED CONTEMPORARY WOMENSWEAR",
         "text_heading": "Autumn Winter 2026",
-        "text_subheading": "Subhead Copy",
+        "text_subheading": "",
         "text_cta_text": "Explore New Season",
-        "image_image": "shopify://shop_images/Campaign-Boyfriend-Shirt_VWWASH03-Vw-Tie_VWWASH09-0192_1.png"
+        "image_image": "shopify://shop_images/Campaign-Boyfriend-Shirt_VWWASH03-Vw-Tie_VWWASH09-0192_1_copy.jpg"
       }
     },
     "featured_wide": {
@@ -129,7 +129,7 @@
     "featured_3": {
       "type": "featured_3",
       "settings": {
-        "image_image": "shopify://shop_images/Lookbook-00_SHOT-0880-2.jpg",
+        "image_image": "shopify://shop_images/Campaign_-Miles_VWWATJ05-Double-Cuff_VWWASH04-Iowa-zip_VWWATR01-0045_1_copy_c144acfb-0c0c-436a-9f45-045b8aa77938.jpg",
         "text_heading": "Handbags",
         "text_subheading": "Made in Italy",
         "collection_collection": "handbags",
