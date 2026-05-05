@@ -18,11 +18,11 @@
     "image_with_text": {
       "type": "image_with_text",
       "settings": {
-        "text_cta_text": "Shop the collection",
+        "text_cta_text": "",
         "text_color": "#000000",
         "image_image_left": "shopify://shop_images/VW_Tests_1.7.1_copy.jpg",
         "image_image_right": "shopify://shop_images/VW_Tests_1.11.3_copy.jpg",
-        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR.<br/>NOW AVAILABLE ONLINE AND IN RETAIL  </p>",
+        "richtext_paragraph": "<p>VERA WANG READY TO WEAR NOW AVAILABLE ONLINE</p>",
         "url_cta_link": "shopify://collections/aw-26"
       }
     },
