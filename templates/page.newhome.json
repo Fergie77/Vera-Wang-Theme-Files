@@ -155,7 +155,8 @@
         "social-sign-up"
       ],
       "settings": {
-        "image_position": "is-left"
+        "image_image": "shopify://shop_images/Frame_175.png",
+        "image_position": "is-right is-spun"
       }
     }
   },
