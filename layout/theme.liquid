@@ -136,11 +136,6 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
   to   { text-indent: -100%; }
 }
 @media (max-width: 479px) and (orientation: portrait) {
-  .product-item_title {
-    display: block;
-    overflow: hidden;
-    white-space: nowrap;
-  }
   .product-item_title.is-overflowing {
     display: block;
     overflow: hidden;
@@ -225,9 +220,25 @@ End Google Tag Manager (noscript)  -->
   <script src="{{ 'section-rendering.js' | asset_url }}"></script>
   {% render 'search_javascript' %}
   <script>
-document.querySelectorAll('.product-item_title').forEach(el => {
-  if (el.scrollWidth > el.clientWidth) el.classList.add('is-overflowing');
-});
+const checkTitleOverflow = () => {
+  document.querySelectorAll('.product-item_title').forEach(el => {
+    const prev = el.style.whiteSpace;
+    el.style.whiteSpace = 'nowrap';
+    const overflow = el.scrollWidth - el.clientWidth;
+    el.style.whiteSpace = prev;
+
+    if (overflow > 0) {
+      el.style.setProperty('--scroll-distance', `-${overflow}px`);
+      el.classList.add('is-overflowing');
+    } else {
+      el.style.removeProperty('--scroll-distance');
+      el.classList.remove('is-overflowing');
+    }
+  });
+};
+
+document.fonts.ready.then(checkTitleOverflow);
+window.addEventListener('resize', checkTitleOverflow);
 </script>
   <script>
 const el = document.querySelector('.product_list-wrapper');
