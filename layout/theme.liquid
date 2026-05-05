@@ -230,61 +230,57 @@ End Google Tag Manager (noscript)  -->
   <script src="{{ 'section-rendering.js' | asset_url }}"></script>
   {% render 'search_javascript' %}
 <script>
-console.log('[title-scroll] script loaded');
-
 const checkTitleOverflow = () => {
   const titles = document.querySelectorAll('.product-item_title');
-  console.log(`[title-scroll] found ${titles.length} titles`);
   if (!titles.length) return;
 
-  titles.forEach((el, i) => {
+  // Build an off-screen measurer that inherits font from a real title
+  const measurer = document.createElement('span');
+  Object.assign(measurer.style, {
+    position: 'absolute',
+    visibility: 'hidden',
+    whiteSpace: 'nowrap',
+    left: '-99999px',
+    top: '0',
+    pointerEvents: 'none',
+  });
+  document.body.appendChild(measurer);
+
+  titles.forEach(el => {
     if (!el.querySelector('.title-scroll')) {
-      const text = el.textContent;
-      el.innerHTML = `<span class="title-scroll">${text}</span>`;
-      console.log(`[title-scroll] #${i} wrapped "${text.slice(0, 30)}"`);
+      el.innerHTML = `<span class="title-scroll">${el.textContent}</span>`;
     }
 
     const inner = el.querySelector('.title-scroll');
-    const innerW = inner.scrollWidth;
-    const outerW = el.clientWidth;
-    const overflow = innerW - outerW;
+    const cs = getComputedStyle(inner);
 
-    console.log(`[title-scroll] #${i} "${el.textContent.trim().slice(0, 30)}" — inner: ${innerW}, outer: ${outerW}, overflow: ${overflow}`);
+    // Copy font + spacing properties to measurer
+    measurer.style.font = cs.font;
+    measurer.style.letterSpacing = cs.letterSpacing;
+    measurer.style.textTransform = cs.textTransform;
+    measurer.style.fontKerning = cs.fontKerning;
+    measurer.textContent = inner.textContent;
+
+    const naturalWidth = measurer.getBoundingClientRect().width;
+    const containerWidth = el.clientWidth;
+    const overflow = naturalWidth - containerWidth;
+
+    console.log(`[title-scroll] "${inner.textContent.slice(0, 25)}" — natural: ${naturalWidth.toFixed(1)}, container: ${containerWidth}, overflow: ${overflow.toFixed(1)}`);
 
     if (overflow > 0) {
-      el.style.setProperty('--scroll-distance', `-${Math.ceil(overflow)}px`);
+      inner.style.setProperty('--scroll-distance', `-${Math.ceil(overflow)}px`);
       el.classList.add('is-overflowing');
-      console.log(`[title-scroll] #${i} → animating`);
-
-      // Verify the animation is actually applied
-      const animationName = getComputedStyle(inner).animationName;
-      console.log(`[title-scroll] #${i} inner animationName: "${animationName}"`);
     } else {
-      el.style.removeProperty('--scroll-distance');
+      inner.style.removeProperty('--scroll-distance');
       el.classList.remove('is-overflowing');
     }
   });
-  
-  const inner = document.querySelector('.product-item_title.is-overflowing > .title-scroll');
-if (!inner) {
-  console.log('[title-scroll] no .is-overflowing element to inspect');
-} else {
-  const cs = getComputedStyle(inner);
-  const parent = inner.parentElement;
-  const parentCS = getComputedStyle(parent);
-  console.log('[title-scroll] inner animationName:', cs.animationName);
-  console.log('[title-scroll] inner animationDuration:', cs.animationDuration);
-  console.log('[title-scroll] inner animationPlayState:', cs.animationPlayState);
-  console.log('[title-scroll] inner --scroll-distance:', cs.getPropertyValue('--scroll-distance'));
-  console.log('[title-scroll] parent --scroll-distance:', parentCS.getPropertyValue('--scroll-distance'));
-  console.log('[title-scroll] parent classList:', parent.className);
-  console.log('[title-scroll] matchMedia matches:', matchMedia('(max-width: 479px) and (orientation: portrait)').matches);
-}
+
+  document.body.removeChild(measurer);
 };
 
 document.fonts.ready.then(checkTitleOverflow);
 window.addEventListener('resize', checkTitleOverflow);
-
 </script>
   <script>
 const el = document.querySelector('.product_list-wrapper');
