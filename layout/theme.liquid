@@ -132,14 +132,15 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
 </style>
   <style>
 @keyframes title-scroll {
-  from { text-indent: 0; }
-  to   { text-indent: -100%; }
+  from { transform: translateX(0); }
+  to   { transform: translateX(var(--scroll-distance, 0)); }
 }
+
 @media (max-width: 479px) and (orientation: portrait) {
   .product-item_title.is-overflowing {
-    display: block;
-    overflow: hidden;
-    white-space: nowrap;
+    display: block !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
     animation: title-scroll 12s ease-in-out infinite alternate;
   }
 }
