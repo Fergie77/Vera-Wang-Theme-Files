@@ -115,10 +115,10 @@
     "blog_posts": {
       "type": "blog_posts",
       "settings": {
-        "text_heading": "Diary",
+        "text_heading": "Vera's World",
         "article_article": "diary/the-history",
-        "text_cta_text": "Read More",
-        "url_cta_link": ""
+        "text_cta_text": "Discover Vera's World",
+        "url_cta_link": "shopify://blogs/diary"
       }
     },
     "featured_3": {
