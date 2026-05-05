@@ -25,6 +25,7 @@
       "block_order": [
         "social_media_8X6w4X"
       ],
+      "disabled": true,
       "name": "Footer",
       "settings": {
         "text_heading": "Join our Newsletter(Replace with Klaviyo)",
