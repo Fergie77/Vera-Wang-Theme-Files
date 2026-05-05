@@ -2,7 +2,7 @@
           <div class="header_background-image">
             {% if section.settings.video_left %}    <div li-if="section.settings.video_left" class="display-contents">
     
-              <div li-object="section.settings.video_left | video_tag: controls: false, autoplay:true, loop:true, width: '100%'" class="header_background-image_item">{{ section.settings.video_left | video_tag: controls: false, autoplay:true, loop:true, width: '100%' }}</div>
+              <div li-object="section.settings.video_left | video_tag: controls: false, autoplay:true, loop:true, width: '100%'" class="header_background-image_item is-left">{{ section.settings.video_left | video_tag: controls: false, autoplay:true, loop:true, width: '100%' }}</div>
                 </div>
 {% endif %}
             <div class="cta-text is-absolute" style="color:{{section.settings.text_color}}">
@@ -11,9 +11,9 @@
             
             {% unless section.settings.video_left %}    <div li-unless="section.settings.video_left" class="display-contents">
     {% if section.settings.image_image_left %}
-{{ section.settings.image_image_left | image_url: width: 2000 | image_tag: loading: 'lazy', class: 'header_background-image_item' }}
+{{ section.settings.image_image_left | image_url: width: 2000 | image_tag: loading: 'lazy', class: 'header_background-image_item is-left' }}
 {% else %}
- {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item' }} 
+ {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-left' }} 
 {% endif %}    </div>
 {% endunless %}
             
