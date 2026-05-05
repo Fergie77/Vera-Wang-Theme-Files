@@ -10,6 +10,12 @@
           {% assign _rl = '#000000' %}
           {% assign _rb = '#ffffff' %}
           {% endif %}
+          {% if template.name == 'contact' %}
+          {% assign _ll = '#FFFFFF' %}
+          {% assign _lb = 'transparent' %}
+          {% assign _rl = '#FFFFFF' %}
+          {% assign _rb = 'transparent' %}
+          {% endif %}
           {% assign ll = product.metafields.nav.left_link_color | default: page.metafields.nav.left_link_color | default: _ll %}
           {% assign rl = product.metafields.nav.right_link_color | default: page.metafields.nav.right_link_color | default: _rl %}
           {% assign sl = product.metafields.nav.scroll_link_color | default: page.metafields.nav.scroll_link_color | default: _sl %}
