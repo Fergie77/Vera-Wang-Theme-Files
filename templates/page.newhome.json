@@ -32,7 +32,8 @@
         "text_heading": "Headline Copy",
         "text_subheading": "Subheading Copy",
         "url_button_link": "",
-        "text_link_text": "Shop the collection",
+        "image_image": "shopify://shop_images/VW_Tests_1.7.1_copy.jpg",
+        "text_link_text": "",
         "text_color": "#000000",
         "collection_collection": "dresses",
         "collection_collection_limit": 6
@@ -43,9 +44,9 @@
       "settings": {
         "url_cta_link": "",
         "text_label": "THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE",
-        "text_heading": "Heading Copy",
+        "text_heading": "Autumn Winter 2026",
         "text_subheading": "Subhead Copy",
-        "text_cta_text": "Call to action link"
+        "text_cta_text": "Explore New Season"
       }
     },
     "featured_wide": {
