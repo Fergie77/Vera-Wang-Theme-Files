@@ -216,7 +216,7 @@
                   <div class="container-large">
                     <div class="filter_product-list-wrapper w-dyn-list">
                       <div role="list" class="filter_product-list w-dyn-items">
-                        {% for product in collection.products limit:12 %}    <div li-for="product in collection.products limit:12" role="listitem" class="filter_product-list-item w-dyn-item">
+                        {% for product in collection.products limit: section.settings.products_before_block %}    <div li-for="product in collection.products limit: section.settings.products_before_block" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
                           
                             <div class="display-contents">
@@ -276,7 +276,7 @@
                     <div class="container-large">
                       <div class="filter_product-list-wrapper w-dyn-list">
                         <div role="list" class="filter_product-list w-dyn-items">
-                          {% for product in collection.products limit:12 offset: 12 %}    <div li-for="product in collection.products limit:12 offset: 12" role="listitem" class="filter_product-list-item w-dyn-item">
+                          {% for product in collection.products offset: section.settings.products_before_block %}    <div li-for="product in collection.products offset: section.settings.products_before_block" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
                             
                             {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
@@ -409,6 +409,18 @@
                     "label": "Background Image"
                 }
             ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "header",
+            "content": "Layout"
+        },
+        {
+            "id": "products_before_block",
+            "type": "number",
+            "label": "Products before featured block",
+            "default": 12
         }
     ],
     "presets": [
