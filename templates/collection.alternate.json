@@ -32,7 +32,8 @@
           "type": "block",
           "name": "Block",
           "settings": {
-            "url_link": ""
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_796.jpg"
           },
           "blocks": {}
         },
@@ -40,14 +41,16 @@
           "type": "block",
           "name": "Block",
           "settings": {
-            "url_link": ""
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_797.jpg"
           },
           "blocks": {}
         },
         "block_cJtgdU": {
           "type": "block",
           "settings": {
-            "url_link": ""
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_798.jpg"
           },
           "blocks": {}
         }
