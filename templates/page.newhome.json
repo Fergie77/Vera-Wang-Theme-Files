@@ -11,27 +11,50 @@
   "sections": {
     "nav_settings": {
       "type": "nav_settings",
-      "settings": {}
+      "settings": {
+        "nav_scroll_animation": true
+      }
     },
     "image_with_text": {
       "type": "image_with_text",
-      "settings": {}
-    },
-    "full_width_hero": {
-      "type": "full_width_hero",
-      "settings": {}
+      "settings": {
+        "text_cta_text": "Shop the collection",
+        "text_color": "#000000",
+        "image_image_left": "shopify://shop_images/VW_Tests_1.7.1_copy.jpg",
+        "image_image_right": "shopify://shop_images/VW_Tests_1.11.3_copy.jpg",
+        "richtext_paragraph": "<p>OUR COLLECTION OF AUTUMN WINTER 26 OUTERWEAR.<br/>NOW AVAILABLE ONLINE AND IN RETAIL  </p>",
+        "url_cta_link": ""
+      }
     },
     "featured_products": {
       "type": "featured_products",
-      "settings": {}
+      "settings": {
+        "text_heading": "Headline Copy",
+        "text_subheading": "Subheading Copy",
+        "url_button_link": "",
+        "text_link_text": "Shop the collection",
+        "text_color": "#000000",
+        "collection_collection": "dresses",
+        "collection_collection_limit": 6
+      }
     },
     "cta_1": {
       "type": "cta_1",
-      "settings": {}
+      "settings": {
+        "url_cta_link": "",
+        "text_label": "THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE",
+        "text_heading": "Heading Copy",
+        "text_subheading": "Subhead Copy",
+        "text_cta_text": "Call to action link"
+      }
     },
     "featured_wide": {
       "type": "featured_wide",
-      "settings": {}
+      "settings": {
+        "url_cta_link": "",
+        "text_heading": "Handbags",
+        "text_cta_text": "Call to action button"
+      }
     },
     "styled_by_vera": {
       "type": "styled_by_vera",
@@ -39,29 +62,56 @@
         "block": {
           "type": "block",
           "name": "Block",
-          "settings": {}
+          "settings": {
+            "url_link": ""
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "block"
       ],
-      "settings": {}
+      "settings": {
+        "text_heading": "Styled By Vera Wang",
+        "text_cta_text": "View All The Looks",
+        "url_cta_link": ""
+      }
     },
     "featured_2": {
       "type": "featured_2",
-      "settings": {}
+      "settings": {
+        "text_heading": "Shoes",
+        "text_cta_text": "View More",
+        "collection_collection": "",
+        "collection_collection_limit": 6,
+        "text_cta_image_text": "Shop the collection"
+      }
     },
     "blog_posts": {
       "type": "blog_posts",
-      "settings": {}
+      "settings": {
+        "text_heading": "Diary",
+        "article_article": "",
+        "text_cta_text": "Read More",
+        "url_cta_link": ""
+      }
     },
     "featured_3": {
       "type": "featured_3",
-      "settings": {}
+      "settings": {
+        "text_heading": "Handbags Headline",
+        "text_subheading": "Subheading Copy",
+        "collection_collection": "",
+        "collection_collection_limit": 6,
+        "text_cta_text": "View More",
+        "href_sectionsettingscollection_collectionurl": ""
+      }
     },
     "spacer": {
       "type": "spacer",
-      "settings": {}
+      "settings": {
+        "spacer_size": "spacer-medium"
+      }
     },
     "content_2": {
       "type": "content_2",
@@ -69,13 +119,18 @@
         "social-sign-up": {
           "type": "social-sign-up",
           "name": "Social Sign Up",
-          "settings": {}
+          "settings": {
+            "text_heading": "Join Us",
+            "text_checkbox": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
+          }
         }
       },
       "block_order": [
         "social-sign-up"
       ],
-      "settings": {}
+      "settings": {
+        "image_position": "is-left"
+      }
     }
   },
   "layout": "theme",
@@ -83,7 +138,6 @@
   "order": [
     "nav_settings",
     "image_with_text",
-    "full_width_hero",
     "featured_products",
     "cta_1",
     "featured_wide",
