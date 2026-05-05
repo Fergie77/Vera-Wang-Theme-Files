@@ -46,7 +46,8 @@
         "text_label": "THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE",
         "text_heading": "Autumn Winter 2026",
         "text_subheading": "Subhead Copy",
-        "text_cta_text": "Explore New Season"
+        "text_cta_text": "Explore New Season",
+        "video": "shopify://files/videos/VW_MOTIONTEST_03_CROP.mp4"
       }
     },
     "featured_wide": {
@@ -54,22 +55,44 @@
       "settings": {
         "url_cta_link": "",
         "text_heading": "Handbags",
-        "text_cta_text": "Call to action button"
+        "text_cta_text": "Discover Handbags",
+        "background_video": "shopify://files/videos/VW_MOTIONTEST_03_CROP.mp4"
       }
     },
     "styled_by_vera": {
       "type": "styled_by_vera",
       "blocks": {
+        "block_gBqxGk": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_796.jpg"
+          },
+          "blocks": {}
+        },
+        "block_YxxCnV": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_797.jpg"
+          },
+          "blocks": {}
+        },
         "block": {
           "type": "block",
           "name": "Block",
           "settings": {
-            "url_link": ""
+            "url_link": "",
+            "image_image": "shopify://shop_images/image_798.jpg"
           },
           "blocks": {}
         }
       },
       "block_order": [
+        "block_gBqxGk",
+        "block_YxxCnV",
         "block"
       ],
       "settings": {
@@ -81,11 +104,12 @@
     "featured_2": {
       "type": "featured_2",
       "settings": {
-        "text_heading": "Shoes",
-        "text_cta_text": "View More",
-        "collection_collection": "",
+        "text_heading": "Knits",
+        "text_cta_text": "",
+        "collection_collection": "knitwear",
         "collection_collection_limit": 6,
-        "text_cta_image_text": "Shop the collection"
+        "image_image": "shopify://shop_images/VW_Tests_1.11.3_copy.jpg",
+        "text_cta_image_text": ""
       }
     },
     "blog_posts": {
