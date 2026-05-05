@@ -29,6 +29,7 @@
     },
     "image_with_text": {
       "type": "image_with_text",
+      "disabled": true,
       "settings": {
         "text_cta_text": "",
         "text_color": "#000000",
