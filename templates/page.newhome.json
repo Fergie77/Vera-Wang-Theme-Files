@@ -97,12 +97,13 @@
       ],
       "settings": {
         "text_heading": "Styled By Vera Wang",
-        "text_cta_text": "View All The Looks",
+        "text_cta_text": "EXPLORE THE LOOKS",
         "url_cta_link": ""
       }
     },
     "featured_2": {
       "type": "featured_2",
+      "disabled": true,
       "settings": {
         "text_heading": "Knits",
         "text_cta_text": "",
@@ -110,15 +111,6 @@
         "collection_collection_limit": 2,
         "image_image": "shopify://shop_images/VW_Tests_1.11.3_copy.jpg",
         "text_cta_image_text": ""
-      }
-    },
-    "blog_posts": {
-      "type": "blog_posts",
-      "settings": {
-        "text_heading": "Vera's World",
-        "article_article": "diary/the-history",
-        "text_cta_text": "Discover Vera's World",
-        "url_cta_link": "shopify://blogs/diary"
       }
     },
     "featured_3": {
@@ -133,8 +125,18 @@
         "href_sectionsettingscollection_collectionurl": ""
       }
     },
+    "blog_posts": {
+      "type": "blog_posts",
+      "settings": {
+        "text_heading": "Vera's World",
+        "article_article": "diary/the-history",
+        "text_cta_text": "Discover Vera's World",
+        "url_cta_link": "shopify://blogs/diary"
+      }
+    },
     "spacer": {
       "type": "spacer",
+      "disabled": true,
       "settings": {
         "spacer_size": "spacer-medium"
       }
@@ -170,8 +172,8 @@
     "featured_wide",
     "styled_by_vera",
     "featured_2",
-    "blog_posts",
     "featured_3",
+    "blog_posts",
     "spacer",
     "content_2"
   ]
