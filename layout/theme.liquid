@@ -137,10 +137,17 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
 }
 
 @media (max-width: 479px) and (orientation: portrait) {
+  /* parent of the title — break min-width: auto so it can shrink */
+  *:has(> .product-item_title.is-overflowing) {
+    min-width: 0 !important;
+  }
+
   .product-item_title.is-overflowing {
     display: block !important;
     overflow: hidden !important;
     white-space: nowrap !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
     animation: title-scroll 12s ease-in-out infinite alternate;
   }
 }
