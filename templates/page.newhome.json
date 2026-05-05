@@ -124,9 +124,10 @@
     "featured_3": {
       "type": "featured_3",
       "settings": {
-        "text_heading": "Handbags Headline",
-        "text_subheading": "Subheading Copy",
-        "collection_collection": "",
+        "image_image": "shopify://shop_images/Frame_157.jpg",
+        "text_heading": "Handbags",
+        "text_subheading": "Made in Italy",
+        "collection_collection": "handbags",
         "collection_collection_limit": 6,
         "text_cta_text": "View More",
         "href_sectionsettingscollection_collectionurl": ""
