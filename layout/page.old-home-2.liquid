@@ -130,6 +130,20 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
     background: #000000;
   }
 </style>
+  <style>
+@keyframes title-scroll {
+  from { text-indent: 0; }
+  to   { text-indent: -100%; }
+}
+@media (max-width: 479px) and (orientation: portrait) {
+  .product-item_title.is-overflowing {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: title-scroll 12s ease-in-out infinite alternate;
+  }
+}
+</style>
 <script src="{{ 'li_helper.js' | asset_url }}" type="text/javascript"></script>{{ content_for_header }}</head>
 <body>
   <div class="hide w-embed">
@@ -147,5 +161,10 @@ End Google Tag Manager (noscript)  -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="{{ 'section-rendering.js' | asset_url }}"></script>
   {% render 'search_javascript' %}
+  <script>
+document.querySelectorAll('.product-item_title').forEach(el => {
+  if (el.scrollWidth > el.clientWidth) el.classList.add('is-overflowing');
+});
+</script>
 </body>
 </html>
