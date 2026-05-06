@@ -2,7 +2,7 @@
           <div class="container-large">
             <div class="full-collection_layout">
               <h2 class="shop-the-look_heading">The entire Collection</h2>
-              <div li-for:inside="product in article.metafields.custom.products_collection.value" class="shop-the-look_list">
+              <div li-for:inside="product in article.metafields.custom.products_collection.value.products" class="shop-the-look_list">
         {% for product in article.metafields.custom.products_collection.value.products %}                            
                 
                             {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
