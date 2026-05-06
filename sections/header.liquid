@@ -991,7 +991,10 @@ closeButton.addEventListener('click', close);
   }
   .nav_container:has(.nav_menu-dropdown.is-hovered) > .nav_logo-link .wang-character,
   .nav_container:has(.nav_menu-dropdown.is-open) > .nav_logo-link .wang-character {
-    fill: white;
+    fill: white !important;
+  }
+  .nav_container:has(.predictive-search_overflow.is-fixed.is-open) > .nav_logo-link .wang-character {
+    fill: black !important;
   }
   .nav_container:has(.nav_menu-dropdown.is-hovered) > .nav_dropdown-list-blurred-background,
   .nav_container:has(.nav_menu-dropdown.is-open) > .nav_dropdown-list-blurred-background {
