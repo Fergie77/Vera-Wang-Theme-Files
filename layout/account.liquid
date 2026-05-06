@@ -131,16 +131,9 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
   }
 </style>
   <style>
-@keyframes title-scroll {
-  from { text-indent: 0; }
-  to   { text-indent: -100%; }
-}
 @media (max-width: 479px) and (orientation: portrait) {
-  .product-item_title.is-overflowing {
-    display: block;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: title-scroll 12s ease-in-out infinite alternate;
+  .filter_product-list-item.has-tall-title .product-item_title {
+    min-height: calc(2 * 1lh);
   }
 }
 </style>
@@ -167,9 +160,37 @@ End Google Tag Manager (noscript)  -->
   <script src="{{ 'section-rendering.js' | asset_url }}"></script>
   {% render 'search_javascript' %}
   <script>
-document.querySelectorAll('.product-item_title').forEach(el => {
-  if (el.scrollWidth > el.clientWidth) el.classList.add('is-overflowing');
-});
+const checkTitleOverflow = () => {
+  const titles = document.querySelectorAll('.product-item_title');
+  if (!titles.length) return;
+  const measurer = document.createElement('span');
+  Object.assign(measurer.style, {
+    position: 'absolute', visibility: 'hidden', whiteSpace: 'nowrap',
+    left: '-99999px', top: '0', pointerEvents: 'none',
+  });
+  document.body.appendChild(measurer);
+  // First pass: clear all flags, find overflowing titles
+  const items = [...document.querySelectorAll('.filter_product-list-item')];
+  items.forEach(item => item.classList.remove('has-tall-title'));
+  titles.forEach(el => {
+    const cs = getComputedStyle(el);
+    measurer.style.font = cs.font;
+    measurer.style.letterSpacing = cs.letterSpacing;
+    measurer.style.textTransform = cs.textTransform;
+    measurer.textContent = el.textContent;
+    const overflow = measurer.getBoundingClientRect().width - el.clientWidth;
+    if (overflow > 1) {
+      const item = el.closest('.filter_product-list-item');
+      const idx = items.indexOf(item);
+      const pairStart = idx - (idx % 2);
+      items[pairStart]?.classList.add('has-tall-title');
+      items[pairStart + 1]?.classList.add('has-tall-title');
+    }
+  });
+  document.body.removeChild(measurer);
+};
+document.fonts.ready.then(checkTitleOverflow);
+window.addEventListener('resize', checkTitleOverflow);
 </script>
 </body>
 </html>
