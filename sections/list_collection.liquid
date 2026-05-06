@@ -6,7 +6,7 @@
                 {% for collection in collections %}    <div li-for="collection in collections" role="listitem" class="collections_list-item w-dyn-item">
                                     
                   
-                            <a li-object:href="collection.url" href="{{ collection.url }}" class="collections_item w-inline-block"><img alt="" loading="lazy" li-object:src="collection.featured_image | image_url: width: 450" src="{{ collection.featured_image | image_url: width: 450 }}" class="collections_bg-image">
+                            <a li-object:href="collection.url" href="{{ collection.url }}" class="collections_item w-inline-block"><img li-object:alt="collection.featured_image.alt" loading="lazy" li-object:src="collection.featured_image | image_url: width: 450" src="{{ collection.featured_image | image_url: width: 450 }}" alt="{{ collection.featured_image.alt }}" class="collections_bg-image">
                     <div class="collections_overlay"></div>
                     <div class="collections_title">
                       <h2 li-object="collection.title" class="heading-style-h3 text-color-white">{{ collection.title }}</h2>

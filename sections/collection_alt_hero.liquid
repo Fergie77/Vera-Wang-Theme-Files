@@ -23,11 +23,11 @@
                   {% assign featured_product = collection.metafields.custom.featured_product.value %}
                   {% assign featured_product_image = collection.metafields.custom.featured_product_image %}
                   {% assign text_colour = collection.metafields.custom.featured_product_text_colour %}
-                  <div class="featured-products_collection-link-layout"><img li-object:src="featured_product_image.value | image_url: width: 2000" loading="lazy" alt="" src="{{ featured_product_image.value | image_url: width: 2000 }}" class="featured-products_collection-image">
+                  <div class="featured-products_collection-link-layout"><img li-object:src="featured_product_image.value | image_url: width: 2000" li-object:alt="featured_product_image.value.alt" alt="{{ featured_product_image.value.alt }}" src="{{ featured_product_image.value | image_url: width: 2000 }}" loading="lazy" class="featured-products_collection-image">
                     <a li-object:href="featured_product.url" href="{{ featured_product.url }}" class="featured-products_collection-link w-inline-block"></a>
                     <div class="featured-products_heading-wrapper" style="color: {{ text_colour }}">
                       <h2 li-object="featured_product.title" class="featured-products_heading">{{ featured_product.title }}</h2>
-                      <p class="featured-products_subheading">Subhead Copy</p>
+                      <p li-object="featured_product.subtitle" class="featured-products_subheading">{{ featured_product.subtitle }}</p>
                     </div>
                   </div>
                 </div>

@@ -11,7 +11,7 @@
                     {% for image in article.metafields.custom.images_row.value %}    <div li-for="image in article.metafields.custom.images_row.value" role="listitem" class="more_item w-dyn-item">
                                     
                       
-                            <div class="more_image-wrapper"><img alt="" loading="lazy" li-object:src="image | image_url: width: 2000 | placeholder: 'detailed-apparel-1'" src="{{ image | image_url: width: 2000 | placeholder: 'detailed-apparel-1' }}" class="more_image"></div>
+                            <div class="more_image-wrapper"><img li-object:alt="image.alt" loading="lazy" li-object:src="image | image_url: width: 2000 | placeholder: 'detailed-apparel-1'" src="{{ image | image_url: width: 2000 | placeholder: 'detailed-apparel-1' }}" alt="{{ image.alt }}" class="more_image"></div>
                             
                     
                         </div>
