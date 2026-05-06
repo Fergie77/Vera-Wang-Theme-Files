@@ -996,6 +996,9 @@ closeButton.addEventListener('click', close);
 .nav_container:has(.predictive-search_overflow.is-fixed.is-open) > .nav_logo-link .wang-character {
   fill: black !important;
 }
+.nav_mini-cart-holder.w--open .wang-character {
+  fill: black !important;
+}
   .nav_container:has(.nav_menu-dropdown.is-hovered) > .nav_dropdown-list-blurred-background,
   .nav_container:has(.nav_menu-dropdown.is-open) > .nav_dropdown-list-blurred-background {
     opacity: 1;
@@ -1080,7 +1083,7 @@ closeButton.addEventListener('click', close);
   opacity: 1;
 }
 .nav_component:has(.nav_mini-cart-holder.w--open) .nav_logo-link:not(.is-slide-out) {
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 </style>
