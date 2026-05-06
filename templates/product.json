@@ -82,7 +82,7 @@
           "type": "dropdown",
           "settings": {
             "text_heading": "Care Instructions",
-            "richtext_content": "<p>In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique.</p><p>‍</p><ul><li>Product description here</li><li>100% material composition</li><li>Colour: here</li><li>Washing instructions go here</li><li>Made in Country</li><li>Loose fit</li></ul><p></p><p>Model is 189cm/6'2 and is wearing a size M</p><p>Styled by Vera<br/></p>"
+            "richtext_content": "<p><strong>Wash:</strong> Machine Wash, Hand Wash</p><p><strong>Dry:</strong> Do Not Tumble Dry.</p><p><strong>Bleach:</strong> Do Not Bleach.</p><p><strong>Iron:</strong> Low Heat</p><p><strong>Dry Clean:</strong> Do Not Dry Clean.</p>"
           }
         },
         "dropdown_pX4iqR": {
