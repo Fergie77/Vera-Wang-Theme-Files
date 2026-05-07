@@ -75,7 +75,7 @@
           "type": "dropdown",
           "settings": {
             "text_heading": "Product Description",
-            "richtext_content": "<p>The Sheer Tank F28 </p><p></p><ul><li>100% Cotton</li><li>Colour: Black</li><li>Washing instructions go here</li><li>Made in Country</li><li>Loose fit</li></ul><p></p><p>Model is 189cm/6'2 and is wearing a size M</p><p>Styled by Vera<br/></p>"
+            "richtext_content": "{{ product.description }}"
           }
         },
         "dropdown_Dime4C": {
