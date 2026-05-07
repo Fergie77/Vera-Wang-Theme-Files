@@ -217,6 +217,9 @@ initGallery();
                       <div class="size-picker_header"><span>SELECT SIZE</span>
                         <a aria-label="Close size picker" data-drawer-close="" href="#" class="size-picker_close">×</a>
                       </div>
+                      <div class="size-picker_subheader">
+                        <a href="#" module-link="size-guide" data-drawer-close="" class="size-picker_size-guide">SIZE GUIDE</a>
+                      </div>
                       <div data-drawer-slot="" class="size-picker_slot"></div>
                     </div>
                   </div>
@@ -481,6 +484,62 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
         </div>
         <div class="w-embed">
+          <style>
+.size-picker_subheader {
+  padding: 0.75rem 1rem 0.5rem;
+}
+.size-picker_size-guide {
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  color: #000;
+}
+@media screen and (max-width: 767px) {
+  /* Hide the inline "Size:" label when portaled into the drawer */
+  .size-picker_slot .product-header_option > div:first-child {
+    display: none;
+  }
+  .size-picker_slot .product-header_option {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+  /* Stack radios vertically as full-width rows */
+  .size-picker_slot .product-header_radio-list {
+    display: block;
+    flex-direction: unset;
+    gap: 0;
+    margin: 0;
+  }
+  .size-picker_slot .product-header_radio {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+    border-top: 1px solid #eee;
+    cursor: pointer;
+  }
+  .size-picker_slot .product-header_radio:last-child {
+    border-bottom: 1px solid #eee;
+  }
+  /* Hide the visual radio dot */
+  .size-picker_slot .product-header_radio-button {
+    display: none;
+  }
+  /* Size label as muted text on the left */
+  .size-picker_slot .product-header_radio .w-form-label {
+    display: block;
+    font-size: 1.25rem;
+    color: #b3b3b3;
+    padding: 0;
+  }
+  /* Sold-out: dim further (uses input.data-disabled set by Liquify) */
+  .size-picker_slot .product-header_radio:has(input.data-disabled) .w-form-label {
+    color: #d6d6d6;
+  }
+}
+</style>
           <style>
 .size-picker_subheader {
   padding: 0.75rem 1rem 0.5rem;
