@@ -40,8 +40,8 @@
             "klaviyo_company_id": "VNrhCf",
             "klaviyo_form_id": "VxQwXJ",
             "form_background_color": "#ffffff",
-            "form_padding": 60,
-            "form_max_width": 500,
+            "form_padding": 50,
+            "form_max_width": 600,
             "image": "shopify://shop_images/Screenshot_2026-05-07_at_12.05.29.png"
           },
           "blocks": {}
