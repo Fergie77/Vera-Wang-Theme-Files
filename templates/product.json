@@ -82,7 +82,7 @@
           "type": "dropdown",
           "settings": {
             "text_heading": "Care Instructions",
-            "richtext_content": "<p><strong>Wash:</strong> Machine Wash, Hand Wash</p><p><strong>Dry:</strong> Do Not Tumble Dry.</p><p><strong>Bleach:</strong> Do Not Bleach.</p><p><strong>Iron:</strong> Low Heat</p><p><strong>Dry Clean:</strong> Do Not Dry Clean.</p>"
+            "richtext_content": "<p>{{ product.metafields.custom.care_instructions.value }}</p>"
           }
         },
         "dropdown_pX4iqR": {
