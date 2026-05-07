@@ -17,6 +17,7 @@
     },
     "full_width_hero_gAhp8b": {
       "type": "full_width_hero",
+      "disabled": true,
       "name": "Full Width Hero",
       "settings": {
         "image_image": "shopify://shop_images/Campaign-Boyfriend-Shirt_VWWASH03-Vw-Tie_VWWASH09-0211_1.jpg",
@@ -41,6 +42,7 @@
     },
     "featured_products": {
       "type": "featured_products",
+      "disabled": true,
       "settings": {
         "text_heading": "AUTUMN WINTER 2026",
         "text_subheading": "READY TO WEAR",
@@ -54,6 +56,7 @@
     },
     "cta_1": {
       "type": "cta_1",
+      "disabled": true,
       "settings": {
         "url_cta_link": "shopify://collections/aw-26",
         "text_label": "ELEVATED CONTEMPORARY WOMENSWEAR",
@@ -65,6 +68,7 @@
     },
     "featured_wide": {
       "type": "featured_wide",
+      "disabled": true,
       "settings": {
         "url_cta_link": "shopify://collections/handbags",
         "text_heading": "Handbags",
@@ -108,6 +112,7 @@
         "block_YxxCnV",
         "block"
       ],
+      "disabled": true,
       "settings": {
         "text_heading": "Styled By Vera Wang",
         "text_cta_text": "EXPLORE THE LOOKS",
@@ -128,6 +133,7 @@
     },
     "featured_3": {
       "type": "featured_3",
+      "disabled": true,
       "settings": {
         "image_image": "shopify://shop_images/Campaign_-Miles_VWWATJ05-Double-Cuff_VWWASH04-Iowa-zip_VWWATR01-0045_1_copy_c144acfb-0c0c-436a-9f45-045b8aa77938.jpg",
         "text_heading": "Handbags",
@@ -140,6 +146,7 @@
     },
     "blog_posts": {
       "type": "blog_posts",
+      "disabled": true,
       "settings": {
         "text_heading": "Vera's World",
         "article_article": "diary/the-history",
@@ -169,10 +176,63 @@
       "block_order": [
         "social-sign-up"
       ],
+      "disabled": true,
       "settings": {
         "image_image": "shopify://shop_images/Frame_175.png",
         "image_position": "is-right is-spun"
       }
+    },
+    "177814799876945021": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3394623_DDKX8R": {
+          "type": "ai_gen_block_3394623",
+          "settings": {
+            "klaviyo_company_id": "VNrhCf",
+            "klaviyo_form_id": "VxQwXJ",
+            "heading": "Join our newsletter",
+            "description": "<p>Subscribe to get special offers and updates.</p>",
+            "text_alignment": "center",
+            "desktop_width_percent": 100,
+            "background_color": "#ffffff",
+            "heading_color": "#000000",
+            "text_color": "#666666",
+            "heading_size": 32,
+            "text_size": 16,
+            "padding": 40,
+            "border_radius": 8,
+            "heading_spacing": 16,
+            "description_spacing": 24
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3394623_DDKX8R"
+      ],
+      "settings": {}
+    },
+    "1778148105d73f49e9": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b170435_LjjpmH": {
+          "type": "ai_gen_block_b170435",
+          "settings": {
+            "custom_html": "<div class=\"klaviyo-form-VxQwXJ\"></div>",
+            "desktop_width_percent": 100,
+            "padding": 20,
+            "border_radius": 0,
+            "background_color": "#ffffff",
+            "text_color": "#000000",
+            "font_size": 16
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b170435_LjjpmH"
+      ],
+      "settings": {}
     }
   },
   "layout": "theme",
@@ -189,6 +249,8 @@
     "featured_3",
     "blog_posts",
     "spacer",
-    "content_2"
+    "content_2",
+    "177814799876945021",
+    "1778148105d73f49e9"
   ]
 }
