@@ -639,9 +639,10 @@ figcaption {
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: var(--background-color--background-alternate);
-  background-color: #0000;
   width: 100%;
   min-height: 0;
+  color: var(--text-color--text-alternate);
+  background-color: #0000;
   margin-bottom: 0;
   padding: .5rem 1rem 0 0;
   font-size: clamp(.625rem, .553571rem + .357143vw, .875rem);
@@ -741,6 +742,7 @@ figcaption {
 }
 
 .container-large {
+  text-align: center;
   width: 100%;
   max-width: 110rem;
   margin-left: auto;
@@ -1143,12 +1145,16 @@ figcaption {
   position: relative;
 }
 
+.section_default {
+  padding-top: 10rem;
+}
+
 .default_wrapper {
   width: 100%;
   max-width: 48rem;
-  margin-top: 1rem;
-  margin-left: 0;
+  margin-left: auto;
   margin-right: auto;
+  display: flex;
 }
 
 .section_blog-list {
@@ -8319,6 +8325,10 @@ figcaption {
 
   .collections_overlay {
     background-image: linear-gradient(114deg, #111111b3 20%, #11111178);
+  }
+
+  .section_default {
+    padding-top: 3rem;
   }
 
   .blog_list {
