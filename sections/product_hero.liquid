@@ -155,7 +155,7 @@ initGallery();
                     {% if product.has_only_default_variant != true %}    <div li-if="product.has_only_default_variant != true" class="product-header_option-list">
     
                       <template x-for="(option, optionKey) in product.options" :key="optionKey">
-    <div x-bind:class="(option.toLowerCase()==='colour'||option.toLowerCase()==='color') ? 'is-colour-swatch' : ''" li-element="product-options-loop" class="product-header_option" data-ProductVariantsLoop="true">
+    <div x-bind:data-option="option" li-element="product-options-loop" x-bind:class="(option.toLowerCase()==='colour'||option.toLowerCase()==='color') ? 'is-colour-swatch' : ''" class="product-header_option" data-ProductVariantsLoop="true">
                         <div x-text="(option.toLowerCase()==='colour'||option.toLowerCase()==='color')   ? option + ': ' + (selected_or_first_available_variant?.options[optionKey] ?? '')   : option + ':'">Variant:</div>
                         <div class="product-header_radio-list"><template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
     <label x-bind:style="(option.toLowerCase()==='colour'||option.toLowerCase()==='color') ? {'--swatch': (window.colourHexMap?.[variantName] || variantName)} : {}" li-element="product-option-loop" class="product-header_radio w-radio">
@@ -189,6 +189,7 @@ initGallery();
             <div li-js-if="selected_or_first_available_variant.available" class="product-header_buy-wrappper">
         <input class="form_input is-quantity hide w-input" maxlength="256" name="quantity-4" li-element="add-to-cart-quantity" data-name="Quantity 4" placeholder="1" type="number" id="quantity-4" required="" x-model="quantity">
                           <a li-element="add-to-cart" href="#" class="button is-secondary w-button" @click="addToCart($event, true)" :disabled="!addToCartButton">Add to cart</a>
+                          <a data-select-size="" href="#" class="button is-secondary show-mobile-landscape">Select size</a>
                                 </div>
     </template>
                         <template x-if="!selected_or_first_available_variant.available">
@@ -208,6 +209,15 @@ initGallery();
                           <a module-link="shipping" href="#" class="product-header_link">Shipping and Returns</a>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  <div data-drawer="size-picker" class="size-picker_wrapper">
+                    <div data-drawer-backdrop="" class="size-picker_backdrop"></div>
+                    <div class="size-picker_panel">
+                      <div class="size-picker_header"><span>SELECT SIZE</span>
+                        <a aria-label="Close size picker" data-drawer-close="" href="#" class="size-picker_close">×</a>
+                      </div>
+                      <div data-drawer-slot="" class="size-picker_slot"></div>
                     </div>
                   </div>
                 {% endform %}
