@@ -20,7 +20,6 @@
       "disabled": true,
       "name": "Full Width Hero",
       "settings": {
-        "image_image": "shopify://shop_images/Campaign-Boyfriend-Shirt_VWWASH03-Vw-Tie_VWWASH09-0211_1.jpg",
         "text_heading": "Vera Wang Ready To Wear",
         "text_subheading": "",
         "text_cta_text": "Shop the collection",
@@ -195,6 +194,7 @@
       "block_order": [
         "klaviyo_email_marketing_sms_form_embed_block_bQbjWL"
       ],
+      "disabled": true,
       "custom_css": [
         ".klaviyo-form {max-width: 700px; margin: 40px auto 0 auto; padding-top: 40px;}",
         ".klaviyo-form h1,.klaviyo-form h2,.klaviyo-form h3 {text-align: center; font-size: 48px; line-height: 1.1;}",
