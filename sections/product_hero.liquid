@@ -439,6 +439,44 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+        </div>
+        <div class="w-embed w-script">
+          <script>
+(function(){
+  var slot = function(){ return document.querySelector('[data-drawer-slot]'); };
+  var sizeOpt = function(){ return document.querySelector('[data-option="Size" i]'); };
+  var origParent = null, origNext = null;
+  function open(){
+    var opt = sizeOpt(), target = slot();
+    if (!opt || !target) return;
+    if (!origParent){ origParent = opt.parentNode; origNext = opt.nextSibling; }
+    target.appendChild(opt);
+    document.body.setAttribute('data-drawer-open', 'size-picker');
+  }
+  function close(){
+    var opt = sizeOpt();
+    if (opt && origParent) origParent.insertBefore(opt, origNext);
+    origParent = null; origNext = null;
+    document.body.removeAttribute('data-drawer-open');
+  }
+  function setChosen(v){
+    if (v) document.body.setAttribute('data-size-chosen', 'true');
+    else document.body.removeAttribute('data-size-chosen');
+  }
+  document.addEventListener('click', function(e){
+    if (e.target.closest('[data-select-size]')){ e.preventDefault(); open(); return; }
+    if (e.target.closest('[data-drawer-close]') || e.target.matches('[data-drawer-backdrop]')) close();
+  });
+  document.addEventListener('change', function(e){
+    var input = e.target.closest('[li-element="product-option-input"]');
+    if (!input) return;
+    if (input.closest('[data-option="Size" i]')){ setChosen(true); close(); }
+    else { close(); setChosen(false); }
+  });
+  // Single-variant products: no gating needed
+  if (!sizeOpt()) setChosen(true);
+})();
+</script>
         </div> {% schema %} {
     "tag": "section",
     "name": "Product Hero",
