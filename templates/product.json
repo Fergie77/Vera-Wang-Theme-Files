@@ -89,7 +89,7 @@
           "type": "dropdown",
           "settings": {
             "text_heading": "Materials",
-            "richtext_content": "<p>100% Cotton</p>"
+            "richtext_content": "<p>{{ product.metafields.custom.material_type.value }}</p>"
           }
         }
       },
