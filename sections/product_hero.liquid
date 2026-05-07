@@ -473,8 +473,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (input.closest('[data-option="Size" i]')){ setChosen(true); close(); }
     else { close(); setChosen(false); }
   });
-  // Single-variant products: no gating needed
-  if (!sizeOpt()) setChosen(true);
+  // Single-variant products: no gating needed (defer until Alpine binds data-option)
+  document.addEventListener('alpine:initialized', function(){
+    if (!sizeOpt()) setChosen(true);
+  });
 })();
 </script>
         </div> {% schema %} {
