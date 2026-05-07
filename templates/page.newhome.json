@@ -19,7 +19,7 @@
       "type": "full_width_hero",
       "name": "Full Width Hero",
       "settings": {
-        "image_image": "shopify://shop_images/Campaign-Boyfriend-Shirt_VWWASH03-Vw-Tie_VWWASH09-0211_1.jpg",
+        "image_desktop_image": "shopify://shop_images/Campaign-Boyfriend-Shirt_VWWASH03-Vw-Tie_VWWASH09-0211_1.jpg",
         "text_heading": "Vera Wang Ready To Wear",
         "text_subheading": "",
         "text_cta_text": "Shop the collection",
