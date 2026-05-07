@@ -210,8 +210,10 @@ h1, h2, h3, h4, h5, h6, a, p, input {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.product-item_image-wrapper:hover .product-item_image.is-secondary {
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  .product-item_image-wrapper:hover .product-item_image.is-secondary {
+    opacity: 1;
+  }
 }
 .nav_logo-link.is-slide-out{
   transition-delay: 200ms;
