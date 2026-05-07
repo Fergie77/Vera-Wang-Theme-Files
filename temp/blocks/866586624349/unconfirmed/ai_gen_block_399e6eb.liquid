@@ -1,6 +1,166 @@
+{% doc %}
+  @prompt
+    Klaviyo embed html code block
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-klaviyo-embed-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-klaviyo-embed__container-{{ ai_gen_id }} {
+    width: 100%;
+  }
+
+  .ai-klaviyo-embed__placeholder-{{ ai_gen_id }} {
+    padding: 40px 20px;
+    background-color: #f4f4f4;
+    border: 2px dashed #cccccc;
+    border-radius: 8px;
+    text-align: center;
+    color: #666666;
+  }
+
+  .ai-klaviyo-embed__placeholder-title-{{ ai_gen_id }} {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: #333333;
+  }
+
+  .ai-klaviyo-embed__placeholder-text-{{ ai_gen_id }} {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .ai-klaviyo-embed__placeholder-code-{{ ai_gen_id }} {
+    display: inline-block;
+    background-color: #e8e8e8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 13px;
+    margin: 0 2px;
+  }
+{% endstyle %}
+
+<klaviyo-embed-{{ ai_gen_id }}
+  class="ai-klaviyo-embed-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-klaviyo-embed__container-{{ ai_gen_id }}">
+    {% if block.settings.klaviyo_html != blank %}
+      {{ block.settings.klaviyo_html }}
+    {% else %}
+      <div class="ai-klaviyo-embed__placeholder-{{ ai_gen_id }}">
+        <h3 class="ai-klaviyo-embed__placeholder-title-{{ ai_gen_id }}">Klaviyo form embed</h3>
+        <p class="ai-klaviyo-embed__placeholder-text-{{ ai_gen_id }}">
+          Paste your Klaviyo embed code in the
+          <span class="ai-klaviyo-embed__placeholder-code-{{ ai_gen_id }}">Klaviyo HTML code</span>
+          setting below to display your form here.
+        </p>
+      </div>
+    {% endif %}
+  </div>
+</klaviyo-embed-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class KlaviyoEmbed{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.loadKlaviyoScripts();
+      }
+
+      loadKlaviyoScripts() {
+        const container = this.querySelector('.ai-klaviyo-embed__container-{{ ai_gen_id }}');
+        if (!container) return;
+
+        const scripts = container.querySelectorAll('script');
+        scripts.forEach((oldScript) => {
+          const newScript = document.createElement('script');
+          Array.from(oldScript.attributes).forEach((attr) => {
+            newScript.setAttribute(attr.name, attr.value);
+          });
+          newScript.textContent = oldScript.textContent;
+          oldScript.parentNode.replaceChild(newScript, oldScript);
+        });
+      }
+    }
+
+    customElements.define('klaviyo-embed-{{ ai_gen_id }}', KlaviyoEmbed{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Klaviyo embed",
+  "settings": [
+    {
+      "type": "html",
+      "id": "klaviyo_html",
+      "label": "Klaviyo HTML code",
+      "info": "Paste the embed code from your Klaviyo form"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Klaviyo embed"
+    }
+  ]
+}
 {% endschema %}
