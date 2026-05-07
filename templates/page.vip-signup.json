@@ -196,6 +196,29 @@
         "klaviyo_email_marketing_sms_form_embed_block_bQbjWL"
       ],
       "settings": {}
+    },
+    "blocks_wNxV9R": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b170435_L9GHYH": {
+          "type": "ai_gen_block_b170435",
+          "settings": {
+            "custom_html": "<div class=\"klaviyo-form-VxQwXJ\"></div>",
+            "desktop_width_percent": 100,
+            "padding": 20,
+            "border_radius": 0,
+            "background_color": "#ffffff",
+            "text_color": "#000000",
+            "font_size": 16
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b170435_L9GHYH"
+      ],
+      "name": "Custom HTML",
+      "settings": {}
     }
   },
   "layout": "theme",
@@ -213,6 +236,7 @@
     "blog_posts",
     "spacer",
     "content_2",
-    "1778148336be21b197"
+    "1778148336be21b197",
+    "blocks_wNxV9R"
   ]
 }
