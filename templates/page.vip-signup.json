@@ -182,55 +182,23 @@
         "image_position": "is-right is-spun"
       }
     },
-    "177814799876945021": {
+    "17781483242cd5f513": {
       "type": "_blocks",
       "blocks": {
-        "ai_gen_block_3394623_DDKX8R": {
-          "type": "ai_gen_block_3394623",
+        "ai_gen_block_399e6eb_qigThp": {
+          "type": "ai_gen_block_399e6eb",
           "settings": {
-            "klaviyo_company_id": "VNrhCf",
-            "klaviyo_form_id": "VxQwXJ",
-            "heading": "Join our newsletter",
-            "description": "<p>Subscribe to get special offers and updates.</p>",
-            "text_alignment": "center",
+            "klaviyo_html": "<div class=\"klaviyo-form-VxQwXJ\"></div>",
             "desktop_width_percent": 100,
+            "padding": 0,
             "background_color": "#ffffff",
-            "heading_color": "#000000",
-            "text_color": "#666666",
-            "heading_size": 32,
-            "text_size": 16,
-            "padding": 40,
-            "border_radius": 8,
-            "heading_spacing": 16,
-            "description_spacing": 24
+            "border_radius": 0
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_3394623_DDKX8R"
-      ],
-      "settings": {}
-    },
-    "1778148105d73f49e9": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_b170435_LjjpmH": {
-          "type": "ai_gen_block_b170435",
-          "settings": {
-            "custom_html": "<div class=\"klaviyo-form-VxQwXJ\"></div>",
-            "desktop_width_percent": 100,
-            "padding": 20,
-            "border_radius": 0,
-            "background_color": "#ffffff",
-            "text_color": "#000000",
-            "font_size": 16
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_b170435_LjjpmH"
+        "ai_gen_block_399e6eb_qigThp"
       ],
       "settings": {}
     }
@@ -250,7 +218,6 @@
     "blog_posts",
     "spacer",
     "content_2",
-    "177814799876945021",
-    "1778148105d73f49e9"
+    "17781483242cd5f513"
   ]
 }
