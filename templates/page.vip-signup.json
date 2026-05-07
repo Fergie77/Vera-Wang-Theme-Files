@@ -230,7 +230,7 @@
       "settings": {}
     }
   },
-  "layout": "theme",
+  "layout": "theme.old",
   "wrapper": "main.main-wrapper",
   "order": [
     "nav_settings",
