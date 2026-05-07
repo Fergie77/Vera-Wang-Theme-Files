@@ -1,6 +1,237 @@
+{% doc %}
+  @prompt
+    klaviyo embed form to the left, and image on the right. full width
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-klaviyo-embed-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  .ai-klaviyo-embed__container-{{ ai_gen_id }} {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+  }
+
+  .ai-klaviyo-embed__form-wrapper-{{ ai_gen_id }} {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ block.settings.form_background_color }};
+    padding: {{ block.settings.form_padding }}px;
+  }
+
+  .ai-klaviyo-embed__form-content-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: {{ block.settings.form_max_width }}px;
+  }
+
+  .ai-klaviyo-embed__image-wrapper-{{ ai_gen_id }} {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-klaviyo-embed__image-wrapper-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ai-klaviyo-embed__image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-klaviyo-embed__image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  .ai-klaviyo-embed__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ai-klaviyo-embed__form-placeholder-{{ ai_gen_id }} {
+    background-color: #f9f9f9;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #666;
+  }
+
+  .ai-klaviyo-embed__form-placeholder-{{ ai_gen_id }} p {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .ai-klaviyo-embed__form-placeholder-{{ ai_gen_id }} small {
+    font-size: 14px;
+    color: #999;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-klaviyo-embed__container-{{ ai_gen_id }} {
+      flex-direction: column;
+    }
+
+    .ai-klaviyo-embed__image-wrapper-{{ ai_gen_id }} {
+      min-height: 300px;
+    }
+  }
+{% endstyle %}
+
+<klaviyo-embed-{{ ai_gen_id }}
+  class="ai-klaviyo-embed-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-klaviyo-embed__container-{{ ai_gen_id }}">
+    <div class="ai-klaviyo-embed__form-wrapper-{{ ai_gen_id }}">
+      <div class="ai-klaviyo-embed__form-content-{{ ai_gen_id }}">
+        {% if block.settings.klaviyo_form_id != blank %}
+          <div class="klaviyo-form-{{ block.settings.klaviyo_form_id }}"></div>
+        {% else %}
+          <div class="ai-klaviyo-embed__form-placeholder-{{ ai_gen_id }}">
+            <p>Klaviyo Form</p>
+            <small>Add your Klaviyo form ID in the block settings</small>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="ai-klaviyo-embed__image-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.image %}
+        <img
+          src="{{ block.settings.image | image_url: width: 1500 }}"
+          alt="{{ block.settings.image.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.image.width }}"
+          height="{{ block.settings.image.height }}"
+        >
+      {% else %}
+        <div class="ai-klaviyo-embed__image-placeholder-{{ ai_gen_id }}">
+          {{ 'image' | placeholder_svg_tag }}
+          <div class="ai-klaviyo-embed__empty-state-{{ ai_gen_id }}">
+            Add an image to complete the layout
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</klaviyo-embed-{{ ai_gen_id }}>
+
+{% if block.settings.klaviyo_form_id != blank %}
+  <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ block.settings.klaviyo_company_id }}"></script>
+{% endif %}
+
+<script>
+  (function() {
+    class KlaviyoEmbed{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.initKlaviyo();
+      }
+
+      initKlaviyo() {
+        const formId = '{{ block.settings.klaviyo_form_id }}';
+        if (formId && window._klOnsite) {
+          window._klOnsite = window._klOnsite || [];
+          window._klOnsite.push(['openForm', formId]);
+        }
+      }
+    }
+
+    customElements.define('klaviyo-embed-{{ ai_gen_id }}', KlaviyoEmbed{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Klaviyo form with image",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Klaviyo form"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_company_id",
+      "label": "Klaviyo company ID",
+      "info": "Find this in your Klaviyo account settings"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_form_id",
+      "label": "Klaviyo form ID",
+      "info": "Enter the form ID from your Klaviyo embed code"
+    },
+    {
+      "type": "color",
+      "id": "form_background_color",
+      "label": "Form background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "form_padding",
+      "label": "Form padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "form_max_width",
+      "label": "Form max width",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 500
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Klaviyo form with image"
+    }
+  ]
+}
 {% endschema %}
