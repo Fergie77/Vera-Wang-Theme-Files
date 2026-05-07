@@ -6,8 +6,12 @@
                 </div>
 {% endif %}
             {% unless section.settings.video %}    <div li-unless="section.settings.video" class="display-contents">
-    {% if section.settings.image_image %}
-{{ section.settings.image_image | image_url: width: 2000 | image_tag: loading: 'lazy', class: 'header_background-image_item is-left' }}
+    {% if section.settings.image_desktop_image %}
+{{ section.settings.image_desktop_image | image_url: width: 2000 | image_tag: loading: 'lazy', class: 'header_background-image_item is-left' }}
+{% else %}
+ {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-left' }} 
+{% endif %}{% if section.settings.image_mobile_image %}
+{{ section.settings.image_mobile_image | image_url: width: 2000 | image_tag: loading: 'lazy', class: 'header_background-image_item is-left' }}
 {% else %}
  {{ 'detailed-apparel-1' | placeholder_svg_tag: 'header_background-image_item is-left' }} 
 {% endif %}    </div>
@@ -33,9 +37,14 @@
     "class": "section_header-home",
     "settings": [
         {
-            "id": "image_image",
+            "id": "image_desktop_image",
             "type": "image_picker",
-            "label": "Image"
+            "label": "Desktop Image"
+        },
+        {
+            "id": "image_mobile_image",
+            "type": "image_picker",
+            "label": "Mobile Image"
         },
         {
             "type": "header",
