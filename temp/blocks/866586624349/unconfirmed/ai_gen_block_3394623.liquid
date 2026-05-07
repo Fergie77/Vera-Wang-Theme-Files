@@ -1,6 +1,334 @@
+{% doc %}
+  @prompt
+    Klaviyo embed form
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-klaviyo-embed-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-klaviyo-embed__container-{{ ai_gen_id }} {
+    width: 100%;
+  }
+
+  .ai-klaviyo-embed__heading-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    margin: 0 0 {{ block.settings.heading_spacing }}px 0;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-klaviyo-embed__description-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    margin: 0 0 {{ block.settings.description_spacing }}px 0;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-klaviyo-embed__form-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+  }
+
+  .ai-klaviyo-embed__placeholder-{{ ai_gen_id }} {
+    background-color: #f4f4f4;
+    border: 2px dashed #cccccc;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #666666;
+  }
+
+  .ai-klaviyo-embed__placeholder-icon-{{ ai_gen_id }} {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    opacity: 0.5;
+  }
+
+  .ai-klaviyo-embed__placeholder-icon-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ai-klaviyo-embed__placeholder-title-{{ ai_gen_id }} {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #333333;
+  }
+
+  .ai-klaviyo-embed__placeholder-text-{{ ai_gen_id }} {
+    font-size: 14px;
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+  }
+
+  .ai-klaviyo-embed__placeholder-steps-{{ ai_gen_id }} {
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .ai-klaviyo-embed__placeholder-steps-{{ ai_gen_id }} ol {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .ai-klaviyo-embed__placeholder-steps-{{ ai_gen_id }} li {
+    margin-bottom: 8px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-klaviyo-embed-{{ ai_gen_id }} {
+      width: 100%;
+    }
+  }
+{% endstyle %}
+
+<klaviyo-embed-{{ ai_gen_id }}
+  class="ai-klaviyo-embed-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-klaviyo-embed__container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-klaviyo-embed__heading-{{ ai_gen_id }}">
+        {{ block.settings.heading }}
+      </h2>
+    {% endif %}
+
+    {% if block.settings.description != blank %}
+      <div class="ai-klaviyo-embed__description-{{ ai_gen_id }}">
+        {{ block.settings.description }}
+      </div>
+    {% endif %}
+
+    <div class="ai-klaviyo-embed__form-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.klaviyo_form_id != blank %}
+        <div class="klaviyo-form-{{ block.settings.klaviyo_form_id }}"></div>
+      {% else %}
+        <div class="ai-klaviyo-embed__placeholder-{{ ai_gen_id }}">
+          <div class="ai-klaviyo-embed__placeholder-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              <line x1="9" y1="10" x2="15" y2="10"></line>
+              <line x1="12" y1="7" x2="12" y2="13"></line>
+            </svg>
+          </div>
+          <h3 class="ai-klaviyo-embed__placeholder-title-{{ ai_gen_id }}">
+            Add your Klaviyo form
+          </h3>
+          <p class="ai-klaviyo-embed__placeholder-text-{{ ai_gen_id }}">
+            To display your Klaviyo form, follow these steps:
+          </p>
+          <div class="ai-klaviyo-embed__placeholder-steps-{{ ai_gen_id }}">
+            <ol>
+              <li>Log in to your Klaviyo account</li>
+              <li>Go to Sign-up Forms and select your form</li>
+              <li>Click on "Embed" and copy the Form ID</li>
+              <li>Paste the Form ID in the block settings</li>
+            </ol>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</klaviyo-embed-{{ ai_gen_id }}>
+
+{% if block.settings.klaviyo_form_id != blank %}
+  <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ block.settings.klaviyo_company_id }}"></script>
+{% endif %}
+
+<script>
+  (function() {
+    class KlaviyoEmbed{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        if (window.klaviyo) {
+          this.initializeKlaviyo();
+        } else {
+          window.addEventListener('klaviyoLoaded', () => {
+            this.initializeKlaviyo();
+          });
+        }
+      }
+
+      initializeKlaviyo() {
+        const formId = '{{ block.settings.klaviyo_form_id }}';
+        if (formId && window.klaviyo) {
+          window.klaviyo.push(['openForm', formId]);
+        }
+      }
+    }
+
+    customElements.define('klaviyo-embed-{{ ai_gen_id }}', KlaviyoEmbed{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Klaviyo form",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Klaviyo settings"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_company_id",
+      "label": "Klaviyo company ID",
+      "info": "Find this in your Klaviyo account settings"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_form_id",
+      "label": "Klaviyo form ID",
+      "info": "Get this from your Klaviyo form embed code"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join our newsletter"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Subscribe to get special offers and updates.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Heading spacing",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "description_spacing",
+      "label": "Description spacing",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Klaviyo form"
+    }
+  ]
+}
 {% endschema %}
