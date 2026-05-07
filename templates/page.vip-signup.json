@@ -182,23 +182,18 @@
         "image_position": "is-right is-spun"
       }
     },
-    "17781483242cd5f513": {
-      "type": "_blocks",
+    "1778148336be21b197": {
+      "type": "apps",
       "blocks": {
-        "ai_gen_block_399e6eb_qigThp": {
-          "type": "ai_gen_block_399e6eb",
+        "klaviyo_email_marketing_sms_form_embed_block_bQbjWL": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
           "settings": {
-            "klaviyo_html": "<div class=\"klaviyo-form-VxQwXJ\"></div>",
-            "desktop_width_percent": 100,
-            "padding": 0,
-            "background_color": "#ffffff",
-            "border_radius": 0
-          },
-          "blocks": {}
+            "formId": "<div class=\"klaviyo-form-VxQwXJ\"></div>"
+          }
         }
       },
       "block_order": [
-        "ai_gen_block_399e6eb_qigThp"
+        "klaviyo_email_marketing_sms_form_embed_block_bQbjWL"
       ],
       "settings": {}
     }
@@ -218,6 +213,6 @@
     "blog_posts",
     "spacer",
     "content_2",
-    "17781483242cd5f513"
+    "1778148336be21b197"
   ]
 }
