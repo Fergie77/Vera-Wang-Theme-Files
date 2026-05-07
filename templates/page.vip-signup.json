@@ -1,0 +1,194 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "nav_settings": {
+      "type": "nav_settings",
+      "settings": {
+        "nav_scroll_animation": true
+      }
+    },
+    "full_width_hero_gAhp8b": {
+      "type": "full_width_hero",
+      "name": "Full Width Hero",
+      "settings": {
+        "image_image": "shopify://shop_images/Campaign-Boyfriend-Shirt_VWWASH03-Vw-Tie_VWWASH09-0211_1.jpg",
+        "text_heading": "Vera Wang Ready To Wear",
+        "text_subheading": "",
+        "text_cta_text": "Shop the collection",
+        "text_color": "#ffffff",
+        "url_cta_link": "shopify://collections/aw-26"
+      }
+    },
+    "image_with_text": {
+      "type": "image_with_text",
+      "disabled": true,
+      "settings": {
+        "text_cta_text": "",
+        "text_color": "#000000",
+        "image_image_left": "shopify://shop_images/VW_Tests_1.7.1_copy.jpg",
+        "image_image_right": "shopify://shop_images/VW_Tests_1.11.3_copy.jpg",
+        "richtext_paragraph": "<p>VERA WANG READY TO WEAR NOW AVAILABLE ONLINE</p>",
+        "url_cta_link": "shopify://collections/aw-26"
+      }
+    },
+    "featured_products": {
+      "type": "featured_products",
+      "settings": {
+        "text_heading": "AUTUMN WINTER 2026",
+        "text_subheading": "READY TO WEAR",
+        "url_button_link": "shopify://collections/aw-26",
+        "image_image": "shopify://shop_images/Campaign-Boyfriend-Shirt_VWWASH03-Vw-Tie_VWWASH09-0010_1.jpg",
+        "text_link_text": "",
+        "text_color": "#000000",
+        "collection_collection": "dresses",
+        "collection_collection_limit": 6
+      }
+    },
+    "cta_1": {
+      "type": "cta_1",
+      "settings": {
+        "url_cta_link": "shopify://collections/aw-26",
+        "text_label": "ELEVATED CONTEMPORARY WOMENSWEAR",
+        "text_heading": "Autumn Winter 2026",
+        "text_subheading": "",
+        "text_cta_text": "Explore New Season",
+        "image_image": "shopify://shop_images/Campaign-Boyfriend-Shirt_VWWASH03-Vw-Tie_VWWASH09-0192_1_copy.jpg"
+      }
+    },
+    "featured_wide": {
+      "type": "featured_wide",
+      "settings": {
+        "url_cta_link": "shopify://collections/handbags",
+        "text_heading": "Handbags",
+        "text_cta_text": "Discover Handbags",
+        "background_video": "shopify://files/videos/VW_MOTIONTEST_03_CROP.mp4"
+      }
+    },
+    "styled_by_vera": {
+      "type": "styled_by_vera",
+      "blocks": {
+        "block_gBqxGk": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": "",
+            "image_image": "shopify://shop_images/Campaign-Cordy-Dress_VWWADR11-0080_1.jpg"
+          },
+          "blocks": {}
+        },
+        "block_YxxCnV": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": "",
+            "image_image": "shopify://shop_images/Campaign-Cordy-Dress_VWWADR11-0087_1.jpg"
+          },
+          "blocks": {}
+        },
+        "block": {
+          "type": "block",
+          "name": "Block",
+          "settings": {
+            "url_link": "",
+            "image_image": "shopify://shop_images/Campaign-Cordy-Dress_VWWADR11-0058_1.jpg"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "block_gBqxGk",
+        "block_YxxCnV",
+        "block"
+      ],
+      "settings": {
+        "text_heading": "Styled By Vera Wang",
+        "text_cta_text": "EXPLORE THE LOOKS",
+        "url_cta_link": ""
+      }
+    },
+    "featured_2": {
+      "type": "featured_2",
+      "disabled": true,
+      "settings": {
+        "text_heading": "Knits",
+        "text_cta_text": "",
+        "collection_collection": "knitwear",
+        "collection_collection_limit": 2,
+        "image_image": "shopify://shop_images/VW_Tests_1.11.3_copy.jpg",
+        "text_cta_image_text": ""
+      }
+    },
+    "featured_3": {
+      "type": "featured_3",
+      "settings": {
+        "image_image": "shopify://shop_images/Campaign_-Miles_VWWATJ05-Double-Cuff_VWWASH04-Iowa-zip_VWWATR01-0045_1_copy_c144acfb-0c0c-436a-9f45-045b8aa77938.jpg",
+        "text_heading": "Handbags",
+        "text_subheading": "Made in Italy",
+        "collection_collection": "handbags",
+        "collection_collection_limit": 2,
+        "text_cta_text": "View More",
+        "href_sectionsettingscollection_collectionurl": "/collections/handbags"
+      }
+    },
+    "blog_posts": {
+      "type": "blog_posts",
+      "settings": {
+        "text_heading": "Vera's World",
+        "article_article": "diary/the-history",
+        "text_cta_text": "Discover Vera's World",
+        "url_cta_link": "shopify://blogs/diary"
+      }
+    },
+    "spacer": {
+      "type": "spacer",
+      "disabled": true,
+      "settings": {
+        "spacer_size": "spacer-medium"
+      }
+    },
+    "content_2": {
+      "type": "content_2",
+      "blocks": {
+        "social-sign-up": {
+          "type": "social-sign-up",
+          "name": "Social Sign Up",
+          "settings": {
+            "text_heading": "Join Us",
+            "text_checkbox": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
+          }
+        }
+      },
+      "block_order": [
+        "social-sign-up"
+      ],
+      "settings": {
+        "image_image": "shopify://shop_images/Frame_175.png",
+        "image_position": "is-right is-spun"
+      }
+    }
+  },
+  "layout": "theme",
+  "wrapper": "main.main-wrapper",
+  "order": [
+    "nav_settings",
+    "full_width_hero_gAhp8b",
+    "image_with_text",
+    "featured_products",
+    "cta_1",
+    "featured_wide",
+    "styled_by_vera",
+    "featured_2",
+    "featured_3",
+    "blog_posts",
+    "spacer",
+    "content_2"
+  ]
+}
