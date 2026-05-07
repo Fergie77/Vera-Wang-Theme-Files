@@ -30,9 +30,31 @@
         "nav_scroll_animation": true,
         "menu": "main-menu"
       }
+    },
+    "17781504852623b4c7": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_72726d2_qDinG9": {
+          "type": "ai_gen_block_72726d2",
+          "settings": {
+            "klaviyo_company_id": "VNrhCf",
+            "klaviyo_form_id": "VxQwXJ",
+            "form_background_color": "#ffffff",
+            "form_padding": 60,
+            "form_max_width": 500,
+            "image": "shopify://shop_images/VWWAJS17_VERA_WANG_LOGO_HOODIE_BLACK_1.jpg"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_72726d2_qDinG9"
+      ],
+      "settings": {}
     }
   },
   "order": [
-    "header"
+    "header",
+    "17781504852623b4c7"
   ]
 }
