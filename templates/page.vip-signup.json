@@ -195,6 +195,14 @@
       "block_order": [
         "klaviyo_email_marketing_sms_form_embed_block_bQbjWL"
       ],
+      "custom_css": [
+        ".klaviyo-form {max-width: 700px; margin: 40px auto 0 auto; padding-top: 40px;}",
+        ".klaviyo-form h1,.klaviyo-form h2,.klaviyo-form h3 {text-align: center; font-size: 48px; line-height: 1.1;}",
+        ".klaviyo-form p {text-align: center;}",
+        ".klaviyo-form form {width: 100%;}",
+        ".klaviyo-form input,.klaviyo-form button {width: 100% !important;}",
+        ".klaviyo-form button {height: 56px; font-size: 18px;}"
+      ],
       "settings": {}
     },
     "blocks_wNxV9R": {
@@ -217,6 +225,7 @@
       "block_order": [
         "ai_gen_block_b170435_L9GHYH"
       ],
+      "disabled": true,
       "name": "Custom HTML",
       "settings": {}
     }
