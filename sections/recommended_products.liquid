@@ -30,23 +30,24 @@
         </div>
         <div class="hide w-embed w-script">
           <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const productRecommendationsSection = document.querySelector('.product-recommendations');
-    const url = productRecommendationsSection.dataset.url;
-    fetch(url)
-      .then(response => response.text())
-      .then(text => {
+document.addEventListener('DOMContentLoaded', function() {
+  const productRecommendationsSection = document.querySelector('.product-recommendations');
+  const url = productRecommendationsSection.dataset.url;
+  fetch(url)
+    .then(response => response.text())
+    .then(text => {
       const html = document.createElement('div');
       html.innerHTML = text;
       const recommendations = html.querySelector('.product-recommendations');
       if (recommendations && recommendations.innerHTML.trim().length) {
         productRecommendationsSection.innerHTML = recommendations.innerHTML;
+        productRecommendationsSection.querySelectorAll('[data-slider]').forEach(window.initSlider);
       }
     })
-      .catch(e => {
+    .catch(e => {
       console.error(e);
     });
-  });
+});
 </script>
         </div> {% schema %} {
     "tag": "section",
