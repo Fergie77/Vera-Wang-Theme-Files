@@ -14,8 +14,38 @@
                 </div>
               </div>
               <div class="product_list-wrapper is-four-column">
-                <ul data-slider-spacing="16" data-slider="product_list" data-slider-selector=".product_list-item" data-slider-origin="center" data-slider-breakpoint="small" data-slider-per-view="1.2" role="list" class="product_list w-list-unstyled">
-                  {% for product in recommendations.products %}    <li li-for="product in recommendations.products" class="product_list-item">
+                <ul role="list" class="product_list w-list-unstyled">
+                  {% for product in recommendations.products limit: 8 %}    <li li-for="product in recommendations.products limit: 8" class="product_list-item">
+                                    
+                    
+                            {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
+                            
+                  
+                        </li>
+{% endfor %}
+                </ul>
+                <ul role="list" class="product_list w-list-unstyled">
+                  {% for product in recommendations.products limit: 8 %}    <li li-for="product in recommendations.products limit: 8" class="product_list-item">
+                                    
+                    
+                            {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
+                            
+                  
+                        </li>
+{% endfor %}
+                </ul>
+                <ul role="list" class="product_list w-list-unstyled">
+                  {% for product in recommendations.products limit: 8 %}    <li li-for="product in recommendations.products limit: 8" class="product_list-item">
+                                    
+                    
+                            {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
+                            
+                  
+                        </li>
+{% endfor %}
+                </ul>
+                <ul role="list" class="product_list w-list-unstyled">
+                  {% for product in recommendations.products limit: 8 %}    <li li-for="product in recommendations.products limit: 8" class="product_list-item">
                                     
                     
                             {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}

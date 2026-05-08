@@ -1149,6 +1149,7 @@ figcaption {
 }
 
 .default_wrapper {
+  text-align: center;
   width: 100%;
   max-width: 48rem;
   margin-left: auto;
@@ -4737,7 +4738,7 @@ figcaption {
   letter-spacing: .04em;
   text-transform: uppercase;
   font-family: big-caslon-fb, sans-serif;
-  font-size: clamp(1.5625rem, 1.38393rem + .892857vw, 2.1875rem);
+  font-size: 2.1875rem;
   font-weight: 400;
   line-height: 1;
 }
@@ -5116,6 +5117,10 @@ figcaption {
   font-weight: 400;
 }
 
+.sbv_heading.heading-style-h2 {
+  font-size: 2.1875rem;
+}
+
 .blog_title-layout {
   grid-column-gap: .625rem;
   grid-row-gap: .625rem;
@@ -5143,6 +5148,10 @@ figcaption {
   padding-left: .5rem;
   font-family: big-caslon-fb, sans-serif;
   font-weight: 400;
+}
+
+.blog_heading.heading-style-h2 {
+  font-size: 2.1875rem;
 }
 
 .blog_link-layout {
@@ -8575,7 +8584,12 @@ figcaption {
   }
 
   .product_list-wrapper.is-four-column {
+    grid-column-gap: 0rem;
+    grid-row-gap: calc(var(--gap--global) * 2);
+    grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    display: grid;
   }
 
   .product_list {
@@ -9068,8 +9082,8 @@ figcaption {
   }
 
   .social-sign-up_grid {
-    grid-column-gap: 2rem;
-    grid-row-gap: 2rem;
+    grid-column-gap: 0rem;
+    grid-row-gap: 0rem;
     grid-template-columns: 1fr;
   }
 
@@ -9660,7 +9674,12 @@ figcaption {
   }
 
   .product_list-wrapper.is-four-column {
-    display: flex;
+    grid-column-gap: 0rem;
+    grid-row-gap: calc(var(--gap--global) * 2);
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    display: grid;
   }
 
   .spacer-xsmall {
@@ -9680,6 +9699,8 @@ figcaption {
   }
 
   .footer_main-wrapper {
+    grid-column-gap: 3rem;
+    grid-row-gap: 3rem;
     padding-top: 6rem;
   }
 
