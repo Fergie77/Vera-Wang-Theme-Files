@@ -389,13 +389,18 @@
     visibility: visible !important;
   }
 }
-  [data-search-close="true"] {
+html:has(.mini-cart-v2_overlay.is-open),
+html:has(.predictive-search_overflow.is-open),
+html:has([module].is-open) {
+  overflow: hidden;
+}
+[data-search-close="true"] {
   padding: 17px;
   margin: -17px;
   cursor: pointer;
   touch-action: manipulation;
 }
-  .predictive-search_overflow .predictive-search_mobile-header {
+.predictive-search_overflow .predictive-search_mobile-header {
   position: sticky;
   top: 0;
   z-index: 10;
