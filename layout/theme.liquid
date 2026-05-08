@@ -210,17 +210,20 @@ End Google Tag Manager (noscript)  -->
 (function () {
   function $ov() { return document.querySelector('[data-cart-overlay]'); }
   function $pn() { return document.querySelector('[data-cart-panel]'); }
+  function $bd() { return document.querySelector('[data-cart-close].mini-cart-v2_backdrop'); } // &larr; new
   function openCart() {
-    var ov = $ov(), pn = $pn();
+    var ov = $ov(), pn = $pn(), bd = $bd();
     if (ov) ov.classList.add('is-open');
     if (pn) pn.classList.add('is-open');
+    if (bd) bd.classList.add('is-open');                                                       // &larr; new
     document.body.setAttribute('data-cart-open', 'true');
     window.dispatchEvent(new CustomEvent('cartupdated'));
   }
   function closeCart() {
-    var ov = $ov(), pn = $pn();
+    var ov = $ov(), pn = $pn(), bd = $bd();
     if (ov) ov.classList.remove('is-open');
     if (pn) pn.classList.remove('is-open');
+    if (bd) bd.classList.remove('is-open');                                                    // &larr; new
     document.body.removeAttribute('data-cart-open');
   }
   document.addEventListener('click', function (e) {
