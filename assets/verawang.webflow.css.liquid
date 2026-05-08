@@ -1565,7 +1565,7 @@ figcaption {
   border-bottom: 1px none var(--base-color-neutral--neutral-lightest);
   justify-content: flex-end;
   align-items: center;
-  padding: 1rem 1.5rem 1.5rem;
+  padding: 2rem 1.5rem 1.5rem;
   display: flex;
   position: relative;
 }
@@ -7026,6 +7026,15 @@ figcaption {
   visibility: visible;
 }
 
+.mini-cart-v2_backdrop {
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  background-color: #0006;
+  position: absolute;
+  inset: 0;
+}
+
 .mini-cart-v2_panel {
   background-color: #fff;
   flex-direction: column;
@@ -7181,6 +7190,10 @@ figcaption {
 
   .mini-cart_component {
     width: 100%;
+  }
+
+  .mini-cart_header {
+    justify-content: space-between;
   }
 
   .nav_dropdown-close-icon.show-tablet {
@@ -8290,6 +8303,10 @@ figcaption {
     padding-right: 0;
     font-size: 16px;
   }
+
+  .mini-cart-v2_panel {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -8501,6 +8518,8 @@ figcaption {
 
   .mini-cart_header {
     flex: none;
+    padding-top: 0;
+    padding-right: 0;
   }
 
   .mini-cart_footer {
@@ -9407,6 +9426,13 @@ figcaption {
   .mini-cart-v2_panel.is-open {
     transform: translateY(0);
   }
+
+  .cart-header {
+    font-variation-settings: "wght" 500, "wdth" 100, "opsz" 12;
+    font-family: Helvetica Now Var, Arial, sans-serif;
+    font-size: .875rem;
+    font-weight: 500;
+  }
 }
 
 @media screen and (max-width: 479px) {
@@ -9624,9 +9650,8 @@ figcaption {
 
   .mini-cart_header {
     padding-top: 0;
-    padding-right: var(--gap--global);
+    padding-right: 0;
     padding-left: var(--padding--global);
-    justify-content: space-between;
   }
 
   .mini-cart_line-item_img {
@@ -9635,11 +9660,6 @@ figcaption {
 
   .mini-cart_full {
     height: 90dvh;
-  }
-
-  .mini-cart_line-item_product-info {
-    grid-column-gap: 0rem;
-    grid-row-gap: 0rem;
   }
 
   .nav_component {
@@ -9956,8 +9976,8 @@ figcaption {
   }
 
   .nav_dropdown-close-button {
+    margin-top: 0;
     position: relative;
-    top: .6rem;
   }
 
   .footer_sub-footer {
