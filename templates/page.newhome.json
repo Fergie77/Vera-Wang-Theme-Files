@@ -142,9 +142,9 @@
     "blog_posts": {
       "type": "blog_posts",
       "settings": {
-        "text_heading": "Vera's World",
+        "text_heading": "The World Of Vera Wang",
         "article_article": "diary/the-history",
-        "text_cta_text": "Discover Vera's World",
+        "text_cta_text": "",
         "url_cta_link": "shopify://blogs/diary"
       }
     },
