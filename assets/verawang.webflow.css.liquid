@@ -2436,7 +2436,7 @@ figcaption {
   padding-left: var(--padding--global);
   color: var(--base-color-neutral--black);
   background-color: #fff;
-  transition: transform .3s;
+  transition: transform .6s cubic-bezier(.455, .03, .515, .955);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -5901,7 +5901,7 @@ figcaption {
   pointer-events: auto;
   width: 50%;
   height: 100%;
-  transition: opacity .3s, transform .3s ease-in-out;
+  transition: opacity .6s, transform .6s cubic-bezier(.455, .03, .515, .955);
   position: relative;
   transform: translate(120%);
 }
@@ -7489,11 +7489,14 @@ figcaption {
   }
 
   .predictive-search_overflow.is-fixed {
+    opacity: 0;
     width: 100%;
+    transition: opacity .6s, transform .6s cubic-bezier(.455, .03, .515, .955);
   }
 
   .predictive-search_overflow.is-fixed.is-open {
     z-index: 2;
+    opacity: 100;
   }
 
   .predictive-search_input {
@@ -8764,12 +8767,17 @@ figcaption {
   }
 
   .predictive-search_overflow.is-fixed {
+    opacity: 0;
     width: 100%;
     min-height: 80dvh;
     max-height: 90dvh;
     padding-top: 0;
     inset: auto 0 0;
-    transform: translateY(100%);
+    transform: translate(0%, 120%);
+  }
+
+  .predictive-search_overflow.is-fixed.is-open {
+    opacity: 100;
   }
 
   .nav_predictive-search-close-blur {
@@ -9407,7 +9415,7 @@ figcaption {
 
   .nav-links_layout {
     width: 100%;
-    padding-bottom: 6rem;
+    padding-bottom: 3.5rem;
   }
 
   .mobile-nav-links_account-layout.show-tablet {
