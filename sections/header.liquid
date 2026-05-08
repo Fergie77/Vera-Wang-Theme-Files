@@ -216,7 +216,7 @@
                                     </svg></div>
                                 </div>
                               </div>
-                              <div class="predictive-search_mobile-input-holder show-tablet"><label for="search-input-mobile" class="form_hidden-label">Search</label><input class="predictive-search_input bottom-border w-input" autocomplete="off" maxlength="256" name="q" data-name="q" placeholder="Search" type="search" id="search-input-mobile"></div>
+                              <div class="predictive-search_mobile-input-holder show-tablet"><label for="search-input-mobile" class="form_hidden-label">Search</label><input class="predictive-search_input bottom-border w-input" autocomplete="off" maxlength="256" name="q" data-name="q" placeholder="" type="search" id="search-input-mobile"></div>
                               <div id="predictive-search" li-section="predictive_search" class="predictive-search_section">
                                 {% if predictive_search.performed %}    <div li-if="predictive_search.performed" class="predictive-search_conditional">
     
@@ -420,13 +420,11 @@ html:has(.w-nav-button.w--open) {
   var closeButton=document.querySelector('.nav_predictive-search-close-button');
   function isMob(){return window.matchMedia('(max-width:991px)').matches;}
   function openSearch(){
-    if(!overflow)return;
+    if(!overflow) return;
     overflow.classList.add('is-open');
-    if(closePanel)closePanel.classList.add('is-open');
-    requestAnimationFrame(function(){
-      if(isMob()&&mInput)mInput.focus();
-      else if(dInput)dInput.focus();
-    });
+    if(closePanel) closePanel.classList.add('is-open');
+    if(isMob() && mInput) mInput.focus();
+    else if(dInput) dInput.focus();
   }
   function closeSearch(){
     if(overflow)overflow.classList.remove('is-open');
