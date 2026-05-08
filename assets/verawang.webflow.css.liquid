@@ -2558,9 +2558,14 @@ figcaption {
 .nav_predictive-search-close-blur {
   z-index: 1;
   opacity: 0;
-  -webkit-backdrop-filter: brightness(60%) blur(6px);
-  backdrop-filter: brightness(60%) blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  inset: 0%;
+  background-color: #0006;
   flex: 1;
   transition: opacity .2s;
   position: fixed;
@@ -7083,6 +7088,14 @@ figcaption {
   width: 100%;
 }
 
+@media screen and (min-width: 1280px) {
+  .nav_predictive-search-close-blur {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    background-color: #0006;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .padding-medium {
     padding: 1.5rem;
@@ -7461,6 +7474,12 @@ figcaption {
 
   .nav_predictive-search-holder {
     top: 5rem;
+  }
+
+  .nav_predictive-search-close-blur {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    background-color: #0006;
   }
 
   .nav_logo {
@@ -8712,6 +8731,12 @@ figcaption {
     transform: translateY(100%);
   }
 
+  .nav_predictive-search-close-blur {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-color: #0006;
+  }
+
   .nav_logo {
     align-items: flex-start;
     width: 100%;
@@ -9875,7 +9900,7 @@ figcaption {
   }
 
   .nav_predictive-search-close-blur {
-    display: none;
+    background-color: #0006;
   }
 
   .product_list-item {
