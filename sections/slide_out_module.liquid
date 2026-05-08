@@ -1,4 +1,15 @@
 <div module="{{section.settings.text_module}}" class="slide-out_wrapper">
+          <div class="slide-out_mobile-header mobile-nav-links_account-layout show-tablet">
+            <p data-slideout-title="true" class="cart-header">
+{{ section.settings.text_text_module }}
+</p>
+            <div role="button" aria-label="Close" class="slide-out_close-button show-tablet">
+              <div class="w-embed"><svg width="10" height="10" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.447266 0.472656L9.38727 8.94891" stroke="black" stroke-width="1.3"></path>
+                  <path d="M9.38727 0.472656L0.447266 8.94891" stroke="black" stroke-width="1.3"></path>
+                </svg></div>
+            </div>
+          </div>
           <div class="slide-out_layout">
             <div li-content-for-blocks="" id="w-node-ad0ba730-ff0e-ab22-2791-cab0b0fa1ab8-7db6215a">
 {% for block in section.blocks %}
@@ -58,7 +69,7 @@
 
     </div>
           </div>
-          <a href="#" class="slide-out_close-button w-inline-block">
+          <a href="#" class="slide-out_close-button split-background-white_background-image hide-tablet w-inline-block">
             <div>Close</div>
           </a>
           <a href="{{ routes.root_url }}" li-object:href="routes.root_url" class="nav_logo-link is-slide-out w-nav-brand"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 339 46" fill="none" class="nav_logo">
@@ -101,6 +112,12 @@
         }
     ],
     "settings": [
+        {
+            "id": "text_text_module",
+            "type": "text",
+            "label": "text_module",
+            "default": "Module Title"
+        },
         {
             "id": "text_module",
             "type": "text",
