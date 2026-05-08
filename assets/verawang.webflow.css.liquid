@@ -7069,6 +7069,14 @@ figcaption {
   display: flex;
 }
 
+.predictive-search_mobile-header {
+  border-bottom: 1px solid #eee;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  display: flex;
+}
+
 @media screen and (max-width: 991px) {
   .padding-medium {
     padding: 1.5rem;
@@ -8686,6 +8694,14 @@ figcaption {
     grid-row-gap: 3rem;
     grid-column-gap: 0rem;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .predictive-search_overflow.is-fixed {
+    width: 100%;
+    max-height: 90dvh;
+    padding-top: 0;
+    inset: auto 0 0;
+    transform: translateY(100%);
   }
 
   .nav_logo {
