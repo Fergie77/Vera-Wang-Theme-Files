@@ -5882,16 +5882,18 @@ figcaption {
 
 .slide-out_wrapper {
   background-color: var(--base-color-neutral--white);
+  opacity: 0;
   pointer-events: auto;
   width: 50%;
   height: 100%;
-  transition: transform .3s ease-in-out;
+  transition: opacity .3s, transform .3s ease-in-out;
   position: relative;
   transform: translate(120%);
 }
 
 .slide-out_wrapper.is-open {
   z-index: 2;
+  opacity: 100;
   transform: translate(0%);
 }
 
@@ -7069,7 +7071,7 @@ figcaption {
   display: flex;
 }
 
-.predictive-search_mobile-header {
+.predictive-search_mobile-header, .slide-out_mobile-header {
   border-bottom: 1px solid #eee;
   justify-content: space-between;
   align-items: center;
@@ -8581,6 +8583,7 @@ figcaption {
   }
 
   .nav_logo-link.is-slide-out {
+    display: none;
     transform: none;
   }
 
@@ -9255,15 +9258,34 @@ figcaption {
     text-underline-offset: 2px;
   }
 
+  .module_slide-out {
+    justify-content: center;
+    align-items: flex-end;
+  }
+
   .slide-out_wrapper {
     width: 100%;
-    transform: translate(120%);
+    height: auto;
+    max-height: 90dvh;
+    transform: translateY(100%);
+  }
+
+  .slide-out_close-button.show-tablet {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    top: 0;
+    bottom: 0;
   }
 
   .mini-cart_main-info-layout {
     flex: 1;
     padding: 2rem 0 0;
     overflow: hidden;
+  }
+
+  .search-icon {
+    z-index: 1;
   }
 
   .mini-cart_close-button {
@@ -9297,6 +9319,10 @@ figcaption {
   .nav-links_layout {
     width: 100%;
     padding-bottom: 6rem;
+  }
+
+  .mobile-nav-links_account-layout.show-tablet {
+    position: relative;
   }
 
   .contact_component {
@@ -9455,12 +9481,13 @@ figcaption {
 
   .cart-header {
     font-variation-settings: "wght" 500, "wdth" 100, "opsz" 12;
+    text-transform: uppercase;
     font-family: Helvetica Now Var, Arial, sans-serif;
     font-size: .875rem;
     font-weight: 500;
   }
 
-  .predictive-search_mobile-header {
+  .predictive-search_mobile-header, .slide-out_mobile-header {
     display: flex;
   }
 }
@@ -10223,6 +10250,14 @@ figcaption {
     display: flex;
   }
 
+  .slide-out_close-button {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    top: 0;
+    bottom: 0;
+  }
+
   .mini-cart_main-info-layout {
     padding-top: 1rem;
   }
@@ -10250,6 +10285,10 @@ figcaption {
 
   .heading-style-h3-2 {
     font-size: 1.4rem;
+  }
+
+  .mobile-nav-links_account-layout.show-tablet {
+    position: relative;
   }
 
   .contact_component {
@@ -10282,6 +10321,10 @@ figcaption {
   .icon-embed-custom {
     width: 1.5rem;
     height: 1.2rem;
+  }
+
+  .cart-header {
+    text-transform: uppercase;
   }
 }
 
