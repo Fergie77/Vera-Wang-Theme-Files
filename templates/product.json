@@ -100,7 +100,7 @@
       ],
       "name": "Slide Out Module",
       "settings": {
-        "text_module_title": "Module Title",
+        "text_module_title": "Product Details",
         "text_module": "product-details"
       }
     },
@@ -117,7 +117,7 @@
       ],
       "name": "Slide Out Module",
       "settings": {
-        "text_module_title": "Module Title",
+        "text_module_title": "Size Guide",
         "text_module": "size-guide"
       }
     },
@@ -137,7 +137,7 @@
       ],
       "name": "Slide Out Module",
       "settings": {
-        "text_module_title": "Module Title",
+        "text_module_title": "Shipping and Returns",
         "text_module": "shipping"
       }
     },
