@@ -163,7 +163,9 @@
           "name": "Social Sign Up",
           "settings": {
             "text_heading": "Join Us",
-            "text_checkbox": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
+            "text_checkbox": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email.",
+            "text_social_link_text": "Instagram",
+            "url_social_link": "https://instagram.com/verawangeu"
           }
         }
       },
