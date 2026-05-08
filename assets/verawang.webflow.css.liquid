@@ -8706,9 +8706,11 @@ figcaption {
   }
 
   .product-header_layout {
+    z-index: 3;
     grid-column-gap: 5rem;
     grid-row-gap: 2rem;
     padding-bottom: 3rem;
+    position: relative;
   }
 
   .product-header_product-details {
@@ -9534,8 +9536,8 @@ figcaption {
 
   .size-picker_wrapper {
     z-index: 9999;
-    pointer-events: none;
     visibility: hidden;
+    pointer-events: none;
     display: block;
     position: fixed;
     inset: 0;
