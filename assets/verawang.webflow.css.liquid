@@ -5898,6 +5898,7 @@ figcaption {
 }
 
 .slide-out_layout {
+  width: 100%;
   height: 100%;
   padding-right: var(--padding--global);
   grid-column-gap: var(--gap--global);
@@ -7076,6 +7077,10 @@ figcaption {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+}
+
+.dropdown-width {
+  width: 100%;
 }
 
 @media screen and (max-width: 991px) {
@@ -9266,8 +9271,9 @@ figcaption {
   .slide-out_wrapper {
     width: 100%;
     height: auto;
+    min-height: 30vh;
     max-height: 90dvh;
-    transform: translateY(100%);
+    transform: translate(0%, 120%);
   }
 
   .slide-out_close-button.show-tablet {

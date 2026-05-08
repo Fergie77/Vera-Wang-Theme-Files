@@ -1,7 +1,7 @@
 <div module="{{section.settings.text_module}}" class="slide-out_wrapper">
           <div class="slide-out_mobile-header mobile-nav-links_account-layout show-tablet">
             <p data-slideout-title="true" class="cart-header">
-{{ section.settings.text_text_module }}
+{{ section.settings.text_module_title }}
 </p>
             <div role="button" aria-label="Close" class="slide-out_close-button show-tablet">
               <div class="w-embed"><svg width="10" height="10" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="slide-out_layout">
-            <div li-content-for-blocks="" id="w-node-ad0ba730-ff0e-ab22-2791-cab0b0fa1ab8-7db6215a">
+            <div li-content-for-blocks="" id="w-node-ad0ba730-ff0e-ab22-2791-cab0b0fa1ab8-7db6215a" class="dropdown-width">
 {% for block in section.blocks %}
 {% case block.type %}
 {% when '@app' %}
@@ -113,9 +113,9 @@
     ],
     "settings": [
         {
-            "id": "text_text_module",
+            "id": "text_module_title",
             "type": "text",
-            "label": "text_module",
+            "label": "Module Title",
             "default": "Module Title"
         },
         {
