@@ -137,5 +137,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 End Google Tag Manager (noscript)  -->
   <script src="{{ 'section-rendering.js' | asset_url }}"></script>
   {% render 'search_javascript' %}
+  <script>
+(function () {
+  function $ov() { return document.querySelector('[data-cart-overlay]'); }
+  function $pn() { return document.querySelector('[data-cart-panel]'); }
+  function openCart() {
+    var ov = $ov(), pn = $pn();
+    if (ov) ov.classList.add('is-open');
+    if (pn) pn.classList.add('is-open');
+    document.body.setAttribute('data-cart-open', 'true');
+    window.dispatchEvent(new CustomEvent('cartupdated'));
+  }
+  function closeCart() {
+    var ov = $ov(), pn = $pn();
+    if (ov) ov.classList.remove('is-open');
+    if (pn) pn.classList.remove('is-open');
+    document.body.removeAttribute('data-cart-open');
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-cart-toggle]')) { e.preventDefault(); openCart(); return; }
+    if (!document.body.hasAttribute('data-cart-open')) return;
+    if (e.target.closest('[data-cart-close]') || e.target.closest('.nav_dropdown-close-button')) {
+      e.preventDefault();
+      closeCart();
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeCart();
+  });
+  window.addEventListener('toggleminicart', openCart);
+})();
+</script>
 </body>
 </html>
