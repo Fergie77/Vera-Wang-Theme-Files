@@ -364,6 +364,16 @@ document.addEventListener('DOMContentLoaded', () => {
   .is-colour-swatch a.w--current .product-header_radio-button {
   border: 1px solid black;
 }
+@media (max-width: 767px) {
+  .product-header_option.is-colour-swatch {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .product-header_option.is-colour-swatch > div:not(.product-header_radio-list) {
+    font-size: 0.875rem;
+  }
+}
 </style>
               </div>
             </div>
