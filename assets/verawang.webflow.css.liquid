@@ -7012,9 +7012,9 @@ figcaption {
 
 .mini-cart-v2_overlay {
   z-index: 10005;
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  visibility: hidden;
   transition: opacity .3s, visibility .3s;
   position: fixed;
   inset: 0;
@@ -7027,12 +7027,18 @@ figcaption {
 }
 
 .mini-cart-v2_backdrop {
+  opacity: 0;
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   cursor: pointer;
   background-color: #0006;
+  transition: -webkit-backdrop-filter .3s, backdrop-filter .3s, opacity .3s;
   position: absolute;
   inset: 0;
+}
+
+.mini-cart-v2_backdrop.is-open {
+  opacity: 1;
 }
 
 .mini-cart-v2_panel {
@@ -9413,6 +9419,11 @@ figcaption {
     left: 0;
     right: 0;
     transform: translateY(100%);
+  }
+
+  .mini-cart-v2_backdrop {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 
   .mini-cart-v2_panel {
