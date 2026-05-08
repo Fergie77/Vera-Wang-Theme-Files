@@ -363,38 +363,7 @@
                       </div>
                     </predictive-search></div>
                   <div li-cloak="hide" class="w-embed w-script">
-                    <script>
-const input = document.querySelector('#search-input');
-const overflow = document.querySelector('.predictive-search_overflow');
-const closePanel = document.querySelector('.nav-predictive-search_close-blur');
-const closeButton = document.querySelector('.nav-predictive-search_close-button');
-const searchIcon = document.querySelector('.search-icon');
-function open() {
-  overflow.classList.add('is-open');
-  closePanel.classList.add('is-open');
-  input.focus();
-}
-function close() {
-  overflow.classList.remove('is-open');
-  closePanel.classList.remove('is-open');
-}
-searchIcon.addEventListener('click', open);
-input.addEventListener('focus', open);
-input.addEventListener('blur', () => {
-  setTimeout(() => {
-    if (!overflow.contains(document.activeElement)) close();
-  }, 0);
-});
-input.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    close();
-    input.setSelectionRange(0, 0);
-    input.blur();
-  }
-});
-closePanel.addEventListener('click', close);
-closeButton.addEventListener('click', close);
-</script>
+                    <!-- Legacy search script removed for testing — broken selectors and input.focus binding caused search to auto-open -->
                   </div>
                   <div class="w-embed">
                     <style>
