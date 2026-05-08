@@ -22,7 +22,7 @@
     "recommended_products": {
       "type": "recommended_products",
       "settings": {
-        "text_heading": "We Think You'll Love",
+        "text_heading": "Curated for you",
         "text_subheading": ""
       }
     },
@@ -63,7 +63,7 @@
       ],
       "name": "Styled By Vera",
       "settings": {
-        "text_heading": "Styled By Vera",
+        "text_heading": "Styled By Vera Wang",
         "text_cta_text": "View All The Looks",
         "url_cta_link": ""
       }
@@ -100,6 +100,7 @@
       ],
       "name": "Slide Out Module",
       "settings": {
+        "text_module_title": "Module Title",
         "text_module": "product-details"
       }
     },
@@ -116,6 +117,7 @@
       ],
       "name": "Slide Out Module",
       "settings": {
+        "text_module_title": "Module Title",
         "text_module": "size-guide"
       }
     },
@@ -135,6 +137,7 @@
       ],
       "name": "Slide Out Module",
       "settings": {
+        "text_module_title": "Module Title",
         "text_module": "shipping"
       }
     },
