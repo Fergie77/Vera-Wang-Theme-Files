@@ -43,8 +43,7 @@
                     
                   
                     <div class="social-sign-up_social-links-layout">
-                    <a li-settings="Social Link" href="#" class="cta-text" href="#">
-</a>
+                    <a href="{{ block.settings.url_social_link }}" class="cta-text"> {{ block.settings.text_social_link_text }} </a>
                   </div>
                     
                 
@@ -80,6 +79,17 @@
                     "type": "text",
                     "label": "Checkbox",
                     "default": "I have read and understand the Privacy and Cookies Policy and agree to receive personalised commercial communications from Vera Wang via email."
+                },
+                {
+                    "id": "text_social_link_text",
+                    "type": "text",
+                    "label": "Social Link Text",
+                    "default": "Instagram"
+                },
+                {
+                    "id": "url_social_link",
+                    "type": "url",
+                    "label": "Social Link"
                 }
             ]
         },
