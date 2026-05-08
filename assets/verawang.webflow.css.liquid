@@ -5510,10 +5510,12 @@ figcaption {
 }
 
 .header_background-image.is-full-width {
+  pointer-events: none;
   width: 100%;
 }
 
 .header_link {
+  z-index: 2;
   position: absolute;
   inset: 0%;
 }
@@ -8461,7 +8463,7 @@ figcaption {
 
   .mini-cart_full {
     flex: none;
-    height: 92dvh;
+    height: 100dvh;
     max-height: none;
   }
 
@@ -8861,6 +8863,7 @@ figcaption {
   }
 
   .section_product.remove-top-padding.is-collection-alt {
+    padding-top: 0;
     padding-bottom: 0;
   }
 
@@ -9036,6 +9039,7 @@ figcaption {
 
   .rl_header1_image-wrapper {
     max-width: 70%;
+    margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
   }
@@ -9550,6 +9554,10 @@ figcaption {
 
   .mini-cart_line-item_img {
     width: 9rem;
+  }
+
+  .mini-cart_full {
+    height: 100dvh;
   }
 
   .mini-cart_line-item_product-info {
