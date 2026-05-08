@@ -129,17 +129,15 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
     color: #FFFFFF;
     background: #000000;
   }
-  /* Sequenced cross-document fade between colour variants */
+  /* Sequenced cross-document fade for product-details only */
   .product-header_product-details {
     view-transition-name: product-details;
   }
   @keyframes vt-fade-out { to { opacity: 0; } }
   @keyframes vt-fade-in { from { opacity: 0; } }
-  ::view-transition-old(root),
   ::view-transition-old(product-details) {
     animation: 200ms ease both vt-fade-out;
   }
-  ::view-transition-new(root),
   ::view-transition-new(product-details) {
     animation: 200ms ease 300ms both vt-fade-in;
   }
