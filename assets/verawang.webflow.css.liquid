@@ -1581,7 +1581,6 @@ figcaption {
 
 .mini-cart_line-item {
   flex: 1;
-  max-height: 80vh;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   padding-right: 0;
@@ -6026,10 +6025,12 @@ figcaption {
 .mini-cart_main-info-layout {
   flex-flow: column;
   flex: 1;
+  min-height: 0;
   padding-bottom: 5rem;
   padding-left: 8.5rem;
   padding-right: 8.5rem;
   display: flex;
+  overflow: hidden;
 }
 
 .search-icon {
