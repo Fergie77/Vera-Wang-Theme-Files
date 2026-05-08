@@ -401,7 +401,7 @@ document.addEventListener('alpine:init', () => {
             const urlParams = new URLSearchParams(window.location.search);
             urlParams.set('variant', this.product.selected_or_first_available_variant.id);
 
-            window.history.pushState({ ...window.history.state}, '', '?' + urlParams.toString());
+            window.history.replaceState({ ...window.history.state}, '', '?' + urlParams.toString());
         },
 
         findAvailableVariant() {
