@@ -208,7 +208,7 @@
                             </svg>
                             <div class="predictive-search_overflow is-fixed">
                               <div class="predictive-search_mobile-header mobile-nav-links_account-layout show-tablet">
-                                <p data-search-title="true">SEARCH</p>
+                                <p data-search-title="true" class="cart-header">SEARCH</p>
                                 <div role="button" data-search-close="true" aria-label="Close search">
                                   <div class="w-embed"><svg width="10" height="10" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                       <path d="M0.447266 0.472656L9.38727 8.94891" stroke="black" stroke-width="1.3"></path>
@@ -537,7 +537,7 @@
                         </div>
                         <div li-cloak="hide" li-element="mini-cart-empty" class="mini-cart_empty" :style="total.items && { display: 'none' }">
                           <div class="mini-cart_header">
-                            <p data-cart-title="true" class="show-tablet">YOUR CART</p><button li-element="dropdown-toggle" aria-label="Close Cart" class="nav_dropdown-close-button" data-dropdowntoggle="" @click="LiquifyHelper.triggerClick($event.target.closest('.w-dropdown').querySelector('.w-dropdown-toggle.w--open'))">
+                            <p data-cart-title="true" class="cart-header show-tablet">YOUR CART</p><button li-element="dropdown-toggle" aria-label="Close Cart" class="nav_dropdown-close-button" data-dropdowntoggle="" @click="LiquifyHelper.triggerClick($event.target.closest('.w-dropdown').querySelector('.w-dropdown-toggle.w--open'))">
                               <p class="hide-tablet">Close</p>
                               <div class="nav_dropdown-close-icon show-tablet w-embed"><svg width="10" height="10" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M0.447266 0.472656L9.38727 8.94891" stroke="black" stroke-width="1.3"></path>
@@ -1036,7 +1036,7 @@
                           </div>
                           <div li-cloak="hide" li-element="mini-cart-empty" class="mini-cart_empty" :style="total.items && { display: 'none' }">
                             <div class="mini-cart_header">
-                              <p data-cart-title="true" class="show-tablet">YOUR CART</p><button li-element="dropdown-toggle" aria-label="Close Cart" class="nav_dropdown-close-button" data-dropdowntoggle="" @click="LiquifyHelper.triggerClick($event.target.closest('.w-dropdown').querySelector('.w-dropdown-toggle.w--open'))">
+                              <p data-cart-title="true" class="cart-header show-tablet">YOUR CART</p><button li-element="dropdown-toggle" aria-label="Close Cart" class="nav_dropdown-close-button" data-dropdowntoggle="" @click="LiquifyHelper.triggerClick($event.target.closest('.w-dropdown').querySelector('.w-dropdown-toggle.w--open'))">
                                 <p class="hide-tablet">Close</p>
                                 <div class="nav_dropdown-close-icon show-tablet w-embed"><svg width="10" height="10" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0.447266 0.472656L9.38727 8.94891" stroke="black" stroke-width="1.3"></path>
