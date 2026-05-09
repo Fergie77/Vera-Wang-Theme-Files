@@ -178,7 +178,7 @@ initGallery();
                       </div>
                     </div>
                     <div class="overflow-hidden">
-                      <div class="product-header_add-to-cart-wrapper"><input class="form_input hide w-input" maxlength="256" name="properties[_colour_name]" data-name="Field" placeholder="Colour Name" type="text" id="field" value="product.metafields.custom.colour_name"><input class="form_input hide w-input" maxlength="256" name="properties[Note]" data-name="Field" placeholder="Note" type="text" id="field">
+                      <div class="product-header_add-to-cart-wrapper"><input class="form_input hide w-input" li-object:value="product.metafields.custom.colour_name" maxlength="256" name="properties[_colour_name]" data-name="Field" placeholder="Colour Name" type="text" id="field" value="{{ product.metafields.custom.colour_name }}"><input class="form_input hide w-input" maxlength="256" name="properties[Note]" data-name="Field" placeholder="Note" type="text" id="field">
                         <template x-if="selected_or_first_available_variant.available">
             <div li-js-if="selected_or_first_available_variant.available" class="product-header_buy-wrappper">
         <input class="form_input is-quantity hide w-input" maxlength="256" name="quantity-4" li-element="add-to-cart-quantity" data-name="Quantity 4" placeholder="1" type="number" id="quantity-4" required="" x-model="quantity">
