@@ -251,25 +251,25 @@ End Google Tag Manager (noscript)  -->
   window.addEventListener('toggleminicart', openCart);
 })();
 </script>
-<script>
+  <script>
 (function () {
   'use strict';
   if (window._wlv4) return;
   window._wlv4 = true;
-
   var TRANS = 'transform 0.35s cubic-bezier(0.32,0.72,0,1)';
-
-  /* Fix Goodcraft's portal-injected <style> (inside a DIV, loads after theme CSS) */
+  /* Fix Goodcraft's portal-injected <style> tag (sits inside a <div>, loads after theme CSS) */
   function patchGoodcraftPortalCSS() {
     document.querySelectorAll('style').forEach(function (styleEl) {
       if (!styleEl.parentElement || styleEl.parentElement.tagName !== 'DIV') return;
       try {
         var rules = Array.from(styleEl.sheet.cssRules || []);
         rules.forEach(function (r) {
+          /* Fix gap:0 !important on item card */
           if (r.selectorText === '.nm-wishlist-item-card' &&
               r.style.getPropertyPriority('gap') === 'important') {
             r.style.setProperty('gap', '12px', 'important');
           }
+          /* Fix border-bottom on summery inside mobile media query */
           if (r.cssRules) {
             Array.from(r.cssRules).forEach(function (inner) {
               if (inner.selectorText === '.nm-wishlist-summery') {
@@ -281,8 +281,7 @@ End Google Tag Manager (noscript)  -->
       } catch (e) {}
     });
   }
-
-  /* Mobile bottom-anchor layout */
+  /* On mobile: reposition wrapper to anchor at bottom, remove Goodcraft's height:100% on body */
   function positionWrapperForMobile(w) {
     w.style.setProperty('position', 'absolute', 'important');
     w.style.setProperty('bottom', '0', 'important');
@@ -301,73 +300,53 @@ End Google Tag Manager (noscript)  -->
       });
     }
   }
-
+  /* Slide animations &mdash; use inline style.setProperty with 'important'
+     so we beat Goodcraft's sheet-level transform:none !important */
   function slideIn(w) {
-    positionWrapperForMobile(w);
     w.style.setProperty('transition', TRANS, 'important');
-    w.style.setProperty('transform', 'translateY(0%)', 'important');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        w.style.setProperty('transform', 'translateY(0%)', 'important');
+      });
+    });
   }
-
   function slideOut(w) {
     w.style.setProperty('transition', TRANS, 'important');
-    w.style.setProperty('transform', 'translateY(110%)', 'important');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        w.style.setProperty('transform', 'translateY(110%)', 'important');
+      });
+    });
   }
-
   function snapToBottom(w) {
-    positionWrapperForMobile(w);
     w.style.setProperty('transition', 'none', 'important');
     w.style.setProperty('transform', 'translateY(110%)', 'important');
   }
-
-  /* Dual observer: watch container opacity AND intercept wrapper translateX */
+  /* Watch .nm-modal-container opacity to drive the slide */
   function attachContainerWatcher() {
     var container = document.querySelector('.nm-modal-container');
     if (!container || container._wlWatched) return;
     container._wlWatched = true;
-
     function isMobile() { return window.innerWidth <= 767; }
-
     var w = container.firstElementChild;
-    if (w && isMobile()) snapToBottom(w);
-
-    var isOpen = false;
-
-    /* Watch container opacity for open/close signal */
+    if (w && isMobile()) {
+      positionWrapperForMobile(w);
+      snapToBottom(w);
+    }
     new MutationObserver(function () {
       if (!isMobile()) return;
       var w2 = container.firstElementChild;
       if (!w2) return;
       var st = container.getAttribute('style') || '';
       if (st.indexOf('opacity: 1') !== -1 || st.indexOf('opacity:1') !== -1) {
-        isOpen = true;
+        positionWrapperForMobile(w2);
         slideIn(w2);
       } else if (st.indexOf('opacity: 0') !== -1 || st.indexOf('opacity:0') !== -1) {
-        isOpen = false;
         slideOut(w2);
       }
     }).observe(container, { attributes: true, attributeFilter: ['style'] });
-
-    /* Watch wrapper — if Goodcraft writes translateX, override with translateY */
-    if (w) {
-      new MutationObserver(function () {
-        if (!isMobile()) return;
-        var w2 = container.firstElementChild;
-        if (!w2) return;
-        var wStyle = w2.getAttribute('style') || '';
-        if (wStyle.indexOf('translateX') !== -1) {
-          if (isOpen) {
-            slideIn(w2);
-          } else {
-            positionWrapperForMobile(w2);
-            w2.style.setProperty('transition', 'none', 'important');
-            w2.style.setProperty('transform', 'translateY(110%)', 'important');
-          }
-        }
-      }).observe(w, { attributes: true, attributeFilter: ['style'] });
-    }
   }
-
-  /* Text REMOVE button */
+  /* Inject text REMOVE button into each card */
   function addRemoveButtons() {
     document.querySelectorAll('.nm-wishlist-item-card').forEach(function (card) {
       if (card.querySelector('.nm-wl-remove-text-btn')) return;
@@ -386,8 +365,7 @@ End Google Tag Manager (noscript)  -->
       titleDiv.appendChild(textBtn);
     });
   }
-
-  /* Upsize images */
+  /* Upsize Shopify CDN images */
   function upsizeImages() {
     document.querySelectorAll('.nm-wishlist-item-image').forEach(function (img) {
       if (img.src && img.src.indexOf('cdn.shopify.com') !== -1 &&
@@ -396,8 +374,7 @@ End Google Tag Manager (noscript)  -->
       }
     });
   }
-
-  /* Cart count sync */
+  /* Keep cart count in sync after Add to Cart */
   if (!window._wlFetchPatched) {
     window._wlFetchPatched = true;
     var _origFetch = window.fetch;
@@ -417,15 +394,13 @@ End Google Tag Manager (noscript)  -->
       return p;
     };
   }
-
-  /* Main */
+  /* Main &mdash; runs on every DOM change (Goodcraft renders lazily) */
   function run() {
     patchGoodcraftPortalCSS();
     upsizeImages();
     addRemoveButtons();
     attachContainerWatcher();
   }
-
   new MutationObserver(run).observe(document.body, { childList: true, subtree: true });
   run();
 })();
