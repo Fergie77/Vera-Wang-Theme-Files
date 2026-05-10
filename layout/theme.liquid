@@ -597,12 +597,11 @@ initSwiper();
 
   function isMobile() { return window.innerWidth <= 767; }
   function getWishlistContainer() {
-    var drawer = document.querySelector('.nm-wishlist-drawer');
-    return drawer ? drawer.closest('.nm-modal-container') : null;
+    var d = document.querySelector('.nm-wishlist-drawer');
+    return d ? d.closest('.nm-modal-container') : null;
   }
   function getWishlistPanelWrapper() {
-    var c = getWishlistContainer();
-    return c ? c.children[1] : null;
+    var c = getWishlistContainer(); return c ? c.children[1] : null;
   }
   function isContainerOpen(c) {
     if (!c) return false;
@@ -640,7 +639,6 @@ initSwiper();
     'transform:translateY(100%) !important;transition:none !important;' +
     'z-index:2002 !important;overflow:hidden !important;';
 
-  /* Suppress panel observer during our own writes */
   var _busy = false;
 
   function setPW(style, holdMs) {
@@ -651,26 +649,25 @@ initSwiper();
     setTimeout(function () { _busy = false; }, holdMs || 30);
   }
 
-  function applyDesktopPanelStyles() { setPW(DESKTOP_PW); }
+  function applyDesktopPanelStyles() { setPW(DESKTOP_PW, 50); }
 
   function applyMobileOpen() {
     var pw = getWishlistPanelWrapper();
     if (!pw) return;
     _busy = true;
-    pw.style.cssText = MOBILE_HIDDEN_INSTANT;   // instant off-screen
+    pw.style.cssText = MOBILE_HIDDEN_INSTANT;
     setTimeout(function () {
-      pw.style.cssText = MOBILE_SHOWN;           // then slide up
+      pw.style.cssText = MOBILE_SHOWN;
       setTimeout(function () { _busy = false; }, 600);
     }, 20);
   }
 
   function applyMobileHidden() { setPW(MOBILE_HIDDEN, 600); }
 
-  /* DOM mutations: close button, REMOVE text, image quality */
   function updateWishlistUI() {
     document.querySelectorAll('.nm-wishlist-drawer-header .nm-modal-close-button').forEach(function (btn) {
       Array.from(btn.childNodes).forEach(function (n) {
-        if (n.nodeType === 1 && (n.tagName === 'svg' || n.tagName === 'SVG')) n.style.display = 'none';
+        if (n.nodeType === 1 && (n.nodeName === 'svg' || n.nodeName === 'SVG')) n.style.display = 'none';
       });
       if (!btn.querySelector('.nm-close-text')) {
         var t = document.createElement('span'); t.className = 'nm-close-text'; t.textContent = 'Close'; btn.appendChild(t);
@@ -700,17 +697,16 @@ initSwiper();
     });
   }
 
-  /* ── KEY NEW ADDITION ──────────────────────────────────────────────────────
-     Watch the panel wrapper's own style attribute.
-     The NM SDK sets translateX(0) on open and translateX(100%) on close at
-     mobile viewports. We catch those and replace with translateY immediately.
-  ──────────────────────────────────────────────────────────────────────────── */
   function attachPanelObserver(pw, container) {
     if (window._wishlistPanelObserver) window._wishlistPanelObserver.disconnect();
     window._wishlistPanelObserver = new MutationObserver(function () {
-      if (_busy || !isMobile()) return;
+      if (_busy) return;
       if (pw.style.cssText.indexOf('translateX') !== -1) {
-        if (isContainerOpen(container)) { applyMobileOpen(); } else { applyMobileHidden(); }
+        if (isMobile()) {
+          if (isContainerOpen(container)) { applyMobileOpen(); } else { applyMobileHidden(); }
+        } else {
+          applyDesktopPanelStyles();
+        }
       }
     });
     window._wishlistPanelObserver.observe(pw, { attributes: true, attributeFilter: ['style'] });
@@ -719,8 +715,9 @@ initSwiper();
   function attachContainerObserver(wContainer) {
     if (window._wishlistVisibilityObserver) window._wishlistVisibilityObserver.disconnect();
     window._wishlistVisibilityObserver = new MutationObserver(function () {
+      var isOpen = isContainerOpen(wContainer);
       if (!isMobile()) applyDesktopPanelStyles();
-      if (isContainerOpen(wContainer)) updateWishlistUI();
+      if (isOpen) updateWishlistUI();
     });
     window._wishlistVisibilityObserver.observe(wContainer, { attributes: true, attributeFilter: ['style'] });
   }
@@ -738,7 +735,6 @@ initSwiper();
   var pw = getWishlistPanelWrapper();
 
   if (wContainer && pw) {
-    /* Set correct initial state on page load */
     if (isMobile()) {
       _busy = true; pw.style.cssText = MOBILE_HIDDEN_INSTANT;
       setTimeout(function () { _busy = false; }, 100);
@@ -746,7 +742,7 @@ initSwiper();
       applyDesktopPanelStyles();
     }
     attachContainerObserver(wContainer);
-    attachPanelObserver(pw, wContainer);   /* ← new */
+    attachPanelObserver(pw, wContainer);
     attachContentObserver(wContainer);
     updateWishlistUI();
   }
