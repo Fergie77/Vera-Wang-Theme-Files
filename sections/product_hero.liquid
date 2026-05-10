@@ -615,13 +615,19 @@ document.addEventListener("DOMContentLoaded", () => {
       font-weight: 400;
       letter-spacing: 0.02em;
     }
-    /* Override the existing `display: block` on the row so the label sits on
-       the left and the badge on the right. Two-class selector for higher
-       specificity than the existing `.size-picker_slot .product-header_radio` rule. */
+    /* Override the existing block layout so the row becomes a flex row.
+       Two-class selector for higher specificity than the existing rule. */
     .size-picker_slot .product-header_radio.w-radio {
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+    /* Webflow's .w-radio injects ::before/::after clearfix pseudo-elements with
+       display: table &mdash; as flex items they take up space and push the label
+       toward the centre. Suppress them inside the picker. */
+    .size-picker_slot .product-header_radio.w-radio::before,
+    .size-picker_slot .product-header_radio.w-radio::after {
+      display: none;
     }
   }
 </style>
