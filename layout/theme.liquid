@@ -770,11 +770,12 @@ initSwiper();
     LOG('contentObserver attached');
   }
 
-  var wContainer = getWishlistContainer();
-  var pw = getWishlistPanelWrapper();
-  LOG('init lookup: wContainer=', wContainer, 'pw=', pw);
+  function init() {
+    var wContainer = getWishlistContainer();
+    var pw = getWishlistPanelWrapper();
+    LOG('init lookup: wContainer=', wContainer, 'pw=', pw);
+    if (!wContainer || !pw) return false;
 
-  if (wContainer && pw) {
     LOG('init: applying initial panel styles; mobile=' + isMobile());
     if (isMobile()) {
       _busy = true; pw.style.cssText = MOBILE_HIDDEN_INSTANT;
@@ -792,8 +793,24 @@ initSwiper();
     [150, 400, 800, 1500, 3000].forEach(function (ms) {
       setTimeout(function () { updateWishlistUI('retry-' + ms + 'ms'); }, ms);
     });
-  } else {
-    LOG('init: wContainer or pw missing — observers NOT attached');
+    return true;
+  }
+
+  /* Goodcraft injects its portal asynchronously after our script runs.
+     Try init immediately; if the portal isn't there yet, poll for it. */
+  if (!init()) {
+    LOG('portal not ready — polling for Goodcraft portal');
+    var pollAttempts = 0;
+    var pollInterval = setInterval(function () {
+      pollAttempts++;
+      if (init()) {
+        LOG('portal found after ' + pollAttempts + ' poll(s)');
+        clearInterval(pollInterval);
+      } else if (pollAttempts >= 100) { // 100 * 100ms = 10s max
+        LOG('giving up portal poll after ' + pollAttempts + ' attempts');
+        clearInterval(pollInterval);
+      }
+    }, 100);
   }
 
   if (window._wishlistResizeHandler) window.removeEventListener('resize', window._wishlistResizeHandler);
