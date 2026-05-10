@@ -185,187 +185,242 @@ End Google Tag Manager (noscript)  -->
   <script>
 //Wishlist JS Amends
 (function () {
-  /* ============================================================
-     1. CARD RESTRUCTURE
-     Moves Remove button into text column, Add to Cart to card root
-     Replaces trash icon with "Remove" text
-     ============================================================ */
-  const initWishlistCards = (container) => {
-    container.querySelectorAll('.nm-wishlist-item-card').forEach(card => {
-      // Always ensure remove button shows text (handles re-renders)
-      card.querySelectorAll('.nm-wishlist-item-remove-button').forEach(btn => {
-        if (!btn.dataset.removeTextReplaced) {
-          btn.innerHTML = 'Remove';
-          btn.dataset.removeTextReplaced = 'true';
-        }
-      });
-      // If add-to-cart button is not a direct child of card, move it there
-      const addToCartBtn = card.querySelector('.nm-wishlist-item-add-to-cart-button');
-      if (addToCartBtn && addToCartBtn.parentElement !== card) {
-        card.appendChild(addToCartBtn);
+  'use strict';
+  /* ---------------------------------------------------------------
+     1. Card restructuring &mdash; moves Remove into title column,
+        moves Add To Cart button to card root, replaces trash icon
+  --------------------------------------------------------------- */
+  function initWishlistCards() {
+    document.querySelectorAll('.nm-wishlist-item-card').forEach(function (card) {
+      if (card.dataset.wlInit) return;
+      card.dataset.wlInit = '1';
+      // -- Image
+      const img = card.querySelector('.nm-wishlist-item-image');
+      if (img) {
+        upsizeImage(img);
+        img.style.cssText = '';
       }
-      if (card.dataset.restructured) return;
-      const imageRow = Array.from(card.children).find(el =>
-        el.style.display !== 'none' && el.querySelector('.nm-wishlist-item-image')
-      );
-      const actionRow = Array.from(card.children).find(el =>
-        el !== addToCartBtn && el.querySelector('.nm-wishlist-item-remove-button')
-      );
-      if (!imageRow) return;
-      const titleCol = imageRow.querySelector('.nm-wishlist-item-title');
-      const removeBtn = actionRow?.querySelector('.nm-wishlist-item-remove-button');
-      if (titleCol && removeBtn) {
-        removeBtn.innerHTML = 'Remove';
-        removeBtn.dataset.removeTextReplaced = 'true';
-        titleCol.appendChild(removeBtn);
+      // -- Build title column wrapper
+      const titleCol = document.createElement('div');
+      titleCol.className = 'nm-wishlist-item-title-col';
+      const titleLink = card.querySelector('a.nm-wishlist-item-title, a[class*="title"]')
+        || card.querySelector('a');
+      const variantEl = card.querySelector('.nm-wishlist-item-variant, [class*="variant"]');
+      const priceEl   = card.querySelector('.nm-wishlist-item-price,  [class*="price"]');
+      const removeBtn = card.querySelector('button.nm-wishlist-item-remove-button, [class*="remove"]');
+      if (titleLink) titleCol.appendChild(titleLink);
+      if (variantEl) titleCol.appendChild(variantEl);
+      if (priceEl)   titleCol.appendChild(priceEl);
+      // Replace trash icon remove button with "REMOVE" text
+      if (removeBtn) {
+        const textRemove = document.createElement('button');
+        textRemove.className = 'nm-wishlist-item-remove-btn';
+        textRemove.textContent = 'Remove';
+        textRemove.addEventListener('click', function () {
+          removeBtn.click();
+        });
+        titleCol.appendChild(textRemove);
+        removeBtn.style.display = 'none';
       }
-      if (actionRow) actionRow.style.display = 'none';
-      if (addToCartBtn) card.appendChild(addToCartBtn);
-      card.dataset.restructured = 'true';
+      // -- Row: image + title col
+      const row = card.querySelector('div:first-child') || document.createElement('div');
+      row.innerHTML = '';
+      if (img) row.appendChild(img);
+      row.appendChild(titleCol);
+      // -- Add to Cart button &mdash; move to card root (after row)
+      const atcBtn = card.querySelector('.nm-wishlist-item-add-to-cart-button, button[class*="add-to-cart"]');
+      if (atcBtn) {
+        atcBtn.className = 'nm-wishlist-item-add-to-cart-button';
+        card.appendChild(atcBtn);
+      }
     });
-  };
-  initWishlistCards(document);
-  new MutationObserver(() => initWishlistCards(document))
-    .observe(document.body, { childList: true, subtree: true });
-  /* ============================================================
-     2. CLOSE BUTTON &mdash; "Close" text on desktop, X icon on mobile (via CSS)
-     ============================================================ */
-  const replaceCloseButtons = () => {
-    document.querySelectorAll('.nm-modal-close-button').forEach(btn => {
-      if (btn.dataset.closeLabelReplaced) return;
+  }
+  /* ---------------------------------------------------------------
+     2. Replace close button text with "Close" on desktop
+        ONLY targets the drawer header close button, not login modal
+  --------------------------------------------------------------- */
+  function replaceCloseButtons() {
+    const header = document.querySelector('.nm-wishlist-drawer-header');
+    if (!header) return;
+    const btn = header.querySelector('.nm-modal-close-button');
+    if (btn && btn.textContent.trim() !== 'Close') {
       btn.innerHTML = 'Close';
-      btn.dataset.closeLabelReplaced = 'true';
-    });
-  };
-  replaceCloseButtons();
-  new MutationObserver(replaceCloseButtons)
-    .observe(document.body, { childList: true, subtree: true });
-  /* ============================================================
-     3. HIGH-RES IMAGES
-     Replaces width=72 Shopify CDN param with width=600
-     ============================================================ */
-  const upsizeWishlistImages = (container) => {
-    container.querySelectorAll('.nm-wishlist-item-image').forEach(img => {
-      if (img.dataset.upsized) return;
-      const updateSrc = (src) => {
-        if (!src) return src;
-        if (src.includes('width=')) return src.replace(/width=\d+/, 'width=600');
-        if (src.match(/_\d+x\d*\./)) return src.replace(/_\d+x\d*\./, '_600x.');
-        return src;
-      };
-      img.src = updateSrc(img.src);
-      if (img.srcset) {
-        img.srcset = img.srcset.split(',').map(entry => {
-          const parts = entry.trim().split(' ');
-          parts[0] = updateSrc(parts[0]);
-          return parts.join(' ');
-        }).join(', ');
-      }
-      img.dataset.upsized = 'true';
-    });
-  };
-  upsizeWishlistImages(document);
-  new MutationObserver(() => upsizeWishlistImages(document))
-    .observe(document.body, { childList: true, subtree: true });
-  /* ============================================================
-     4. CART COUNT &mdash; updates nav count immediately after wishlist add-to-cart
-     ============================================================ */
-  const refreshCartCount = () => {
-    fetch('/cart.js')
-      .then(r => r.json())
-      .then(cart => {
-        window.dispatchEvent(
-          new CustomEvent('carttotalitems', { detail: cart.item_count })
-        );
-      });
-  };
-  const _originalFetch = window.fetch;
-  window.fetch = function (...args) {
-    const url = typeof args[0] === 'string' ? args[0] : (args[0]?.url ?? '');
-    const result = _originalFetch.apply(this, args);
-    if (url.includes('/cart/add')) {
-      result.then(() => setTimeout(refreshCartCount, 300)).catch(() => {});
     }
-    return result;
-  };
-  /* ============================================================
-     5. MOBILE SLIDE-UP ANIMATION
-     Intercepts open/close, drives translateY instead of app's fade
-     Only active on &le;767px
-     ============================================================ */
-  const isMobile = () => window.innerWidth <= 767;
-  const getContainer = () => document.querySelector('.nm-modal-container');
-  const getWrapper = () => document.querySelector('.nm-modal-container > div:has(.nm-wishlist-drawer)');
-  const positionWrapper = (wrapper) => {
+  }
+  /* ---------------------------------------------------------------
+     3. Upsize product images to high-res Shopify CDN URL
+  --------------------------------------------------------------- */
+  function upsizeImage(img) {
+    if (!img || img.dataset.upsized) return;
+    img.dataset.upsized = '1';
+    const src = img.getAttribute('src') || '';
+    if (src.includes('cdn.shopify.com')) {
+      img.setAttribute('src', src.replace(/width=\d+/, 'width=600'));
+    }
+  }
+  function upsizeWishlistImages() {
+    document.querySelectorAll('.nm-wishlist-item-image').forEach(upsizeImage);
+  }
+  /* ---------------------------------------------------------------
+     4. Patch fetch to update cart count when adding from wishlist
+  --------------------------------------------------------------- */
+  (function patchFetch() {
+    const _fetch = window.fetch;
+    window.fetch = function (input, init) {
+      const url = typeof input === 'string' ? input : (input && input.url) || '';
+      const result = _fetch.apply(this, arguments);
+      if (url.includes('/cart/add')) {
+        result.then(function (res) {
+          if (res.ok) {
+            document.dispatchEvent(new CustomEvent('carttotalitems'));
+          }
+        }).catch(function () {});
+      }
+      return result;
+    };
+  })();
+  /* ---------------------------------------------------------------
+     5. Mobile slide-up animation & login modal fix
+  --------------------------------------------------------------- */
+  function isMobile() {
+    return window.innerWidth <= 767;
+  }
+  function isLoginModalActive() {
+    const loginWrapper = document.querySelector('.nm-wishlist-login-modal');
+    if (!loginWrapper) return false;
+    const style = loginWrapper.getAttribute('style') || '';
+    // If transform is NOT the off-screen value, the modal is visible
+    return !style.includes('translate(-50%, 100%)');
+  }
+  function positionWrapper() {
+    const wrapper = document.querySelector('.nm-wishlist-drawer');
     if (!wrapper) return;
     wrapper.style.setProperty('position', 'fixed', 'important');
-    wrapper.style.setProperty('bottom', '0', 'important');
-    wrapper.style.setProperty('top', 'auto', 'important');
-    wrapper.style.setProperty('left', '0', 'important');
-    wrapper.style.setProperty('right', '0', 'important');
-    wrapper.style.setProperty('width', '100%', 'important');
-    wrapper.style.setProperty('max-width', '100vw', 'important');
+    wrapper.style.setProperty('bottom',   '0',     'important');
+    wrapper.style.setProperty('left',     '0',     'important');
+    wrapper.style.setProperty('right',    '0',     'important');
+    wrapper.style.setProperty('width',    '100%',  'important');
     wrapper.style.setProperty('max-height', '92dvh', 'important');
-    wrapper.style.setProperty('z-index', '2002', 'important');
-  };
-  const doOpen = () => {
-    const container = getContainer();
-    const wrapper = getWrapper();
-    if (!container || !wrapper || !isMobile()) return;
-    // Make container visible (overrides app's opacity:0)
-    container.style.opacity = '1';
-    container.style.pointerEvents = 'auto';
-    positionWrapper(wrapper);
-    // Start off-screen then slide up
+    wrapper.style.setProperty('z-index',  '2002',  'important');
+  }
+  function doOpen() {
+    if (!isMobile()) return;
+    const container = document.querySelector('.nm-modal-container');
+    const wrapper   = document.querySelector('.nm-wishlist-drawer');
+    if (!container || !wrapper) return;
+    container.style.setProperty('opacity', '1', 'important');
+    container.style.setProperty('pointer-events', 'all', 'important');
+    positionWrapper();
+    wrapper.style.setProperty('transform', 'translateY(100%)', 'important');
     wrapper.style.setProperty('transition', 'none', 'important');
-    wrapper.style.setProperty('transform', 'translateY(100%)', 'important');
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      wrapper.style.setProperty('transition', 'transform 0.4s ease', 'important');
-      wrapper.style.setProperty('transform', 'translateY(0)', 'important');
-    }));
-  };
-  const doClose = () => {
-    const container = getContainer();
-    const wrapper = getWrapper();
-    if (!container || !wrapper || !isMobile()) return;
-    positionWrapper(wrapper);
-    // Slide down
-    wrapper.style.setProperty('transition', 'transform 0.4s ease', 'important');
-    wrapper.style.setProperty('transform', 'translateY(100%)', 'important');
-    // After animation completes, restore app's hidden state
-    setTimeout(() => {
-      container.style.removeProperty('opacity');
-      container.style.removeProperty('pointer-events');
-    }, 420);
-  };
-  const patchWishlistButtons = () => {
-    // Intercept close button (capture phase beats app's handler)
-    const closeBtn = document.querySelector('.nm-modal-close-button');
-    if (closeBtn && !closeBtn.dataset.slidePatched) {
-      closeBtn.addEventListener('click', (e) => {
-        if (!isMobile()) return;
-        e.stopImmediatePropagation();
-        doClose();
-      }, true);
-      closeBtn.dataset.slidePatched = 'true';
-    }
-    // Intercept open button &mdash; let app open it, then we animate
-    const openBtn = document.querySelector('.nm-wishlist-inline-access-button');
-    if (openBtn && !openBtn.dataset.slidePatched) {
-      openBtn.addEventListener('click', () => {
-        if (!isMobile()) return;
-        setTimeout(doOpen, 10);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        wrapper.style.setProperty('transition', 'transform 0.4s ease', 'important');
+        wrapper.style.setProperty('transform',  'translateY(0)',        'important');
       });
-      openBtn.dataset.slidePatched = 'true';
+    });
+  }
+  function doClose() {
+    if (!isMobile()) return;
+    const container = document.querySelector('.nm-modal-container');
+    const wrapper   = document.querySelector('.nm-wishlist-drawer');
+    if (!container || !wrapper) return;
+    wrapper.style.setProperty('transition', 'transform 0.4s ease', 'important');
+    wrapper.style.setProperty('transform',  'translateY(100%)',     'important');
+    setTimeout(function () {
+      if (!isLoginModalActive()) {
+        container.style.removeProperty('opacity');
+        container.style.removeProperty('pointer-events');
+      }
+    }, 420);
+  }
+  function fixLoginModal() {
+    const loginWrapper = document.querySelector('.nm-wishlist-login-modal');
+    if (!loginWrapper) return;
+    const style = loginWrapper.getAttribute('style') || '';
+    if (style.includes('translate(-50%, 100%)')) {
+      // Move from off-screen to centred
+      loginWrapper.setAttribute(
+        'style',
+        style.replace('translate(-50%, 100%)', 'translate(-50%, -50%)')
+      );
+      // Keep container visible
+      const container = document.querySelector('.nm-modal-container');
+      if (container) {
+        container.style.setProperty('opacity', '1', 'important');
+        container.style.setProperty('pointer-events', 'all', 'important');
+      }
     }
-  };
-  patchWishlistButtons();
-  // Re-patch if buttons are re-rendered, and keep wrapper positioned
-  new MutationObserver(() => {
+  }
+  function fixBodyWrapperPadding() {
+    // Zero out the unnamed body wrapper div's padding (app sets inline padding:16px)
+    const drawer = document.querySelector('.nm-wishlist-drawer');
+    if (!drawer) return;
+    const kids = Array.from(drawer.children);
+    kids.forEach(function (child) {
+      const cls = (typeof child.className === 'string') ? child.className : '';
+      if (cls !== 'nm-wishlist-drawer-header') {
+        child.style.setProperty('padding-left',  '0', 'important');
+        child.style.setProperty('padding-right', '0', 'important');
+        child.style.setProperty('padding-top',   '0', 'important');
+      }
+    });
+  }
+  /* ---------------------------------------------------------------
+     6. Button interception &mdash; open/close slide animation,
+        scoped ONLY to drawer header (never login modal)
+  --------------------------------------------------------------- */
+  function patchWishlistButtons() {
+    // Intercept the drawer header close button only
+    const header = document.querySelector('.nm-wishlist-drawer-header');
+    if (header && !header.dataset.wlPatched) {
+      header.dataset.wlPatched = '1';
+      const closeBtn = header.querySelector('.nm-modal-close-button');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+          e.stopImmediatePropagation();
+          doClose();
+          // Let the app's own handler still run after a tick
+          setTimeout(function () {
+            closeBtn.dispatchEvent(new MouseEvent('click', { bubbles: false }));
+          }, 10);
+        }, true); // capture phase
+      }
+    }
+    // Intercept wishlist open button(s)
+    document.querySelectorAll('.nm-wishlist-inline-access-button, [class*="wishlist-access"]')
+      .forEach(function (btn) {
+        if (btn.dataset.wlOpenPatched) return;
+        btn.dataset.wlOpenPatched = '1';
+        btn.addEventListener('click', function () {
+          setTimeout(doOpen, 10);
+        });
+      });
+  }
+  /* ---------------------------------------------------------------
+     7. MutationObserver &mdash; re-run fixes when app re-renders DOM
+  --------------------------------------------------------------- */
+  var observer = new MutationObserver(function () {
+    initWishlistCards();
+    replaceCloseButtons();
+    upsizeWishlistImages();
+    fixBodyWrapperPadding();
+    fixLoginModal();
     patchWishlistButtons();
-    const w = getWrapper();
-    if (w && isMobile()) positionWrapper(w);
-  }).observe(document.body, { childList: true, subtree: true });
+  });
+  observer.observe(document.body, {
+    childList:  true,
+    subtree:    true,
+    attributes: true,
+    attributeFilter: ['style']
+  });
+  // Run immediately in case drawer is already in DOM
+  initWishlistCards();
+  replaceCloseButtons();
+  upsizeWishlistImages();
+  fixBodyWrapperPadding();
+  fixLoginModal();
+  patchWishlistButtons();
 })();
 </script>
 </body>
