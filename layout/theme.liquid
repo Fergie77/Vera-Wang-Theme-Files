@@ -593,6 +593,13 @@ initSwiper();
 </script>
 <script id="wl-script">
 (function () {
+  var LOG = function () {
+    var a = ['%c[WL]', 'color:#06c;font-weight:bold'];
+    for (var i = 0; i < arguments.length; i++) a.push(arguments[i]);
+    console.log.apply(console, a);
+  };
+  LOG('script loaded; innerWidth=', window.innerWidth);
+
   var X_SVG = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.447266 0.472656L9.38727 8.94891" stroke="black" stroke-width="1.3"></path><path d="M9.38727 0.472656L0.447266 8.94891" stroke="black" stroke-width="1.3"></path></svg>';
 
   function isMobile() { return window.innerWidth <= 767; }
@@ -664,36 +671,58 @@ initSwiper();
 
   function applyMobileHidden() { setPW(MOBILE_HIDDEN, 600); }
 
-  function updateWishlistUI() {
-    document.querySelectorAll('.nm-wishlist-drawer-header .nm-modal-close-button').forEach(function (btn) {
+  var _updateCount = 0;
+  function updateWishlistUI(reason) {
+    _updateCount++;
+    var closeBtns = document.querySelectorAll('.nm-wishlist-drawer-header .nm-modal-close-button');
+    var cards = document.querySelectorAll('.nm-wishlist-item-card');
+    LOG('updateWishlistUI #' + _updateCount, '(reason: ' + (reason || 'unknown') + ')',
+        'closeBtns=', closeBtns.length, 'cards=', cards.length);
+
+    closeBtns.forEach(function (btn, i) {
       Array.from(btn.childNodes).forEach(function (n) {
         if (n.nodeType === 1 && (n.nodeName === 'svg' || n.nodeName === 'SVG')) n.style.display = 'none';
       });
-      if (!btn.querySelector('.nm-close-text')) {
+      var hadText = !!btn.querySelector('.nm-close-text');
+      var hadX = !!btn.querySelector('.nm-close-x');
+      if (!hadText) {
         var t = document.createElement('span'); t.className = 'nm-close-text'; t.textContent = 'Close'; btn.appendChild(t);
       }
-      if (!btn.querySelector('.nm-close-x')) {
+      if (!hadX) {
         var x = document.createElement('span'); x.className = 'nm-close-x'; x.innerHTML = X_SVG; btn.appendChild(x);
       }
+      if (!hadText || !hadX) LOG('  closeBtn[' + i + '] injected text=' + !hadText + ' x=' + !hadX);
     });
 
     /* Direct queries on the card — survives Goodcraft's row-shape variations. */
-    document.querySelectorAll('.nm-wishlist-item-card').forEach(function (card) {
+    cards.forEach(function (card, i) {
       var img = card.querySelector('.nm-wishlist-item-image');
       var titleBlock = card.querySelector('.nm-wishlist-item-title');
       var removeBtn = card.querySelector('.nm-wishlist-item-remove-button');
+      var rowCount = card.children.length;
+      LOG('  card[' + i + '] rows=' + rowCount,
+          'img=' + !!img,
+          'titleBlock=' + !!titleBlock,
+          'removeBtn=' + !!removeBtn,
+          'removeBtnIn=', removeBtn ? (titleBlock && titleBlock.contains(removeBtn) ? 'titleBlock' : 'elsewhere') : 'none');
 
       if (img && !img.dataset.hiresApplied) {
         var base = (img.getAttribute('src') || '').split('?')[0];
-        if (base) { img.setAttribute('src', base + '?width=800'); img.dataset.hiresApplied = '1'; }
+        if (base) { img.setAttribute('src', base + '?width=800'); img.dataset.hiresApplied = '1'; LOG('    upsized image src'); }
       }
 
       if (titleBlock && removeBtn && !titleBlock.contains(removeBtn)) {
-        removeBtn.querySelectorAll('img').forEach(function (i) { i.style.display = 'none'; });
+        removeBtn.querySelectorAll('img').forEach(function (i2) { i2.style.display = 'none'; });
         if (!removeBtn.querySelector('.nm-remove-text')) {
           var s = document.createElement('span'); s.className = 'nm-remove-text'; s.textContent = 'REMOVE'; removeBtn.appendChild(s);
+          LOG('    appended REMOVE text span');
         }
         titleBlock.appendChild(removeBtn);
+        LOG('    moved removeBtn into titleBlock');
+      } else if (!titleBlock) {
+        LOG('    SKIP: no titleBlock found in card');
+      } else if (!removeBtn) {
+        LOG('    SKIP: no removeBtn found in card');
       }
     });
   }
@@ -701,41 +730,52 @@ initSwiper();
   function attachPanelObserver(pw, container) {
     if (window._wishlistPanelObserver) window._wishlistPanelObserver.disconnect();
     window._wishlistPanelObserver = new MutationObserver(function () {
-      if (_busy) return;
+      if (_busy) { LOG('panelObserver fire (BUSY, skip)'); return; }
       if (pw.style.cssText.indexOf('translateX') !== -1) {
+        var open = isContainerOpen(container);
+        LOG('panelObserver fire — translateX detected; mobile=' + isMobile() + ', open=' + open);
         if (isMobile()) {
-          if (isContainerOpen(container)) { applyMobileOpen(); } else { applyMobileHidden(); }
+          if (open) { applyMobileOpen(); } else { applyMobileHidden(); }
         } else {
           applyDesktopPanelStyles();
         }
       }
     });
     window._wishlistPanelObserver.observe(pw, { attributes: true, attributeFilter: ['style'] });
+    LOG('panelObserver attached');
   }
 
   function attachContainerObserver(wContainer) {
     if (window._wishlistVisibilityObserver) window._wishlistVisibilityObserver.disconnect();
     window._wishlistVisibilityObserver = new MutationObserver(function () {
       var isOpen = isContainerOpen(wContainer);
+      LOG('containerObserver fire — open=' + isOpen + ', mobile=' + isMobile());
       if (!isMobile()) applyDesktopPanelStyles();
-      if (isOpen) updateWishlistUI();
+      if (isOpen) updateWishlistUI('container-open');
     });
     window._wishlistVisibilityObserver.observe(wContainer, { attributes: true, attributeFilter: ['style'] });
+    LOG('containerObserver attached');
   }
 
   function attachContentObserver(wContainer) {
     if (window._wishlistObserver) window._wishlistObserver.disconnect();
-    window._wishlistObserver = new MutationObserver(function () {
+    window._wishlistObserver = new MutationObserver(function (muts) {
       clearTimeout(window._wishlistObserverTimer);
-      window._wishlistObserverTimer = setTimeout(updateWishlistUI, 50);
+      window._wishlistObserverTimer = setTimeout(function () {
+        LOG('contentObserver fire (debounced) — ' + muts.length + ' mutation(s)');
+        updateWishlistUI('content-mutation');
+      }, 50);
     });
     window._wishlistObserver.observe(wContainer, { childList: true, subtree: true });
+    LOG('contentObserver attached');
   }
 
   var wContainer = getWishlistContainer();
   var pw = getWishlistPanelWrapper();
+  LOG('init lookup: wContainer=', wContainer, 'pw=', pw);
 
   if (wContainer && pw) {
+    LOG('init: applying initial panel styles; mobile=' + isMobile());
     if (isMobile()) {
       _busy = true; pw.style.cssText = MOBILE_HIDDEN_INSTANT;
       setTimeout(function () { _busy = false; }, 100);
@@ -745,13 +785,15 @@ initSwiper();
     attachContainerObserver(wContainer);
     attachPanelObserver(pw, wContainer);
     attachContentObserver(wContainer);
-    updateWishlistUI();
+    updateWishlistUI('init');
 
     /* Catch late re-renders by Goodcraft (a manual resize used to fix it —
        these scheduled runs do the same automatically). */
     [150, 400, 800, 1500, 3000].forEach(function (ms) {
-      setTimeout(updateWishlistUI, ms);
+      setTimeout(function () { updateWishlistUI('retry-' + ms + 'ms'); }, ms);
     });
+  } else {
+    LOG('init: wContainer or pw missing — observers NOT attached');
   }
 
   if (window._wishlistResizeHandler) window.removeEventListener('resize', window._wishlistResizeHandler);
@@ -759,13 +801,14 @@ initSwiper();
     clearTimeout(window._wishlistResizeTimer);
     window._wishlistResizeTimer = setTimeout(function () {
       var pw2 = getWishlistPanelWrapper(), c2 = getWishlistContainer();
+      LOG('resize handler fire; innerWidth=' + window.innerWidth + ' mobile=' + isMobile() + ' pw2=' + !!pw2 + ' c2=' + !!c2);
       if (!pw2 || !c2) return;
       if (isMobile()) {
         _busy = true;
         pw2.style.cssText = isContainerOpen(c2) ? MOBILE_SHOWN : MOBILE_HIDDEN_INSTANT;
         setTimeout(function () { _busy = false; }, 30);
       } else { applyDesktopPanelStyles(); }
-      updateWishlistUI();
+      updateWishlistUI('resize');
     }, 150);
   };
   window.addEventListener('resize', window._wishlistResizeHandler);
