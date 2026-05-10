@@ -387,10 +387,12 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
 
   /* Drawer fills its panel */
   .nm-wishlist-drawer {
-    height: auto !important;
+    height: 100% !important;
     min-height: 80dvh !important;
     max-height: 92dvh !important;
     overflow-y: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   /* HEADER: "WISHLIST" left + X right + border-bottom */
@@ -594,7 +596,6 @@ initSwiper();
   var X_SVG = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.447266 0.472656L9.38727 8.94891" stroke="black" stroke-width="1.3"></path><path d="M9.38727 0.472656L0.447266 8.94891" stroke="black" stroke-width="1.3"></path></svg>';
 
   function isMobile() { return window.innerWidth <= 767; }
-
   function getWishlistContainer() {
     var drawer = document.querySelector('.nm-wishlist-drawer');
     return drawer ? drawer.closest('.nm-modal-container') : null;
@@ -603,131 +604,129 @@ initSwiper();
     var c = getWishlistContainer();
     return c ? c.children[1] : null;
   }
-
-  /* --- Panel positioning --- */
-  function applyMobilePanelStyles(open) {
-    var pw = getWishlistPanelWrapper();
-    if (!pw) return;
-    if (open) {
-      pw.style.cssText = [
-        'position: absolute', 'top: auto', 'left: 0', 'right: 0', 'bottom: 0',
-        'width: 100%', 'max-width: 100%', 'height: auto',
-        'min-height: 80dvh', 'max-height: 92dvh',
-        'transform: translateY(0)', 'transition: transform 0.4s ease',
-        'z-index: 2002', 'overflow: hidden'
-      ].join(' !important; ') + ' !important;';
-    } else {
-      pw.style.cssText = [
-        'position: absolute', 'top: auto', 'left: 0', 'right: 0', 'bottom: 0',
-        'width: 100%', 'max-width: 100%',
-        'transform: translateY(100%)', 'transition: transform 0.4s ease',
-        'z-index: 2002'
-      ].join(' !important; ') + ' !important;';
-    }
+  function isContainerOpen(c) {
+    if (!c) return false;
+    var s = c.getAttribute('style') || '';
+    return !s.includes('opacity: 0') && !s.includes('pointer-events: none');
   }
 
-  function applyDesktopPanelStyles() {
+  var DESKTOP_PW =
+    'position:absolute !important;top:0 !important;left:50% !important;' +
+    'right:0 !important;bottom:0 !important;width:50% !important;' +
+    'max-width:100% !important;height:100% !important;' +
+    'overflow:hidden !important;z-index:2002 !important;';
+
+  var MOBILE_SHOWN =
+    'position:absolute !important;top:auto !important;left:0 !important;' +
+    'right:0 !important;bottom:0 !important;width:100% !important;' +
+    'max-width:100% !important;height:auto !important;' +
+    'min-height:80dvh !important;max-height:92dvh !important;' +
+    'transform:translateY(0) !important;transition:transform 0.4s ease !important;' +
+    'z-index:2002 !important;overflow:hidden !important;';
+
+  var MOBILE_HIDDEN =
+    'position:absolute !important;top:auto !important;left:0 !important;' +
+    'right:0 !important;bottom:0 !important;width:100% !important;' +
+    'max-width:100% !important;height:auto !important;' +
+    'min-height:80dvh !important;max-height:92dvh !important;' +
+    'transform:translateY(100%) !important;transition:transform 0.4s ease !important;' +
+    'z-index:2002 !important;overflow:hidden !important;';
+
+  var MOBILE_HIDDEN_INSTANT =
+    'position:absolute !important;top:auto !important;left:0 !important;' +
+    'right:0 !important;bottom:0 !important;width:100% !important;' +
+    'max-width:100% !important;height:auto !important;' +
+    'min-height:80dvh !important;max-height:92dvh !important;' +
+    'transform:translateY(100%) !important;transition:none !important;' +
+    'z-index:2002 !important;overflow:hidden !important;';
+
+  /* Suppress panel observer during our own writes */
+  var _busy = false;
+
+  function setPW(style, holdMs) {
     var pw = getWishlistPanelWrapper();
     if (!pw) return;
-    pw.style.cssText = [
-      'position: absolute', 'top: 0', 'left: 50%', 'right: 0', 'bottom: 0',
-      'width: 50%', 'max-width: 100%', 'height: 100%',
-      'overflow: hidden', 'z-index: 2002'
-    ].join(' !important; ') + ' !important;';
+    _busy = true;
+    pw.style.cssText = style;
+    setTimeout(function () { _busy = false; }, holdMs || 30);
   }
 
-  /* --- UI updates --- */
+  function applyDesktopPanelStyles() { setPW(DESKTOP_PW); }
+
+  function applyMobileOpen() {
+    var pw = getWishlistPanelWrapper();
+    if (!pw) return;
+    _busy = true;
+    pw.style.cssText = MOBILE_HIDDEN_INSTANT;   // instant off-screen
+    setTimeout(function () {
+      pw.style.cssText = MOBILE_SHOWN;           // then slide up
+      setTimeout(function () { _busy = false; }, 600);
+    }, 20);
+  }
+
+  function applyMobileHidden() { setPW(MOBILE_HIDDEN, 600); }
+
+  /* DOM mutations: close button, REMOVE text, image quality */
   function updateWishlistUI() {
-    // Close button: hide original SVG, inject "Close" text + X icon spans
     document.querySelectorAll('.nm-wishlist-drawer-header .nm-modal-close-button').forEach(function (btn) {
-      Array.from(btn.children).forEach(function (c) {
-        if (c.tagName === 'SVG') c.style.display = 'none';
+      Array.from(btn.childNodes).forEach(function (n) {
+        if (n.nodeType === 1 && (n.tagName === 'svg' || n.tagName === 'SVG')) n.style.display = 'none';
       });
       if (!btn.querySelector('.nm-close-text')) {
-        var t = document.createElement('span');
-        t.className = 'nm-close-text';
-        t.textContent = 'Close';
-        btn.appendChild(t);
+        var t = document.createElement('span'); t.className = 'nm-close-text'; t.textContent = 'Close'; btn.appendChild(t);
       }
       if (!btn.querySelector('.nm-close-x')) {
-        var x = document.createElement('span');
-        x.className = 'nm-close-x';
-        x.innerHTML = X_SVG;
-        btn.appendChild(x);
+        var x = document.createElement('span'); x.className = 'nm-close-x'; x.innerHTML = X_SVG; btn.appendChild(x);
       }
     });
 
-    // Item cards
     document.querySelectorAll('.nm-wishlist-item-card').forEach(function (card) {
-      var firstRow = card.children[0];
-      var secondRow = card.children[1];
+      var firstRow = card.children[0], secondRow = card.children[1];
       if (!firstRow || !secondRow) return;
-
       var img = firstRow.querySelector('.nm-wishlist-item-image');
       var titleBlock = firstRow.querySelector('.nm-wishlist-item-title');
       var removeBtn = secondRow.querySelector('.nm-wishlist-item-remove-button');
-
-      // Upgrade image resolution
       if (img && !img.dataset.hiresApplied) {
         var base = (img.getAttribute('src') || '').split('?')[0];
         if (base) { img.setAttribute('src', base + '?width=800'); img.dataset.hiresApplied = '1'; }
       }
-
-      // Move REMOVE into title block (below price)
       if (titleBlock && removeBtn && !titleBlock.querySelector('.nm-wishlist-item-remove-button')) {
         removeBtn.querySelectorAll('img').forEach(function (i) { i.style.display = 'none'; });
         if (!removeBtn.querySelector('.nm-remove-text')) {
-          var s = document.createElement('span');
-          s.className = 'nm-remove-text';
-          s.textContent = 'REMOVE';
-          removeBtn.appendChild(s);
+          var s = document.createElement('span'); s.className = 'nm-remove-text'; s.textContent = 'REMOVE'; removeBtn.appendChild(s);
         }
         titleBlock.appendChild(removeBtn);
       }
     });
-
-    // Apply panel positioning for current breakpoint
-    if (isMobile()) {
-      var c = getWishlistContainer();
-      var isOpen = c && !((c.getAttribute('style') || '').includes('opacity: 0'));
-      applyMobilePanelStyles(isOpen);
-    } else {
-      applyDesktopPanelStyles();
-    }
   }
 
-  /* --- Observers --- */
-  if (window._wishlistObserver) window._wishlistObserver.disconnect();
-  if (window._wishlistVisibilityObserver) window._wishlistVisibilityObserver.disconnect();
-
-  var wContainer = getWishlistContainer();
-  if (wContainer) {
-    // Watch container style for open/close (NM uses opacity)
-    window._wishlistVisibilityObserver = new MutationObserver(function () {
-      var style = wContainer.getAttribute('style') || '';
-      var isOpen = !style.includes('opacity: 0') && !style.includes('pointer-events: none');
-      if (isMobile()) {
-        var pw = getWishlistPanelWrapper();
-        if (!pw) return;
-        if (isOpen) {
-          // Start off-screen then animate in
-          pw.style.cssText = 'position:absolute !important;top:auto !important;left:0 !important;right:0 !important;bottom:0 !important;width:100% !important;max-width:100% !important;height:auto !important;min-height:80dvh !important;max-height:92dvh !important;transform:translateY(100%) !important;transition:none !important;z-index:2002 !important;overflow:hidden !important;';
-          requestAnimationFrame(function () {
-            requestAnimationFrame(function () {
-              pw.style.cssText = 'position:absolute !important;top:auto !important;left:0 !important;right:0 !important;bottom:0 !important;width:100% !important;max-width:100% !important;height:auto !important;min-height:80dvh !important;max-height:92dvh !important;transform:translateY(0) !important;transition:transform 0.4s ease !important;z-index:2002 !important;overflow:hidden !important;';
-            });
-          });
-        } else {
-          pw.style.cssText = 'position:absolute !important;top:auto !important;left:0 !important;right:0 !important;bottom:0 !important;width:100% !important;max-width:100% !important;transform:translateY(100%) !important;transition:transform 0.4s ease !important;z-index:2002 !important;';
-        }
-      } else {
-        applyDesktopPanelStyles();
+  /* ── KEY NEW ADDITION ──────────────────────────────────────────────────────
+     Watch the panel wrapper's own style attribute.
+     The NM SDK sets translateX(0) on open and translateX(100%) on close at
+     mobile viewports. We catch those and replace with translateY immediately.
+  ──────────────────────────────────────────────────────────────────────────── */
+  function attachPanelObserver(pw, container) {
+    if (window._wishlistPanelObserver) window._wishlistPanelObserver.disconnect();
+    window._wishlistPanelObserver = new MutationObserver(function () {
+      if (_busy || !isMobile()) return;
+      if (pw.style.cssText.indexOf('translateX') !== -1) {
+        if (isContainerOpen(container)) { applyMobileOpen(); } else { applyMobileHidden(); }
       }
-      if (isOpen) updateWishlistUI();
+    });
+    window._wishlistPanelObserver.observe(pw, { attributes: true, attributeFilter: ['style'] });
+  }
+
+  function attachContainerObserver(wContainer) {
+    if (window._wishlistVisibilityObserver) window._wishlistVisibilityObserver.disconnect();
+    window._wishlistVisibilityObserver = new MutationObserver(function () {
+      if (!isMobile()) applyDesktopPanelStyles();
+      if (isContainerOpen(wContainer)) updateWishlistUI();
     });
     window._wishlistVisibilityObserver.observe(wContainer, { attributes: true, attributeFilter: ['style'] });
+  }
 
-    // Watch for content changes
+  function attachContentObserver(wContainer) {
+    if (window._wishlistObserver) window._wishlistObserver.disconnect();
     window._wishlistObserver = new MutationObserver(function () {
       clearTimeout(window._wishlistObserverTimer);
       window._wishlistObserverTimer = setTimeout(updateWishlistUI, 50);
@@ -735,15 +734,39 @@ initSwiper();
     window._wishlistObserver.observe(wContainer, { childList: true, subtree: true });
   }
 
-  // Re-apply on resize (breakpoint change)
-  window.removeEventListener('resize', window._wishlistResizeHandler);
+  var wContainer = getWishlistContainer();
+  var pw = getWishlistPanelWrapper();
+
+  if (wContainer && pw) {
+    /* Set correct initial state on page load */
+    if (isMobile()) {
+      _busy = true; pw.style.cssText = MOBILE_HIDDEN_INSTANT;
+      setTimeout(function () { _busy = false; }, 100);
+    } else {
+      applyDesktopPanelStyles();
+    }
+    attachContainerObserver(wContainer);
+    attachPanelObserver(pw, wContainer);   /* ← new */
+    attachContentObserver(wContainer);
+    updateWishlistUI();
+  }
+
+  if (window._wishlistResizeHandler) window.removeEventListener('resize', window._wishlistResizeHandler);
   window._wishlistResizeHandler = function () {
     clearTimeout(window._wishlistResizeTimer);
-    window._wishlistResizeTimer = setTimeout(updateWishlistUI, 100);
+    window._wishlistResizeTimer = setTimeout(function () {
+      var pw2 = getWishlistPanelWrapper(), c2 = getWishlistContainer();
+      if (!pw2 || !c2) return;
+      if (isMobile()) {
+        _busy = true;
+        pw2.style.cssText = isContainerOpen(c2) ? MOBILE_SHOWN : MOBILE_HIDDEN_INSTANT;
+        setTimeout(function () { _busy = false; }, 30);
+      } else { applyDesktopPanelStyles(); }
+      updateWishlistUI();
+    }, 150);
   };
   window.addEventListener('resize', window._wishlistResizeHandler);
 
-  updateWishlistUI();
 })();
 </script>
 </body>
