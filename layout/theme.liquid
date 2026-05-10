@@ -134,6 +134,148 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
     overflow: hidden;
   }
 </style>
+<style id="wl-css">
+/* Wishlist drawer mobile bottom-sheet — overrides Goodcraft portal stylesheet.
+   All rules use !important because Goodcraft's <style> tag is injected into the
+   portal <div> at runtime and loads after every theme stylesheet. */
+@media (max-width: 767px) {
+  /* Drawer shell */
+  .nm-modal-container .nm-wishlist-drawer {
+    height: auto !important;
+    max-height: 85vh !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  /* Drawer body (the 2nd child of .nm-wishlist-drawer — the scrolling area) */
+  .nm-modal-container .nm-wishlist-drawer > div:nth-child(2) {
+    height: auto !important;
+    max-height: calc(85vh - 56px) !important;
+    padding: 16px !important;
+    overflow-y: auto !important;
+  }
+
+  /* Header — matches cart drawer header */
+  .nm-wishlist-drawer-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 16px !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+    background: #fff !important;
+  }
+  .nm-wishlist-drawer-title {
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+  }
+  .nm-modal-close-button {
+    cursor: pointer !important;
+  }
+
+  /* Summery row (count + add all to cart) */
+  .nm-wishlist-summery {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border: none !important;
+    border-bottom: none !important;
+    padding: 12px 0 !important;
+    margin: 0 !important;
+  }
+  .nm-wishlist-summery-product-count {
+    font-size: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: #000 !important;
+  }
+  .nm-wishlist-summery-add-all-to-cart,
+  .nm-wl-remove-text-btn {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: inherit !important;
+    font-size: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    text-decoration: underline !important;
+    color: #000 !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+  }
+
+  /* Item card layout — stacked, with image+title row then ATC row */
+  .nm-wishlist-item-card {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 12px 0 !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+  }
+  .nm-wishlist-item-card > div:first-child {
+    display: flex !important;
+    gap: 12px !important;
+    align-items: flex-start !important;
+  }
+  .nm-wishlist-item-image {
+    width: 80px !important;
+    height: auto !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+  }
+  .nm-wishlist-item-title {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+  .nm-wishlist-item-name {
+    font-size: 12px !important;
+    color: #000 !important;
+    text-decoration: none !important;
+    line-height: 1.3 !important;
+  }
+  .nm-wishlist-item-variant,
+  .nm-wishlist-item-price {
+    font-size: 10px !important;
+    color: #555 !important;
+    line-height: 1.3 !important;
+  }
+  .nm-wl-remove-text-btn {
+    align-self: flex-start !important;
+    margin-top: 4px !important;
+  }
+
+  /* Hide Goodcraft trash icon — we render a text REMOVE in the title block */
+  .nm-wishlist-item-remove-button {
+    display: none !important;
+  }
+
+  /* ATC row */
+  .nm-wishlist-item-card > div:nth-child(2) {
+    display: flex !important;
+    gap: 8px !important;
+  }
+  .nm-wishlist-item-add-to-cart-button {
+    flex: 1 1 auto !important;
+    background: #000 !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 14px !important;
+    font-family: inherit !important;
+    font-size: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    cursor: pointer !important;
+  }
+}
+</style>
   <script src="https://cdn.prod.website-files.com/68e64cde361aeb3efeb34ca9%2F689e5ba67671442434f3ca35%2F69fc96205d8bf15349778e97%2Fsize_picker_state_css-1.0.0.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/68e64cde361aeb3efeb34ca9%2F689e5ba67671442434f3ca35%2F69fc972b4468d8fc64e6baa8%2Fsize_picker_state_css-1.1.0.js" type="text/javascript"></script>
 <script src="{{ 'li_helper.js' | asset_url }}" type="text/javascript"></script>{{ content_for_header }}</head>
@@ -265,6 +407,198 @@ function initSwiper() {
 }
 mq.addEventListener('change', initSwiper);
 initSwiper();
+</script>
+<script id="wl-js">
+/* Goodcraft wishlist drawer — mobile bottom-sheet override.
+   Mobile only (≤767px). Desktop keeps Goodcraft default (right-side panel).
+   See the brief in the PR description for the why behind each step. */
+(function () {
+  var MQ_QUERY = '(max-width: 767px)';
+  if (!window.matchMedia(MQ_QUERY).matches) return;
+
+  var SLIDE_TRANSITION = 'transform 0.35s cubic-bezier(0.32,0.72,0,1)';
+  var _cssPatched = false;
+  var _scheduled = false;
+
+  /* Goodcraft injects its own <style> into the portal <div>. We can't beat its
+     !important rules from theme CSS (loaded earlier), so we mutate the rules
+     in-place via CSSOM. */
+  function patchGoodcraftPortalCSS() {
+    if (_cssPatched) return;
+    var styles = document.querySelectorAll('style');
+    var patchedSomething = false;
+    styles.forEach(function (s) {
+      if (!s.parentElement || s.parentElement.tagName !== 'DIV') return;
+      var sheet = s.sheet;
+      if (!sheet) return;
+      var rules;
+      try { rules = sheet.cssRules; } catch (e) { return; }
+      for (var i = 0; i < rules.length; i++) {
+        var r = rules[i];
+        if (r.selectorText && r.selectorText.indexOf('.nm-wishlist-item-card') !== -1) {
+          r.style.setProperty('gap', '12px', 'important');
+          patchedSomething = true;
+        }
+        if (r.cssRules && r.media) {
+          for (var j = 0; j < r.cssRules.length; j++) {
+            var inner = r.cssRules[j];
+            if (!inner.selectorText) continue;
+            if (inner.selectorText.indexOf('.nm-wishlist-summery') !== -1) {
+              inner.style.removeProperty('border-bottom');
+              inner.style.removeProperty('border');
+              patchedSomething = true;
+            }
+            if (inner.selectorText.indexOf('.nm-wishlist-item-card') !== -1) {
+              inner.style.setProperty('gap', '12px', 'important');
+              patchedSomething = true;
+            }
+          }
+        }
+      }
+    });
+    if (patchedSomething) _cssPatched = true;
+  }
+
+  function positionWrapperForMobile(wrapper) {
+    if (!wrapper) return;
+    wrapper.style.setProperty('position', 'absolute', 'important');
+    wrapper.style.setProperty('bottom', '0', 'important');
+    wrapper.style.setProperty('left', '0', 'important');
+    wrapper.style.setProperty('right', '0', 'important');
+    wrapper.style.setProperty('top', 'auto', 'important');
+    wrapper.style.setProperty('width', '100%', 'important');
+    wrapper.style.setProperty('max-width', '100%', 'important');
+    wrapper.style.setProperty('height', 'auto', 'important');
+    /* Goodcraft sets height:100% inline on the drawer body — strip it so the
+       drawer collapses to content height on mobile. */
+    var drawer = wrapper.querySelector('.nm-wishlist-drawer');
+    if (drawer && drawer.children[1] && drawer.children[1].style && drawer.children[1].style.height) {
+      drawer.children[1].style.removeProperty('height');
+    }
+  }
+
+  function slideIn(wrapper) {
+    if (!wrapper) return;
+    positionWrapperForMobile(wrapper);
+    wrapper.style.setProperty('transition', SLIDE_TRANSITION, 'important');
+    wrapper.style.setProperty('transform', 'translateY(0%)', 'important');
+  }
+  function slideOut(wrapper) {
+    if (!wrapper) return;
+    wrapper.style.setProperty('transition', SLIDE_TRANSITION, 'important');
+    wrapper.style.setProperty('transform', 'translateY(110%)', 'important');
+  }
+  function snapToBottom(wrapper) {
+    if (!wrapper) return;
+    positionWrapperForMobile(wrapper);
+    wrapper.style.setProperty('transition', 'none', 'important');
+    wrapper.style.setProperty('transform', 'translateY(110%)', 'important');
+  }
+
+  function attachContainerWatcher() {
+    var container = document.querySelector('.nm-modal-container');
+    if (!container || container._wlWatched) return;
+    var wrapper = container.querySelector(':scope > div');
+    if (!wrapper) return;
+    container._wlWatched = true;
+
+    var isOpen = false;
+    snapToBottom(wrapper);
+
+    /* Observer 1: container [style] — Alpine sets opacity:1/0 on open/close. */
+    new MutationObserver(function () {
+      var op = container.style.opacity;
+      var pe = container.style.pointerEvents;
+      var nowOpen = op === '1' || pe === 'auto';
+      if (nowOpen && !isOpen) {
+        isOpen = true;
+        slideIn(wrapper);
+      } else if (!nowOpen && isOpen) {
+        isOpen = false;
+        slideOut(wrapper);
+      }
+    }).observe(container, { attributes: true, attributeFilter: ['style'] });
+
+    /* Observer 2: wrapper [style] — Alpine writes translateX(...) on open;
+       we override with translateY immediately. */
+    new MutationObserver(function () {
+      var t = wrapper.style.transform || '';
+      if (t.indexOf('translateX') !== -1) {
+        if (isOpen) slideIn(wrapper); else snapToBottom(wrapper);
+      }
+    }).observe(wrapper, { attributes: true, attributeFilter: ['style'] });
+  }
+
+  function addRemoveButtons() {
+    var cards = document.querySelectorAll('.nm-wishlist-item-card');
+    cards.forEach(function (card) {
+      if (card.querySelector('.nm-wl-remove-text-btn')) return;
+      var title = card.querySelector('.nm-wishlist-item-title');
+      var iconBtn = card.querySelector('.nm-wishlist-item-remove-button');
+      if (!title || !iconBtn) return;
+      var btn = document.createElement('button');
+      btn.className = 'nm-wl-remove-text-btn';
+      btn.type = 'button';
+      btn.textContent = 'REMOVE';
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        iconBtn.click();
+      });
+      title.appendChild(btn);
+    });
+  }
+
+  function upsizeImages() {
+    var imgs = document.querySelectorAll('.nm-wishlist-item-image');
+    imgs.forEach(function (img) {
+      var src = img.getAttribute('src');
+      if (!src || src.indexOf('width=600') !== -1) return;
+      var next = src.replace(/width=\d+/g, 'width=600');
+      if (next !== src) img.setAttribute('src', next);
+    });
+  }
+
+  /* Cart count sync — when Goodcraft adds to cart, re-broadcast totals so the
+     theme's mini-cart count updates. */
+  if (!window._wlFetchPatched) {
+    window._wlFetchPatched = true;
+    var origFetch = window.fetch;
+    window.fetch = function () {
+      var args = arguments;
+      var p = origFetch.apply(this, args);
+      try {
+        var url = args[0] && (args[0].url || args[0]);
+        if (typeof url === 'string' && /\/cart\/add(\.js)?(\?|$)/.test(url)) {
+          p.then(function () {
+            origFetch('/cart.js')
+              .then(function (r) { return r.json(); })
+              .then(function (data) {
+                window.dispatchEvent(new CustomEvent('carttotalitems', { detail: data }));
+              })
+              .catch(function () {});
+          });
+        }
+      } catch (e) {}
+      return p;
+    };
+  }
+
+  function run() {
+    patchGoodcraftPortalCSS();
+    attachContainerWatcher();
+    addRemoveButtons();
+    upsizeImages();
+  }
+
+  function schedule() {
+    if (_scheduled) return;
+    _scheduled = true;
+    requestAnimationFrame(function () { _scheduled = false; run(); });
+  }
+
+  new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
+  run();
+})();
 </script>
 </body>
 </html>
