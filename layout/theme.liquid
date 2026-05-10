@@ -256,37 +256,32 @@ End Google Tag Manager (noscript)  -->
   'use strict';
   if (window._wlv4) return;
   window._wlv4 = true;
-  const TRANS = 'transform 0.35s cubic-bezier(0.32,0.72,0,1)';
-  /* &#9472;&#9472;&#9472; Patch Goodcraft's portal-injected style tag &#9472;&#9472;&#9472; */
-  /* Goodcraft injects a <style> inside a portal DIV (not <head>), which loads
-     after our theme CSS and overrides it. We fix its rules directly. */
+  var TRANS = 'transform 0.35s cubic-bezier(0.32,0.72,0,1)';
+  /* Fix Goodcraft's portal-injected <style> tag (sits inside a <div>, loads after theme CSS) */
   function patchGoodcraftPortalCSS() {
-    document.querySelectorAll('style').forEach(function(styleEl) {
-      // Portal styles are inside a DIV, not HEAD or BODY
+    document.querySelectorAll('style').forEach(function (styleEl) {
       if (!styleEl.parentElement || styleEl.parentElement.tagName !== 'DIV') return;
       try {
-        var sheet = styleEl.sheet;
-        if (!sheet) return;
-        Array.from(sheet.cssRules || []).forEach(function(r) {
-          // Fix gap:0 on item card
-          if (r.selectorText === '.nm-wishlist-item-card') {
-            if (r.style.getPropertyPriority('gap') === 'important') {
-              r.style.setProperty('gap', '12px', 'important');
-            }
+        var rules = Array.from(styleEl.sheet.cssRules || []);
+        rules.forEach(function (r) {
+          /* Fix gap:0 !important on item card */
+          if (r.selectorText === '.nm-wishlist-item-card' &&
+              r.style.getPropertyPriority('gap') === 'important') {
+            r.style.setProperty('gap', '12px', 'important');
           }
-          // Fix mobile media query: remove border-bottom from summery
+          /* Fix border-bottom on summery inside mobile media query */
           if (r.cssRules) {
-            Array.from(r.cssRules).forEach(function(inner) {
+            Array.from(r.cssRules).forEach(function (inner) {
               if (inner.selectorText === '.nm-wishlist-summery') {
                 inner.style.removeProperty('border-bottom');
               }
             });
           }
         });
-      } catch(e) {}
+      } catch (e) {}
     });
   }
-  /* &#9472;&#9472;&#9472; Set wrapper position for mobile bottom-slide &#9472;&#9472;&#9472; */
+  /* On mobile: reposition wrapper to anchor at bottom, remove Goodcraft's height:100% on body */
   function positionWrapperForMobile(w) {
     w.style.setProperty('position', 'absolute', 'important');
     w.style.setProperty('bottom', '0', 'important');
@@ -296,29 +291,29 @@ End Google Tag Manager (noscript)  -->
     w.style.setProperty('width', '100%', 'important');
     w.style.setProperty('max-width', '100%', 'important');
     w.style.setProperty('height', 'auto', 'important');
-    // Remove Goodcraft's height:100% from drawer body
     var drawer = w.querySelector('.nm-wishlist-drawer');
     if (drawer) {
-      Array.from(drawer.children).forEach(function(child) {
+      Array.from(drawer.children).forEach(function (child) {
         if (child.style && child.style.height === '100%') {
           child.style.removeProperty('height');
         }
       });
     }
   }
-  /* &#9472;&#9472;&#9472; Slide animations &#9472;&#9472;&#9472; */
+  /* Slide animations &mdash; use inline style.setProperty with 'important'
+     so we beat Goodcraft's sheet-level transform:none !important */
   function slideIn(w) {
     w.style.setProperty('transition', TRANS, 'important');
-    requestAnimationFrame(function() {
-      requestAnimationFrame(function() {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
         w.style.setProperty('transform', 'translateY(0%)', 'important');
       });
     });
   }
   function slideOut(w) {
     w.style.setProperty('transition', TRANS, 'important');
-    requestAnimationFrame(function() {
-      requestAnimationFrame(function() {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
         w.style.setProperty('transform', 'translateY(110%)', 'important');
       });
     });
@@ -327,7 +322,7 @@ End Google Tag Manager (noscript)  -->
     w.style.setProperty('transition', 'none', 'important');
     w.style.setProperty('transform', 'translateY(110%)', 'important');
   }
-  /* &#9472;&#9472;&#9472; Watch container for open/close &#9472;&#9472;&#9472; */
+  /* Watch .nm-modal-container opacity to drive the slide */
   function attachContainerWatcher() {
     var container = document.querySelector('.nm-modal-container');
     if (!container || container._wlWatched) return;
@@ -338,7 +333,7 @@ End Google Tag Manager (noscript)  -->
       positionWrapperForMobile(w);
       snapToBottom(w);
     }
-    new MutationObserver(function() {
+    new MutationObserver(function () {
       if (!isMobile()) return;
       var w2 = container.firstElementChild;
       if (!w2) return;
@@ -351,18 +346,18 @@ End Google Tag Manager (noscript)  -->
       }
     }).observe(container, { attributes: true, attributeFilter: ['style'] });
   }
-  /* &#9472;&#9472;&#9472; Add text REMOVE button to each card &#9472;&#9472;&#9472; */
+  /* Inject text REMOVE button into each card */
   function addRemoveButtons() {
-    document.querySelectorAll('.nm-wishlist-item-card').forEach(function(card) {
+    document.querySelectorAll('.nm-wishlist-item-card').forEach(function (card) {
       if (card.querySelector('.nm-wl-remove-text-btn')) return;
       var titleDiv = card.querySelector('.nm-wishlist-item-title');
-      var iconBtn = card.querySelector('.nm-wishlist-item-remove-button');
+      var iconBtn  = card.querySelector('.nm-wishlist-item-remove-button');
       if (!titleDiv || !iconBtn) return;
       var textBtn = document.createElement('button');
-      textBtn.className = 'nm-wl-remove-text-btn';
+      textBtn.className   = 'nm-wl-remove-text-btn';
       textBtn.textContent = 'REMOVE';
-      textBtn.type = 'button';
-      textBtn.addEventListener('click', function(e) {
+      textBtn.type        = 'button';
+      textBtn.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
         iconBtn.click();
@@ -370,68 +365,40 @@ End Google Tag Manager (noscript)  -->
       titleDiv.appendChild(textBtn);
     });
   }
-  /* &#9472;&#9472;&#9472; Upsize product images &#9472;&#9472;&#9472; */
+  /* Upsize Shopify CDN images */
   function upsizeImages() {
-    document.querySelectorAll('.nm-wishlist-item-image').forEach(function(img) {
-      if (img.src && img.src.indexOf('cdn.shopify.com') !== -1 && img.src.indexOf('width=600') === -1) {
+    document.querySelectorAll('.nm-wishlist-item-image').forEach(function (img) {
+      if (img.src && img.src.indexOf('cdn.shopify.com') !== -1 &&
+          img.src.indexOf('width=600') === -1) {
         img.src = img.src.replace(/width=\d+/, 'width=600');
       }
     });
   }
-  /* &#9472;&#9472;&#9472; Cart count update after Add to Cart &#9472;&#9472;&#9472; */
+  /* Keep cart count in sync after Add to Cart */
   if (!window._wlFetchPatched) {
     window._wlFetchPatched = true;
     var _origFetch = window.fetch;
-    window.fetch = function() {
+    window.fetch = function () {
       var args = Array.prototype.slice.call(arguments);
-      var url = typeof args[0] === 'string' ? args[0] : (args[0] && args[0].url) || '';
-      var p = _origFetch.apply(this, args);
+      var url  = typeof args[0] === 'string' ? args[0] : (args[0] && args[0].url) || '';
+      var p    = _origFetch.apply(this, args);
       if (url.indexOf('/cart/add') !== -1) {
-        p.then(function() {
-          fetch('/cart.js').then(function(r) { return r.json(); }).then(function(cart) {
-            document.dispatchEvent(new CustomEvent('carttotalitems', { detail: { itemCount: cart.item_count } }));
+        p.then(function () {
+          fetch('/cart.js').then(function (r) { return r.json(); }).then(function (cart) {
+            document.dispatchEvent(new CustomEvent('carttotalitems', {
+              detail: { itemCount: cart.item_count }
+            }));
           });
-        }).catch(function() {});
+        }).catch(function () {});
       }
       return p;
     };
   }
-  /* &#9472;&#9472;&#9472; Login modal fix &#9472;&#9472;&#9472; */
-  function loginPoller() {
-    var attempts = 0;
-    var id = setInterval(function() {
-      attempts++;
-      if (attempts > 30) { clearInterval(id); return; }
-      var modal = document.querySelector('.nm-wishlist-login-modal, [class*="login-modal"]');
-      if (!modal) return;
-      var rect = modal.getBoundingClientRect();
-      if (rect.top > window.innerHeight * 0.85) {
-        modal.style.setProperty('position', 'fixed', 'important');
-        modal.style.setProperty('top', '50%', 'important');
-        modal.style.setProperty('left', '50%', 'important');
-        modal.style.setProperty('transform', 'translate(-50%,-50%)', 'important');
-        modal.style.setProperty('z-index', '99999', 'important');
-      }
-      var closeBtn = modal.querySelector('[class*="close"], [aria-label*="close"], [aria-label*="Close"]');
-      if (closeBtn) {
-        closeBtn.style.cssText = 'display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;';
-        clearInterval(id);
-      }
-    }, 200);
-  }
-  function patchWLBtns() {
-    document.querySelectorAll('.nm-wishlist-inline-access-button').forEach(function(btn) {
-      if (btn._wlPatched) return;
-      btn._wlPatched = true;
-      btn.addEventListener('click', function() { setTimeout(loginPoller, 500); });
-    });
-  }
-  /* &#9472;&#9472;&#9472; Main run (called on DOM changes) &#9472;&#9472;&#9472; */
+  /* Main &mdash; runs on every DOM change (Goodcraft renders lazily) */
   function run() {
     patchGoodcraftPortalCSS();
     upsizeImages();
     addRemoveButtons();
-    patchWLBtns();
     attachContainerWatcher();
   }
   new MutationObserver(run).observe(document.body, { childList: true, subtree: true });
