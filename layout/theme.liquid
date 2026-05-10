@@ -259,7 +259,7 @@ End Google Tag Manager (noscript)  -->
 
   var TRANS = 'transform 0.35s cubic-bezier(0.32,0.72,0,1)';
 
-  /* Fix Goodcraft's portal-injected <style> tag */
+  /* Fix Goodcraft's portal-injected <style> (inside a DIV, loads after theme CSS) */
   function patchGoodcraftPortalCSS() {
     document.querySelectorAll('style').forEach(function (styleEl) {
       if (!styleEl.parentElement || styleEl.parentElement.tagName !== 'DIV') return;
@@ -282,7 +282,7 @@ End Google Tag Manager (noscript)  -->
     });
   }
 
-  /* Set wrapper to bottom-anchored mobile layout */
+  /* Mobile bottom-anchor layout */
   function positionWrapperForMobile(w) {
     w.style.setProperty('position', 'absolute', 'important');
     w.style.setProperty('bottom', '0', 'important');
@@ -319,7 +319,7 @@ End Google Tag Manager (noscript)  -->
     w.style.setProperty('transform', 'translateY(110%)', 'important');
   }
 
-  /* Watch container AND wrapper — dual observer */
+  /* Dual observer: watch container opacity AND intercept wrapper translateX */
   function attachContainerWatcher() {
     var container = document.querySelector('.nm-modal-container');
     if (!container || container._wlWatched) return;
@@ -332,7 +332,7 @@ End Google Tag Manager (noscript)  -->
 
     var isOpen = false;
 
-    /* Observer 1: container opacity → drive open/close */
+    /* Watch container opacity for open/close signal */
     new MutationObserver(function () {
       if (!isMobile()) return;
       var w2 = container.firstElementChild;
@@ -347,7 +347,7 @@ End Google Tag Manager (noscript)  -->
       }
     }).observe(container, { attributes: true, attributeFilter: ['style'] });
 
-    /* Observer 2: wrapper style — intercept any translateX Goodcraft writes */
+    /* Watch wrapper — if Goodcraft writes translateX, override with translateY */
     if (w) {
       new MutationObserver(function () {
         if (!isMobile()) return;
@@ -355,7 +355,6 @@ End Google Tag Manager (noscript)  -->
         if (!w2) return;
         var wStyle = w2.getAttribute('style') || '';
         if (wStyle.indexOf('translateX') !== -1) {
-          /* Goodcraft wrote translateX — override immediately */
           if (isOpen) {
             slideIn(w2);
           } else {
@@ -368,7 +367,7 @@ End Google Tag Manager (noscript)  -->
     }
   }
 
-  /* Inject text REMOVE button */
+  /* Text REMOVE button */
   function addRemoveButtons() {
     document.querySelectorAll('.nm-wishlist-item-card').forEach(function (card) {
       if (card.querySelector('.nm-wl-remove-text-btn')) return;
