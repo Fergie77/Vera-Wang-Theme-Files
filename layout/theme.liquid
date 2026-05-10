@@ -141,6 +141,319 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
     background: #000000;
   }
 </style>
+<style id="wl-styles">
+/* ============================================
+   WISHLIST PANEL - MATCH CART STYLING
+   Desktop + Mobile
+   ============================================ */
+
+/* BACKDROP */
+.nm-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+}
+
+/* WISHLIST DRAWER */
+.nm-wishlist-drawer {
+  width: 100% !important;
+  height: 100% !important;
+  font-family: Gotham, Arial, sans-serif !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  flex-direction: column !important;
+  display: flex !important;
+  box-sizing: border-box !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+
+/* HEADER - desktop: right-aligned "Close" only */
+.nm-wishlist-drawer-header {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  padding: 2rem 1.5rem 1.5rem 1.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  border-bottom: none !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+}
+
+/* Hide panel title on desktop (cart hides it too) */
+.nm-wishlist-drawer-title {
+  display: none !important;
+}
+
+/* Close button base */
+.nm-modal-close-button {
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  flex-shrink: 0 !important;
+  min-width: 40px !important;
+  min-height: 20px !important;
+}
+
+/* Hide original NM SVG (direct child only, NOT our injected X) */
+.nm-modal-close-button > svg {
+  display: none !important;
+}
+
+/* JS injects .nm-close-text ("Close") and .nm-close-x (X icon) */
+.nm-close-text {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: rgb(0, 0, 0) !important;
+  cursor: pointer !important;
+  display: block !important; /* visible on desktop */
+}
+.nm-close-x {
+  display: none !important; /* hidden on desktop */
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  flex-shrink: 0 !important;
+}
+.nm-close-x svg {
+  display: block !important; /* always show our X SVG */
+}
+
+/* Scrollable area */
+.nm-wishlist-drawer > div:nth-child(2) {
+  flex: 1 1 0% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 0 !important;
+}
+
+/* Summery row - desktop: 8.5rem padding */
+.nm-wishlist-summery {
+  display: flex !important;
+  padding: 1rem 8.5rem !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 11px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+.nm-wishlist-summery-product-count {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: rgb(100, 100, 100) !important;
+}
+.nm-wishlist-summery-add-all-to-cart {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  text-decoration: underline !important;
+  color: rgb(0, 0, 0) !important;
+  padding: 0 !important;
+}
+
+/* Item card - desktop: 8.5rem horizontal padding */
+.nm-wishlist-item-card {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 1rem 8.5rem !important;
+  gap: 1rem !important;
+  border-bottom: 1px solid #eee !important;
+  background-color: rgb(255, 255, 255) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+.nm-wishlist-item-card > div:first-child {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1.5rem !important;
+  align-items: flex-start !important;
+}
+.nm-wishlist-item-card > div:last-child {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0 !important;
+}
+
+/* Item image - desktop: aspect 173/209, width 12rem */
+.nm-wishlist-item-image {
+  aspect-ratio: 173 / 209 !important;
+  width: 12rem !important;
+  height: auto !important;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+  background-color: #f5f5f5 !important;
+}
+
+.nm-wishlist-item-title {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  flex: 1 !important;
+}
+.nm-wishlist-item-name {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  color: rgb(0, 0, 0) !important;
+  text-decoration: none !important;
+  display: block !important;
+}
+.nm-wishlist-item-variant {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  color: rgb(100, 100, 100) !important;
+  display: block !important;
+  margin-top: 4px !important;
+}
+.nm-wishlist-item-price {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  color: rgb(0, 0, 0) !important;
+  display: block !important;
+  margin-top: 4px !important;
+}
+
+/* Remove button - inside title block (moved by JS) */
+.nm-wishlist-item-remove-button {
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 8px !important;
+  width: auto !important;
+  height: auto !important;
+}
+.nm-wishlist-item-remove-button img {
+  display: none !important;
+}
+.nm-remove-text {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: rgb(150, 150, 150) !important;
+  text-decoration: underline !important;
+}
+
+.nm-wishlist-item-add-to-cart-button {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  background-color: rgb(0, 0, 0) !important;
+  color: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(0, 0, 0) !important;
+  cursor: pointer !important;
+  padding: 14px 20px !important;
+  flex: 1 !important;
+  width: 100% !important;
+}
+
+/* ============================================
+   MOBILE OVERRIDES (≤767px) - Match cart mobile
+   ============================================ */
+
+@media screen and (max-width: 767px) {
+
+  /* No backdrop blur on mobile (matches cart) */
+  .nm-modal-overlay {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Drawer fills its panel */
+  .nm-wishlist-drawer {
+    height: auto !important;
+    min-height: 80dvh !important;
+    max-height: 92dvh !important;
+    overflow-y: auto !important;
+  }
+
+  /* HEADER: "WISHLIST" left + X right + border-bottom */
+  .nm-wishlist-drawer-header {
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 0 0 1rem !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    border-bottom: 1px solid #eee !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Show "WISHLIST" title on mobile */
+  .nm-wishlist-drawer-title {
+    display: block !important;
+    font-family: Gotham, Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: normal !important;
+    color: rgb(0, 0, 0) !important;
+  }
+
+  /* Close button: hide "Close" text, show X icon */
+  .nm-close-text {
+    display: none !important;
+  }
+  .nm-close-x {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    flex-shrink: 0 !important;
+  }
+  .nm-close-x svg {
+    display: block !important;
+  }
+
+  /* Scrollable area */
+  .nm-wishlist-drawer > div:nth-child(2) {
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+  }
+
+  /* Mobile padding: 1.25rem (matches cart --padding--global) */
+  .nm-wishlist-summery {
+    padding: 1rem 1.25rem !important;
+  }
+  .nm-wishlist-item-card {
+    padding: 1rem 1.25rem 1.5rem !important;
+  }
+
+  /* Slightly smaller image on mobile */
+  .nm-wishlist-item-image {
+    width: 155px !important;
+  }
+  .nm-wishlist-item-add-to-cart-button {
+    width: 100% !important;
+  }
+}
+</style>
   <script src="https://cdn.prod.website-files.com/68e64cde361aeb3efeb34ca9%2F689e5ba67671442434f3ca35%2F69fc96205d8bf15349778e97%2Fsize_picker_state_css-1.0.0.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/68e64cde361aeb3efeb34ca9%2F689e5ba67671442434f3ca35%2F69fc972b4468d8fc64e6baa8%2Fsize_picker_state_css-1.1.0.js" type="text/javascript"></script>
 <script src="{{ 'li_helper.js' | asset_url }}" type="text/javascript"></script>{{ content_for_header }}</head>
@@ -275,6 +588,163 @@ function initSwiper() {
 }
 mq.addEventListener('change', initSwiper);
 initSwiper();
+</script>
+<script id="wl-script">
+(function () {
+  var X_SVG = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.447266 0.472656L9.38727 8.94891" stroke="black" stroke-width="1.3"></path><path d="M9.38727 0.472656L0.447266 8.94891" stroke="black" stroke-width="1.3"></path></svg>';
+
+  function isMobile() { return window.innerWidth <= 767; }
+
+  function getWishlistContainer() {
+    var drawer = document.querySelector('.nm-wishlist-drawer');
+    return drawer ? drawer.closest('.nm-modal-container') : null;
+  }
+  function getWishlistPanelWrapper() {
+    var c = getWishlistContainer();
+    return c ? c.children[1] : null;
+  }
+
+  /* --- Panel positioning --- */
+  function applyMobilePanelStyles(open) {
+    var pw = getWishlistPanelWrapper();
+    if (!pw) return;
+    if (open) {
+      pw.style.cssText = [
+        'position: absolute', 'top: auto', 'left: 0', 'right: 0', 'bottom: 0',
+        'width: 100%', 'max-width: 100%', 'height: auto',
+        'min-height: 80dvh', 'max-height: 92dvh',
+        'transform: translateY(0)', 'transition: transform 0.4s ease',
+        'z-index: 2002', 'overflow: hidden'
+      ].join(' !important; ') + ' !important;';
+    } else {
+      pw.style.cssText = [
+        'position: absolute', 'top: auto', 'left: 0', 'right: 0', 'bottom: 0',
+        'width: 100%', 'max-width: 100%',
+        'transform: translateY(100%)', 'transition: transform 0.4s ease',
+        'z-index: 2002'
+      ].join(' !important; ') + ' !important;';
+    }
+  }
+
+  function applyDesktopPanelStyles() {
+    var pw = getWishlistPanelWrapper();
+    if (!pw) return;
+    pw.style.cssText = [
+      'position: absolute', 'top: 0', 'left: 50%', 'right: 0', 'bottom: 0',
+      'width: 50%', 'max-width: 100%', 'height: 100%',
+      'overflow: hidden', 'z-index: 2002'
+    ].join(' !important; ') + ' !important;';
+  }
+
+  /* --- UI updates --- */
+  function updateWishlistUI() {
+    // Close button: hide original SVG, inject "Close" text + X icon spans
+    document.querySelectorAll('.nm-wishlist-drawer-header .nm-modal-close-button').forEach(function (btn) {
+      Array.from(btn.children).forEach(function (c) {
+        if (c.tagName === 'SVG') c.style.display = 'none';
+      });
+      if (!btn.querySelector('.nm-close-text')) {
+        var t = document.createElement('span');
+        t.className = 'nm-close-text';
+        t.textContent = 'Close';
+        btn.appendChild(t);
+      }
+      if (!btn.querySelector('.nm-close-x')) {
+        var x = document.createElement('span');
+        x.className = 'nm-close-x';
+        x.innerHTML = X_SVG;
+        btn.appendChild(x);
+      }
+    });
+
+    // Item cards
+    document.querySelectorAll('.nm-wishlist-item-card').forEach(function (card) {
+      var firstRow = card.children[0];
+      var secondRow = card.children[1];
+      if (!firstRow || !secondRow) return;
+
+      var img = firstRow.querySelector('.nm-wishlist-item-image');
+      var titleBlock = firstRow.querySelector('.nm-wishlist-item-title');
+      var removeBtn = secondRow.querySelector('.nm-wishlist-item-remove-button');
+
+      // Upgrade image resolution
+      if (img && !img.dataset.hiresApplied) {
+        var base = (img.getAttribute('src') || '').split('?')[0];
+        if (base) { img.setAttribute('src', base + '?width=800'); img.dataset.hiresApplied = '1'; }
+      }
+
+      // Move REMOVE into title block (below price)
+      if (titleBlock && removeBtn && !titleBlock.querySelector('.nm-wishlist-item-remove-button')) {
+        removeBtn.querySelectorAll('img').forEach(function (i) { i.style.display = 'none'; });
+        if (!removeBtn.querySelector('.nm-remove-text')) {
+          var s = document.createElement('span');
+          s.className = 'nm-remove-text';
+          s.textContent = 'REMOVE';
+          removeBtn.appendChild(s);
+        }
+        titleBlock.appendChild(removeBtn);
+      }
+    });
+
+    // Apply panel positioning for current breakpoint
+    if (isMobile()) {
+      var c = getWishlistContainer();
+      var isOpen = c && !((c.getAttribute('style') || '').includes('opacity: 0'));
+      applyMobilePanelStyles(isOpen);
+    } else {
+      applyDesktopPanelStyles();
+    }
+  }
+
+  /* --- Observers --- */
+  if (window._wishlistObserver) window._wishlistObserver.disconnect();
+  if (window._wishlistVisibilityObserver) window._wishlistVisibilityObserver.disconnect();
+
+  var wContainer = getWishlistContainer();
+  if (wContainer) {
+    // Watch container style for open/close (NM uses opacity)
+    window._wishlistVisibilityObserver = new MutationObserver(function () {
+      var style = wContainer.getAttribute('style') || '';
+      var isOpen = !style.includes('opacity: 0') && !style.includes('pointer-events: none');
+      if (isMobile()) {
+        var pw = getWishlistPanelWrapper();
+        if (!pw) return;
+        if (isOpen) {
+          // Start off-screen then animate in
+          pw.style.cssText = 'position:absolute !important;top:auto !important;left:0 !important;right:0 !important;bottom:0 !important;width:100% !important;max-width:100% !important;height:auto !important;min-height:80dvh !important;max-height:92dvh !important;transform:translateY(100%) !important;transition:none !important;z-index:2002 !important;overflow:hidden !important;';
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              pw.style.cssText = 'position:absolute !important;top:auto !important;left:0 !important;right:0 !important;bottom:0 !important;width:100% !important;max-width:100% !important;height:auto !important;min-height:80dvh !important;max-height:92dvh !important;transform:translateY(0) !important;transition:transform 0.4s ease !important;z-index:2002 !important;overflow:hidden !important;';
+            });
+          });
+        } else {
+          pw.style.cssText = 'position:absolute !important;top:auto !important;left:0 !important;right:0 !important;bottom:0 !important;width:100% !important;max-width:100% !important;transform:translateY(100%) !important;transition:transform 0.4s ease !important;z-index:2002 !important;';
+        }
+      } else {
+        applyDesktopPanelStyles();
+      }
+      if (isOpen) updateWishlistUI();
+    });
+    window._wishlistVisibilityObserver.observe(wContainer, { attributes: true, attributeFilter: ['style'] });
+
+    // Watch for content changes
+    window._wishlistObserver = new MutationObserver(function () {
+      clearTimeout(window._wishlistObserverTimer);
+      window._wishlistObserverTimer = setTimeout(updateWishlistUI, 50);
+    });
+    window._wishlistObserver.observe(wContainer, { childList: true, subtree: true });
+  }
+
+  // Re-apply on resize (breakpoint change)
+  window.removeEventListener('resize', window._wishlistResizeHandler);
+  window._wishlistResizeHandler = function () {
+    clearTimeout(window._wishlistResizeTimer);
+    window._wishlistResizeTimer = setTimeout(updateWishlistUI, 100);
+  };
+  window.addEventListener('resize', window._wishlistResizeHandler);
+
+  updateWishlistUI();
+})();
 </script>
 </body>
 </html>
