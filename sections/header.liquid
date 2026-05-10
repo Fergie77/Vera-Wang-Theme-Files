@@ -1363,307 +1363,301 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
         </div>
         <div class="w-embed">
           <style>
-/* ==================================================================
-   WISHLIST DRAWER &mdash; Desktop styles (matches cart drawer)
-   ================================================================== */
-.nm-modal-overlay {
-  background-color: rgba(0, 0, 0, 0.4) !important;
-  backdrop-filter: blur(6px) !important;
-}
-/* Drawer wrapper */
-.nm-wishlist-drawer {
-  background-color: #fff !important;
-  width: 400px !important;
-  max-width: 400px !important;
-  height: 100vh !important;
-  position: fixed !important;
-  top: 0 !important;
-  right: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  overflow: hidden !important;
-  box-shadow: -4px 0 24px rgba(0,0,0,0.08) !important;
-  z-index: 2002 !important;
-}
-/* Header */
-.nm-wishlist-drawer-header {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding: 0 1rem !important;
-  height: 48px !important;
-  border-bottom: 1px solid #eee !important;
-  flex-shrink: 0 !important;
-  position: static !important;
-}
-/* Header title */
-.nm-wishlist-drawer-title {
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-  color: #000 !important;
-}
-/* Close button &mdash; desktop shows "Close" text */
-.nm-wishlist-drawer-header .nm-modal-close-button {
-  cursor: pointer !important;
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: 11px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-  color: #000 !important;
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-}
-/* Scrollable body area */
-.nm-wishlist-drawer > div:not(.nm-wishlist-drawer-header) {
-  overflow-y: auto !important;
-  flex: 1 !important;
-  padding: 0 !important;
-}
-/* Item card */
-.nm-wishlist-item-card {
-  display: flex !important;
-  flex-direction: column !important;
-  background-color: transparent !important;
-  border-bottom: 1px solid #eee !important;
-  padding: 1rem 15px !important;
-  margin: 0 !important;
-  gap: 0 !important;
-}
-/* Image + text row */
-.nm-wishlist-item-card > div:first-child {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 1.5rem !important;
-  align-items: flex-start !important;
-  width: 100% !important;
-}
-/* Product image */
-.nm-wishlist-item-image {
-  width: 130px !important;
-  height: 160px !important;
-  object-fit: cover !important;
-  flex-shrink: 0 !important;
-  background-color: #f5f5f5 !important;
-}
-/* Text column */
-.nm-wishlist-item-title-col {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 4px !important;
-  flex: 1 !important;
-  min-width: 0 !important;
-  padding-top: 4px !important;
-}
-/* Product title */
-.nm-wishlist-item-title-col a {
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: 12px !important;
-  font-weight: 500 !important;
-  color: #000 !important;
-  text-decoration: none !important;
-  letter-spacing: 0.03em !important;
-  line-height: 1.4 !important;
-  display: block !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-}
-/* Variant info */
-.nm-wishlist-item-variant {
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: 11px !important;
-  color: #777 !important;
-  letter-spacing: 0.03em !important;
-}
-/* Price */
-.nm-wishlist-item-price {
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: 12px !important;
-  font-weight: 500 !important;
-  color: #000 !important;
-  letter-spacing: 0.03em !important;
-  margin-top: 2px !important;
-}
-/* Remove button */
-.nm-wishlist-item-remove-btn {
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
-  cursor: pointer !important;
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: 10px !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-  color: #000 !important;
-  text-decoration: underline !important;
-  text-underline-offset: 3px !important;
-  margin-top: 8px !important;
-  display: inline-block !important;
-}
-/* Add to cart button (per card) */
-.nm-wishlist-item-card > .nm-wishlist-item-add-to-cart-button {
-  width: 100% !important;
-  margin-top: 0.75rem !important;
-  height: 40px !important;
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: 11px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  background-color: #000 !important;
-  color: #fff !important;
-  border: none !important;
-  cursor: pointer !important;
-}
-/* Summery bar */
-.nm-wishlist-summery {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  border-top: none !important;
-  border-bottom: 1px solid #eee !important;
-  padding: 24px 15px !important;
-  flex-shrink: 0 !important;
-}
-.nm-wishlist-summery-count {
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: 12px !important;
-  font-weight: 400 !important;
-  color: #000 !important;
-  letter-spacing: 0.03em !important;
-}
-.nm-wishlist-add-all-to-cart-button {
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
-  cursor: pointer !important;
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: 11px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-  color: #000 !important;
-  text-decoration: underline !important;
-  text-underline-offset: 3px !important;
-}
-/* ==================================================================
-   WISHLIST DRAWER &mdash; Mobile styles (&le;767px, matches cart slide-up)
-   ================================================================== */
-@media screen and (max-width: 767px) {
-  /* Full-screen overlay as flex column anchored to bottom */
-  .nm-modal-container:has(.nm-wishlist-drawer) {
+  /* ====== DESKTOP ====== */
+  .nm-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(6px) !important;
+  }
+  .nm-wishlist-drawer {
+    background-color: #fff !important;
+    width: 400px !important;
+    max-width: 400px !important;
+    height: 100vh !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: flex-end !important;
-    align-items: stretch !important;
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 2001 !important;
-  }
-  /* Drawer takes full width, slides up from bottom */
-  .nm-wishlist-drawer {
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    min-height: 80dvh !important;
-    max-height: 92dvh !important;
-    top: auto !important;
-    box-shadow: 0 -4px 24px rgba(0,0,0,0.12) !important;
-    border-radius: 0 !important;
     overflow: hidden !important;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.08) !important;
+    z-index: 2002 !important;
   }
-  /* Header &mdash; same as cart mobile header */
   .nm-wishlist-drawer-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 1rem !important;
+    height: 48px !important;
+    border-bottom: 1px solid #eee !important;
+    flex-shrink: 0 !important;
     position: static !important;
+  }
+  .nm-wishlist-drawer-title {
+    font-family: Gotham, Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #000 !important;
+  }
+  .nm-wishlist-drawer-header .nm-modal-close-button {
+    cursor: pointer !important;
+    font-family: Gotham, Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #000 !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+  .nm-wishlist-drawer > div:not(.nm-wishlist-drawer-header) {
+    overflow-y: auto !important;
+    flex: 1 !important;
+    padding: 0 !important;
+  }
+  .nm-wishlist-item-card {
+    display: flex !important;
+    flex-direction: column !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid #eee !important;
+    padding: 1rem 15px !important;
+    margin: 0 !important;
+    gap: 0 !important;
+  }
+  .nm-wishlist-item-card > div:first-child {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1.5rem !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+  .nm-wishlist-item-image {
+    width: 130px !important;
+    height: 160px !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+    background-color: #f5f5f5 !important;
+  }
+  .nm-wishlist-item-title-col {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    padding-top: 4px !important;
+  }
+  .nm-wishlist-item-title-col a {
+    font-family: Gotham, Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #000 !important;
+    text-decoration: none !important;
+    letter-spacing: 0.03em !important;
+    line-height: 1.4 !important;
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .nm-wishlist-item-variant {
+    font-family: Gotham, Arial, sans-serif !important;
+    font-size: 11px !important;
+    color: #777 !important;
+    letter-spacing: 0.03em !important;
+  }
+  .nm-wishlist-item-price {
+    font-family: Gotham, Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #000 !important;
+    letter-spacing: 0.03em !important;
+    margin-top: 2px !important;
+  }
+  .nm-wishlist-item-remove-btn {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    font-family: Gotham, Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #000 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    margin-top: 8px !important;
+    display: inline-block !important;
+  }
+  .nm-wishlist-item-card > .nm-wishlist-item-add-to-cart-button {
+    width: 100% !important;
+    margin-top: 0.75rem !important;
+    height: 40px !important;
+    font-family: Gotham, Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    background-color: #000 !important;
+    color: #fff !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+  .nm-wishlist-summery {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 0 0 0 1rem !important;
-    height: 48px !important;
+    border-top: none !important;
     border-bottom: 1px solid #eee !important;
+    padding: 24px 15px !important;
     flex-shrink: 0 !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
   }
-  /* Title &mdash; uppercase, 14px, weight 500 */
-  .nm-wishlist-drawer-title {
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.08em !important;
-    position: static !important;
-    transform: none !important;
+  .nm-wishlist-summery-count {
+    font-family: Gotham, Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #000 !important;
+    letter-spacing: 0.03em !important;
   }
-  /* Hide the close button's children, show X icon via pseudo-element */
-  .nm-wishlist-drawer-header .nm-modal-close-button {
-    position: relative !important;
-    width: 48px !important;
-    height: 48px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0 !important;
-    padding: 0 !important;
+  .nm-wishlist-add-all-to-cart-button {
     background: none !important;
     border: none !important;
-    cursor: pointer !important;
-    color: transparent !important;
-    font-size: 0 !important;
-  }
-  .nm-wishlist-drawer-header .nm-modal-close-button > * {
-    display: none !important;
-  }
-  .nm-wishlist-drawer-header .nm-modal-close-button::after {
-    content: '';
-    display: block !important;
-    width: 14px !important;
-    height: 14px !important;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cline x1='1' y1='1' x2='13' y2='13' stroke='%23000' stroke-width='1.3'/%3E%3Cline x1='13' y1='1' x2='1' y2='13' stroke='%23000' stroke-width='1.3'/%3E%3C/svg%3E") !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: contain !important;
-  }
-  /* Scrollable body */
-  .nm-wishlist-drawer > div:not(.nm-wishlist-drawer-header) {
     padding: 0 !important;
-    overflow-y: auto !important;
-    flex: 1 !important;
-    -webkit-overflow-scrolling: touch !important;
+    cursor: pointer !important;
+    font-family: Gotham, Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #000 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
   }
-  /* Item card &mdash; restore horizontal padding */
-  .nm-wishlist-item-card {
-    padding: 15px !important;
-    border-bottom: 1px solid #eee !important;
+  /* ====== MOBILE ====== */
+  @media screen and (max-width: 767px) {
+    /* Drawer container only &mdash; does NOT affect the login modal's separate container */
+    .nm-modal-container:has(.nm-wishlist-drawer) {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 2001 !important;
+      display: block !important;
+    }
+    /* Dark overlay sits behind the drawer panel */
+    .nm-modal-container:has(.nm-wishlist-drawer) > .nm-modal-overlay {
+      position: absolute !important;
+      inset: 0 !important;
+      z-index: 1 !important;
+    }
+    /* KEY FIX: The app's anonymous wrapper div uses position:absolute; right:0; max-width:90%
+     which collapses to zero width on mobile. Override to full-width fixed at bottom. */
+    .nm-modal-container:has(.nm-wishlist-drawer) > div:not(.nm-modal-overlay) {
+      position: fixed !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      top: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      transform: none !important;
+      z-index: 2 !important;
+    }
+    /* Drawer: relative inside the wrapper, full width, slides up from bottom */
+    .nm-wishlist-drawer {
+      position: relative !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+      top: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      min-height: 80dvh !important;
+      max-height: 92dvh !important;
+      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.12) !important;
+      border-radius: 0 !important;
+      overflow: hidden !important;
+      z-index: auto !important;
+      /* Strip any JS-injected translateY &mdash; the app's doOpen() sets this and breaks the layout */
+      transform: none !important;
+      transition: none !important;
+    }
+    .nm-wishlist-drawer-header {
+      position: static !important;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 0 0 1rem !important;
+      height: 48px !important;
+      border-bottom: 1px solid #eee !important;
+      flex-shrink: 0 !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .nm-wishlist-drawer-title {
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.08em !important;
+      position: static !important;
+      transform: none !important;
+    }
+    .nm-wishlist-drawer-header .nm-modal-close-button {
+      position: relative !important;
+      width: 48px !important;
+      height: 48px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+      padding: 0 !important;
+      background: none !important;
+      border: none !important;
+      cursor: pointer !important;
+      color: transparent !important;
+      font-size: 0 !important;
+    }
+    .nm-wishlist-drawer-header .nm-modal-close-button > * {
+      display: none !important;
+    }
+    .nm-wishlist-drawer-header .nm-modal-close-button::after {
+      content: '';
+      display: block !important;
+      width: 14px !important;
+      height: 14px !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cline x1='1' y1='1' x2='13' y2='13' stroke='%23000' stroke-width='1.3'/%3E%3Cline x1='13' y1='1' x2='1' y2='13' stroke='%23000' stroke-width='1.3'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+    }
+    .nm-wishlist-drawer > div:not(.nm-wishlist-drawer-header) {
+      padding: 0 !important;
+      overflow-y: auto !important;
+      flex: 1 !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .nm-wishlist-item-card {
+      padding: 15px !important;
+      border-bottom: 1px solid #eee !important;
+    }
+    .nm-wishlist-item-card > div:first-child {
+      gap: 12px !important;
+    }
+    .nm-wishlist-item-image {
+      width: 100px !important;
+      height: 125px !important;
+    }
+    .nm-wishlist-summery {
+      border-top: none !important;
+      padding: 16px 15px !important;
+    }
   }
-  .nm-wishlist-item-card > div:first-child {
-    gap: 12px !important;
-  }
-  /* Image &mdash; smaller on mobile */
-  .nm-wishlist-item-image {
-    width: 100px !important;
-    height: 125px !important;
-  }
-  /* Summery bar &mdash; no border-top, padding aligned with header */
-  .nm-wishlist-summery {
-    border-top: none !important;
-    padding: 16px 15px !important;
-  }
-}
 </style>
         </div> {% schema %} {
     "tag": "div",
