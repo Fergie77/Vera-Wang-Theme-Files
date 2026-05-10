@@ -1361,7 +1361,299 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
   });
 </script>
         </div>
-        <div class="w-embed"></div> {% schema %} {
+        <div class="w-embed">
+          <style id="wl-styles">
+/* ============================================
+   WISHLIST PANEL - MATCH CART STYLING
+   Desktop + Mobile
+   ============================================ */
+/* BACKDROP */
+.nm-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+}
+/* WISHLIST DRAWER */
+.nm-wishlist-drawer {
+  width: 100% !important;
+  height: 100% !important;
+  font-family: Gotham, Arial, sans-serif !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  flex-direction: column !important;
+  display: flex !important;
+  box-sizing: border-box !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+/* HEADER - desktop: right-aligned "Close" only */
+.nm-wishlist-drawer-header {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  padding: 2rem 1.5rem 1.5rem 1.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  border-bottom: none !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+}
+/* Hide panel title on desktop (cart hides it too) */
+.nm-wishlist-drawer-title {
+  display: none !important;
+}
+/* Close button base */
+.nm-modal-close-button {
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  flex-shrink: 0 !important;
+  min-width: 40px !important;
+  min-height: 20px !important;
+}
+/* Hide original NM SVG (direct child only, NOT our injected X) */
+.nm-modal-close-button > svg {
+  display: none !important;
+}
+/* JS injects .nm-close-text ("Close") and .nm-close-x (X icon) */
+.nm-close-text {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: rgb(0, 0, 0) !important;
+  cursor: pointer !important;
+  display: block !important;
+}
+.nm-close-x {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  flex-shrink: 0 !important;
+}
+.nm-close-x svg {
+  display: block !important;
+}
+/* Scrollable area */
+.nm-wishlist-drawer > div:nth-child(2) {
+  flex: 1 1 0% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 0 !important;
+}
+/* Summery row - desktop: 8.5rem padding */
+.nm-wishlist-summery {
+  display: flex !important;
+  padding: 1rem 8.5rem !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 11px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+.nm-wishlist-summery-product-count {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: rgb(100, 100, 100) !important;
+}
+.nm-wishlist-summery-add-all-to-cart {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  text-decoration: underline !important;
+  color: rgb(0, 0, 0) !important;
+  padding: 0 !important;
+}
+/* Item card - desktop: 8.5rem horizontal padding */
+.nm-wishlist-item-card {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 1rem 8.5rem !important;
+  gap: 1rem !important;
+  border-bottom: 1px solid #eee !important;
+  background-color: rgb(255, 255, 255) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+.nm-wishlist-item-card > div:first-child {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1.5rem !important;
+  align-items: flex-start !important;
+}
+.nm-wishlist-item-card > div:last-child {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0 !important;
+}
+/* Item image - desktop: aspect 173/209, width 12rem */
+.nm-wishlist-item-image {
+  aspect-ratio: 173 / 209 !important;
+  width: 12rem !important;
+  height: auto !important;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+  background-color: #f5f5f5 !important;
+}
+.nm-wishlist-item-title {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  flex: 1 !important;
+}
+.nm-wishlist-item-name {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  color: rgb(0, 0, 0) !important;
+  text-decoration: none !important;
+  display: block !important;
+}
+.nm-wishlist-item-variant {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  color: rgb(100, 100, 100) !important;
+  display: block !important;
+  margin-top: 4px !important;
+}
+.nm-wishlist-item-price {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  color: rgb(0, 0, 0) !important;
+  display: block !important;
+  margin-top: 4px !important;
+}
+/* Remove button - inside title block (moved by JS) */
+.nm-wishlist-item-remove-button {
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 8px !important;
+  width: auto !important;
+  height: auto !important;
+}
+.nm-wishlist-item-remove-button img {
+  display: none !important;
+}
+.nm-remove-text {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: rgb(150, 150, 150) !important;
+  text-decoration: underline !important;
+}
+.nm-wishlist-item-add-to-cart-button {
+  font-family: Gotham, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  background-color: rgb(0, 0, 0) !important;
+  color: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(0, 0, 0) !important;
+  cursor: pointer !important;
+  padding: 14px 20px !important;
+  flex: 1 !important;
+  width: 100% !important;
+}
+/* ============================================
+   MOBILE OVERRIDES (&le;767px) - Match cart mobile
+   ============================================ */
+@media screen and (max-width: 767px) {
+  /* No backdrop blur on mobile (matches cart) */
+  .nm-modal-overlay {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  /* Drawer fills its panel */
+  .nm-wishlist-drawer {
+    height: 100% !important;
+    min-height: 80dvh !important;
+    max-height: 92dvh !important;
+    overflow-y: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  /* HEADER: "WISHLIST" left + X right + border-bottom */
+  .nm-wishlist-drawer-header {
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 0 0 1rem !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    border-bottom: 1px solid #eee !important;
+    flex-shrink: 0 !important;
+  }
+  /* Show "WISHLIST" title on mobile */
+  .nm-wishlist-drawer-title {
+    display: block !important;
+    font-family: Gotham, Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: normal !important;
+    color: rgb(0, 0, 0) !important;
+  }
+  /* Close button: hide "Close" text, show X icon */
+  .nm-close-text {
+    display: none !important;
+  }
+  .nm-close-x {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    flex-shrink: 0 !important;
+  }
+  .nm-close-x svg {
+    display: block !important;
+  }
+  /* Scrollable area */
+  .nm-wishlist-drawer > div:nth-child(2) {
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+  }
+  /* Mobile padding: 1.25rem (matches cart --padding--global) */
+  .nm-wishlist-summery {
+    padding: 1rem 1.25rem !important;
+  }
+  .nm-wishlist-item-card {
+    padding: 1rem 1.25rem 1.5rem !important;
+  }
+  /* Slightly smaller image on mobile */
+  .nm-wishlist-item-image {
+    width: 155px !important;
+  }
+  .nm-wishlist-item-add-to-cart-button {
+    width: 100% !important;
+  }
+}
+</style>
+        </div> {% schema %} {
     "tag": "div",
     "name": "Header",
     "class": "section_navbar",
