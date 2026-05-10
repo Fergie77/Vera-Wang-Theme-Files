@@ -195,170 +195,173 @@ End Google Tag Manager (noscript)  -->
 </script>
   <script>
 //Wishlist JS Amends
+<script>
 (function () {
   'use strict';
-  function upsizeImage(img) {
-    if (!img || img.dataset.upsized) return;
-    img.dataset.upsized = '1';
-    var src = img.getAttribute('src') || '';
-    if (src.includes('cdn.shopify.com'))
-      img.setAttribute('src', src.replace(/width=\d+/, 'width=600'));
+  if (window._wlv4) return;
+  window._wlv4 = true;
+  const TRANS = 'transform 0.35s cubic-bezier(0.32,0.72,0,1)';
+  /* &#9472;&#9472;&#9472; Helper: find the anonymous wrapper div &#9472;&#9472;&#9472; */
+  function getWrapper() {
+    const container = document.querySelector('.nm-wishlist-modal-container');
+    return container ? container.firstElementChild : null;
   }
-  function upsizeWishlistImages() {
-    document.querySelectorAll('.nm-wishlist-item-image').forEach(upsizeImage);
-  }
-  function initWishlistCards() {
-    document.querySelectorAll('.nm-wishlist-item-card').forEach(function (card) {
-      if (card.dataset.wlInit) return;
-      card.dataset.wlInit = '1';
-      var img = card.querySelector('.nm-wishlist-item-image');
-      if (img) { upsizeImage(img); img.style.cssText = ''; }
-      var titleCol = document.createElement('div');
-      titleCol.className = 'nm-wishlist-item-title-col';
-      var titleLink = card.querySelector('a.nm-wishlist-item-title, a[class*="title"]') || card.querySelector('a');
-      var variantEl = card.querySelector('.nm-wishlist-item-variant, [class*="variant"]');
-      var priceEl   = card.querySelector('.nm-wishlist-item-price, [class*="price"]');
-      var removeBtn = card.querySelector('button.nm-wishlist-item-remove-button, [class*="remove"]');
-      if (titleLink) titleCol.appendChild(titleLink);
-      if (variantEl) titleCol.appendChild(variantEl);
-      if (priceEl)   titleCol.appendChild(priceEl);
-      if (removeBtn) {
-        var textRemove = document.createElement('button');
-        textRemove.className = 'nm-wishlist-item-remove-btn';
-        textRemove.textContent = 'Remove';
-        textRemove.addEventListener('click', function () { removeBtn.click(); });
-        titleCol.appendChild(textRemove);
-        removeBtn.style.display = 'none';
-      }
-      var row = card.querySelector('div:first-child') || document.createElement('div');
-      row.innerHTML = '';
-      if (img) row.appendChild(img);
-      row.appendChild(titleCol);
-      var atcBtn = card.querySelector('.nm-wishlist-item-add-to-cart-button, button[class*="add-to-cart"]');
-      if (atcBtn) { atcBtn.className = 'nm-wishlist-item-add-to-cart-button'; card.appendChild(atcBtn); }
+  /* &#9472;&#9472;&#9472; Slide animations via inline style.setProperty('important')
+         This beats Goodcraft's sheet-level transform:none !important &#9472;&#9472;&#9472; */
+  function slideIn(w) {
+    w.style.setProperty('transition', TRANS, 'important');
+    requestAnimationFrame(() => {
+      w.style.setProperty('transform', 'translateY(0%)', 'important');
     });
   }
-  function replaceCloseButtons() {
-    var header = document.querySelector('.nm-wishlist-drawer-header');
-    if (!header) return;
-    var btn = header.querySelector('.nm-modal-close-button');
-    if (btn && btn.textContent.trim() !== 'Close') btn.innerHTML = 'Close';
-  }
-  /* Cart count patch */
-  if (!window._wlFetchPatched) {
-    window._wlFetchPatched = true;
-    var _fetch = window.fetch;
-    window.fetch = function (input, init) {
-      var url = typeof input === 'string' ? input : (input && input.url) || '';
-      var result = _fetch.apply(this, arguments);
-      if (url.includes('/cart/add'))
-        result.then(function (r) { if (r.ok) document.dispatchEvent(new CustomEvent('carttotalitems')); }).catch(function(){});
-      return result;
-    };
-  }
-  /* Strip any JS-injected translateY from the drawer on mobile.
-     The app's animation sets transform:translateY(100%) as an initial state
-     before animating, but our CSS layout doesn't need it and it breaks visibility. */
-  function guardDrawerTransform() {
-    if (window.innerWidth > 767) return;
-    var drawer = document.querySelector('.nm-wishlist-drawer');
-    if (!drawer) return;
-    var style = drawer.getAttribute('style') || '';
-    if (style.includes('translateY')) {
-      drawer.style.removeProperty('transform');
-      drawer.style.removeProperty('transition');
-    }
-  }
-  /* Body wrapper padding fix */
-  function fixBodyWrapperPadding() {
-    var drawer = document.querySelector('.nm-wishlist-drawer');
-    if (!drawer) return;
-    Array.from(drawer.children).forEach(function (child) {
-      var cls = (typeof child.className === 'string') ? child.className : '';
-      if (cls !== 'nm-wishlist-drawer-header') {
-        child.style.setProperty('padding-left',  '0', 'important');
-        child.style.setProperty('padding-right', '0', 'important');
-        child.style.setProperty('padding-top',   '0', 'important');
-      }
+  function slideOut(w) {
+    w.style.setProperty('transition', TRANS, 'important');
+    requestAnimationFrame(() => {
+      w.style.setProperty('transform', 'translateY(110%)', 'important');
     });
   }
-  /* Login modal: poll for off-screen wrapper and reposition to centre */
-  function getLoginContainer() {
-    return document.querySelector('.nm-modal-container:has(.nm-wishlist-login-modal)');
+  function snapToBottom(w) {
+    w.style.setProperty('transition', 'none', 'important');
+    w.style.setProperty('transform', 'translateY(110%)', 'important');
   }
-  var loginPollerTimer = null;
-  function startLoginModalPoller() {
-    if (loginPollerTimer) return;
-    var attempts = 0;
-    loginPollerTimer = setInterval(function () {
-      attempts++;
-      var lc = getLoginContainer();
-      if (lc) {
-        var aw = lc.children[1];
-        if (aw) {
-          var awStyle = aw.getAttribute('style') || '';
-          if (awStyle.includes('translate(-50%, 100%)')) {
-            aw.setAttribute('style', awStyle.replace('translate(-50%, 100%)', 'translate(-50%, -50%)'));
-            lc.style.removeProperty('display');
-            patchLoginModalClose(lc);
-            clearInterval(loginPollerTimer);
-            loginPollerTimer = null;
-            return;
+  /* &#9472;&#9472;&#9472; Patch Goodcraft's injected CSS rules &#9472;&#9472;&#9472; */
+  function patchCSS() {
+    for (const sheet of Array.from(document.styleSheets)) {
+      let rules;
+      try { rules = Array.from(sheet.cssRules || []); } catch { continue; }
+      for (const rule of rules) {
+        if (!(rule instanceof CSSStyleRule)) continue;
+        const sel = rule.selectorText || '';
+        // Fix drawer: remove forced top:0 and height:100vh
+        if (sel === '.nm-wishlist-drawer') {
+          if (rule.style.getPropertyValue('top')) rule.style.removeProperty('top');
+          if (rule.style.getPropertyValue('height')) rule.style.removeProperty('height');
+        }
+        // Fix card gap: app sets gap:0 !important &mdash; override to 12px !important
+        if (sel.includes('nm-wishlist-item-card') && !sel.includes('div') && !sel.includes('button')) {
+          const gap = rule.style.getPropertyPriority('gap');
+          if (gap === 'important') {
+            rule.style.setProperty('gap', '12px', 'important');
           }
         }
+        // Fix mobile drawer: app forces position:fixed and full-screen &mdash; make relative
+        if (rule instanceof CSSMediaRule) {
+          try {
+            for (const inner of Array.from(rule.cssRules || [])) {
+              if (!(inner instanceof CSSStyleRule)) continue;
+              if (inner.selectorText === '.nm-wishlist-drawer') {
+                if (inner.style.getPropertyValue('position')) inner.style.removeProperty('position');
+                if (inner.style.getPropertyValue('top')) inner.style.removeProperty('top');
+                if (inner.style.getPropertyValue('left')) inner.style.removeProperty('left');
+                if (inner.style.getPropertyValue('width')) inner.style.removeProperty('width');
+                if (inner.style.getPropertyValue('height')) inner.style.removeProperty('height');
+              }
+            }
+          } catch {}
+        }
       }
-      if (attempts > 50) { clearInterval(loginPollerTimer); loginPollerTimer = null; }
-    }, 100);
+    }
   }
-  function patchLoginModalClose(lc) {
-    var closeBtn = lc ? lc.querySelector('.nm-modal-close-button') : null;
-    if (!closeBtn || closeBtn.dataset.wlLoginClose) return;
-    closeBtn.dataset.wlLoginClose = '1';
-    closeBtn.addEventListener('click', function () {
-      lc.style.setProperty('display', 'none', 'important');
-      setTimeout(function () { lc.style.removeProperty('display'); }, 500);
-    }, false);
-  }
-  /* Patch wishlist open button &mdash; only to start login modal poller */
-  function patchWishlistButtons() {
-    document.querySelectorAll('.nm-wishlist-inline-access-button, [class*="wishlist-access"]')
-      .forEach(function (btn) {
-        if (btn.dataset.wlOpenPatched) return;
-        btn.dataset.wlOpenPatched = '1';
-        btn.addEventListener('click', function () {
-          setTimeout(startLoginModalPoller, 200);
-        });
-      });
-  }
-  /* Watch the drawer for translateY being set by any animation code */
-  var drawerTransformObs = null;
-  function watchDrawerTransform() {
-    var drawer = document.querySelector('.nm-wishlist-drawer');
-    if (!drawer || drawer.dataset.wlTransformWatched) return;
-    drawer.dataset.wlTransformWatched = '1';
-    drawerTransformObs = new MutationObserver(function () {
-      guardDrawerTransform();
+  /* &#9472;&#9472;&#9472; Watch container opacity to drive slide &#9472;&#9472;&#9472; */
+  function attachContainerWatcher() {
+    const container = document.querySelector('.nm-wishlist-modal-container');
+    if (!container) return;
+    const w = getWrapper();
+    if (w) snapToBottom(w);
+    const obs = new MutationObserver(() => {
+      const w2 = getWrapper();
+      if (!w2) return;
+      const st = container.getAttribute('style') || '';
+      if (st.includes('opacity: 1') || st.includes('opacity:1')) {
+        slideIn(w2);
+      } else if (st.includes('opacity: 0') || st.includes('opacity:0')) {
+        slideOut(w2);
+      }
+      // Also strip any translateX the app sets on the wrapper (it uses translateX on desktop)
+      const wStyle = w2.getAttribute('style') || '';
+      if (wStyle.includes('translateX')) {
+        const isMobile = window.innerWidth <= 767;
+        if (isMobile) {
+          w2.style.setProperty('transition', TRANS, 'important');
+          // don't override translateY &mdash; leave current slide state
+        }
+      }
     });
-    drawerTransformObs.observe(drawer, { attributes: true, attributeFilter: ['style'] });
+    obs.observe(container, { attributes: true, attributeFilter: ['style'] });
   }
-  /* Main MutationObserver */
-  var observer = new MutationObserver(function () {
-    initWishlistCards();
-    replaceCloseButtons();
-    upsizeWishlistImages();
-    fixBodyWrapperPadding();
-    patchWishlistButtons();
-    watchDrawerTransform();
-    guardDrawerTransform();
-  });
-  observer.observe(document.body, { childList: true, subtree: true });
-  initWishlistCards();
-  replaceCloseButtons();
-  upsizeWishlistImages();
-  fixBodyWrapperPadding();
-  patchWishlistButtons();
-  watchDrawerTransform();
-  guardDrawerTransform();
+  /* &#9472;&#9472;&#9472; Upsize product images &#9472;&#9472;&#9472; */
+  function upsizeImages() {
+    document.querySelectorAll('.nm-wishlist-item-image').forEach(img => {
+      if (img.src && img.src.includes('cdn.shopify.com')) {
+        img.src = img.src.replace(/width=\d+/, 'width=600');
+      }
+    });
+  }
+  /* &#9472;&#9472;&#9472; Cart fetch patch &mdash; update cart count after adding &#9472;&#9472;&#9472; */
+  const _origFetch = window.fetch;
+  window.fetch = function (...args) {
+    const url = typeof args[0] === 'string' ? args[0] : (args[0] && args[0].url) || '';
+    const p = _origFetch.apply(this, args);
+    if (url.includes('/cart/add')) {
+      p.then(() => {
+        fetch('/cart.js').then(r => r.json()).then(cart => {
+          document.dispatchEvent(new CustomEvent('carttotalitems', { detail: { itemCount: cart.item_count } }));
+        });
+      }).catch(() => {});
+    }
+    return p;
+  };
+  /* &#9472;&#9472;&#9472; Login modal fix &#9472;&#9472;&#9472; */
+  function loginPoller() {
+    let attempts = 0;
+    const id = setInterval(() => {
+      attempts++;
+      if (attempts > 30) { clearInterval(id); return; }
+      const modal = document.querySelector('.nm-wishlist-login-modal, [class*="login-modal"]');
+      if (!modal) return;
+      const rect = modal.getBoundingClientRect();
+      if (rect.top > window.innerHeight * 0.85) {
+        modal.style.cssText = [
+          'position:fixed',
+          'top:50%',
+          'left:50%',
+          'transform:translate(-50%,-50%)',
+          'z-index:99999',
+          'max-height:90vh',
+          'overflow-y:auto'
+        ].join('!important;') + '!important';
+      }
+      const closeBtn = modal.querySelector('[class*="close"], [aria-label*="close"], [aria-label*="Close"]');
+      if (closeBtn) {
+        closeBtn.style.cssText = 'display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;';
+        clearInterval(id);
+      }
+    }, 200);
+  }
+  /* &#9472;&#9472;&#9472; Attach login poller to wishlist buttons &#9472;&#9472;&#9472; */
+  function patchWLBtns() {
+    document.querySelectorAll('.nm-wishlist-inline-access-button, [class*="wishlist-button"]').forEach(btn => {
+      if (btn._wlPatched) return;
+      btn._wlPatched = true;
+      btn.addEventListener('click', () => setTimeout(loginPoller, 500));
+    });
+  }
+  /* &#9472;&#9472;&#9472; Main run &#9472;&#9472;&#9472; */
+  function run() {
+    patchCSS();
+    upsizeImages();
+    patchWLBtns();
+    if (!document.querySelector('.nm-wishlist-modal-container')?._wlWatched) {
+      const c = document.querySelector('.nm-wishlist-modal-container');
+      if (c) {
+        c._wlWatched = true;
+        attachContainerWatcher();
+      }
+    }
+  }
+  // Run on DOM changes (Goodcraft renders lazily)
+  new MutationObserver(run).observe(document.body, { childList: true, subtree: true });
+  run();
 })();
 </script>
 </body>
