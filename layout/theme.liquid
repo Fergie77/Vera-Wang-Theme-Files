@@ -302,6 +302,7 @@ End Google Tag Manager (noscript)  -->
     var btn = header.querySelector('.nm-modal-close-button');
     if (btn && btn.textContent.trim() !== 'Close') btn.innerHTML = 'Close';
   }
+  /* Cart count patch */
   if (!window._wlFetchPatched) {
     window._wlFetchPatched = true;
     var _fetch = window.fetch;
@@ -313,106 +314,20 @@ End Google Tag Manager (noscript)  -->
       return result;
     };
   }
-  function isMobile() { return window.innerWidth <= 767; }
-  function getDrawerContainer() {
-    return document.querySelector('.nm-modal-container:has(.nm-wishlist-drawer)');
-  }
-  function getLoginContainer() {
-    return document.querySelector('.nm-modal-container:has(.nm-wishlist-login-modal)');
-  }
-  function positionWrapper() {
+  /* Strip any JS-injected translateY from the drawer on mobile.
+     The app's animation sets transform:translateY(100%) as an initial state
+     before animating, but our CSS layout doesn't need it and it breaks visibility. */
+  function guardDrawerTransform() {
+    if (window.innerWidth > 767) return;
     var drawer = document.querySelector('.nm-wishlist-drawer');
     if (!drawer) return;
-    /* *** KEY FIX: the app positions the PARENT wrapper div, not the drawer itself ***
-       Override both the parent wrapper AND the drawer to take full-width bottom position */
-    var wrapper = drawer.parentElement;
-    if (wrapper && wrapper !== document.querySelector('.nm-modal-container')) {
-      wrapper.style.setProperty('position',   'fixed',  'important');
-      wrapper.style.setProperty('left',       '0',      'important');
-      wrapper.style.setProperty('right',      '0',      'important');
-      wrapper.style.setProperty('bottom',     '0',      'important');
-      wrapper.style.setProperty('top',        'auto',   'important');
-      wrapper.style.setProperty('width',      '100%',   'important');
-      wrapper.style.setProperty('max-width',  '100%',   'important');
-      wrapper.style.setProperty('transform',  'none',   'important');
-      wrapper.style.setProperty('z-index',    '2002',   'important');
+    var style = drawer.getAttribute('style') || '';
+    if (style.includes('translateY')) {
+      drawer.style.removeProperty('transform');
+      drawer.style.removeProperty('transition');
     }
-    drawer.style.setProperty('position',   'fixed',  'important');
-    drawer.style.setProperty('bottom',     '0',      'important');
-    drawer.style.setProperty('left',       '0',      'important');
-    drawer.style.setProperty('right',      '0',      'important');
-    drawer.style.setProperty('width',      '100%',   'important');
-    drawer.style.setProperty('max-height', '92dvh',  'important');
-    drawer.style.setProperty('z-index',    '2002',   'important');
   }
-  function doOpen() {
-    if (!isMobile()) return;
-    var container = getDrawerContainer();
-    var drawer    = document.querySelector('.nm-wishlist-drawer');
-    if (!container || !drawer) return;
-    container.style.setProperty('opacity', '1', 'important');
-    container.style.setProperty('pointer-events', 'all', 'important');
-    positionWrapper();
-    drawer.style.setProperty('transform',  'translateY(100%)', 'important');
-    drawer.style.setProperty('transition', 'none',             'important');
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        drawer.style.setProperty('transition', 'transform 0.4s ease', 'important');
-        drawer.style.setProperty('transform',  'translateY(0)',        'important');
-      });
-    });
-    startLoginModalPoller();
-  }
-  function doClose() {
-    if (!isMobile()) return;
-    var container = getDrawerContainer();
-    var drawer    = document.querySelector('.nm-wishlist-drawer');
-    if (!container || !drawer) return;
-    drawer.style.setProperty('transition', 'transform 0.4s ease', 'important');
-    drawer.style.setProperty('transform',  'translateY(100%)',     'important');
-    setTimeout(function () {
-      container.style.removeProperty('opacity');
-      container.style.removeProperty('pointer-events');
-    }, 420);
-  }
-  /* --- Login modal: appear centred, close button works --- */
-  var loginPollerTimer = null;
-  function startLoginModalPoller() {
-    if (loginPollerTimer) return;
-    var attempts = 0;
-    loginPollerTimer = setInterval(function () {
-      attempts++;
-      var lc = getLoginContainer();
-      if (lc) {
-        var aw = lc.children[1]; /* anonymous wrapper inside login container */
-        if (aw) {
-          var awStyle = aw.getAttribute('style') || '';
-          if (awStyle.includes('translate(-50%, 100%)')) {
-            aw.setAttribute('style', awStyle.replace('translate(-50%, 100%)', 'translate(-50%, -50%)'));
-            lc.style.removeProperty('display');
-            patchLoginModalClose(lc);
-            clearInterval(loginPollerTimer);
-            loginPollerTimer = null;
-            return;
-          }
-        }
-      }
-      if (attempts > 50) {
-        clearInterval(loginPollerTimer);
-        loginPollerTimer = null;
-      }
-    }, 100);
-  }
-  function patchLoginModalClose(lc) {
-    var closeBtn = lc ? lc.querySelector('.nm-modal-close-button') : null;
-    if (!closeBtn || closeBtn.dataset.wlLoginClose) return;
-    closeBtn.dataset.wlLoginClose = '1';
-    closeBtn.addEventListener('click', function () {
-      lc.style.setProperty('display', 'none', 'important');
-      setTimeout(function () { lc.style.removeProperty('display'); }, 500);
-    }, false);
-  }
-  /* --- Body wrapper padding fix --- */
+  /* Body wrapper padding fix */
   function fixBodyWrapperPadding() {
     var drawer = document.querySelector('.nm-wishlist-drawer');
     if (!drawer) return;
@@ -425,36 +340,74 @@ End Google Tag Manager (noscript)  -->
       }
     });
   }
-  /* --- Button patching --- */
-  function patchWishlistButtons() {
-    var header = document.querySelector('.nm-wishlist-drawer-header');
-    if (header && !header.dataset.wlPatched) {
-      header.dataset.wlPatched = '1';
-      var closeBtn = header.querySelector('.nm-modal-close-button');
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function (e) {
-          e.stopImmediatePropagation();
-          doClose();
-          setTimeout(function () {
-            closeBtn.dispatchEvent(new MouseEvent('click', { bubbles: false }));
-          }, 10);
-        }, true);
+  /* Login modal: poll for off-screen wrapper and reposition to centre */
+  function getLoginContainer() {
+    return document.querySelector('.nm-modal-container:has(.nm-wishlist-login-modal)');
+  }
+  var loginPollerTimer = null;
+  function startLoginModalPoller() {
+    if (loginPollerTimer) return;
+    var attempts = 0;
+    loginPollerTimer = setInterval(function () {
+      attempts++;
+      var lc = getLoginContainer();
+      if (lc) {
+        var aw = lc.children[1];
+        if (aw) {
+          var awStyle = aw.getAttribute('style') || '';
+          if (awStyle.includes('translate(-50%, 100%)')) {
+            aw.setAttribute('style', awStyle.replace('translate(-50%, 100%)', 'translate(-50%, -50%)'));
+            lc.style.removeProperty('display');
+            patchLoginModalClose(lc);
+            clearInterval(loginPollerTimer);
+            loginPollerTimer = null;
+            return;
+          }
+        }
       }
-    }
+      if (attempts > 50) { clearInterval(loginPollerTimer); loginPollerTimer = null; }
+    }, 100);
+  }
+  function patchLoginModalClose(lc) {
+    var closeBtn = lc ? lc.querySelector('.nm-modal-close-button') : null;
+    if (!closeBtn || closeBtn.dataset.wlLoginClose) return;
+    closeBtn.dataset.wlLoginClose = '1';
+    closeBtn.addEventListener('click', function () {
+      lc.style.setProperty('display', 'none', 'important');
+      setTimeout(function () { lc.style.removeProperty('display'); }, 500);
+    }, false);
+  }
+  /* Patch wishlist open button &mdash; only to start login modal poller */
+  function patchWishlistButtons() {
     document.querySelectorAll('.nm-wishlist-inline-access-button, [class*="wishlist-access"]')
       .forEach(function (btn) {
         if (btn.dataset.wlOpenPatched) return;
         btn.dataset.wlOpenPatched = '1';
-        btn.addEventListener('click', function () { setTimeout(doOpen, 10); });
+        btn.addEventListener('click', function () {
+          setTimeout(startLoginModalPoller, 200);
+        });
       });
   }
-  /* --- MutationObserver --- */
+  /* Watch the drawer for translateY being set by any animation code */
+  var drawerTransformObs = null;
+  function watchDrawerTransform() {
+    var drawer = document.querySelector('.nm-wishlist-drawer');
+    if (!drawer || drawer.dataset.wlTransformWatched) return;
+    drawer.dataset.wlTransformWatched = '1';
+    drawerTransformObs = new MutationObserver(function () {
+      guardDrawerTransform();
+    });
+    drawerTransformObs.observe(drawer, { attributes: true, attributeFilter: ['style'] });
+  }
+  /* Main MutationObserver */
   var observer = new MutationObserver(function () {
     initWishlistCards();
     replaceCloseButtons();
     upsizeWishlistImages();
     fixBodyWrapperPadding();
     patchWishlistButtons();
+    watchDrawerTransform();
+    guardDrawerTransform();
   });
   observer.observe(document.body, { childList: true, subtree: true });
   initWishlistCards();
@@ -462,6 +415,8 @@ End Google Tag Manager (noscript)  -->
   upsizeWishlistImages();
   fixBodyWrapperPadding();
   patchWishlistButtons();
+  watchDrawerTransform();
+  guardDrawerTransform();
 })();
 </script>
   <script>
