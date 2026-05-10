@@ -231,7 +231,7 @@ h1, h2, h3, h4, h5, h6, a, p, input {
 }
 </style>
       <style>
-  /* Each inner block div spans 2 rows and uses subgrid */
+/* Each inner block div spans 2 rows and uses subgrid */
 .filter_product-list-item > .display-contents > div {
   display: grid;
   grid-template-rows: subgrid;
@@ -252,15 +252,30 @@ h1, h2, h3, h4, h5, h6, a, p, input {
   flex: unset;
   grid-row: 1;
 }
-/* Hide the spacer div &mdash; spacing is handled by padding on the text link instead */
+/* Hide the spacer &mdash; spacing handled by padding-top on text link */
 .filter_product-list-item .spacer-xsmall {
   display: none;
 }
-/* Text link fills the second (text) row; padding-top replicates the hidden spacer gap */
+/* Text link fills the second (text) row */
 .filter_product-list-item .product-item_text-link {
   flex: unset;
   grid-row: 2;
   align-self: start;
   padding-top: 1rem;
+}
+/* Mobile: tighter image-to-text gap, larger row gap between products */
+@media screen and (max-width: 767px) {
+  .filter_product-list-item .product-item_text-link {
+    padding-top: 0.625rem;
+  }
+  .filter_product-list {
+    row-gap: calc(var(--gap--global) * 5);
+  }
+}
+/* Small mobile: tighter still */
+@media screen and (max-width: 479px) {
+  .filter_product-list-item .product-item_text-link {
+    padding-top: 0.5rem;
+  }
 }
 </style>
