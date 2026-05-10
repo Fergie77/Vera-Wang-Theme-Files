@@ -231,14 +231,16 @@ h1, h2, h3, h4, h5, h6, a, p, input {
 }
 </style>
       <style>
-/* Each inner block div spans 2 rows and uses subgrid */
+  /* &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;
+   PRODUCT GRID SUBGRID FIX
+   &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; */
+/* &#9472;&#9472; filter_product-list: womenswear / standard structure &#9472;&#9472; */
 .filter_product-list-item > .display-contents > div {
   display: grid;
   grid-template-rows: subgrid;
   row-gap: 0;
   grid-row: span 2;
 }
-/* Product component uses subgrid over those same 2 rows */
 .filter_product-list-item > .display-contents > div > .product-item_component {
   display: grid;
   grid-template-rows: subgrid;
@@ -247,35 +249,89 @@ h1, h2, h3, h4, h5, h6, a, p, input {
   flex-direction: unset;
   height: auto;
 }
-/* Image link fills the first (image) row */
+/* &#9472;&#9472; filter_product-list: AW/26 extra anonymous div level &#9472;&#9472; */
+.filter_product-list-item > .display-contents > div > div {
+  display: grid;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  grid-row: span 2;
+}
+.filter_product-list-item > .display-contents > div > div > .product-item_component {
+  display: grid;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  grid-row: span 2;
+  flex-direction: unset;
+  height: auto;
+}
+/* &#9472;&#9472; filter_product-list: image / spacer / text &#9472;&#9472; */
 .filter_product-list-item .product-item_image-link {
   flex: unset;
   grid-row: 1;
 }
-/* Hide the spacer &mdash; spacing handled by padding-top on text link */
 .filter_product-list-item .spacer-xsmall {
   display: none;
 }
-/* Text link fills the second (text) row */
 .filter_product-list-item .product-item_text-link {
   flex: unset;
   grid-row: 2;
   align-self: start;
-  padding-top: 1rem;
+  padding-top: 12px;
 }
-/* Mobile: tighter image-to-text gap, larger row gap between products */
+/* &#9472;&#9472; featured-products_layout (AW/26 featured section) &#9472;&#9472; */
+.featured-products_layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  row-gap: 0;
+  column-gap: var(--gap--global);
+  align-items: start;
+  height: auto;
+}
+.featured-products_item {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  width: 100%;
+}
+.featured-products_item > .product-item_component {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  flex-direction: unset;
+  height: auto;
+}
+.featured-products_item .product-item_image-link {
+  flex: unset;
+  grid-row: 1;
+}
+.featured-products_item .spacer-xsmall {
+  display: none;
+}
+.featured-products_item .product-item_text-link {
+  flex: unset;
+  grid-row: 2;
+  align-self: start;
+  padding-top: 12px;
+}
+/* &#9472;&#9472; AW/26: bridge gap between featured section and filter grid &#9472;&#9472; */
+.section_product.is-collection-alt {
+  margin-bottom: 12px;
+}
+/* &#9472;&#9472; Mobile: tighter image-to-text gap, larger row gap between products &#9472;&#9472; */
 @media screen and (max-width: 767px) {
-  .filter_product-list-item .product-item_text-link {
-    padding-top: 0.625rem;
+  .filter_product-list-item .product-item_text-link,
+  .featured-products_item .product-item_text-link {
+    padding-top: 10px;
   }
   .filter_product-list {
     row-gap: calc(var(--gap--global) * 5);
   }
 }
-/* Small mobile: tighter still */
 @media screen and (max-width: 479px) {
-  .filter_product-list-item .product-item_text-link {
-    padding-top: 0.5rem;
+  .filter_product-list-item .product-item_text-link,
+  .featured-products_item .product-item_text-link {
+    padding-top: 10px;
   }
 }
 </style>
