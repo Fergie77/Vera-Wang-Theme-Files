@@ -1561,7 +1561,7 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
    ================================================================== */
 @media screen and (max-width: 767px) {
   /* Full-screen overlay as flex column anchored to bottom */
-  .nm-modal-container {
+  .nm-modal-container:has(.nm-wishlist-drawer) {
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-end !important;
