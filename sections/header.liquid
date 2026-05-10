@@ -1363,44 +1363,43 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
         </div>
         <div class="w-embed">
           <style>
-  /* ============================================
-   WISHLIST DRAWER &mdash; VERAWANG.EU
-   ============================================ */
-/* &mdash; Base / Desktop &mdash; */
-.nm-wishlist-drawer { font-family: inherit; }
+  /* ===== WISHLIST DRAWER &mdash; VERAWANG.EU ===== */
+/* Header */
 .nm-wishlist-drawer-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  border-bottom: 1px solid #e0e0e0;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 20px 24px !important;
+  border-bottom: 1px solid #e0e0e0 !important;
 }
 .nm-wishlist-drawer-title {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  font-family: inherit !important;
 }
 .nm-wishlist-drawer .nm-modal-close-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
 }
-/* &mdash; Summary bar (product count + ADD ALL TO CART) &mdash; */
+/* Summary bar &mdash; NO border anywhere */
 .nm-wishlist-summery {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
   padding: 0 !important;
   border: none !important;
+  border-bottom: none !important;
 }
 .nm-wishlist-summery-product-count {
   font-size: 12px !important;
@@ -1423,13 +1422,14 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
   height: auto !important;
   border-radius: 0 !important;
 }
-/* &mdash; Item card layout &mdash; */
+/* Item card */
 .nm-wishlist-item-card {
   display: flex !important;
   flex-direction: column !important;
   gap: 12px !important;
   padding: 20px 24px !important;
   border-bottom: 1px solid #e8e8e8 !important;
+  background-color: #fff !important;
 }
 .nm-wishlist-item-card > div:first-child {
   display: flex !important;
@@ -1442,28 +1442,29 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
   object-fit: cover !important;
   flex-shrink: 0 !important;
 }
-.nm-wishlist-item-title-col {
+/* Goodcraft's actual title class is .nm-wishlist-item-title */
+.nm-wishlist-item-title {
   display: flex !important;
   flex-direction: column !important;
   gap: 4px !important;
   flex: 1 !important;
 }
 .nm-wishlist-item-name {
-  font-size: 12px;
-  font-weight: 500;
-  text-decoration: none;
-  color: #000;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  color: #000 !important;
 }
 .nm-wishlist-item-variant {
-  font-size: 12px;
-  color: #888;
+  font-size: 12px !important;
+  color: #888 !important;
 }
 .nm-wishlist-item-price {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 14px !important;
+  font-weight: 500 !important;
 }
-/* REMOVE button &mdash; same style as ADD ALL TO CART */
-.nm-wishlist-item-remove-btn {
+/* Text REMOVE button added by JS */
+.nm-wl-remove-text-btn {
   background: none !important;
   border: none !important;
   cursor: pointer !important;
@@ -1478,16 +1479,18 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
   display: block !important;
   text-align: left !important;
   width: auto !important;
+  font-family: inherit !important;
 }
-/* ATC row (second div in card) */
+/* Hide Goodcraft's icon remove button */
+.nm-wishlist-item-remove-button {
+  display: none !important;
+}
+/* ATC row */
 .nm-wishlist-item-card > div:last-child {
   display: flex !important;
   gap: 8px !important;
   align-items: center !important;
 }
-/* Hide the icon-only remove button (keep text REMOVE btn) */
-.nm-wishlist-item-remove-button { display: none !important; }
-/* ADD TO CART button */
 .nm-wishlist-item-add-to-cart-button {
   flex: 1 !important;
   background: #000 !important;
@@ -1502,9 +1505,15 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
   width: 100% !important;
   margin-top: 0 !important;
   height: auto !important;
+  border-radius: 0 !important;
 }
-/* &mdash; Mobile (&le;767px) &mdash; */
+/* Mobile &le;767px */
 @media screen and (max-width: 767px) {
+  .nm-wishlist-drawer {
+    height: auto !important;
+    max-height: 85vh !important;
+    overflow-y: auto !important;
+  }
   .nm-wishlist-drawer-header {
     padding: 18px 15px !important;
   }
@@ -1518,9 +1527,11 @@ document.querySelectorAll('.nav_menu-dropdown').forEach(dropdown => {
     font-size: 12px !important;
     letter-spacing: 1px !important;
   }
+  /* NO border-bottom on mobile summery */
   .nm-wishlist-summery {
     padding: 12px 15px !important;
-    border-bottom: 1px solid #e8e8e8 !important;
+    border: none !important;
+    border-bottom: none !important;
   }
   .nm-wishlist-item-card {
     padding: 15px !important;
