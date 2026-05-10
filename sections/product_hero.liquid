@@ -480,6 +480,38 @@ document.addEventListener("DOMContentLoaded", () => {
     else document.body.removeAttribute('data-size-chosen');
   }
   document.addEventListener('click', function(e){
+    <script>
+(function(){
+  var slot = function(){ return document.querySelector('[data-drawer-slot]'); };
+  var sizeOpt = function(){ return document.querySelector('[data-option="Size" i]'); };
+  var origParent = null, origNext = null;
+  function open(){
+    var opt = sizeOpt(), target = slot();
+    if (!opt || !target) return;
+    if (!origParent){ origParent = opt.parentNode; origNext = opt.nextSibling; }
+    target.appendChild(opt);
+    document.body.setAttribute('data-drawer-open', 'size-picker');
+  }
+  function close(){
+    var opt = sizeOpt();
+    if (opt && origParent) origParent.insertBefore(opt, origNext);
+    origParent = null; origNext = null;
+    document.body.removeAttribute('data-drawer-open');
+  }
+  function setChosen(v){
+    if (v) document.body.setAttribute('data-size-chosen', 'true');
+    else document.body.removeAttribute('data-size-chosen');
+  }
+  document.addEventListener('click', function(e){
+    // Tapping an already-checked radio doesn't fire change; handle it here so
+// the pre-selected first size still confirms and closes the drawer.
+var label = e.target.closest('label');
+if (label) {
+  var input = label.querySelector('input[type="radio"][li-element="product-option-input"]');
+  if (input && input.checked && input.closest('[data-option="Size" i]')){
+    setChosen(true); close();
+  }
+}
     if (e.target.closest('[data-select-size]')){ e.preventDefault(); open(); return; }
     if (e.target.closest('[data-drawer-close]') || e.target.matches('[data-drawer-backdrop]')) close();
   });
@@ -495,6 +527,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 })();
 </script>
+          if (e.target.closest('[data-select-size]')){ e.preventDefault(); open(); return; }
+          if (e.target.closest('[data-drawer-close]') || e.target.matches('[data-drawer-backdrop]')) close();
+          });
+          document.addEventListener('change', function(e){
+          var input = e.target.closest('[li-element="product-option-input"]');
+          if (!input) return;
+          if (input.closest('[data-option="Size" i]')){ setChosen(true); close(); }
+          else { close(); setChosen(false); }
+          });
+          // Single-variant products: no gating needed (defer until Alpine binds data-option)
+          document.addEventListener('alpine:initialized', function(){
+          if (!sizeOpt()) setChosen(true);
+          });
+          })();
         </div>
         <div class="w-embed">
           <style>
