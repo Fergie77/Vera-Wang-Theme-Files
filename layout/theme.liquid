@@ -677,17 +677,18 @@ initSwiper();
       }
     });
 
+    /* Direct queries on the card — survives Goodcraft's row-shape variations. */
     document.querySelectorAll('.nm-wishlist-item-card').forEach(function (card) {
-      var firstRow = card.children[0], secondRow = card.children[1];
-      if (!firstRow || !secondRow) return;
-      var img = firstRow.querySelector('.nm-wishlist-item-image');
-      var titleBlock = firstRow.querySelector('.nm-wishlist-item-title');
-      var removeBtn = secondRow.querySelector('.nm-wishlist-item-remove-button');
+      var img = card.querySelector('.nm-wishlist-item-image');
+      var titleBlock = card.querySelector('.nm-wishlist-item-title');
+      var removeBtn = card.querySelector('.nm-wishlist-item-remove-button');
+
       if (img && !img.dataset.hiresApplied) {
         var base = (img.getAttribute('src') || '').split('?')[0];
         if (base) { img.setAttribute('src', base + '?width=800'); img.dataset.hiresApplied = '1'; }
       }
-      if (titleBlock && removeBtn && !titleBlock.querySelector('.nm-wishlist-item-remove-button')) {
+
+      if (titleBlock && removeBtn && !titleBlock.contains(removeBtn)) {
         removeBtn.querySelectorAll('img').forEach(function (i) { i.style.display = 'none'; });
         if (!removeBtn.querySelector('.nm-remove-text')) {
           var s = document.createElement('span'); s.className = 'nm-remove-text'; s.textContent = 'REMOVE'; removeBtn.appendChild(s);
@@ -745,6 +746,12 @@ initSwiper();
     attachPanelObserver(pw, wContainer);
     attachContentObserver(wContainer);
     updateWishlistUI();
+
+    /* Catch late re-renders by Goodcraft (a manual resize used to fix it —
+       these scheduled runs do the same automatically). */
+    [150, 400, 800, 1500, 3000].forEach(function (ms) {
+      setTimeout(updateWishlistUI, ms);
+    });
   }
 
   if (window._wishlistResizeHandler) window.removeEventListener('resize', window._wishlistResizeHandler);
