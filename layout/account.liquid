@@ -198,5 +198,191 @@ End Google Tag Manager (noscript)  -->
   window.addEventListener('toggleminicart', openCart);
 })();
 </script>
+  <script>
+//Wishlist JS Amends
+(function () {
+  /* ============================================================
+     1. CARD RESTRUCTURE
+     Moves Remove button into text column, Add to Cart to card root
+     Replaces trash icon with "Remove" text
+     ============================================================ */
+  const initWishlistCards = (container) => {
+    container.querySelectorAll('.nm-wishlist-item-card').forEach(card => {
+      // Always ensure remove button shows text (handles re-renders)
+      card.querySelectorAll('.nm-wishlist-item-remove-button').forEach(btn => {
+        if (!btn.dataset.removeTextReplaced) {
+          btn.innerHTML = 'Remove';
+          btn.dataset.removeTextReplaced = 'true';
+        }
+      });
+      // If add-to-cart button is not a direct child of card, move it there
+      const addToCartBtn = card.querySelector('.nm-wishlist-item-add-to-cart-button');
+      if (addToCartBtn && addToCartBtn.parentElement !== card) {
+        card.appendChild(addToCartBtn);
+      }
+      if (card.dataset.restructured) return;
+      const imageRow = Array.from(card.children).find(el =>
+        el.style.display !== 'none' && el.querySelector('.nm-wishlist-item-image')
+      );
+      const actionRow = Array.from(card.children).find(el =>
+        el !== addToCartBtn && el.querySelector('.nm-wishlist-item-remove-button')
+      );
+      if (!imageRow) return;
+      const titleCol = imageRow.querySelector('.nm-wishlist-item-title');
+      const removeBtn = actionRow?.querySelector('.nm-wishlist-item-remove-button');
+      if (titleCol && removeBtn) {
+        removeBtn.innerHTML = 'Remove';
+        removeBtn.dataset.removeTextReplaced = 'true';
+        titleCol.appendChild(removeBtn);
+      }
+      if (actionRow) actionRow.style.display = 'none';
+      if (addToCartBtn) card.appendChild(addToCartBtn);
+      card.dataset.restructured = 'true';
+    });
+  };
+  initWishlistCards(document);
+  new MutationObserver(() => initWishlistCards(document))
+    .observe(document.body, { childList: true, subtree: true });
+  /* ============================================================
+     2. CLOSE BUTTON &mdash; "Close" text on desktop, X icon on mobile (via CSS)
+     ============================================================ */
+  const replaceCloseButtons = () => {
+    document.querySelectorAll('.nm-modal-close-button').forEach(btn => {
+      if (btn.dataset.closeLabelReplaced) return;
+      btn.innerHTML = 'Close';
+      btn.dataset.closeLabelReplaced = 'true';
+    });
+  };
+  replaceCloseButtons();
+  new MutationObserver(replaceCloseButtons)
+    .observe(document.body, { childList: true, subtree: true });
+  /* ============================================================
+     3. HIGH-RES IMAGES
+     Replaces width=72 Shopify CDN param with width=600
+     ============================================================ */
+  const upsizeWishlistImages = (container) => {
+    container.querySelectorAll('.nm-wishlist-item-image').forEach(img => {
+      if (img.dataset.upsized) return;
+      const updateSrc = (src) => {
+        if (!src) return src;
+        if (src.includes('width=')) return src.replace(/width=\d+/, 'width=600');
+        if (src.match(/_\d+x\d*\./)) return src.replace(/_\d+x\d*\./, '_600x.');
+        return src;
+      };
+      img.src = updateSrc(img.src);
+      if (img.srcset) {
+        img.srcset = img.srcset.split(',').map(entry => {
+          const parts = entry.trim().split(' ');
+          parts[0] = updateSrc(parts[0]);
+          return parts.join(' ');
+        }).join(', ');
+      }
+      img.dataset.upsized = 'true';
+    });
+  };
+  upsizeWishlistImages(document);
+  new MutationObserver(() => upsizeWishlistImages(document))
+    .observe(document.body, { childList: true, subtree: true });
+  /* ============================================================
+     4. CART COUNT &mdash; updates nav count immediately after wishlist add-to-cart
+     ============================================================ */
+  const refreshCartCount = () => {
+    fetch('/cart.js')
+      .then(r => r.json())
+      .then(cart => {
+        window.dispatchEvent(
+          new CustomEvent('carttotalitems', { detail: cart.item_count })
+        );
+      });
+  };
+  const _originalFetch = window.fetch;
+  window.fetch = function (...args) {
+    const url = typeof args[0] === 'string' ? args[0] : (args[0]?.url ?? '');
+    const result = _originalFetch.apply(this, args);
+    if (url.includes('/cart/add')) {
+      result.then(() => setTimeout(refreshCartCount, 300)).catch(() => {});
+    }
+    return result;
+  };
+  /* ============================================================
+     5. MOBILE SLIDE-UP ANIMATION
+     Intercepts open/close, drives translateY instead of app's fade
+     Only active on &le;767px
+     ============================================================ */
+  const isMobile = () => window.innerWidth <= 767;
+  const getContainer = () => document.querySelector('.nm-modal-container');
+  const getWrapper = () => document.querySelector('.nm-modal-container > div:has(.nm-wishlist-drawer)');
+  const positionWrapper = (wrapper) => {
+    if (!wrapper) return;
+    wrapper.style.setProperty('position', 'fixed', 'important');
+    wrapper.style.setProperty('bottom', '0', 'important');
+    wrapper.style.setProperty('top', 'auto', 'important');
+    wrapper.style.setProperty('left', '0', 'important');
+    wrapper.style.setProperty('right', '0', 'important');
+    wrapper.style.setProperty('width', '100%', 'important');
+    wrapper.style.setProperty('max-width', '100vw', 'important');
+    wrapper.style.setProperty('max-height', '92dvh', 'important');
+    wrapper.style.setProperty('z-index', '2002', 'important');
+  };
+  const doOpen = () => {
+    const container = getContainer();
+    const wrapper = getWrapper();
+    if (!container || !wrapper || !isMobile()) return;
+    // Make container visible (overrides app's opacity:0)
+    container.style.opacity = '1';
+    container.style.pointerEvents = 'auto';
+    positionWrapper(wrapper);
+    // Start off-screen then slide up
+    wrapper.style.setProperty('transition', 'none', 'important');
+    wrapper.style.setProperty('transform', 'translateY(100%)', 'important');
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      wrapper.style.setProperty('transition', 'transform 0.4s ease', 'important');
+      wrapper.style.setProperty('transform', 'translateY(0)', 'important');
+    }));
+  };
+  const doClose = () => {
+    const container = getContainer();
+    const wrapper = getWrapper();
+    if (!container || !wrapper || !isMobile()) return;
+    positionWrapper(wrapper);
+    // Slide down
+    wrapper.style.setProperty('transition', 'transform 0.4s ease', 'important');
+    wrapper.style.setProperty('transform', 'translateY(100%)', 'important');
+    // After animation completes, restore app's hidden state
+    setTimeout(() => {
+      container.style.removeProperty('opacity');
+      container.style.removeProperty('pointer-events');
+    }, 420);
+  };
+  const patchWishlistButtons = () => {
+    // Intercept close button (capture phase beats app's handler)
+    const closeBtn = document.querySelector('.nm-modal-close-button');
+    if (closeBtn && !closeBtn.dataset.slidePatched) {
+      closeBtn.addEventListener('click', (e) => {
+        if (!isMobile()) return;
+        e.stopImmediatePropagation();
+        doClose();
+      }, true);
+      closeBtn.dataset.slidePatched = 'true';
+    }
+    // Intercept open button &mdash; let app open it, then we animate
+    const openBtn = document.querySelector('.nm-wishlist-inline-access-button');
+    if (openBtn && !openBtn.dataset.slidePatched) {
+      openBtn.addEventListener('click', () => {
+        if (!isMobile()) return;
+        setTimeout(doOpen, 10);
+      });
+      openBtn.dataset.slidePatched = 'true';
+    }
+  };
+  patchWishlistButtons();
+  // Re-patch if buttons are re-rendered, and keep wrapper positioned
+  new MutationObserver(() => {
+    patchWishlistButtons();
+    const w = getWrapper();
+    if (w && isMobile()) positionWrapper(w);
+  }).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
 </body>
 </html>
