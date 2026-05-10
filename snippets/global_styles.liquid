@@ -230,3 +230,37 @@ h1, h2, h3, h4, h5, h6, a, p, input {
   display: none !important;
 }
 </style>
+      <style>
+  /* Each inner block div spans 2 rows and uses subgrid */
+.filter_product-list-item > .display-contents > div {
+  display: grid;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  grid-row: span 2;
+}
+/* Product component uses subgrid over those same 2 rows */
+.filter_product-list-item > .display-contents > div > .product-item_component {
+  display: grid;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  grid-row: span 2;
+  flex-direction: unset;
+  height: auto;
+}
+/* Image link fills the first (image) row */
+.filter_product-list-item .product-item_image-link {
+  flex: unset;
+  grid-row: 1;
+}
+/* Hide the spacer div &mdash; spacing is handled by padding on the text link instead */
+.filter_product-list-item .spacer-xsmall {
+  display: none;
+}
+/* Text link fills the second (text) row; padding-top replicates the hidden spacer gap */
+.filter_product-list-item .product-item_text-link {
+  flex: unset;
+  grid-row: 2;
+  align-self: start;
+  padding-top: 1rem;
+}
+</style>
