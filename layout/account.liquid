@@ -199,171 +199,188 @@ End Google Tag Manager (noscript)  -->
 })();
 </script>
   <script>
-//Wishlist JS Amends
 (function () {
   'use strict';
   if (window._wlv4) return;
   window._wlv4 = true;
   const TRANS = 'transform 0.35s cubic-bezier(0.32,0.72,0,1)';
-  /* &#9472;&#9472;&#9472; Helper: find the anonymous wrapper div &#9472;&#9472;&#9472; */
-  function getWrapper() {
-    const container = document.querySelector('.nm-wishlist-modal-container');
-    return container ? container.firstElementChild : null;
+  /* &#9472;&#9472;&#9472; Patch Goodcraft's portal-injected style tag &#9472;&#9472;&#9472; */
+  /* Goodcraft injects a <style> inside a portal DIV (not <head>), which loads
+     after our theme CSS and overrides it. We fix its rules directly. */
+  function patchGoodcraftPortalCSS() {
+    document.querySelectorAll('style').forEach(function(styleEl) {
+      // Portal styles are inside a DIV, not HEAD or BODY
+      if (!styleEl.parentElement || styleEl.parentElement.tagName !== 'DIV') return;
+      try {
+        var sheet = styleEl.sheet;
+        if (!sheet) return;
+        Array.from(sheet.cssRules || []).forEach(function(r) {
+          // Fix gap:0 on item card
+          if (r.selectorText === '.nm-wishlist-item-card') {
+            if (r.style.getPropertyPriority('gap') === 'important') {
+              r.style.setProperty('gap', '12px', 'important');
+            }
+          }
+          // Fix mobile media query: remove border-bottom from summery
+          if (r.cssRules) {
+            Array.from(r.cssRules).forEach(function(inner) {
+              if (inner.selectorText === '.nm-wishlist-summery') {
+                inner.style.removeProperty('border-bottom');
+              }
+            });
+          }
+        });
+      } catch(e) {}
+    });
   }
-  /* &#9472;&#9472;&#9472; Slide animations via inline style.setProperty('important')
-         This beats Goodcraft's sheet-level transform:none !important &#9472;&#9472;&#9472; */
+  /* &#9472;&#9472;&#9472; Set wrapper position for mobile bottom-slide &#9472;&#9472;&#9472; */
+  function positionWrapperForMobile(w) {
+    w.style.setProperty('position', 'absolute', 'important');
+    w.style.setProperty('bottom', '0', 'important');
+    w.style.setProperty('left', '0', 'important');
+    w.style.setProperty('right', '0', 'important');
+    w.style.setProperty('top', 'auto', 'important');
+    w.style.setProperty('width', '100%', 'important');
+    w.style.setProperty('max-width', '100%', 'important');
+    w.style.setProperty('height', 'auto', 'important');
+    // Remove Goodcraft's height:100% from drawer body
+    var drawer = w.querySelector('.nm-wishlist-drawer');
+    if (drawer) {
+      Array.from(drawer.children).forEach(function(child) {
+        if (child.style && child.style.height === '100%') {
+          child.style.removeProperty('height');
+        }
+      });
+    }
+  }
+  /* &#9472;&#9472;&#9472; Slide animations &#9472;&#9472;&#9472; */
   function slideIn(w) {
     w.style.setProperty('transition', TRANS, 'important');
-    requestAnimationFrame(() => {
-      w.style.setProperty('transform', 'translateY(0%)', 'important');
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        w.style.setProperty('transform', 'translateY(0%)', 'important');
+      });
     });
   }
   function slideOut(w) {
     w.style.setProperty('transition', TRANS, 'important');
-    requestAnimationFrame(() => {
-      w.style.setProperty('transform', 'translateY(110%)', 'important');
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        w.style.setProperty('transform', 'translateY(110%)', 'important');
+      });
     });
   }
   function snapToBottom(w) {
     w.style.setProperty('transition', 'none', 'important');
     w.style.setProperty('transform', 'translateY(110%)', 'important');
   }
-  /* &#9472;&#9472;&#9472; Patch Goodcraft's injected CSS rules &#9472;&#9472;&#9472; */
-  function patchCSS() {
-    for (const sheet of Array.from(document.styleSheets)) {
-      let rules;
-      try { rules = Array.from(sheet.cssRules || []); } catch { continue; }
-      for (const rule of rules) {
-        if (!(rule instanceof CSSStyleRule)) continue;
-        const sel = rule.selectorText || '';
-        // Fix drawer: remove forced top:0 and height:100vh
-        if (sel === '.nm-wishlist-drawer') {
-          if (rule.style.getPropertyValue('top')) rule.style.removeProperty('top');
-          if (rule.style.getPropertyValue('height')) rule.style.removeProperty('height');
-        }
-        // Fix card gap: app sets gap:0 !important &mdash; override to 12px !important
-        if (sel.includes('nm-wishlist-item-card') && !sel.includes('div') && !sel.includes('button')) {
-          const gap = rule.style.getPropertyPriority('gap');
-          if (gap === 'important') {
-            rule.style.setProperty('gap', '12px', 'important');
-          }
-        }
-        // Fix mobile drawer: app forces position:fixed and full-screen &mdash; make relative
-        if (rule instanceof CSSMediaRule) {
-          try {
-            for (const inner of Array.from(rule.cssRules || [])) {
-              if (!(inner instanceof CSSStyleRule)) continue;
-              if (inner.selectorText === '.nm-wishlist-drawer') {
-                if (inner.style.getPropertyValue('position')) inner.style.removeProperty('position');
-                if (inner.style.getPropertyValue('top')) inner.style.removeProperty('top');
-                if (inner.style.getPropertyValue('left')) inner.style.removeProperty('left');
-                if (inner.style.getPropertyValue('width')) inner.style.removeProperty('width');
-                if (inner.style.getPropertyValue('height')) inner.style.removeProperty('height');
-              }
-            }
-          } catch {}
-        }
-      }
-    }
-  }
-  /* &#9472;&#9472;&#9472; Watch container opacity to drive slide &#9472;&#9472;&#9472; */
+  /* &#9472;&#9472;&#9472; Watch container for open/close &#9472;&#9472;&#9472; */
   function attachContainerWatcher() {
-    const container = document.querySelector('.nm-wishlist-modal-container');
-    if (!container) return;
-    const w = getWrapper();
-    if (w) snapToBottom(w);
-    const obs = new MutationObserver(() => {
-      const w2 = getWrapper();
+    var container = document.querySelector('.nm-modal-container');
+    if (!container || container._wlWatched) return;
+    container._wlWatched = true;
+    function isMobile() { return window.innerWidth <= 767; }
+    var w = container.firstElementChild;
+    if (w && isMobile()) {
+      positionWrapperForMobile(w);
+      snapToBottom(w);
+    }
+    new MutationObserver(function() {
+      if (!isMobile()) return;
+      var w2 = container.firstElementChild;
       if (!w2) return;
-      const st = container.getAttribute('style') || '';
-      if (st.includes('opacity: 1') || st.includes('opacity:1')) {
+      var st = container.getAttribute('style') || '';
+      if (st.indexOf('opacity: 1') !== -1 || st.indexOf('opacity:1') !== -1) {
+        positionWrapperForMobile(w2);
         slideIn(w2);
-      } else if (st.includes('opacity: 0') || st.includes('opacity:0')) {
+      } else if (st.indexOf('opacity: 0') !== -1 || st.indexOf('opacity:0') !== -1) {
         slideOut(w2);
       }
-      // Also strip any translateX the app sets on the wrapper (it uses translateX on desktop)
-      const wStyle = w2.getAttribute('style') || '';
-      if (wStyle.includes('translateX')) {
-        const isMobile = window.innerWidth <= 767;
-        if (isMobile) {
-          w2.style.setProperty('transition', TRANS, 'important');
-          // don't override translateY &mdash; leave current slide state
-        }
-      }
+    }).observe(container, { attributes: true, attributeFilter: ['style'] });
+  }
+  /* &#9472;&#9472;&#9472; Add text REMOVE button to each card &#9472;&#9472;&#9472; */
+  function addRemoveButtons() {
+    document.querySelectorAll('.nm-wishlist-item-card').forEach(function(card) {
+      if (card.querySelector('.nm-wl-remove-text-btn')) return;
+      var titleDiv = card.querySelector('.nm-wishlist-item-title');
+      var iconBtn = card.querySelector('.nm-wishlist-item-remove-button');
+      if (!titleDiv || !iconBtn) return;
+      var textBtn = document.createElement('button');
+      textBtn.className = 'nm-wl-remove-text-btn';
+      textBtn.textContent = 'REMOVE';
+      textBtn.type = 'button';
+      textBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        iconBtn.click();
+      });
+      titleDiv.appendChild(textBtn);
     });
-    obs.observe(container, { attributes: true, attributeFilter: ['style'] });
   }
   /* &#9472;&#9472;&#9472; Upsize product images &#9472;&#9472;&#9472; */
   function upsizeImages() {
-    document.querySelectorAll('.nm-wishlist-item-image').forEach(img => {
-      if (img.src && img.src.includes('cdn.shopify.com')) {
+    document.querySelectorAll('.nm-wishlist-item-image').forEach(function(img) {
+      if (img.src && img.src.indexOf('cdn.shopify.com') !== -1 && img.src.indexOf('width=600') === -1) {
         img.src = img.src.replace(/width=\d+/, 'width=600');
       }
     });
   }
-  /* &#9472;&#9472;&#9472; Cart fetch patch &mdash; update cart count after adding &#9472;&#9472;&#9472; */
-  const _origFetch = window.fetch;
-  window.fetch = function (...args) {
-    const url = typeof args[0] === 'string' ? args[0] : (args[0] && args[0].url) || '';
-    const p = _origFetch.apply(this, args);
-    if (url.includes('/cart/add')) {
-      p.then(() => {
-        fetch('/cart.js').then(r => r.json()).then(cart => {
-          document.dispatchEvent(new CustomEvent('carttotalitems', { detail: { itemCount: cart.item_count } }));
-        });
-      }).catch(() => {});
-    }
-    return p;
-  };
+  /* &#9472;&#9472;&#9472; Cart count update after Add to Cart &#9472;&#9472;&#9472; */
+  if (!window._wlFetchPatched) {
+    window._wlFetchPatched = true;
+    var _origFetch = window.fetch;
+    window.fetch = function() {
+      var args = Array.prototype.slice.call(arguments);
+      var url = typeof args[0] === 'string' ? args[0] : (args[0] && args[0].url) || '';
+      var p = _origFetch.apply(this, args);
+      if (url.indexOf('/cart/add') !== -1) {
+        p.then(function() {
+          fetch('/cart.js').then(function(r) { return r.json(); }).then(function(cart) {
+            document.dispatchEvent(new CustomEvent('carttotalitems', { detail: { itemCount: cart.item_count } }));
+          });
+        }).catch(function() {});
+      }
+      return p;
+    };
+  }
   /* &#9472;&#9472;&#9472; Login modal fix &#9472;&#9472;&#9472; */
   function loginPoller() {
-    let attempts = 0;
-    const id = setInterval(() => {
+    var attempts = 0;
+    var id = setInterval(function() {
       attempts++;
       if (attempts > 30) { clearInterval(id); return; }
-      const modal = document.querySelector('.nm-wishlist-login-modal, [class*="login-modal"]');
+      var modal = document.querySelector('.nm-wishlist-login-modal, [class*="login-modal"]');
       if (!modal) return;
-      const rect = modal.getBoundingClientRect();
+      var rect = modal.getBoundingClientRect();
       if (rect.top > window.innerHeight * 0.85) {
-        modal.style.cssText = [
-          'position:fixed',
-          'top:50%',
-          'left:50%',
-          'transform:translate(-50%,-50%)',
-          'z-index:99999',
-          'max-height:90vh',
-          'overflow-y:auto'
-        ].join('!important;') + '!important';
+        modal.style.setProperty('position', 'fixed', 'important');
+        modal.style.setProperty('top', '50%', 'important');
+        modal.style.setProperty('left', '50%', 'important');
+        modal.style.setProperty('transform', 'translate(-50%,-50%)', 'important');
+        modal.style.setProperty('z-index', '99999', 'important');
       }
-      const closeBtn = modal.querySelector('[class*="close"], [aria-label*="close"], [aria-label*="Close"]');
+      var closeBtn = modal.querySelector('[class*="close"], [aria-label*="close"], [aria-label*="Close"]');
       if (closeBtn) {
         closeBtn.style.cssText = 'display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;';
         clearInterval(id);
       }
     }, 200);
   }
-  /* &#9472;&#9472;&#9472; Attach login poller to wishlist buttons &#9472;&#9472;&#9472; */
   function patchWLBtns() {
-    document.querySelectorAll('.nm-wishlist-inline-access-button, [class*="wishlist-button"]').forEach(btn => {
+    document.querySelectorAll('.nm-wishlist-inline-access-button').forEach(function(btn) {
       if (btn._wlPatched) return;
       btn._wlPatched = true;
-      btn.addEventListener('click', () => setTimeout(loginPoller, 500));
+      btn.addEventListener('click', function() { setTimeout(loginPoller, 500); });
     });
   }
-  /* &#9472;&#9472;&#9472; Main run &#9472;&#9472;&#9472; */
+  /* &#9472;&#9472;&#9472; Main run (called on DOM changes) &#9472;&#9472;&#9472; */
   function run() {
-    patchCSS();
+    patchGoodcraftPortalCSS();
     upsizeImages();
+    addRemoveButtons();
     patchWLBtns();
-    if (!document.querySelector('.nm-wishlist-modal-container')?._wlWatched) {
-      const c = document.querySelector('.nm-wishlist-modal-container');
-      if (c) {
-        c._wlWatched = true;
-        attachContainerWatcher();
-      }
-    }
+    attachContainerWatcher();
   }
-  // Run on DOM changes (Goodcraft renders lazily)
   new MutationObserver(run).observe(document.body, { childList: true, subtree: true });
   run();
 })();
