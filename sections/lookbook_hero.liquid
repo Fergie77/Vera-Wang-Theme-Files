@@ -1,5 +1,5 @@
 <div class="header_background-image-wrapper is-relative">
-          <div class="header_background-image is-full-width"><img li-object="article.image | image_url: width: 2000 | placeholder: 'detailed-apparel-1'" li-object:alt="article.image.alt" alt="{{ article.image.alt }}" loading="eager" src="{{ 'hero-apparel-1.svg' | asset_url }}" class="header_background-image_item is-left">
+          <div class="header_background-image is-full-width"><img li-object:src="article.image | image_url: width: 2000 | placeholder: 'detailed-apparel-1'" li-object:alt="article.image.alt" alt="{{ article.image.alt }}" loading="eager" src="{{ article.image | image_url: width: 2000 | placeholder: 'detailed-apparel-1' }}" class="header_background-image_item is-left">
             <div class="hero-text-absolute-wrapper">
               <h1 li-object="article.title" class="hero_heading">{{ article.title }}</h1>
               <p li-object="article.metafields.custom.season" class="hero_subheading">{{ article.metafields.custom.season }}</p>
