@@ -5,7 +5,11 @@
               <div id="w-node-_678e0483-bbe4-e79a-1722-b169c587feae-c587feae" data-wf-component-id="678e0483-bbe4-e79a-1722-b169c587feae" data-wf-variant-state="base" class="filter_filters-wrapper">
                 <form id="w-node-_7d6f0611-feb8-09ae-67db-04fc34551954-c587feae" action="{{ routes.search_url }}" method="get" role="search" class="filter_form_component">
                   <div id="w-node-_265c4342-3d21-e8bf-dfee-efec035c3507-c587feae" class="filter_form">
-                    <div class="filter_form-field-wrapper"><input name="type" type="hidden" class="form_input" value="product"><label for="filter-search" class="form_hidden-label">Search for Products</label><input name="q" placeholder="Search" type="search" id="filter-search" class="form_input" value="{{ search.terms | escape }}"></div>
+                    <div class="filter_form-field-wrapper"><input name="type" type="hidden" class="form_input" value="product"><label for="filter-search" class="form_hidden-label">Filters</label><input name="q" placeholder="Search" type="search" id="filter-search" class="form_input" value="{{ search.terms | escape }}">
+                      <a data-w-id="b85bf3f0-ba57-3a94-c2b9-6a0c0ad76cf2" href="#" class="filter_tablet-modal-close-button filter-close--mobile w-inline-block">
+                        <p>Close</p>
+                      </a>
+                    </div>
                     <div class="filter_scroll-wrapper">
                       <div class="filter_filter-group-list">
                         {% for filter in collection.filters %}    <div li-for="filter in collection.filters" class="filter_filter-group">
@@ -39,9 +43,180 @@
                     </div>
                   </div>
                 </form>
-                <a id="w-node-_678e0483-bbe4-e79a-1722-b169c587fede-c587feae" data-w-id="678e0483-bbe4-e79a-1722-b169c587fede" href="#" class="filter_tablet-modal-close-button w-inline-block">
+                <a id="w-node-_678e0483-bbe4-e79a-1722-b169c587fede-c587feae" data-w-id="678e0483-bbe4-e79a-1722-b169c587fede" href="#" class="filter_tablet-modal-close-button filter-close--desktop w-inline-block">
                   <p>Close</p>
                 </a>
+                <div class="w-embed">
+                  <style>
+  /* =============================================
+   FILTER DRAWER &mdash; MOBILE BOTTOM-SHEET
+   Matches cart / wishlist / search pattern
+   =============================================
+   WEBFLOW SETUP REQUIRED:
+   1. On .filter_tablet-modal-close-button &mdash; add class: filter-close--desktop
+   2. Duplicate it, place copy inside .filter_form-field-wrapper as last child
+      &mdash; add class: filter-close--mobile to the copy
+   3. Change the .form_hidden-label text inside .filter_form-field-wrapper
+      from "Search for Products" to "Filter"
+   ============================================= */
+/* ------------------------------------------
+   CLOSE BUTTON SWAP
+   ------------------------------------------ */
+/* Default (all breakpoints): hide the mobile copy */
+.filter-close--mobile {
+  display: none;
+}
+@media screen and (max-width: 991px) {
+  /* Hide the desktop original */
+  .filter-close--desktop {
+    display: none !important;
+  }
+  /* Show the mobile copy, styled as an &times; button */
+  .filter-close--mobile {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 40px !important;
+    min-height: 44px !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    position: static !important;
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+  /* Hide the "Close" text inside it */
+  .filter-close--mobile p {
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+  /* Render &times; in its place */
+  .filter-close--mobile p::after {
+    content: "\00d7";
+    font-size: 1.25rem !important;
+    line-height: 1 !important;
+    font-family: "Helvetica Now Var", Arial, sans-serif !important;
+    color: #000 !important;
+  }
+}
+/* ------------------------------------------
+   BOTTOM-SHEET LAYOUT
+   ------------------------------------------ */
+@media screen and (max-width: 991px) {
+  /* 1. BACKDROP &mdash; darkened overlay, no blur on mobile */
+  .filter_filters-wrapper::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+    pointer-events: none;
+  }
+  /* 2. PANEL &mdash; anchored to bottom, slides up from off-screen */
+  .filter_filters-wrapper {
+    position: fixed !important;
+    inset: auto 0 0 0 !important;
+    top: auto !important;
+    height: auto !important;
+    min-height: 80dvh !important;
+    max-height: 92dvh !important;
+    width: 100% !important;
+    transform: translateY(100%) !important;
+    transition: transform 0.4s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    z-index: 10005 !important;
+    grid-template-columns: unset !important;
+    grid-template-rows: unset !important;
+    place-items: unset !important;
+    justify-content: unset !important;
+  }
+  /* 3. FORM COMPONENT &mdash; flex column, fills the panel height */
+  .filter_form_component {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 0% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    margin-top: 0 !important;
+  }
+  /* 4. FILTER FORM &mdash; non-scrolling flex column
+     Left padding only; right edge left clear for the scrollbar */
+  .filter_form {
+    flex: 1 1 0% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 0 0 24px !important;
+    max-height: none !important;
+    background-color: #fff !important;
+    min-width: unset !important;
+  }
+  /* 5. STICKY HEADER
+     Negative left margin escapes .filter_form's 24px left padding
+     so border-bottom spans the full panel width.
+     Height and padding exactly match .mini-cart_header / .nm-wishlist-drawer-header */
+  .filter_form-field-wrapper {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 0 0 16px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    border-bottom: 1px solid rgb(238, 238, 238) !important;
+    flex: 0 0 auto !important;
+    position: sticky !important;
+    top: 0 !important;
+    background-color: #fff !important;
+    z-index: 10 !important;
+    box-sizing: border-box !important;
+    margin-left: -24px !important;
+    margin-right: 0 !important;
+    width: calc(100% + 24px) !important;
+  }
+  /* 6. HEADER TITLE &mdash; reveal the visually-hidden label as "Filter" text */
+  .filter_form-field-wrapper .form_hidden-label {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    clip: auto !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    font-family: "Helvetica Now Var", Arial, sans-serif !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    color: #000 !important;
+  }
+  /* 7. HIDE search inputs that sit inside the header */
+  .filter_form-field-wrapper .form_input[type="hidden"],
+  .filter_form-field-wrapper .form_input[type="search"] {
+    display: none !important;
+  }
+  /* 8. SCROLLABLE LIST &mdash; sole scroll container
+     Spans full panel width so the scrollbar sits at the screen edge.
+     Content indented via padding-left to match its original position.
+     No margin-top so there's no gap beneath the header border. */
+  .filter_scroll-wrapper {
+    flex: 1 1 0% !important;
+    min-height: 0 !important;
+    overflow: hidden auto !important;
+    padding-top: 1rem !important;
+    padding-bottom: 5rem !important;
+    padding-left: 24px !important;
+    padding-right: 0 !important;
+    margin-top: 0 !important;
+    margin-left: -24px !important;
+    width: calc(100% + 24px) !important;
+    box-sizing: border-box !important;
+    height: auto !important;
+  }
+}
+</style>
+                </div>
               </div>
               <div fs-list-instance="1" id="w-node-f6c1ed66-8f2c-cc0d-fa87-63d3fbb7d543-fbb7d53a" class="filter_feed">
                 <div class="filter_feed-heading_wrapper">
