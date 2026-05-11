@@ -572,6 +572,40 @@
   document.querySelector('#sort-by').addEventListener('change', onSortChange);
   document.querySelector('#sort-by-2').addEventListener('change', onSortChange);
 </script>
+        </div>
+        
+        <div class="w-embed w-script">
+          <script>
+(function () {
+  // Create backdrop element
+  var fw = document.querySelector('.filter_filters-wrapper');
+  if (!fw) return;
+  var bd = document.getElementById('filter-backdrop-el');
+  if (!bd) {
+    bd = document.createElement('div');
+    bd.id = 'filter-backdrop-el';
+    fw.parentElement.insertBefore(bd, fw);
+  }
+  function openFilter() {
+    fw.classList.add('is-open');
+    bd.classList.add('is-visible');
+    document.body.classList.add('filter-open');
+  }
+  function closeFilter() {
+    fw.classList.remove('is-open');
+    bd.classList.remove('is-visible');
+    document.body.classList.remove('filter-open');
+  }
+  // Open: all .filter_tablet-filters-button elements (desktop + mobile)
+  document.querySelectorAll('.filter_tablet-filters-button')
+    .forEach(function (btn) { btn.addEventListener('click', openFilter); });
+  // Close: all close buttons
+  document.querySelectorAll('.filter_tablet-modal-close-button, .filter-close--mobile, .filter-close--desktop')
+    .forEach(function (btn) { btn.addEventListener('click', closeFilter); });
+  // Backdrop click also closes
+  bd.addEventListener('click', closeFilter);
+})();
+</script>
         </div> {% schema %} {
     "tag": "section",
     "name": "Collection Products",
