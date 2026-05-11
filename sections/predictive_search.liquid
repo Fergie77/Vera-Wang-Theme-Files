@@ -41,15 +41,9 @@
                                         {% for product in predictive_search.resources.products %}    <li li-for="product in predictive_search.resources.products" class="mini-cart_line-item_item">
                                     
                                           
-                            <a li-object:href="product.url" href="{{ product.url }}" class="mini-cart_line-item_item w-inline-block">
-                                            <div class="mini-cart_line-item_img"><img li-object:src="product.featured_media | image_url: width: 500" li-object:alt="product.featured_image.alt" alt="{{ product.featured_image.alt }}" src="{{ product.featured_media | image_url: width: 500 }}" loading="lazy" class="predictive-search_image"></div>
-                                            <div class="mini-cart_line-item_product-info">
-                                              <div class="product-info_layout">
-                                                <div class="text-size-regular text-weight-bold"><span li-object="product.title" class="product-info_heading">{{ product.title }}</span></div>
-                                                <div class="text-size-small"><span li-object="product.price | money" class="mini-cart_main-text-size text-weight-light">{{ product.price | money }}</span></div>
-                                              </div>
-                                            </div>
-                                          </a>
+                            <div class="expand-width">
+                                            {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
+                                          </div>
                             
                                         
                         </li>
@@ -117,15 +111,9 @@
 <li class="predictive-search_produt-item">
     
                                           
-    <a li-object:href="product.url" href="{{ product.url }}" class="mini-cart_line-item_item w-inline-block">
-                                            <div class="mini-cart_line-item_img"><img li-object:src="product.featured_media | image_url: width: 500" li-object:alt="product.featured_image.alt" alt="{{ product.featured_image.alt }}" src="{{ product.featured_media | image_url: width: 500 }}" loading="lazy" class="predictive-search_image"></div>
-                                            <div class="mini-cart_line-item_product-info">
-                                              <div class="product-info_layout">
-                                                <div class="text-size-regular text-weight-bold"><span li-object="product.title" class="product-info_heading">{{ product.title }}</span></div>
-                                                <div class="text-size-small"><span li-object="product.price | money">{{ product.price | money }}</span></div>
-                                              </div>
-                                            </div>
-                                          </a>
+    <div class="expand-width">
+                                            {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
+                                          </div>
     
                                         
 </li>
