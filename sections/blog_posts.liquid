@@ -16,13 +16,13 @@
                           <h3 li-object="article.title" class="blog_title">{{ article.title }}</h3>
                         </div>
                         <div class="cta-text">
-{{ section.settings.text_cta_text }}
+{{ section.settings.text_article_link }}
 </div>
                       </div><img alt="" loading="lazy" li-object:src="article.image.src | image_url: width: 600" src="{{ article.image.src | image_url: width: 600 }}" class="blog_featured-image">
                     </a>
                   </div>
                 </div>
-                <a id="w-node-b14c5374-d8b8-6358-dcb7-754007b3c650-dbf24ad4" href="{{ section.settings.url_cta_link }}" class="cta-text show-mobile-landscape"> {{ section.settings.text_cta_text }} </a>
+                <a id="w-node-b14c5374-d8b8-6358-dcb7-754007b3c650-dbf24ad4" href="{{ section.settings.url_cta_link }}" class="cta-text"> {{ section.settings.text_cta_text }} </a>
               </div>
             </div>
           </div>
@@ -43,10 +43,16 @@
             "label": "Article"
         },
         {
+            "id": "text_article_link",
+            "type": "text",
+            "label": "Article Link",
+            "default": "Read More"
+        },
+        {
             "id": "text_cta_text",
             "type": "text",
             "label": "CTA Text",
-            "default": "Read More"
+            "default": "See More"
         },
         {
             "id": "url_cta_link",
