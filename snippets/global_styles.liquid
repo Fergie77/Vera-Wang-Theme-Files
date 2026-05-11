@@ -334,4 +334,46 @@ h1, h2, h3, h4, h5, h6, a, p, input {
     padding-top: 10px;
   }
 }
+/* Reset wrapper to use auto rows (subgrid needs this) */
+.product_list-wrapper {
+  grid-template-rows: auto auto;
+  grid-auto-rows: auto;
+  row-gap: calc(var(--gap--global) * 3);
+}
+/* Each item spans 2 rows and passes them down via subgrid */
+.product_list-item {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  row-gap: 0px;
+}
+/* The product component uses subgrid too, overriding the base flex display */
+.product_list-item > .product-item_component,
+.product_list-item > div > .product-item_component {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  flex-direction: unset;
+  height: auto;
+}
+/* Pin image to row 1, text to row 2 */
+.product_list-item .product-item_image-link {
+  flex: unset;
+  grid-row: 1;
+}
+.product_list-item .spacer-xsmall {
+  display: none;
+}
+.product_list-item .product-item_text-link {
+  flex: unset;
+  grid-row: 2;
+  align-self: start;
+  padding-top: 12px;
+}
+/* Match the mobile padding-top used elsewhere */
+@media screen and (max-width: 767px) {
+  .product_list-item .product-item_text-link {
+    padding-top: 10px;
+  }
+}
 </style>
