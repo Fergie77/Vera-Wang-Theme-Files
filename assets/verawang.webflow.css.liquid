@@ -5936,6 +5936,7 @@ figcaption {
 .slide-out_layout {
   width: 100%;
   height: 100%;
+  padding-top: 10rem;
   padding-right: var(--padding--global);
   grid-column-gap: var(--gap--global);
   grid-row-gap: var(--gap--global);
@@ -5943,7 +5944,7 @@ figcaption {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-auto-columns: 1fr;
   justify-content: center;
-  align-items: center;
+  place-items: start stretch;
   display: grid;
   overflow: auto;
 }
@@ -9475,6 +9476,7 @@ figcaption {
   }
 
   .slide-out_layout {
+    padding-top: 0;
     padding-left: var(--padding--global);
     display: flex;
   }

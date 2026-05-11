@@ -454,14 +454,14 @@
                   
                                     <a href="{{ block.settings.url_link }}" class="rl_section_link w-inline-block"> </a>
                                     {% if block.settings.image_background_image %}
-{{ block.settings.image_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'rl_section_background-image' }}
+{{ block.settings.image_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'rl_section_background-image hide-mobile-landscape' }}
 {% else %}
-<img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="rl_section_background-image">
+<img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="rl_section_background-image hide-mobile-landscape">
 {% endif %}
                                     {% if block.settings.image_mobile_background_image %}
-{{ block.settings.image_mobile_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'rl_section_background-image' }}
+{{ block.settings.image_mobile_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'rl_section_background-image show-mobile-landscape' }}
 {% else %}
-<img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="rl_section_background-image">
+<img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="rl_section_background-image show-mobile-landscape">
 {% endif %}
                                     
                 
