@@ -148,7 +148,11 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
   <div class="page-wrapper">
     {% render 'global_styles' %}
     {% sections 'header_group' %}
+      {% if request.path contains '/policies/' %}
+    {% section 'default' %}
+  {% else %}
     {{ content_for_layout }}
+  {% endif %}
     {% sections 'footer_group' %}
   </div>
   <div class="layout-grid_wrapper padding-global">
