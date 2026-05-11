@@ -22,8 +22,7 @@
     "recommended_products": {
       "type": "recommended_products",
       "settings": {
-        "text_heading": "Curated for you",
-        "text_subheading": ""
+        "text_heading": "Curated for you"
       }
     },
     "styled_by_vera_dyj8zQ": {
@@ -124,16 +123,15 @@
     "slide_out_module_GweRKk": {
       "type": "slide_out_module",
       "blocks": {
-        "dropdown_WnnTm7": {
-          "type": "dropdown",
+        "content_tkRmH4": {
+          "type": "content",
           "settings": {
-            "text_heading": "Shipping & Returns",
             "richtext_content": "<p><strong>Do I have to pay duties or import taxes on my order?</strong> </p><p>No, you won’t pay any additional duties or import taxes on delivery. All orders are shipped <strong>DDP (Delivered Duty Paid)</strong>, which means these costs  are chargedupfront. </p><p><strong>What does DDP (Delivered Duty Paid) mean?</strong> </p><p>DDP means that all customs duties, import taxes, and fees are included in your order total at checkout. There are <strong>no surprise charges</strong> when your package arrives. </p><p><strong>Will I be contacted by customs or the carrier for payment?</strong> </p><p>No. Because we ship DDP, customs and carriers will not require you to pay anything before delivery. </p><p><strong>Why is my order shipped DDP?</strong> </p><p>We want to provide a seamless, transparent shopping experience. Shipping DDP ensures: </p><ul><li>No unexpected fees </li><li>Faster customs clearance </li><li>A smoother delivery experience </li></ul><p><strong>Are shipping costs inclusive of duties and taxes?</strong> </p><p>Duties and taxes are calculated and included at checkout,  so what you see is what you pay. </p><p><strong>Do I need to do anything for customs clearance?</strong> </p><p>In most cases, no action is required from you. We handle the customs process on your behalf. </p><p> </p>"
           }
         }
       },
       "block_order": [
-        "dropdown_WnnTm7"
+        "content_tkRmH4"
       ],
       "name": "Slide Out Module",
       "settings": {
