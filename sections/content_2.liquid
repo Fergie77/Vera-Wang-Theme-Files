@@ -11,14 +11,18 @@
             <div li-block="Social Sign Up" class="social-sign-up_component">
                     
                   
-                    <p class="eyebrow-text">THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE</p>
+                    <p class="eyebrow-text">
+{{ block.settings.text_label }}
+</p>
                     
                   
                     <div class="social-sign-up_heading-layout">
                     <h2 class="social-sign-up_heading">
 {{ block.settings.text_heading }}
 </h2>
-                    <p class="social-sign-up_subheading">Subhead Copy</p>
+                    <p class="social-sign-up_subheading">
+{{ block.settings.text_subheading }}
+</p>
                   </div>
                     
                   
@@ -69,10 +73,22 @@
             "type": "social-sign-up",
             "settings": [
                 {
+                    "id": "text_label",
+                    "type": "text",
+                    "label": "Label",
+                    "default": "THIS IS A MORE EDITORIAL AREA OF THE HOMEPAGE"
+                },
+                {
                     "id": "text_heading",
                     "type": "text",
                     "label": "Heading",
                     "default": "Join Us"
+                },
+                {
+                    "id": "text_subheading",
+                    "type": "text",
+                    "label": "Subheading",
+                    "default": "Subhead Copy"
                 },
                 {
                     "id": "text_checkbox",

@@ -141,17 +141,15 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
     background: #000000;
   }
 </style>
-
-<style>
+  <style>
 /* =====================================================
-   VERA WANG — POLICY PAGES
+   VERA WANG &mdash; POLICY PAGES
    Scoped entirely to Shopify policy pages via
    :has(.shopify-policy__container) and
    .shopify-policy__* selectors.
    No other pages are affected.
 ===================================================== */
-
-/* ── Nav: solid white, black links (policy pages only) ──
+/* &#9472;&#9472; Nav: solid white, black links (policy pages only) &#9472;&#9472;
    :has() detects the policy container on the page and
    overrides the metafield CSS variables on the nav.     */
 body:has(.shopify-policy__container) .nav_component {
@@ -163,16 +161,14 @@ body:has(.shopify-policy__container) .nav_component {
   --nav-scroll-bg: #ffffff !important;
   background: #ffffff !important;
 }
-
-/* ── Clear fixed navbar height ── */
+/* &#9472;&#9472; Clear fixed navbar height &#9472;&#9472; */
 @media screen and (min-width: 768px) {
   body:has(.shopify-policy__container) .page-wrapper {
     padding-top: 80px !important;
     overflow: visible !important;
   }
 }
-
-/* ── DESKTOP: two-column grid ── */
+/* &#9472;&#9472; DESKTOP: two-column grid &#9472;&#9472; */
 .shopify-policy__container {
   max-width: none !important;
   width: 100% !important;
@@ -183,8 +179,7 @@ body:has(.shopify-policy__container) .nav_component {
   align-items: start !important;
   min-height: calc(100vh - 80px) !important;
 }
-
-/* Left column — sticky page title */
+/* Left column &mdash; sticky page title */
 .shopify-policy__title {
   grid-column: 1 !important;
   grid-row: 1 !important;
@@ -196,7 +191,6 @@ body:has(.shopify-policy__container) .nav_component {
   align-self: start !important;
   border-bottom: none !important;
 }
-
 /* h1: Big Caslon */
 .shopify-policy__title h1 {
   font-family: 'Big Caslon', 'Big Caslon FB', Georgia, serif !important;
@@ -209,8 +203,7 @@ body:has(.shopify-policy__container) .nav_component {
   color: #000000 !important;
   margin: 0 !important;
 }
-
-/* Right column — body content */
+/* Right column &mdash; body content */
 .shopify-policy__body {
   grid-column: 2 !important;
   grid-row: 1 !important;
@@ -219,8 +212,7 @@ body:has(.shopify-policy__container) .nav_component {
   border-left: 1px solid rgba(0, 0, 0, 0.12) !important;
   min-height: calc(100vh - 80px) !important;
 }
-
-/* Section headings — Recover Password style */
+/* Section headings &mdash; Recover Password style */
 .shopify-policy__body h2,
 .rte h2 {
   font-family: 'Helvetica Now Var', Arial, sans-serif !important;
@@ -233,11 +225,9 @@ body:has(.shopify-policy__container) .nav_component {
   margin-top: 2.5rem !important;
   margin-bottom: 0.875rem !important;
 }
-
 .rte > div > h2:first-of-type {
   margin-top: 0 !important;
 }
-
 /* Body text */
 .shopify-policy__body p,
 .rte p {
@@ -247,7 +237,6 @@ body:has(.shopify-policy__container) .nav_component {
   margin-bottom: 1rem !important;
   color: #000000 !important;
 }
-
 /* Lists */
 .shopify-policy__body ul,
 .rte ul {
@@ -255,7 +244,6 @@ body:has(.shopify-policy__container) .nav_component {
   margin-bottom: 1rem !important;
   padding-left: 1.25rem !important;
 }
-
 .shopify-policy__body li,
 .rte li {
   font-size: 13px !important;
@@ -263,16 +251,13 @@ body:has(.shopify-policy__container) .nav_component {
   margin-bottom: 0.4rem !important;
   color: #000000 !important;
 }
-
-/* ── MOBILE (≤767px) ── */
+/* &#9472;&#9472; MOBILE (&le;767px) &#9472;&#9472; */
 @media screen and (max-width: 767px) {
-
   .shopify-policy__container {
     grid-template-columns: 1fr !important;
     grid-template-rows: auto auto !important;
     min-height: unset !important;
   }
-
   .shopify-policy__title {
     grid-column: 1 !important;
     grid-row: 1 !important;
@@ -281,7 +266,6 @@ body:has(.shopify-policy__container) .nav_component {
     padding: 2.5rem 1.25rem 2rem 1.25rem !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important;
   }
-
   .shopify-policy__body {
     grid-column: 1 !important;
     grid-row: 2 !important;
@@ -289,14 +273,12 @@ body:has(.shopify-policy__container) .nav_component {
     padding: 2rem 1.25rem 3rem 1.25rem !important;
     min-height: unset !important;
   }
-
   .shopify-policy__body h2,
   .rte h2 {
     margin-top: 2rem !important;
   }
 }
   </style>
-
   <script src="https://cdn.prod.website-files.com/68e64cde361aeb3efeb34ca9%2F689e5ba67671442434f3ca35%2F69fc96205d8bf15349778e97%2Fsize_picker_state_css-1.0.0.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/68e64cde361aeb3efeb34ca9%2F689e5ba67671442434f3ca35%2F69fc972b4468d8fc64e6baa8%2Fsize_picker_state_css-1.1.0.js" type="text/javascript"></script>
 <script src="{{ 'li_helper.js' | asset_url }}" type="text/javascript"></script>{{ content_for_header }}</head>
