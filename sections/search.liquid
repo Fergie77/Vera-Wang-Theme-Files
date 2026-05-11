@@ -82,7 +82,10 @@
   transition: opacity 0.4s ease;
 }
 @media screen and (min-width: 992px) {
-  #filter-backdrop-el { display: block; }
+  #filter-backdrop-el {
+    display: block;
+    z-index: 999;
+  }
   #filter-backdrop-el.is-visible { opacity: 1; pointer-events: auto; }
 }
 .filter-close--mobile { display: none; }
