@@ -53,8 +53,6 @@
     }
   },
   "platform_customizations": {
-    "custom_css": [
-      ".nav_absolute {z-index: 10001;}"
-    ]
+    "custom_css": []
   }
 }

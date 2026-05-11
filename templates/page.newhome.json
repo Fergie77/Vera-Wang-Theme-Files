@@ -144,7 +144,8 @@
       "settings": {
         "text_heading": "The World Of Vera Wang",
         "article_article": "diary/the-history",
-        "text_cta_text": "Explore More",
+        "text_article_link": "Read More",
+        "text_cta_text": "",
         "url_cta_link": "shopify://blogs/diary"
       }
     },
