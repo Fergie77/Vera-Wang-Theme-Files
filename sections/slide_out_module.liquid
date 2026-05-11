@@ -18,7 +18,7 @@
 {% render block %}
 
               {% when 'dropdown' %}
-            <div li-block="dropdown" class="dropdown_wrapper">
+            <div li-block="Dropdown" class="dropdown_wrapper">
                     
                 
                     <a href="#" class="dropdown_toggle w-inline-block">
@@ -64,6 +64,14 @@
                     
               
                 </div>
+              {% when 'content' %}
+            <div li-block="Content" class="expand-width">
+                    
+                
+                    <div class="dropdown_list w-richtext"> {{ block.settings.richtext_content }} </div>
+                    
+              
+                </div>
             {% endcase %}
 {% endfor %}
 
@@ -82,7 +90,7 @@
     "class": "module_slide-out",
     "blocks": [
         {
-            "name": "dropdown",
+            "name": "Dropdown",
             "type": "dropdown",
             "settings": [
                 {
@@ -91,6 +99,18 @@
                     "label": "Heading",
                     "default": "Description"
                 },
+                {
+                    "id": "richtext_content",
+                    "type": "richtext",
+                    "label": "Content",
+                    "default": "<p>In tempor rutrum elit, nec mattis est fringilla in. Mauris ligula eros, dignissim vitae dui eget, malesuada fringilla eros. Pellentesque habitant morbi tristique. \u200d Product description here 100% material composition Colour: here Washing instructions go here Made in Country Loose fit Model is 189cm\/6'2 and is wearing a size M Styled by Vera<\/p>"
+                }
+            ]
+        },
+        {
+            "name": "Content",
+            "type": "content",
+            "settings": [
                 {
                     "id": "richtext_content",
                     "type": "richtext",
@@ -124,6 +144,9 @@
             "blocks": [
                 {
                     "type": "dropdown"
+                },
+                {
+                    "type": "content"
                 }
             ]
         }
