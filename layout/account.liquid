@@ -278,6 +278,11 @@ body:has(.shopify-policy__container) .nav_component {
     margin-top: 2rem !important;
   }
 }
+/* Suppress all transitions during window resize to prevent modals sliding on breakpoint change */
+.resize-transition-stopper,
+.resize-transition-stopper * {
+  transition: none !important;
+}
   </style>
   <!--  
 IMPORTANT: If you want to make changes to the head or body code on this page, 
@@ -531,6 +536,18 @@ var X_SVG = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="
     }, 150);
   };
   window.addEventListener('resize', window._wishlistResizeHandler);
+})();
+</script>
+  <script>
+(function () {
+  let resizeTimer;
+  window.addEventListener('resize', function () {
+    document.body.classList.add('resize-transition-stopper');
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      document.body.classList.remove('resize-transition-stopper');
+    }, 400); // 400ms matches the longest transition duration in use (.4s cart, .6s search)
+  });
 })();
 </script>
 </body>

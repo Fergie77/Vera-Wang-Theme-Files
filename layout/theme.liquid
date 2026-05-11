@@ -278,6 +278,11 @@ body:has(.shopify-policy__container) .nav_component {
     margin-top: 2rem !important;
   }
 }
+/* Suppress all transitions during window resize to prevent modals sliding on breakpoint change */
+.resize-transition-stopper,
+.resize-transition-stopper * {
+  transition: none !important;
+}
   </style>
   <script src="https://cdn.prod.website-files.com/68e64cde361aeb3efeb34ca9%2F689e5ba67671442434f3ca35%2F69fc96205d8bf15349778e97%2Fsize_picker_state_css-1.0.0.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/68e64cde361aeb3efeb34ca9%2F689e5ba67671442434f3ca35%2F69fc972b4468d8fc64e6baa8%2Fsize_picker_state_css-1.1.0.js" type="text/javascript"></script>
@@ -584,6 +589,18 @@ var X_SVG = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="
     }, 150);
   };
   window.addEventListener('resize', window._wishlistResizeHandler);
+})();
+</script>
+  <script>
+(function () {
+  let resizeTimer;
+  window.addEventListener('resize', function () {
+    document.body.classList.add('resize-transition-stopper');
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      document.body.classList.remove('resize-transition-stopper');
+    }, 400); // 400ms matches the longest transition duration in use (.4s cart, .6s search)
+  });
 })();
 </script>
   <script>
