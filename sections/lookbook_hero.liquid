@@ -1,42 +1,16 @@
 <div class="header_background-image-wrapper is-relative">
           <div class="header_background-image is-full-width"><img li-object="article.image | image_url: width: 2000 | placeholder: 'detailed-apparel-1'" li-object:alt="article.image.alt" alt="{{ article.image.alt }}" loading="eager" src="{{ 'hero-apparel-1.svg' | asset_url }}" class="header_background-image_item is-left">
             <div class="hero-text-absolute-wrapper">
-              <h1 li-block="Heading" class="hero_heading">
-{{ section.settings.text_heading }}
-</h1>
-              <p li-block="Subheading" class="hero_subheading">
-{{ section.settings.text_subheading }}
-</p>
-              <div class="cta-text" style="color:{{section.settings.text_color}}">
-{{ section.settings.text_cta_text }}
-</div>
+              <h1 li-object="article.title" class="hero_heading">{{ article.title }}</h1>
+              <p li-object="article.metafields.custom.season" class="hero_subheading">{{ article.metafields.custom.season }}</p>
             </div>
             
           </div>
-          <a href="{{ section.settings.url_cta_link }}" class="header_link w-inline-block"> </a>
         </div> {% schema %} {
     "tag": "header",
     "name": "Lookbook Hero",
     "class": "section_header-home",
     "settings": [
-        {
-            "id": "text_heading",
-            "type": "text",
-            "label": "Heading",
-            "default": "Headline Goes here"
-        },
-        {
-            "id": "text_subheading",
-            "type": "text",
-            "label": "Subheading",
-            "default": "SPRING SUMMER 26"
-        },
-        {
-            "id": "text_cta_text",
-            "type": "text",
-            "label": "CTA Text",
-            "default": "Shop the collection"
-        },
         {
             "type": "header",
             "content": "Text Color"
@@ -46,11 +20,6 @@
             "id": "text_color",
             "label": "Text Color",
             "default": "#000000"
-        },
-        {
-            "id": "url_cta_link",
-            "type": "url",
-            "label": "CTA Link"
         }
     ],
     "presets": [
