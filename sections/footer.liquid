@@ -220,24 +220,24 @@
     
                     {% form 'localization', class: 'li-lang_form' %}
 <div data-hover="true" data-delay="500" class="li-lang_dropdown w-dropdown">
-                        <div lang="{{ localization.language.iso_code }}" class="li-lang_dd-toggle w-dropdown-toggle">
-                          <div li-object="localization.language.endonym_name | capitalize">{{ localization.language.endonym_name | capitalize }}</div>
+                        <div class="li-lang_dd-toggle w-dropdown-toggle">
+                          <div li-object="localization.country.name | append: ' / ' | append: localization.country.currency.symbol">{{ localization.country.name | append: ' / ' | append: localization.country.currency.symbol }}</div>
                           <div class="li-lang_dd-toggle-icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path clip-rule="evenodd" d="M2.55806 6.29544C2.46043 6.19781 2.46043 6.03952 2.55806 5.94189L3.44195 5.058C3.53958 4.96037 3.69787 4.96037 3.7955 5.058L8.00001 9.26251L12.2045 5.058C12.3021 4.96037 12.4604 4.96037 12.5581 5.058L13.4419 5.94189C13.5396 6.03952 13.5396 6.19781 13.4419 6.29544L8.17678 11.5606C8.07915 11.6582 7.92086 11.6582 7.82323 11.5606L2.55806 6.29544Z" fill="currentColor"></path>
                             </svg></div>
                         </div>
-                        <nav li-for:inside="language in localization.available_languages" class="li-lang_dd-list w-dropdown-list">
-        {% for language in localization.available_languages %}                            
+                        <nav li-for:inside="country in localization.available_countries" class="li-lang_dd-list w-dropdown-list">
+        {% for country in localization.available_countries %}                            
                           
-                            {% unless localization.language.iso_code == language.iso_code %}    <div li-unless="localization.language.iso_code == language.iso_code" class="li-lang_dd-list-item">
+                            {% unless localization.country.iso_code == country.iso_code %}    <div li-unless="localization.country.iso_code == country.iso_code" class="li-lang_dd-list-item">
     
-                            <a href="#" li-object="language.endonym_name | capitalize" lang="{{ language.iso_code }}" hreflang="{{ language.iso_code }}" data-value="{{ language.iso_code }}" class="li-lang_dd-link w-dropdown-link">{{ language.endonym_name | capitalize }}</a>
+                            <a href="#" li-object="country.name | append: ' / ' | append: country.currency.symbol" data-value="{{ country.iso_code }}" class="li-lang_dd-link w-dropdown-link">{{ country.name | append: ' / ' | append: country.currency.symbol }}</a>
                               </div>
 {% endunless %}
                             
                         
                     {% endfor %}    </nav>
-                      </div><input type="hidden" name="language_code" class="li-lang_hidden-input" value="{{ localization.language.iso_code }}">
+                      </div><input type="hidden" name="country_code" class="li-lang_hidden-input" value="{{ localization.country.iso_code }}">
                     {% endform %}
                     <div class="li-lang_script w-embed w-script">
                       <script>
