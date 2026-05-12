@@ -2704,16 +2704,19 @@ figcaption {
 }
 
 .li-lang_dd-list {
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--base-color-neutral--neutral) #ffffff45 #ffffff45;
   text-transform: uppercase;
   background-color: #111;
-  border: 1px solid #ffffff45;
   border-radius: .5rem;
 }
 
 .li-lang_dd-list.w--open {
   grid-column-gap: 0rem;
   grid-row-gap: 0rem;
-  border-top-style: none;
+  border-top-style: solid;
+  border-top-color: #f12c2c45;
   border-bottom-style: solid;
   border-right-style: none;
   border-bottom-color: var(--base-color-neutral--neutral);
@@ -7285,6 +7288,11 @@ figcaption {
   pointer-events: auto;
   position: absolute;
   inset: 0%;
+}
+
+.li-lang_inner-list {
+  max-height: 30rem;
+  overflow: auto;
 }
 
 @media screen and (min-width: 1280px) {
