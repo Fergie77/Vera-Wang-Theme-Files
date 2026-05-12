@@ -43,8 +43,8 @@
                           </div>
                         </div>
                         <div class="spacer-xsmall"></div>
-                        <a li-object:href="product.url | within: collection" href="{{ product.url | within: collection }}" class="product-item_text-link w-inline-block">
-                          <div class="product-item_details-layout">
+                        <div class="product-item_text-link">
+                          <a li-object:href="product.url | within: collection" href="{{ product.url | within: collection }}" class="product-item_details-layout w-inline-block">
                             <div class="product-item_left">
                               <h3 li-object="product.title" class="product-item_title">{{ product.title }}</h3>
                             </div>
@@ -56,7 +56,7 @@
 {% endif %}
                               <p li-object="product.price | money">{{ product.price | money }}</p>
                             </div>
-                          </div>
+                          </a>
                           <div class="product-item_variants-wrapper">
                             {% if product.has_only_default_variant == true %}    <p li-if="product.has_only_default_variant == true" class="product-item_subtitle text-weight-normal hide">
     1 Colour    </p>
@@ -67,12 +67,12 @@
                                   <div class="product-header_radio-list">
                                     <div>
                                       <div class="product-header_radio-layout">
-                                        {% for colour_product in product.metafields.custom.alternate_colour_products.value %}    <div style="background:{{ colour_product.metafields.custom.colour_hex }}" li-for="colour_product in product.metafields.custom.alternate_colour_products.value" class="product-item_variant-colour">
+                                        {% for colour_product in product.metafields.custom.alternate_colour_products.value %}    <a li-for="colour_product in product.metafields.custom.alternate_colour_products.value" style="background:{{ colour_product.metafields.custom.colour_hex }}" href="#" class="product-item_variant-colour w-inline-block">
                                     
-                        </div>
+                        </a>
 {% endfor %}
-                                        {% if product.metafields.custom.alternate_colour_products == blank %}    <div style="background:{{ product.metafields.custom.colour_hex }}" li-if="product.metafields.custom.alternate_colour_products == blank" class="product-item_variant-colour">
-        </div>
+                                        {% if product.metafields.custom.alternate_colour_products == blank %}    <a li-if="product.metafields.custom.alternate_colour_products == blank" style="background:{{ product.metafields.custom.colour_hex }}" href="#" class="product-item_variant-colour w-inline-block">
+        </a>
 {% endif %}
                                       </div>
                                     </div>
@@ -81,5 +81,5 @@
                               </div>
                             </div>
                           </div>
-                        </a>
+                        </div>
                       </div>
