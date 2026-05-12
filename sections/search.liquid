@@ -3,10 +3,10 @@
             {% paginate search.results by 50 %}
     <div li-paginate:by="50" li-paginate="search.results" class="filter_layout" by="50">
               <div id="w-node-_678e0483-bbe4-e79a-1722-b169c587feae-c587feae" data-wf-component-id="678e0483-bbe4-e79a-1722-b169c587feae" data-wf-variant-state="base" class="filter_filters-wrapper">
+                <div class="filter_your-filter-heading">FILTERS</div>
                 <form id="w-node-_7d6f0611-feb8-09ae-67db-04fc34551954-c587feae" action="{{ routes.search_url }}" method="get" role="search" class="filter_form_component">
                   <div id="w-node-_265c4342-3d21-e8bf-dfee-efec035c3507-c587feae" class="filter_form">
-                    <div class="filter_form-field-wrapper">
-                      <div class="filter_your-filter-heading">FILTERS</div><input name="type" type="hidden" class="form_input" value="product"><label for="filter-search" class="form_hidden-label">Filters</label><input name="q" placeholder="Search" type="search" id="filter-search" class="form_input" value="{{ search.terms | escape }}">
+                    <div class="filter_form-field-wrapper"><input name="type" type="hidden" class="form_input" value="product"><label for="filter-search" class="form_hidden-label">Filters</label><input name="q" placeholder="Search" type="search" id="filter-search" class="form_input" value="{{ search.terms | escape }}">
                       <a href="#" class="filter_tablet-modal-close-button filter-close--mobile w-inline-block">
                         <p>Close</p>
                       </a>
@@ -238,14 +238,8 @@
   display: none;
 }
 @media screen and (min-width: 992px) {
-  .filter_filters-wrapper .filter_form-field-wrapper {
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
   .filter_your-filter-heading {
     display: block;
-    width: 100%;
-    order: 2;
     font-family: 'Big Caslon', 'Big Caslon Medium', Georgia, serif;
     font-style: normal;
     font-weight: 500;

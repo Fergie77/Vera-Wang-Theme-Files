@@ -2994,20 +2994,23 @@ figcaption {
 
 .filter_filters-wrapper {
   z-index: 1000;
-  grid-column-gap: var(--gap--global);
-  grid-row-gap: var(--gap--global);
   width: 50%;
+  height: 100%;
   padding-top: 2rem;
   padding-right: var(--padding--global);
+  grid-column-gap: var(--gap--global);
+  grid-row-gap: var(--gap--global);
   background-color: #fff;
+  flex-direction: column;
   grid-template-rows: auto auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-auto-columns: 1fr;
   justify-content: center;
   place-items: center stretch;
-  display: grid;
+  display: flex;
   position: fixed;
   inset: 0% 0% 0% auto;
+  overflow: hidden;
   transform: translate(120%);
 }
 
@@ -3018,7 +3021,9 @@ figcaption {
 
 .filter_form {
   background-color: #0000;
+  flex: 1;
   min-width: 15rem;
+  min-height: 0;
   max-height: 100svh;
   overflow: auto;
 }
@@ -3047,10 +3052,12 @@ figcaption {
 }
 
 .filter_scroll-wrapper {
+  flex: 1;
+  min-height: 0;
   margin-top: 1rem;
   padding-bottom: 4rem;
   padding-right: 0;
-  overflow: scroll;
+  overflow: scroll auto;
 }
 
 .filter_filter-group-list {
@@ -7202,7 +7209,12 @@ figcaption {
   width: 100%;
 }
 
-.mini-cart_your-cart-heading, .filter_your-filter-heading {
+.mini-cart_your-cart-heading {
+  display: none;
+}
+
+.filter_your-filter-heading {
+  flex: none;
   display: none;
 }
 
