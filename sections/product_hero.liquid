@@ -77,7 +77,7 @@ initGallery();
                 </div>
               </div>
             </div>
-            <div class="product-details_wrapper">
+            <div x-cloak="hide" class="product-details_wrapper">
               {% if product.collections.first %}    <div li-if="product.collections.first" id="w-node-_81a83675-6f8d-ed5a-3553-4f9fcfc84cb7-5313685d">
     
                 <a href="{{ collection.url | default: product.collections.first.url }}" class="product-details_backlink-wrapper w-inline-block">
