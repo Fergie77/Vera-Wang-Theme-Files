@@ -636,7 +636,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 </style>
         </div>
-        <script>(function(){ var TAG='[notify-me-auto]'; if(window.__notifyMeAutoBound){console.log(TAG,'already bound, skipping');return;} window.__notifyMeAutoBound=true; console.log(TAG,'init &mdash; binding change+click on document'); function getVariantInfo(input){ var info={value:input.getAttribute('value'),name:(input.getAttribute('name')||input.getAttribute('data-name')||''),disabled:input.classList.contains('data-disabled')}; try{ var form=document.querySelector('[li-form="product"]')||document.querySelector('[x-data]'); var data=window.Alpine&&form?window.Alpine.$data(form):null; info.selectedVariant=data&&data.selected_or_first_available_variant; info.firstOptionMap=data&&data.firstOptionHasAvailableChildren; }catch(err){info.alpineError=String(err);} return info; } function maybeTrigger(input,evtType){ var inSizePicker=!!input.closest('.size-picker_wrapper, .size-picker_panel, .size-picker_slot'); var optName=(input.getAttribute('name')||input.getAttribute('data-name')||'').toLowerCase(); var disabled=input.classList.contains('data-disabled'); console.log(TAG,evtType+' on input',{value:input.getAttribute('value'),option:optName,inSizePicker:inSizePicker,disabled:disabled}); if(!inSizePicker){console.log(TAG,'skip &mdash; not from size picker');return;} if(optName!=='size'){console.log(TAG,'skip &mdash; option is not "size"');return;} if(!disabled){console.log(TAG,'skip &mdash; variant is available');return;} console.log(TAG,'sold-out size selected &rarr; triggering Notify flow'); setTimeout(function(){ try{ var info=getVariantInfo(input); console.log(TAG,'variant snapshot:',info); var closeBtn=document.querySelector('.size-picker_wrapper [data-drawer-close]'); console.log(TAG,'drawer close button:',closeBtn); if(closeBtn)closeBtn.click(); setTimeout(function(){ var btn=document.querySelector('[li-element="add-to-cart"]'); console.log(TAG,'add-to-cart button element:',btn); if(btn){console.log(TAG,'button text:',btn.textContent.trim(),'classes:',btn.className);btn.click();console.log(TAG,'clicked add-to-cart (now Notify Me)');}else{console.warn(TAG,'no add-to-cart button found');} },300); }catch(err){console.error(TAG,'error during trigger:',err);} },100); } function handler(evtType){ return function(e){ var input=e.target&&e.target.closest&&e.target.closest('[li-element="product-option-input"]'); if(!input){ var lbl=e.target&&e.target.closest&&e.target.closest('label.product-header_radio'); if(lbl)input=lbl.querySelector('[li-element="product-option-input"]'); } if(!input)return; maybeTrigger(input,evtType); }; } document.addEventListener('change',handler('change'),true); document.addEventListener('click',handler('click'),true); })();</script> {% schema %} {
+        <script>(function(){ var TAG='[notify-me-auto]'; if(window.__notifyMeAutoBound){console.log(TAG,'already bound, skipping');return;} window.__notifyMeAutoBound=true; console.log(TAG,'init &mdash; binding change+click on document'); function getVariantInfo(input){ var info={value:input.getAttribute('value'),name:(input.getAttribute('name')||input.getAttribute('data-name')||''),disabled:input.classList.contains('data-disabled')}; try{ var form=document.querySelector('[li-form="product"]')||document.querySelector('[x-data]'); var data=window.Alpine&&form?window.Alpine.$data(form):null; info.selectedVariant=data&&data.selected_or_first_available_variant; info.firstOptionMap=data&&data.firstOptionHasAvailableChildren; }catch(err){info.alpineError=String(err);} return info; } function maybeTrigger(input,evtType){ var inSizePicker=!!input.closest('.size-picker_wrapper, .size-picker_panel, .size-picker_slot'); var optName=(input.getAttribute('name')||input.getAttribute('data-name')||'').toLowerCase(); var disabled=input.classList.contains('data-disabled'); console.log(TAG,evtType+' on input',{value:input.getAttribute('value'),option:optName,inSizePicker:inSizePicker,disabled:disabled}); if(!inSizePicker){console.log(TAG,'skip &mdash; not from size picker');return;} if(optName!=='size'){console.log(TAG,'skip &mdash; option is not "size"');return;} if(!disabled){console.log(TAG,'skip &mdash; variant is available');return;} console.log(TAG,'sold-out size selected &rarr; triggering Notify flow'); setTimeout(function(){ try{ var info=getVariantInfo(input); console.log(TAG,'variant snapshot:',info); var closeBtn=document.querySelector('.size-picker_wrapper [data-drawer-close]'); console.log(TAG,'drawer close button:',closeBtn); if(closeBtn)closeBtn.click(); setTimeout(function(){ var btn=document.querySelector('[li-element="add-to-cart"]'); console.log(TAG,'add-to-cart button element:',btn); if(btn){console.log(TAG,'button text:',btn.textContent.trim(),'classes:',btn.className);btn.click();console.log(TAG,'clicked add-to-cart (now Notify Me)');}else{console.warn(TAG,'no add-to-cart button found');} },300); }catch(err){console.error(TAG,'error during trigger:',err);} },100); } function handler(evtType){ return function(e){ var input=e.target&&e.target.closest&&e.target.closest('[li-element="product-option-input"]'); if(!input){ var lbl=e.target&&e.target.closest&&e.target.closest('label.product-header_radio'); if(lbl)input=lbl.querySelector('[li-element="product-option-input"]'); } if(!input)return; maybeTrigger(input,evtType); }; } document.addEventListener('change',handler('change'),true); document.addEventListener('click',handler('click'),true); })();</script>
+        <div class="w-embed">
+          <style>
+  /* ============ SLIDE-OUT MODULE &mdash; desktop title heading ============ */
+.slide-out_module-title-heading {
+  display: none;
+}
+@media screen and (min-width: 992px) {
+  .module_slide-out .slide-out_wrapper {
+    position: relative;
+  }
+  .slide-out_module-title-heading {
+    display: block;
+    width: 100%;
+    font-family: 'Big Caslon', 'Big Caslon Medium', Georgia, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0.04em;
+    color: #000000;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+  }
+}
+</style>
+        </div> {% schema %} {
     "tag": "section",
     "name": "Product Hero",
     "class": "section_product-header",
