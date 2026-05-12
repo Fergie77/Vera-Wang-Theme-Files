@@ -10,13 +10,7 @@
                         {% for product in collection.products limit: section.settings.products_to_show offset: section.settings.products_offset %}    <div li-for="product in collection.products limit: section.settings.products_to_show offset: section.settings.products_offset" role="listitem" class="filter_product-list-item w-dyn-item">
                                     
                           
-                            <div class="display-contents">
-                            <div>
-                              <div>
-                                {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
-                              </div>
-                            </div>
-                          </div>
+                            {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
                             
                         
                         </div>
