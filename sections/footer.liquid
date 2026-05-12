@@ -216,8 +216,7 @@
                 <div class="hide w-embed w-script">
                   <script>document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());</script>
                 </div>
-                <div id="w-node-_28136b33-74f6-6da6-e09c-4eaac719b1f2-99a7328f" class="footer_language-links-wrapper">{% if localization.available_languages.size > 0 %}    <localization-form li-if="localization.available_languages.size > 1" class="li-lang_wrapper">
-    
+                <div id="w-node-_28136b33-74f6-6da6-e09c-4eaac719b1f2-99a7328f" class="footer_language-links-wrapper"><localization-form class="li-lang_wrapper">
                     {% form 'localization', class: 'li-lang_form' %}
 <div data-hover="true" data-delay="500" class="li-lang_dropdown w-dropdown">
                         <div class="li-lang_dd-toggle w-dropdown-toggle">
@@ -226,17 +225,19 @@
                               <path clip-rule="evenodd" d="M2.55806 6.29544C2.46043 6.19781 2.46043 6.03952 2.55806 5.94189L3.44195 5.058C3.53958 4.96037 3.69787 4.96037 3.7955 5.058L8.00001 9.26251L12.2045 5.058C12.3021 4.96037 12.4604 4.96037 12.5581 5.058L13.4419 5.94189C13.5396 6.03952 13.5396 6.19781 13.4419 6.29544L8.17678 11.5606C8.07915 11.6582 7.92086 11.6582 7.82323 11.5606L2.55806 6.29544Z" fill="currentColor"></path>
                             </svg></div>
                         </div>
-                        <nav li-for:inside="country in localization.available_countries" class="li-lang_dd-list w-dropdown-list">
+                        <nav class="li-lang_dd-list w-dropdown-list">
+                          <div li-for:inside="country in localization.available_countries" class="li-lang_inner-list">
         {% for country in localization.available_countries %}                            
-                          
+                            
                             {% unless localization.country.iso_code == country.iso_code %}    <div li-unless="localization.country.iso_code == country.iso_code" class="li-lang_dd-list-item">
     
-                            <a href="#" li-object="country.name | append: ' / ' | append: country.currency.symbol" data-value="{{ country.iso_code }}" class="li-lang_dd-link w-dropdown-link">{{ country.name | append: ' / ' | append: country.currency.symbol }}</a>
-                              </div>
+                              <a href="#" li-object="country.name | append: ' / ' | append: country.currency.symbol" data-value="{{ country.iso_code }}" class="li-lang_dd-link w-dropdown-link">{{ country.name | append: ' / ' | append: country.currency.symbol }}</a>
+                                </div>
 {% endunless %}
                             
-                        
-                    {% endfor %}    </nav>
+                          
+                    {% endfor %}    </div>
+                        </nav>
                       </div><input type="hidden" name="country_code" class="li-lang_hidden-input" value="{{ localization.country.iso_code }}">
                     {% endform %}
                     <div class="li-lang_script w-embed w-script">
@@ -259,8 +260,7 @@ class LocalizationForm extends HTMLElement {
 customElements.define('localization-form', LocalizationForm);
 </script>
                     </div>
-                      </localization-form>
-{% endif %}</div>
+                  </localization-form></div>
               </div>
             </div>
           </div>
