@@ -22,6 +22,17 @@
 {% when '@app' %}
 {% render block %}
 
+              {% when 'spacer' %}
+            <div li-block="Spacer">
+                    
+                
+                    <div class="{{section.settings.spacer_size}}"></div>
+                    
+                
+                    
+                    
+              
+                </div>
               {% when 'dropdown' %}
             <div li-block="Dropdown" class="dropdown_wrapper">
                     
@@ -105,6 +116,68 @@
     "class": "module_slide-out",
     "blocks": [
         {
+            "name": "Spacer",
+            "type": "spacer",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Spacer Size"
+                },
+                {
+                    "type": "select",
+                    "id": "spacer_size",
+                    "label": "Spacer Size",
+                    "options": [
+                        {
+                            "value": "spacer-tiny",
+                            "label": "Tiny"
+                        },
+                        {
+                            "value": "spacer-xxsmall",
+                            "label": "XX Small"
+                        },
+                        {
+                            "value": "spacer-xsmall",
+                            "label": "X Small"
+                        },
+                        {
+                            "value": "spacer-small",
+                            "label": "Small"
+                        },
+                        {
+                            "value": "spacer-medium",
+                            "label": "Medium"
+                        },
+                        {
+                            "value": "spacer-large",
+                            "label": "Large"
+                        },
+                        {
+                            "value": "spacer-xlarge",
+                            "label": "X Large"
+                        },
+                        {
+                            "value": "spacer-xxlarge",
+                            "label": "XX Large"
+                        },
+                        {
+                            "value": "spacer-huge",
+                            "label": "Huge"
+                        },
+                        {
+                            "value": "spacer-xhuge",
+                            "label": "X Huge"
+                        },
+                        {
+                            "value": "spacer-xxhuge",
+                            "label": "XX Huge"
+                        }
+                    ],
+                    "default": "spacer-medium"
+                }
+            ]
+        },
+        {
             "name": "Dropdown",
             "type": "dropdown",
             "settings": [
@@ -169,6 +242,9 @@
             "name": "Slide Out Module",
             "category": "Liquify",
             "blocks": [
+                {
+                    "type": "spacer"
+                },
                 {
                     "type": "dropdown"
                 },
