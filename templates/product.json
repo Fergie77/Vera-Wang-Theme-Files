@@ -77,11 +77,23 @@
             "richtext_content": "{{ product.description }}"
           }
         },
+        "divider_xk9k6g": {
+          "type": "divider",
+          "settings": {
+            "text_divider_content": "Lorem Ipsum"
+          }
+        },
         "dropdown_Dime4C": {
           "type": "dropdown",
           "settings": {
             "text_heading": "Care Instructions",
             "richtext_content": "<p>{{ product.metafields.custom.care_instructions.value }}</p>"
+          }
+        },
+        "divider_UVTRw8": {
+          "type": "divider",
+          "settings": {
+            "text_divider_content": "Lorem Ipsum"
           }
         },
         "dropdown_pX4iqR": {
@@ -94,7 +106,9 @@
       },
       "block_order": [
         "dropdown_jnJ7pF",
+        "divider_xk9k6g",
         "dropdown_Dime4C",
+        "divider_UVTRw8",
         "dropdown_pX4iqR"
       ],
       "name": "Slide Out Module",
