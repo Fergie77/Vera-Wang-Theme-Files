@@ -70,6 +70,12 @@
     "slide_out_module_rqCxPF": {
       "type": "slide_out_module",
       "blocks": {
+        "spacer_zfUL3G": {
+          "type": "spacer",
+          "settings": {
+            "spacer_size": "spacer-huge"
+          }
+        },
         "dropdown_jnJ7pF": {
           "type": "dropdown",
           "settings": {
@@ -105,6 +111,7 @@
         }
       },
       "block_order": [
+        "spacer_zfUL3G",
         "dropdown_jnJ7pF",
         "divider_xk9k6g",
         "dropdown_Dime4C",
