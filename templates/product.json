@@ -144,6 +144,12 @@
     "slide_out_module_GweRKk": {
       "type": "slide_out_module",
       "blocks": {
+        "spacer_dBnK6E": {
+          "type": "spacer",
+          "settings": {
+            "spacer_size": "spacer-medium"
+          }
+        },
         "content_tkRmH4": {
           "type": "content",
           "settings": {
@@ -152,6 +158,7 @@
         }
       },
       "block_order": [
+        "spacer_dBnK6E",
         "content_tkRmH4"
       ],
       "name": "Slide Out Module",
