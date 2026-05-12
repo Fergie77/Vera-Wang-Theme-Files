@@ -3,47 +3,51 @@
             {% paginate search.results by 50 %}
     <div li-paginate:by="50" li-paginate="search.results" class="filter_layout" by="50">
               <div id="w-node-_678e0483-bbe4-e79a-1722-b169c587feae-c587feae" data-wf-component-id="678e0483-bbe4-e79a-1722-b169c587feae" data-wf-variant-state="base" class="filter_filters-wrapper">
-                <form id="w-node-_7d6f0611-feb8-09ae-67db-04fc34551954-c587feae" action="{{ routes.search_url }}" method="get" role="search" class="filter_form_component">
-                  <div id="w-node-_265c4342-3d21-e8bf-dfee-efec035c3507-c587feae" class="filter_form">
-                    <div class="filter_form-field-wrapper">
-                      <div class="filter_your-filter-heading">FILTERS</div><input name="type" type="hidden" class="form_input" value="product"><label for="filter-search" class="form_hidden-label">Filters</label><input name="q" placeholder="Search" type="search" id="filter-search" class="form_input" value="{{ search.terms | escape }}">
-                      <a href="#" class="filter_tablet-modal-close-button filter-close--mobile w-inline-block">
-                        <p>Close</p>
-                      </a>
-                    </div>
-                    <div class="filter_scroll-wrapper">
-                      <div class="filter_filter-group-list">
-                        {% for filter in search.filters %}    <div li-for="filter in search.filters" class="filter_filter-group">
+                <div class="filter-heading_grid-layout">
+                  <div id="w-node-_04daf669-8afd-54d6-cc27-90b9a941d886-c587feae" class="filter_your-filter-heading">FILTERS</div>
+                </div>
+                <div id="w-node-ca779349-e240-2f8c-3664-f0d93e5e09fa-c587feae" class="filter-form_grid-layout">
+                  <form id="w-node-_7d6f0611-feb8-09ae-67db-04fc34551954-c587feae" action="{{ routes.search_url }}" method="get" role="search" class="filter_form_component">
+                    <div id="w-node-_265c4342-3d21-e8bf-dfee-efec035c3507-c587feae" class="filter_form">
+                      <div class="filter_form-field-wrapper"><input name="type" type="hidden" class="form_input" value="product"><label for="filter-search" class="form_hidden-label">Filters</label><input name="q" placeholder="Search" type="search" id="filter-search" class="form_input" value="{{ search.terms | escape }}">
+                        <a href="#" class="filter_tablet-modal-close-button filter-close--mobile w-inline-block">
+                          <p>Close</p>
+                        </a>
+                      </div>
+                      <div class="filter_scroll-wrapper">
+                        <div class="filter_filter-group-list">
+                          {% for filter in search.filters %}    <div li-for="filter in search.filters" class="filter_filter-group">
                                     
-                          
+                            
                             {% if filter.values.size > 1 %}    <div li-if="filter.values.size > 1" class="filter_filter-group-layout">
     
-                            <div class="filter_filter-group-heading">
-                              <div li-object="filter.label">{{ filter.label }}</div>
-                            </div>
-                            <div class="filter_list">
-                              {% for filter_value in filter.values %}    <div li-for="filter_value in filter.values" class="filter_item">
+                              <div class="filter_filter-group-heading">
+                                <div li-object="filter.label">{{ filter.label }}</div>
+                              </div>
+                              <div class="filter_list">
+                                {% for filter_value in filter.values %}    <div li-for="filter_value in filter.values" class="filter_item">
                                     
-                                
+                                  
                             <a href="{% if filter_value.active %}{{ filter_value.url_to_remove }}{% else %}{{ filter_value.url_to_add }}{% endif %}" class="{% if filter_value.count == 0 and filter_value.active == false %}filter_form_checkbox is-disabled{% else %}filter_form_checkbox{% endif %}">
-                                  <div class="{% if filter_value.active %}filter_form_checkbox-icon is-checked{% else %}filter_form_checkbox-icon{% endif %}"></div>
-                                  <div class="filter_form_checkbox-label"><span li-object="filter_value.label | append: ' '">{{ filter_value.label | append: ' ' }}</span> (<span li-object="filter_value.count">{{ filter_value.count }}</span>)</div>
-                                </a>
+                                    <div class="{% if filter_value.active %}filter_form_checkbox-icon is-checked{% else %}filter_form_checkbox-icon{% endif %}"></div>
+                                    <div class="filter_form_checkbox-label"><span li-object="filter_value.label | append: ' '">{{ filter_value.label | append: ' ' }}</span> (<span li-object="filter_value.count">{{ filter_value.count }}</span>)</div>
+                                  </a>
                             
-                              
+                                
                         </div>
 {% endfor %}
-                            </div>
                               </div>
+                                </div>
 {% endif %}
                             
-                        
+                          
                         </div>
 {% endfor %}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </form>
+                  </form>
+                </div>
                 <a id="w-node-_678e0483-bbe4-e79a-1722-b169c587fede-c587feae" href="#" class="filter_tablet-modal-close-button filter-close--desktop w-inline-block">
                   <p>Close</p>
                 </a>
@@ -67,6 +71,8 @@
   transform: translateX(100%) !important;
   transform-style: flat !important;
   transition: transform 0.4s ease !important;
+  justify-content: flex-start !important;
+  padding-top: 
 }
 .filter_filters-wrapper.is-open {
   transform: translateX(0%) !important;
@@ -157,9 +163,9 @@
   .filter_filters-wrapper.is-open { transform: translateY(0%) !important; }
   /* Form component */
   .filter_form_component {
-    display: flex !important;
-    flex-direction: column !important;
-    flex: 1 1 0% !important;
+    //display: flex !important;
+   // flex-direction: column !important;
+   // flex: 1 1 0% !important;
     min-height: 0 !important;
     overflow: hidden !important;
     margin-top: 0 !important;
@@ -238,14 +244,8 @@
   display: none;
 }
 @media screen and (min-width: 992px) {
-  .filter_filters-wrapper .filter_form-field-wrapper {
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
   .filter_your-filter-heading {
     display: block;
-    width: 100%;
-    order: 2;
     font-family: 'Big Caslon', 'Big Caslon Medium', Georgia, serif;
     font-style: normal;
     font-weight: 500;
