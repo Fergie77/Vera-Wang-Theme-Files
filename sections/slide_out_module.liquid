@@ -73,7 +73,8 @@
             <div li-block="Divider" class="horizontal-divider hide-mobile-landscape">
                     
                 
-                    <div li-settings="Divider Content" class="hide">
+                    <div class="hide">
+{{ block.settings.text_divider_content }}
 </div>
                     
               
@@ -124,7 +125,14 @@
         {
             "name": "Divider",
             "type": "divider",
-            "settings": null
+            "settings": [
+                {
+                    "id": "text_divider_content",
+                    "type": "text",
+                    "label": "Divider Content",
+                    "default": "Lorem Ipsum"
+                }
+            ]
         },
         {
             "name": "Content",
