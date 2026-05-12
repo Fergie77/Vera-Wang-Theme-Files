@@ -4908,10 +4908,12 @@ figcaption {
 }
 
 .product-item_variant-colour {
+  pointer-events: none;
   border: 1px solid #6f6f6f;
   border-radius: 50%;
   width: .5625rem;
   height: .5625rem;
+  position: relative;
 }
 
 .product-item_details-layout {
@@ -7279,6 +7281,12 @@ figcaption {
   display: flex;
 }
 
+.product-item_variant-link {
+  pointer-events: auto;
+  position: absolute;
+  inset: 0%;
+}
+
 @media screen and (min-width: 1280px) {
   .product-item_image.is-secondary {
     text-align: center;
@@ -9556,10 +9564,6 @@ figcaption {
 
   .nav_dropdown-list-background {
     margin-top: 0;
-  }
-
-  .product-title {
-    font-size: 1.25rem;
   }
 
   .product-title.is-dynamic {
