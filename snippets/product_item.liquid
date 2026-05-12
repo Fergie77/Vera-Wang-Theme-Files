@@ -67,13 +67,8 @@
                                   <div class="product-header_radio-list">
                                     <div>
                                       <div class="product-header_radio-layout">
-                                        {% for colour_product in product.metafields.custom.alternate_colour_products.value %}    <a li-for="colour_product in product.metafields.custom.alternate_colour_products.value" style="background:{{ colour_product.metafields.custom.colour_hex }}" href="#" class="product-item_variant-colour w-inline-block">
-                                    
-                        </a>
-{% endfor %}
-                                        {% if product.metafields.custom.alternate_colour_products == blank %}    <a li-if="product.metafields.custom.alternate_colour_products == blank" style="background:{{ product.metafields.custom.colour_hex }}" href="#" class="product-item_variant-colour w-inline-block">
-        </a>
-{% endif %}
+                                        <a li-object:href="colour_product.url" li-for="colour_product in product.metafields.custom.alternate_colour_products.value" style="background: {{ colour_product.metafields.custom.colour_hex }}" href="{{ colour_product.url }}" class="product-item_variant-colour w-inline-block">{{ colour_product in product.metafields.custom.alternate_colour_products.value }}</a>
+                                        <a li-object:href="product.url" li-if="product.metafields.custom.alternate_colour_products == blank" style="background: {{ product.metafields.custom.colour_hex }}" href="{{ product.url }}" class="product-item_variant-colour w-inline-block">{{ product.metafields.custom.alternate_colour_products == blank }}</a>
                                       </div>
                                     </div>
                                   </div>
