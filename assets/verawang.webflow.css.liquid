@@ -5947,7 +5947,7 @@ figcaption {
 .slide-out_layout {
   width: 100%;
   height: 100%;
-  padding-top: 10rem;
+  padding-top: 1rem;
   padding-right: var(--padding--global);
   grid-column-gap: var(--gap--global);
   grid-row-gap: var(--gap--global);
@@ -7202,8 +7202,30 @@ figcaption {
   width: 100%;
 }
 
-.mini-cart_your-cart-heading, .filter_your-filter-heading, .slide-out_module-title-heading {
+.mini-cart_your-cart-heading, .filter_your-filter-heading {
   display: none;
+}
+
+.slide-out_module-title-heading {
+  text-transform: uppercase;
+  padding-top: 3.5rem;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+.slide-out_module-title-wrapper {
+  grid-column-gap: var(--gap--global);
+  grid-row-gap: var(--gap--global);
+  padding-right: var(--padding--global);
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+
+.horizontal-divider {
+  border-bottom: 1px solid var(--base-color-neutral--neutral-light);
+  width: 100%;
 }
 
 @media screen and (min-width: 1280px) {
@@ -8244,6 +8266,14 @@ figcaption {
     transform: translate(120%);
   }
 
+  .slide-out_close-button.show-tablet {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    top: 0;
+    bottom: 0;
+  }
+
   .search-icon {
     z-index: 2;
     width: .9rem;
@@ -8482,6 +8512,15 @@ figcaption {
     width: 90%;
   }
 
+  .cart-header {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .slide-out_mobile-header {
+    position: relative;
+  }
+
   .search-nav_logo-link {
     z-index: 7;
     color: #000;
@@ -8495,7 +8534,7 @@ figcaption {
     left: 0;
   }
 
-  .search-nav_logo-link.is-search-menu {
+  .search-nav_logo-link.is-search-menu, .slide-out_module-title-wrapper.show-mobile-landscape {
     display: none;
   }
 }
@@ -9750,6 +9789,10 @@ figcaption {
     display: none;
     transform: none;
   }
+
+  .slide-out_module-title-wrapper {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 479px) {
@@ -10962,7 +11005,7 @@ figcaption {
   justify-self: start;
 }
 
-#w-node-ad0ba730-ff0e-ab22-2791-cab0b0fa1ab8-7db6215a {
+#w-node-_2b852580-b0c0-e06a-66e4-257a3f8f3261-7db6215a, #w-node-ad0ba730-ff0e-ab22-2791-cab0b0fa1ab8-7db6215a {
   grid-area: 1 / 2 / 2 / 4;
 }
 

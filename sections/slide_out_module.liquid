@@ -1,8 +1,10 @@
-<div module="{{section.settings.text_module}}" class="slide-out_wrapper">
-          <div data-slideout-title="true" class="slide-out_module-title-heading">
+<div module="{{section.settings.text_module}}" class="slide-out_wrapper is-open">
+          <div class="slide-out_module-title-wrapper show-mobile-landscape">
+            <div data-slideout-title="true" id="w-node-_2b852580-b0c0-e06a-66e4-257a3f8f3261-7db6215a" class="slide-out_module-title-heading">
 {{ section.settings.text_module_title }}
 </div>
-          <div class="slide-out_mobile-header mobile-nav-links_account-layout show-tablet">
+          </div>
+          <div class="slide-out_mobile-header show-tablet">
             <p data-slideout-title="true" class="cart-header">
 {{ section.settings.text_module_title }}
 </p>
@@ -67,6 +69,10 @@
                     
               
                 </div>
+              {% when 'divider' %}
+            <div li-block="Divider" class="horizontal-divider hide-mobile-landscape">
+                    
+                </div>
               {% when 'content' %}
             <div li-block="Content" class="expand-width">
                     
@@ -111,6 +117,11 @@
             ]
         },
         {
+            "name": "Divider",
+            "type": "divider",
+            "settings": null
+        },
+        {
             "name": "Content",
             "type": "content",
             "settings": [
@@ -147,6 +158,9 @@
             "blocks": [
                 {
                     "type": "dropdown"
+                },
+                {
+                    "type": "divider"
                 },
                 {
                     "type": "content"
