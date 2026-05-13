@@ -674,7 +674,20 @@ mq.addEventListener('change', initSwiper);
 initSwiper();
 </script>
 
-
+<script>
+(function () {
+  function setWishlistTitle() {
+    const title = document.querySelector('.nm-wishlist-drawer-title');
+    if (title && title.textContent.trim() !== 'WISHLIST') {
+      title.textContent = 'WISHLIST';
+    }
+  }
+  setWishlistTitle();
+  const observer = new MutationObserver(setWishlistTitle);
+  const target = document.querySelector('.nm-wishlist-drawer-header') || document.body;
+  observer.observe(target, { childList: true, subtree: true, characterData: true });
+})();
+</script>
 
 </body>
 </html>
