@@ -127,6 +127,8 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
       }
     </script>
   <style>
+
+    /*
 @media screen and (min-width: 768px) {
 
   .nm-wishlist-drawer-header {
@@ -170,7 +172,7 @@ https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js
     margin: 0 !important;
   }
 }
-
+*/
 
   /* AlpineJS can cause a brief &ldquo;blip&rdquo; where uninitialized templates flash before it loads. x-cloak prevents this by hiding elements until Alpine is ready. Learn more: https://alpinejs.dev/directives/cloak */
   [x-cloak] { display: none !important; }
@@ -673,7 +675,7 @@ function initSwiper() {
 mq.addEventListener('change', initSwiper);
 initSwiper();
 </script>
-
+<!--
 <script>
 (function () {
   function setWishlistTitle() {
@@ -688,6 +690,6 @@ initSwiper();
   observer.observe(target, { childList: true, subtree: true, characterData: true });
 })();
 </script>
-
+-->
 </body>
 </html>
