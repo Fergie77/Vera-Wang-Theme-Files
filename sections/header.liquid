@@ -408,55 +408,6 @@ html:has([data-drawer-open]) {
 mark{
   background: white !important;
 }
-
-/* ── Desktop only ── place this just before </body> in theme.liquid ── */
-@media screen and (min-width: 768px) {
-
-  /* Header: match cart's flex-start alignment */
-  .nm-wishlist-drawer-header {
-    align-items: flex-start !important;
-    flex-wrap: nowrap !important;
-  }
-
-  /* Close button: absolutely positioned to match cart (top: 2rem, right: 1.5rem) */
-  .nm-wishlist-drawer-header .nm-modal-close-button {
-    position: absolute !important;
-    top: 2rem !important;
-    right: 1.5rem !important;
-    margin-left: 0 !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* Close text: match cart's Close text styling */
-  .nm-wishlist-drawer-header .nm-modal-close-button .nm-close-text {
-    font-family: "Helvetica Now Var", Gotham, Arial, sans-serif !important;
-    font-size: 13.3532px !important;
-    line-height: normal !important;
-    letter-spacing: normal !important;
-    text-transform: none !important;
-    color: rgb(0, 0, 0) !important;
-  }
-
-  /* Title: full-width Big Caslon heading matching YOUR CART exactly */
-  .nm-wishlist-drawer-title {
-    display: block !important;
-    order: unset !important;
-    width: 100% !important;
-    flex-shrink: 1 !important;
-    font-family: "Big Caslon", "Big Caslon Medium", Georgia, serif !important;
-    font-style: normal !important;
-    font-weight: 500 !important;
-    font-size: 30px !important;
-    line-height: 100% !important;
-    letter-spacing: 0.04em !important;
-    color: rgb(0, 0, 0) !important;
-    padding-left: calc(7rem) !important;
-    padding-top: 1.5rem !important;
-    padding-bottom: 0px !important;
-    text-transform: uppercase !important;
-    margin: 0 !important;
-  }
-}
 </style>
                   </div>
                   <div class="hide w-embed w-script">
