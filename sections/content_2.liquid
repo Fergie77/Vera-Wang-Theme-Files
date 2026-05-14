@@ -33,199 +33,210 @@
                   
                     <div class="w-embed">
                     <style>
-  /* =============================================
-   WRAPPER
-   ============================================= */
+/* ============================================
+   Klaviyo Form RA6SEV &mdash; Vera Wang Custom Styling
+   ============================================ */
+/* Form wrapper */
 .klaviyo-form-RA6SEV {
-  display: block !important;
-  max-width: 40ch !important;
-  width: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-bottom: 0 !important;
-  height: auto !important;
+  background: transparent !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
 }
-/* =============================================
-   INNER FORM &mdash; single column grid
-   ============================================= */
-.klaviyo-form-RA6SEV form {
+/* Inner form &mdash; single column grid */
+.klaviyo-form-RA6SEV form,
+.klaviyo-form-RA6SEV [data-testid="form-component"] {
   display: grid !important;
   grid-template-columns: 1fr !important;
-  grid-auto-columns: 1fr !important;
-  gap: 0.4rem !important;
-  padding: 0 !important;
-  height: auto !important;
+  row-gap: 0px !important;
   width: 100% !important;
-  flex-direction: unset !important;
 }
-.klaviyo-form-RA6SEV form > div {
-  width: 100% !important;
-  height: auto !important;
-  flex-direction: column !important;
-  padding: 0 !important;
-}
-/* =============================================
-   TEXT INPUTS &mdash; bottom border only, Gotham font
-   ============================================= */
-.klaviyo-form-RA6SEV input[type="text"],
-.klaviyo-form-RA6SEV input[type="email"] {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  min-height: 0 !important;
-  padding: 0.5rem 0 0.25rem 0 !important;
-  margin-bottom: 0 !important;
-  box-sizing: border-box !important;
-  border: none !important;
-  border-bottom: 1px solid white !important;
-  border-radius: 0 !important;
-  background-color: transparent !important;
-  color: white !important;
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: clamp(0.625rem, 0.553571rem + 0.357143vw, 0.875rem) !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.05em !important;
-  line-height: 1.4 !important;
-  outline: none !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-}
-.klaviyo-form-RA6SEV input[type="text"]:focus,
-.klaviyo-form-RA6SEV input[type="email"]:focus {
-  border-bottom-color: #595959 !important;
-  outline: none !important;
-}
-.klaviyo-form-RA6SEV input[type="text"]::placeholder,
-.klaviyo-form-RA6SEV input[type="email"]::placeholder {
-  color: white !important;
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: clamp(0.625rem, 0.553571rem + 0.357143vw, 0.875rem) !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.05em !important;
-  opacity: 1 !important;
-}
-/* =============================================
-   INPUT WRAPPER
-   ============================================= */
-.klaviyo-form-RA6SEV .klaviyo-textinput {
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100% !important;
-  flex-grow: unset !important;
-  align-self: unset !important;
-  margin-bottom: 0.6rem !important;
-}
-/* =============================================
-   CHECKBOX SECTION
-   ============================================= */
-.klaviyo-form-RA6SEV .klaviyo-promocheckbox {
-  display: flex !important;
-  width: 100% !important;
-  justify-content: flex-start !important;
-  margin-top: 0.6rem !important;
-  margin-bottom: 0.6rem !important;
-  height: auto !important;
-}
-.klaviyo-form-RA6SEV .klaviyo-promocheckbox fieldset {
-  display: block !important;
-  width: 100% !important;
+/* Fieldset reset */
+.klaviyo-form-RA6SEV fieldset {
   border: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  align-self: unset !important;
+  width: 100% !important;
 }
-.klaviyo-form-RA6SEV .klaviyo-promocheckbox label {
+/* All go-class wrappers full width */
+.klaviyo-form-RA6SEV [class*="go"] {
+  width: 100% !important;
+}
+/* Input wrapper &mdash; fix align-self: flex-end which causes text shift on focus */
+.klaviyo-form-RA6SEV .go3787345210.go3787345210.go3787345210,
+.klaviyo-form-RA6SEV .klaviyo-textinput {
+  align-self: stretch !important;
+  height: auto !important;
+  justify-content: center !important;
+  overflow: visible !important;
+}
+/* Text inputs &mdash; match triple-class specificity to override Klaviyo */
+.klaviyo-form-RA6SEV .go603421600.go603421600.go603421600 {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid white !important;
+  border-radius: 0 !important;
+  color: white !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 20px !important;
+  padding: 10px 0 !important;
+  height: auto !important;
+  min-height: 38px !important;
+  width: 100% !important;
+  box-shadow: none !important;
+  outline: none !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+.klaviyo-form-RA6SEV .go603421600.go603421600.go603421600:focus,
+.klaviyo-form-RA6SEV .go603421600.go603421600.go603421600:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid white !important;
+}
+.klaviyo-form-RA6SEV .go603421600.go603421600.go603421600::placeholder {
+  color: white !important;
+  opacity: 1 !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 20px !important;
+}
+/* Checkbox &mdash; hide native input */
+.klaviyo-form-RA6SEV input[type="checkbox"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+/* Checkbox label */
+.klaviyo-form-RA6SEV input[type="checkbox"] + label,
+.klaviyo-form-RA6SEV input[type="checkbox"] ~ label {
   display: flex !important;
   align-items: flex-start !important;
-  gap: 0.6rem !important;
-  flex: 1 1 auto !important;
-  padding-bottom: 0 !important;
-  max-width: 100% !important;
+  gap: 12px !important;
   cursor: pointer !important;
+  color: white !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.5 !important;
 }
-/* Small square checkbox SVG */
-.klaviyo-form-RA6SEV .klaviyo-promocheckbox svg {
+/* Checkbox SVG icon &mdash; 16&times;16 square */
+.klaviyo-form-RA6SEV input[type="checkbox"] + label svg,
+.klaviyo-form-RA6SEV input[type="checkbox"] ~ label svg {
   width: 16px !important;
   height: 16px !important;
   min-width: 16px !important;
+  min-height: 16px !important;
   flex-shrink: 0 !important;
-  margin-right: 0 !important;
-  margin-top: 2px !important;
-  border-radius: 0 !important;
-  stroke: white !important;
-}
-/* Privacy text */
-.klaviyo-form-RA6SEV .klaviyo-promocheckbox .go2347003636 {
-  color: white !important;
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: clamp(0.5rem, 0.45rem + 0.25vw, 0.7rem) !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.02em !important;
-  line-height: 1.4 !important;
-  margin-right: 0 !important;
-  position: static !important;
-  top: unset !important;
-  cursor: pointer !important;
-}
-/* =============================================
-   SUBMIT BUTTON &mdash; full-width, white bordered
-   ============================================= */
-.klaviyo-form-RA6SEV button.klaviyo-form-button,
-.klaviyo-form-RA6SEV .klaviyo-form-button {
-  width: 100% !important;
-  display: block !important;
-}
-/* Fix intermediate wrapper divs */
-.klaviyo-form-RA6SEV div:has(> button.klaviyo-form-button),
-.klaviyo-form-RA6SEV div:has(> div > button.klaviyo-form-button) {
-  width: 100% !important;
-  justify-content: stretch !important;
-  align-items: stretch !important;
-}
-.klaviyo-form-RA6SEV button {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  padding: 1.2rem 1.5rem !important;
-  margin: 0.6rem 0 0 0 !important;
   border: 1px solid white !important;
   border-radius: 0 !important;
-  background-color: transparent !important;
-  color: white !important;
-  font-family: Gotham, Arial, sans-serif !important;
-  font-size: clamp(0.625rem, 0.579082rem + 0.229592vw, 0.785714rem) !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.2em !important;
-  line-height: 1 !important;
-  text-align: center !important;
-  text-transform: uppercase !important;
-  white-space: nowrap !important;
-  cursor: pointer !important;
   box-sizing: border-box !important;
-  align-self: unset !important;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
+  margin-top: 1px !important;
+}
+/* Checkbox unchecked &mdash; transparent fill */
+.klaviyo-form-RA6SEV input[type="checkbox"] + label svg rect,
+.klaviyo-form-RA6SEV input[type="checkbox"] ~ label svg rect {
+  fill: transparent !important;
+}
+/* Checkbox checked &mdash; white fill */
+.klaviyo-form-RA6SEV input[type="checkbox"]:checked + label svg rect,
+.klaviyo-form-RA6SEV input[type="checkbox"]:checked ~ label svg rect {
+  fill: white !important;
+  fill-opacity: 1 !important;
+}
+/* Checkbox checked &mdash; black checkmark */
+.klaviyo-form-RA6SEV input[type="checkbox"]:checked + label svg path,
+.klaviyo-form-RA6SEV input[type="checkbox"]:checked ~ label svg path {
+  stroke: black !important;
+  stroke-opacity: 1 !important;
+}
+/* Privacy / consent text */
+.klaviyo-form-RA6SEV [class*="consent"],
+.klaviyo-form-RA6SEV [class*="privacy"],
+.klaviyo-form-RA6SEV p {
+  color: white !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+}
+.klaviyo-form-RA6SEV [class*="consent"] a,
+.klaviyo-form-RA6SEV [class*="privacy"] a,
+.klaviyo-form-RA6SEV p a {
+  color: white !important;
+  text-decoration: underline !important;
+}
+/* Button wrapper &mdash; full width */
+.klaviyo-form-RA6SEV div:has(> button.klaviyo-form-button),
+.klaviyo-form-RA6SEV div:has(> [data-testid="form-button"]) {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: stretch !important;
+  margin-top: 24px !important;
+}
+/* Submit button */
+.klaviyo-form-RA6SEV button,
+.klaviyo-form-RA6SEV .klaviyo-form-button {
+  width: 100% !important;
+  background: transparent !important;
+  border: 1px solid white !important;
+  border-radius: 0 !important;
+  color: white !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  padding: 18px 24px !important;
+  cursor: pointer !important;
+  display: block !important;
 }
 .klaviyo-form-RA6SEV button:hover {
-  background-color: white !important;
-  color: black !important;
+  background: rgba(255, 255, 255, 0.1) !important;
 }
-/* =============================================
-   KEEP SR-ONLY LABELS HIDDEN
-   ============================================= */
-.klaviyo-form-RA6SEV .klaviyo-sr-only {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0,0,0,0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
+/* Error messages */
+.klaviyo-form-RA6SEV [class*="error"],
+.klaviyo-form-RA6SEV [class*="Error"] {
+  color: #ff6b6b !important;
+  font-size: 10px !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
 }
 </style>
+                  </div>
+                    
+                  
+                    <div class="hide w-embed w-script">
+                    <script>
+  (function () {
+  function fixKlaviyoInputScroll() {
+    var form = document.querySelector('.klaviyo-form-RA6SEV');
+    if (!form || form._scrollFixApplied) return;
+    form._scrollFixApplied = true;
+    var resetScroll = function (e) {
+      var t = e.target;
+      if (t && t.tagName === 'INPUT' && (t.type === 'text' || t.type === 'email' || t.type === 'tel')) {
+        t.scrollTop = 0;
+      }
+    };
+    form.addEventListener('scroll', resetScroll, true);
+    form.addEventListener('select', resetScroll, true);
+    form.addEventListener('mouseup', resetScroll, true);
+  }
+  // Run on load and after a short delay (Klaviyo renders asynchronously)
+  document.addEventListener('DOMContentLoaded', function () {
+    fixKlaviyoInputScroll();
+    setTimeout(fixKlaviyoInputScroll, 2000);
+  });
+})();
+</script>
                   </div>
                     
                   
