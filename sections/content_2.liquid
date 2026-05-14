@@ -240,9 +240,13 @@
   font-size: 10px !important;
   font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
 }
-/* Remove padding from Klaviyo form field rows */
-.footer_form-block div[data-testid="form-component"] {
+/* Remove padding from input rows in the sign-up form */
+.contact_form-block div[data-testid="form-component"] {
   padding: 0px !important;
+}
+/* Restore top spacing for the privacy policy checkbox row only */
+.contact_form-block div[data-testid="form-component"]:has(> .klaviyo-promocheckbox) {
+  padding-top: 20px !important;
 }
 </style>
                   </div>
