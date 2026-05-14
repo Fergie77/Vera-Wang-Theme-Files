@@ -5868,11 +5868,12 @@ figcaption {
 
 .active-filter-results_layout {
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   display: flex;
 }
 
 .results-text {
+  margin-top: .5rem;
   font-size: clamp(.625rem, .660714rem - .178571vw, .5rem);
 }
 
@@ -8357,6 +8358,11 @@ figcaption {
 
   .active-filter-results_layout {
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .results-text {
+    margin-top: 0;
   }
 
   .product-details_wrapper {
@@ -10681,7 +10687,7 @@ figcaption {
   }
 
   .collections-menu_item {
-    height: auto;
+    height: 100%;
   }
 
   .fs_selectcustom-2_toggle {
@@ -10809,6 +10815,10 @@ figcaption {
 
   .search-nav_logo-link.is-slide-out {
     max-width: 17rem;
+  }
+
+  .collections-menu_block {
+    height: auto;
   }
 }
 
