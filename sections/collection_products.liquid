@@ -386,7 +386,8 @@
                         </div>
                       </div>
                       <div class="plp-title-filter_wrapper">
-                        <div li-setttings:checkbox="Title">
+                        {% if section.settings.checkbox_title == true %}
+<div>
                           {% if collection.title == 'Womenswear' or collection.title == 'Ready To Wear' or collection.title == 'Accessories' or collection.title == 'Activewear' %}    <div li-if="collection.title == 'Womenswear' or collection.title == 'Ready To Wear' or collection.title == 'Accessories' or collection.title == 'Activewear'" class="hide-tablet">
     
                             <h1 li-object:text="collection.title" class="plp-title">
@@ -394,7 +395,7 @@
 </h1>
                               </div>
 {% endif %}
-                        </div>
+                        </div>{% endif %}
                         <div class="hide-tablet">
                           <div class="filter_tags-wrapper">
                             {% for filters in collection.filters %}    <div li-for="filters in collection.filters" class="filter_tags-inner-wrapper">
@@ -730,6 +731,12 @@
         }
     ],
     "settings": [
+        {
+            "id": "checkbox_title",
+            "type": "checkbox",
+            "label": "Title",
+            "default": true
+        },
         {
             "type": "header",
             "content": "Layout"
