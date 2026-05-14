@@ -157,9 +157,247 @@
                 <h2 class="footer_heading">
 {{ section.settings.text_heading }}
 </h2>
-                <p class="footer_subheading">Sign up to join the Vera Wang mailing list for exclusive content, events, promotions and more.</p>
+                <p class="footer_subheading">
+{{ section.settings.text_newsletter_paragraph }}
+</p>
                 <div class="footer_form-block w-embed">
                   <div class="klaviyo-form-YjkkzR"></div>
+                </div>
+                <div class="hide w-embed">
+                  <style>
+/* ============================================
+   Klaviyo Form YjkkzR &mdash; Vera Wang Custom Styling
+   ============================================ */
+/* Form wrapper */
+.klaviyo-form-YjkkzR {
+  background: transparent !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+}
+/* Inner form &mdash; single column grid */
+.klaviyo-form-YjkkzR form,
+.klaviyo-form-YjkkzR [data-testid="form-component"] {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  row-gap: 0px !important;
+  width: 100% !important;
+}
+/* Fieldset reset */
+.klaviyo-form-YjkkzR fieldset {
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+/* All go-class wrappers full width */
+.klaviyo-form-YjkkzR [class*="go"] {
+  width: 100% !important;
+}
+/* Input wrapper &mdash; fix align-self: flex-end which causes text shift on focus */
+.klaviyo-form-YjkkzR .go3787345210.go3787345210.go3787345210,
+.klaviyo-form-YjkkzR .klaviyo-textinput {
+  align-self: stretch !important;
+  height: auto !important;
+  justify-content: center !important;
+  overflow: visible !important;
+}
+/* Text inputs &mdash; match triple-class specificity to override Klaviyo */
+.klaviyo-form-YjkkzR .go603421600.go603421600.go603421600 {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid black !important;
+  border-radius: 0 !important;
+  color: black !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 20px !important;
+  padding: 0px 0 !important;
+  height: auto !important;
+  min-height: 38px !important;
+  width: 100% !important;
+  box-shadow: none !important;
+  outline: none !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+.klaviyo-form-YjkkzR .go603421600.go603421600.go603421600:focus,
+.klaviyo-form-YjkkzR .go603421600.go603421600.go603421600:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid black !important;
+}
+.klaviyo-form-YjkkzR .go603421600.go603421600.go603421600::placeholder {
+  color: black !important;
+  opacity: 1 !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 20px !important;
+}
+/* Checkbox &mdash; hide native input */
+.klaviyo-form-YjkkzR input[type="checkbox"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+/* Checkbox label */
+.klaviyo-form-YjkkzR input[type="checkbox"] + label,
+.klaviyo-form-YjkkzR input[type="checkbox"] ~ label {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  cursor: pointer !important;
+  color: black !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.5 !important;
+}
+/* Checkbox SVG icon &mdash; 12&times;12 square */
+.klaviyo-form-YjkkzR input[type="checkbox"] + label svg,
+.klaviyo-form-YjkkzR input[type="checkbox"] ~ label svg {
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px !important;
+  min-height: 12px !important;
+  flex-shrink: 0 !important;
+  border: 1px solid black !important;
+  border-radius: 0 !important;
+  box-sizing: border-box !important;
+  margin-top: 1px !important;
+}
+/* Checkbox unchecked &mdash; transparent fill */
+.klaviyo-form-YjkkzR input[type="checkbox"] + label svg rect,
+.klaviyo-form-YjkkzR input[type="checkbox"] ~ label svg rect {
+  fill: transparent !important;
+}
+/* Checkbox checked &mdash; black fill */
+.klaviyo-form-YjkkzR input[type="checkbox"]:checked + label svg rect,
+.klaviyo-form-YjkkzR input[type="checkbox"]:checked ~ label svg rect {
+  fill: black !important;
+  fill-opacity: 1 !important;
+}
+/* Checkbox checked &mdash; white checkmark */
+.klaviyo-form-YjkkzR input[type="checkbox"]:checked + label svg path,
+.klaviyo-form-YjkkzR input[type="checkbox"]:checked ~ label svg path {
+  stroke: white !important;
+  stroke-opacity: 1 !important;
+}
+/* Privacy / consent text */
+.klaviyo-form-YjkkzR [class*="consent"],
+.klaviyo-form-YjkkzR [class*="privacy"],
+.klaviyo-form-YjkkzR p {
+  color: black !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+}
+.klaviyo-form-YjkkzR [class*="consent"] a,
+.klaviyo-form-YjkkzR [class*="privacy"] a,
+.klaviyo-form-YjkkzR p a {
+  color: black !important;
+  text-decoration: underline !important;
+}
+/* Privacy / consent text */
+.klaviyo-form-YjkkzR [class*="consent"],
+.klaviyo-form-YjkkzR [class*="privacy"],
+.klaviyo-form-YjkkzR p {
+  color: black !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+}
+/* Override Klaviyo's triple-class specificity on the privacy text div */
+.klaviyo-form-YjkkzR .go2347003636.go2347003636.go2347003636 {
+  color: black !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+}
+.klaviyo-form-YjkkzR [class*="consent"] a,
+.klaviyo-form-YjkkzR [class*="privacy"] a,
+.klaviyo-form-YjkkzR p a,
+.klaviyo-form-YjkkzR .go2347003636.go2347003636.go2347003636 a {
+  color: black !important;
+  text-decoration: underline !important;
+}
+/* Button wrapper &mdash; full width */
+.klaviyo-form-YjkkzR div:has(> button.klaviyo-form-button),
+.klaviyo-form-YjkkzR div:has(> [data-testid="form-button"]) {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: stretch !important;
+  margin-top: 24px !important;
+}
+/* Submit button */
+.klaviyo-form-YjkkzR button,
+.klaviyo-form-YjkkzR .klaviyo-form-button {
+  width: 100% !important;
+  background: transparent !important;
+  border: 1px solid black !important;
+  border-radius: 0 !important;
+  color: black !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  padding: 0px 0px !important;
+  cursor: pointer !important;
+  display: block !important;
+}
+.klaviyo-form-YjkkzR button{
+  transition-property: background-color, color;
+  transition-duration: .2s, .2s;
+  transition-timing-function: ease-in-out, ease-in-out;
+}
+.klaviyo-form-YjkkzR button:hover {
+  background: black !important;
+  color: white !important;
+}
+/* Error messages */
+.klaviyo-form-YjkkzR [class*="error"],
+.klaviyo-form-YjkkzR [class*="Error"] {
+  color: #ff6b6b !important;
+  font-size: 10px !important;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Gotham", sans-serif !important;
+}
+</style>
+                </div>
+                <div class="hide w-embed w-script">
+                  <script>
+  (function () {
+  function fixKlaviyoInputScroll() {
+    var form = document.querySelector('.klaviyo-form-YjkkzR');
+    if (!form || form._scrollFixApplied) return;
+    form._scrollFixApplied = true;
+    var resetScroll = function (e) {
+      var t = e.target;
+      if (t && t.tagName === 'INPUT' && (t.type === 'text' || t.type === 'email' || t.type === 'tel')) {
+        t.scrollTop = 0;
+      }
+    };
+    form.addEventListener('scroll', resetScroll, true);
+    form.addEventListener('select', resetScroll, true);
+    form.addEventListener('mouseup', resetScroll, true);
+  }
+  // Run on load and after a short delay (Klaviyo renders asynchronously)
+  document.addEventListener('DOMContentLoaded', function () {
+    fixKlaviyoInputScroll();
+    setTimeout(fixKlaviyoInputScroll, 2000);
+  });
+})();
+</script>
                 </div>
                 <div class="footer_form-block hide w-form">
                   {% form 'customer', return_to: '/', class: 'footer_form' %}
@@ -302,7 +540,13 @@ customElements.define('localization-form', LocalizationForm);
             "id": "text_heading",
             "type": "text",
             "label": "Heading",
-            "default": "Join our Newsletter<br\/>(Replace with Klaviyo)"
+            "default": "Join our Newsletter<br\/>"
+        },
+        {
+            "id": "text_newsletter_paragraph",
+            "type": "text",
+            "label": "Newsletter Paragraph",
+            "default": "Sign up to join the Vera Wang mailing list for exclusive content, events, promotions and more."
         },
         {
             "id": "text_checkbox",
