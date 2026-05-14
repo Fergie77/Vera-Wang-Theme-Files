@@ -158,7 +158,10 @@
 {{ section.settings.text_heading }}
 </h2>
                 <p class="footer_subheading">Sign up to join the Vera Wang mailing list for exclusive content, events, promotions and more.</p>
-                <div class="footer_form-block w-form">
+                <div class="footer_form-block w-embed">
+                  <div class="klaviyo-form-YjkkzR"></div>
+                </div>
+                <div class="footer_form-block hide w-form">
                   {% form 'customer', return_to: '/', class: 'footer_form' %}
 <div class="form_field-wrapper"><label for="Email" class="form_hidden-label">Your E-Mail-Address</label><input class="form_input is-alternate w-input" maxlength="256" name="contact[email]" data-name="Email" placeholder="{{ section.settings.placeholder_text }}" type="email" id="Email" required=""></div>
                     <div li-object="form.errors | default_errors" class="text-size-tiny text-color-red">{{ form.errors | default_errors }}</div>
