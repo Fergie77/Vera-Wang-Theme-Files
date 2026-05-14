@@ -545,5 +545,97 @@ var X_SVG = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="
   });
 })();
 </script>
+  <script>
+(function () {
+  function setWishlistTitle() {
+    const title = document.querySelector('.nm-wishlist-drawer-title');
+    if (title && title.textContent.trim() !== 'WISHLIST') {
+      title.textContent = 'WISHLIST';
+    }
+  }
+  setWishlistTitle();
+  const observer = new MutationObserver(setWishlistTitle);
+  const target = document.querySelector('.nm-wishlist-drawer-header') || document.body;
+  observer.observe(target, { childList: true, subtree: true, characterData: true });
+})();
+</script>
+  <style>
+@media screen and (min-width: 768px) {
+  .nm-wishlist-drawer-header {
+    align-items: flex-start !important;
+    flex-wrap: nowrap !important;
+  }
+  .nm-wishlist-drawer-header .nm-modal-close-button {
+    position: absolute !important;
+    top: 2rem !important;
+    right: 1.5rem !important;
+    margin-left: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  .nm-wishlist-drawer-header .nm-modal-close-button .nm-close-text {
+    font-family: "Helvetica Now Var", Gotham, Arial, sans-serif !important;
+    font-size: 13.3532px !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    color: rgb(0, 0, 0) !important;
+  }
+  .nm-wishlist-drawer-title {
+    display: block !important;
+    order: unset !important;
+    width: 100% !important;
+    flex-shrink: 1 !important;
+    font-family: "Big Caslon", "Big Caslon Medium", Georgia, serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 30px !important;
+    line-height: 100% !important;
+    letter-spacing: 0.04em !important;
+    color: rgb(0, 0, 0) !important;
+    padding-left: calc(7rem) !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 0px !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+  }
+  .nm-wishlist-drawer-header {
+    align-items: flex-start !important;
+    flex-wrap: nowrap !important;
+  }
+  .nm-wishlist-drawer-header .nm-modal-close-button {
+    position: absolute !important;
+    top: 2rem !important;
+    right: 1.5rem !important;
+    margin-left: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  .nm-wishlist-drawer-header .nm-modal-close-button .nm-close-text {
+    font-family: "Helvetica Now Var", Gotham, Arial, sans-serif !important;
+    font-size: 13.3532px !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    color: rgb(0, 0, 0) !important;
+  }
+  .nm-wishlist-drawer-title {
+    display: block !important;
+    order: unset !important;
+    width: 100% !important;
+    flex-shrink: 1 !important;
+    font-family: "Big Caslon", "Big Caslon Medium", Georgia, serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 30px !important;
+    line-height: 100% !important;
+    letter-spacing: 0.04em !important;
+    color: rgb(0, 0, 0) !important;
+    padding-left: calc(7rem) !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 0px !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+  }
+}
+</style>
 </body>
 </html>
