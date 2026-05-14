@@ -291,15 +291,17 @@
 {% endunless %}
                         {% if submenu_links != blank %}    <div li-if="submenu_links != blank" class="collections-menu_layout">
     
-                          {% for menu_link in submenu_links %}    <div li-for="menu_link in submenu_links" class="collections-menu_item">
+                          {% for menu_link in submenu_links %}    <div li-for="menu_link in submenu_links" class="collections-menu_block">
                                     
                             
-                            <a li-object="menu_link.title | link_to: menu_link.url" href="#" class="collections-menu_link">{{ menu_link.title | link_to: menu_link.url }}</a>
-                            
-                            
-                            {% if collection.handle == menu_link.handle %}    <div li-if="collection.handle == menu_link.handle" class="is-current-collection">
+                            {% unless menu_link.title == 'Explore All' %}    <div li-unless="menu_link.title == 'Explore All'" class="collections-menu_item">
+    
+                              <a li-object="menu_link.title | link_to: menu_link.url" href="#" class="collections-menu_link">{{ menu_link.title | link_to: menu_link.url }}</a>
+                              {% if collection.handle == menu_link.handle %}    <div li-if="collection.handle == menu_link.handle" class="is-current-collection">
         </div>
 {% endif %}
+                                </div>
+{% endunless %}
                             
                           
                         </div>
@@ -384,13 +386,15 @@
                         </div>
                       </div>
                       <div class="plp-title-filter_wrapper">
-                        {% if collection.title == 'Womenswear' or collection.title == 'Ready To Wear' or collection.title == 'Accessories' or collection.title == 'Activewear' %}    <div li-if="collection.title == 'Womenswear' or collection.title == 'Ready To Wear' or collection.title == 'Accessories' or collection.title == 'Activewear'" class="hide-tablet">
+                        <div li-setttings:checkbox="Title">
+                          {% if collection.title == 'Womenswear' or collection.title == 'Ready To Wear' or collection.title == 'Accessories' or collection.title == 'Activewear' %}    <div li-if="collection.title == 'Womenswear' or collection.title == 'Ready To Wear' or collection.title == 'Accessories' or collection.title == 'Activewear'" class="hide-tablet">
     
-                          <h1 li-object:text="collection.title" class="plp-title">
+                            <h1 li-object:text="collection.title" class="plp-title">
 {{ collection.title }}
 </h1>
-                            </div>
+                              </div>
 {% endif %}
+                        </div>
                         <div class="hide-tablet">
                           <div class="filter_tags-wrapper">
                             {% for filters in collection.filters %}    <div li-for="filters in collection.filters" class="filter_tags-inner-wrapper">
@@ -679,6 +683,13 @@
   bd.addEventListener('click', closeFilter);
 })();
 </script>
+        </div>
+        <div class="hide w-embed">
+          <style>
+  .plp-title-filter_wrapper > div:has(.filter_tags-wrapper):not(:has(.filter_tags-inner-wrapper > *)) {
+  display: none;
+}
+</style>
         </div> {% schema %} {
     "tag": "section",
     "name": "Collection Products",
