@@ -126,17 +126,6 @@
     },
     "slide_out_module_gfP3jn": {
       "type": "slide_out_module",
-      "blocks": {
-        "content_TtKG8N": {
-          "type": "content",
-          "settings": {
-            "richtext_content": "<p>&lt;div data-smartrecom-sizechart-content&gt;&lt;/div&gt;</p>"
-          }
-        }
-      },
-      "block_order": [
-        "content_TtKG8N"
-      ],
       "name": "Slide Out Module",
       "settings": {
         "text_module_title": "Size Guide",
