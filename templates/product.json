@@ -127,6 +127,12 @@
     "slide_out_module_gfP3jn": {
       "type": "slide_out_module",
       "blocks": {
+        "spacer_cimMcM": {
+          "type": "spacer",
+          "settings": {
+            "spacer_size": "spacer-medium"
+          }
+        },
         "custom_liquid_mXbwej": {
           "type": "custom-liquid",
           "settings": {
@@ -135,6 +141,7 @@
         }
       },
       "block_order": [
+        "spacer_cimMcM",
         "custom_liquid_mXbwej"
       ],
       "name": "Slide Out Module",
