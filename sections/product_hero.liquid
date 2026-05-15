@@ -659,6 +659,16 @@ document.addEventListener("DOMContentLoaded", () => {
     color: #000000;
   }
 }
+  @media screen and (max-width: 767px) {
+  .slide-out_wrapper {
+    width: 100%;
+    height: auto;
+    min-height: 80dvh;
+    max-height: 90dvh;
+    overflow-y: auto;      /* &larr; add this */
+    //transform: translateY(120%);
+  }
+}
 </style>
         </div> {% schema %} {
     "tag": "section",
