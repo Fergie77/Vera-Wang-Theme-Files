@@ -98,6 +98,14 @@
                     
               
                 </div>
+              {% when 'custom-liquid' %}
+            <div li-block="Custom Liquid" class="expand-width">
+                    
+                
+                    <div class="expand-width">{{ block.settings.html_custom_liquid }} </div>
+                    
+              
+                </div>
             {% endcase %}
 {% endfor %}
 
@@ -220,6 +228,17 @@
             ]
         },
         {
+            "name": "Custom Liquid",
+            "type": "custom-liquid",
+            "settings": [
+                {
+                    "id": "html_custom_liquid",
+                    "type": "html",
+                    "label": "Custom Liquid"
+                }
+            ]
+        },
+        {
             "type": "@app"
         }
     ],
@@ -253,6 +272,9 @@
                 },
                 {
                     "type": "content"
+                },
+                {
+                    "type": "custom-liquid"
                 }
             ]
         }
