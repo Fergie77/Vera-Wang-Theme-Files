@@ -1,0 +1,12 @@
+{
+    "sections": {
+        "policy_content": {
+            "type": "policy_content"
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "policy_content"
+    ]
+}
