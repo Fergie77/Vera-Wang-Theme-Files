@@ -10755,10 +10755,17 @@ figcaption {
     text-underline-offset: 0px;
   }
 
+  .slide-out_wrapper {
+    flex-flow: column;
+    display: flex;
+  }
+
   .slide-out_layout {
     width: auto;
+    min-height: 0;
     padding-right: var(--padding--global);
     padding-left: var(--padding--global);
+    flex: 1;
     display: flex;
   }
 
