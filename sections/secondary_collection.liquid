@@ -1,0 +1,183 @@
+<div class="padding-vertical padding-small">
+          <div>
+            {% paginate collection.products by 50 %}
+    <div li-paginate:by="50" li-paginate="collection.products" class="filter_layout" by="50">
+              <div fs-list-instance="1" id="w-node-e5bbf2f8-b4b0-d424-ecdd-6391a0ec5665-73bfa2a4" class="filter_feed">
+                <div class="padding-global">
+                  <div class="container-large">
+                    <div class="filter_product-list-wrapper w-dyn-list">
+                      <div role="list" class="filter_product-list w-dyn-items">
+                        {% for product in collection.products %}    <div li-for="product in collection.products" role="listitem" class="filter_product-list-item w-dyn-item">
+                                    
+                          
+                            <div class="display-contents">
+                            <div>
+                              {% render 'product_item', colour_value: colour_value, product: product, variant: variant %}
+                            </div>
+                          </div>
+                            
+                        
+                        </div>
+{% endfor %}
+                      </div>
+                      {% if collection.products == blank %}    <div li-if="collection.products == blank" class="filter_empty w-dyn-empty">
+    
+                        <div class="heading-style-h6">No results found.</div>
+                        <div class="spacer-xxsmall"></div>
+                        <div>There are no results with this criteria. Try changing your search.</div>
+                          </div>
+{% endif %}
+                    </div>
+                  </div>
+                </div>
+                {% if paginate.pages > 1 %}    <nav li-if="paginate.pages > 1" class="pagination_component">
+    
+                  <ul role="list" class="pagination_list w-list-unstyled">
+                    {% if paginate.previous %}    <li li-if="paginate.previous" class="pagination_item">
+    
+                      <a li-object:href="paginate.previous.url" href="{{ paginate.previous.url }}" class="button is-secondary is-icon w-inline-block">
+                        <div class="pagination_arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img">
+                            <path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path>
+                          </svg></div>
+                        <div>Back</div>
+                      </a>
+                        </li>
+{% endif %}
+                    {% if paginate.previous == false %}    <li li-if="paginate.previous == false" class="pagination_item">
+    
+                      <a li-object:href="paginate.previous.url" href="{{ paginate.previous.url }}" class="button is-secondary is-icon text-style-muted pointer-events-off w-inline-block">
+                        <div class="pagination_arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img">
+                            <path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path>
+                          </svg></div>
+                        <div>Back</div>
+                      </a>
+                        </li>
+{% endif %}
+                    {% for part in paginate.parts %}    <li li-for="part in paginate.parts" class="pagination_item">
+                                    
+                      
+                            {% if part.is_link %}    <div li-if="part.is_link">
+    
+                        <a li-object:href="part.url" href="{{ part.url }}" class="pagination_count w-inline-block">
+                          <div li-object="part.title" class="text-style-link">{{ part.title }}</div>
+                        </a>
+                          </div>
+{% endif %}
+                            
+                      
+                            {% if part.is_link == false %}    <div li-if="part.is_link == false">
+    
+                        <div li-object="part.title" class="{% if part.title == paginate.current_page %}text-weight-semibold{% endif %}">{{ part.title }}</div>
+                          </div>
+{% endif %}
+                            
+                    
+                        </li>
+{% endfor %}
+                    {% if paginate.next == false %}    <li li-if="paginate.next == false" class="pagination_item">
+    
+                      <a li-object:href="paginate.next.url" href="{{ paginate.next.url }}" class="button is-secondary is-icon text-style-muted pointer-events-off w-inline-block">
+                        <div>Next</div>
+                        <div class="pagination_arrow is-right w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img">
+                            <path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path>
+                          </svg></div>
+                      </a>
+                        </li>
+{% endif %}
+                    {% if paginate.next %}    <li li-if="paginate.next" class="pagination_item">
+    
+                      <a li-object:href="paginate.next.url" href="{{ paginate.next.url }}" class="button is-secondary is-icon w-inline-block">
+                        <div>Next</div>
+                        <div class="pagination_arrow is-right w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img">
+                            <path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path>
+                          </svg></div>
+                      </a>
+                        </li>
+{% endif %}
+                  </ul>
+                    </nav>
+{% endif %}
+              </div>
+            </div>{% endpaginate %}
+          </div>
+        </div>
+        <div class="hide w-embed w-script">
+          <script>
+  function onSortChange(e) {
+    var params = new URLSearchParams(location.search);
+    params.set('sort_by', e.target.value);
+    location.search = params.toString();
+  }
+  document.querySelector('#sort-by').addEventListener('change', onSortChange);
+  document.querySelector('#sort-by-2').addEventListener('change', onSortChange);
+</script>
+        </div>
+        
+        <div class="hide w-embed w-script">
+          <script>
+(function () {
+  // Create backdrop element
+  var fw = document.querySelector('.filter_filters-wrapper');
+  if (!fw) return;
+  var bd = document.getElementById('filter-backdrop-el');
+  if (!bd) {
+    bd = document.createElement('div');
+    bd.id = 'filter-backdrop-el';
+    fw.parentElement.insertBefore(bd, fw);
+  }
+  function openFilter() {
+    fw.classList.add('is-open');
+    bd.classList.add('is-visible');
+    document.body.classList.add('filter-open');
+  }
+  function closeFilter() {
+    fw.classList.remove('is-open');
+    bd.classList.remove('is-visible');
+    document.body.classList.remove('filter-open');
+  }
+  // Open: all .filter_tablet-filters-button elements (desktop + mobile)
+  document.querySelectorAll('.filter_tablet-filters-button')
+    .forEach(function (btn) { btn.addEventListener('click', openFilter); });
+  // Close: all close buttons
+  document.querySelectorAll('.filter_tablet-modal-close-button, .filter-close--mobile, .filter-close--desktop')
+    .forEach(function (btn) { btn.addEventListener('click', closeFilter); });
+  // Backdrop click also closes
+  bd.addEventListener('click', closeFilter);
+})();
+</script>
+        </div>
+        <div class="hide w-embed">
+          <style>
+  .plp-title-filter_wrapper > div:has(.filter_tags-wrapper):not(:has(.filter_tags-inner-wrapper > *)) {
+  display: none;
+}
+</style>
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Secondary Collection",
+    "class": "section_filter",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Layout"
+        },
+        {
+            "id": "products_before_block",
+            "type": "number",
+            "label": "Products before featured block",
+            "default": 12
+        }
+    ],
+    "presets": [
+        {
+            "name": "Secondary Collection",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "collection"
+        ]
+    }
+} {% endschema %}
