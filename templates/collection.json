@@ -33,7 +33,7 @@
         "featured_wide_DiLN6f"
       ],
       "settings": {
-        "checkbox_title": false,
+        "checkbox_title": true,
         "products_before_block": 8
       }
     },
