@@ -7340,6 +7340,38 @@ figcaption {
   inset: auto auto 2.5rem 1rem;
 }
 
+.policy_component {
+  grid-template-columns: 40% 60%;
+  align-items: start;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  display: grid;
+}
+
+.policy_title-wrap {
+  align-self: start;
+  padding: 3.5rem 2rem 3.5rem 1.25rem;
+  position: sticky;
+  top: 80px;
+}
+
+.policy_title {
+  color: #000;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin: 0;
+  font-family: Big Caslon, Georgia, serif;
+  font-size: clamp(1.875rem, 1.78571rem + .446429vw, 2.1875rem);
+  font-weight: 500;
+  line-height: 100%;
+}
+
+.policy_content {
+  border-left: 1px solid #0000001f;
+  min-height: calc(100vh - 80px);
+  padding: 8rem 2rem 3.5rem 3rem;
+}
+
 @media screen and (min-width: 1280px) {
   .product-item_image.is-secondary {
     text-align: center;
@@ -8687,6 +8719,10 @@ figcaption {
     text-align: left;
     font-size: 4rem;
   }
+
+  .policy_content {
+    padding-top: 3.5rem;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -9960,6 +9996,25 @@ figcaption {
 
   .rl_header6_heading {
     left: 0;
+  }
+
+  .policy_component {
+    min-height: unset;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+  }
+
+  .policy_title-wrap {
+    text-align: center;
+    border-bottom: 1px solid #00000026;
+    padding: 2.5rem 1.25rem 2rem;
+    position: static;
+  }
+
+  .policy_content {
+    min-height: unset;
+    border-left-style: none;
+    padding: 2rem 1.25rem 3rem;
   }
 }
 

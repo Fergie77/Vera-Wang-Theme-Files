@@ -1,0 +1,58 @@
+<div class="policy_title-wrap">
+          <h1 li-object="page.title" class="policy_title">{{ page.title }}</h1>
+        </div>
+        <div class="policy_content">
+          <div li-object="page.content" class="policy_rich-text no-trim w-richtext">{{ page.content }}</div>
+        </div>
+        <div class="w-embed">
+          <style>
+/* &#9472; Nav: light on policy pages &#9472; */
+.nav_component {
+  --nav-left-link: #000;
+  --nav-left-bg: #fff;
+  --nav-right-link: #000;
+  --nav-right-bg: #fff;
+  --nav-scroll-link: #000;
+  --nav-scroll-bg: #fff;
+  background: #fff;
+}
+/* &#9472; Rich text typography inside .policy_content &#9472; */
+.policy_content .w-richtext > *:first-child { margin-top: 0; }
+.policy_content .w-richtext h2 {
+  font-family: 'Helvetica Now Var', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #000;
+  margin: 2.5rem 0 0.875rem;
+}
+.policy_content .w-richtext p,
+.policy_content .w-richtext li {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #000;
+}
+.policy_content .w-richtext p { margin: 0 0 1rem; }
+.policy_content .w-richtext ul {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+.policy_content .w-richtext li { margin-bottom: 0.4rem; }
+@media (max-width: 767px) {
+  .policy_content .w-richtext h2 { margin-top: 2rem; }
+}
+</style>
+        </div> {% schema %} {
+    "tag": "section",
+    "name": "Policy Content",
+    "class": "policy_component",
+    "presets": [
+        {
+            "name": "Policy Content",
+            "category": "Liquify",
+            "blocks": []
+        }
+    ]
+} {% endschema %}
