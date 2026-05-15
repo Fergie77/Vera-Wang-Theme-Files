@@ -1,0 +1,42 @@
+{
+    "sections": {
+        "collection_2_hero": {
+            "type": "collection_2_hero",
+            "blocks": {
+                "featured-wide": {
+                    "type": "featured-wide",
+                    "name": "Featured Wide"
+                }
+            },
+            "block_order": [
+                "featured-wide"
+            ]
+        },
+        "secondary_collection": {
+            "type": "secondary_collection"
+        },
+        "black_logo": {
+            "type": "black_logo"
+        },
+        "styled_by_vera": {
+            "type": "styled_by_vera",
+            "blocks": {
+                "block": {
+                    "type": "block",
+                    "name": "Block"
+                }
+            },
+            "block_order": [
+                "block"
+            ]
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "collection_2_hero",
+        "secondary_collection",
+        "black_logo",
+        "styled_by_vera"
+    ]
+}
