@@ -126,6 +126,17 @@
     },
     "slide_out_module_gfP3jn": {
       "type": "slide_out_module",
+      "blocks": {
+        "custom_liquid_mXbwej": {
+          "type": "custom-liquid",
+          "settings": {
+            "html_custom_liquid": "<div data-smartrecom-sizechart-content=\"\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_mXbwej"
+      ],
       "name": "Slide Out Module",
       "settings": {
         "text_module_title": "Size Guide",
