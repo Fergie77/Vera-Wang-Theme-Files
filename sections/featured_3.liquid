@@ -10,9 +10,9 @@
 {% endif %}
                   {% unless section.settings.video %}    <div li-unless="section.settings.video" class="display-contents">
     {% if section.settings.image_image %}
-{{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'featured-products_collection-image' }}
+{{ section.settings.image_image | image_url: width: 2000 | image_tag: loading: 'lazy', class: 'featured-products_collection-image' }}
 {% else %}
-<img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="featured-products_collection-image">
+ {{ 'detailed-apparel-1' | placeholder_svg_tag: 'featured-products_collection-image' }} 
 {% endif %}    </div>
 {% endunless %}
                   
