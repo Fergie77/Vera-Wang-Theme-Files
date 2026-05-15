@@ -314,9 +314,9 @@
 
     </div>
               <div id="w-node-_8ca16f8a-8cd9-b771-1e9a-fbb108146be1-feb34c80" class="social-sign-up_image-wrapper grid-break {{section.settings.image_position}}">{% if section.settings.image_image %}
-{{ section.settings.image_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'content_image' }}
+{{ section.settings.image_image | image_url: width: 2000 | image_tag: loading: 'lazy', class: 'content_image' }}
 {% else %}
-<img alt="" src="{{ 'image.svg' | asset_url }}" loading="lazy" class="content_image">
+ {{ 'detailed-apparel-1' | placeholder_svg_tag: 'content_image' }} 
 {% endif %}</div>
             </div>
           </div>
