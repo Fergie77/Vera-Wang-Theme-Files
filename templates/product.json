@@ -126,15 +126,6 @@
     },
     "slide_out_module_gfP3jn": {
       "type": "slide_out_module",
-      "blocks": {
-        "smartsize_app_block_zBzhUn": {
-          "type": "shopify://apps/smartsize/blocks/app-block/465a43e0-6a1a-4d30-b82e-fe6118568705",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "smartsize_app_block_zBzhUn"
-      ],
       "name": "Slide Out Module",
       "settings": {
         "text_module_title": "Size Guide",
