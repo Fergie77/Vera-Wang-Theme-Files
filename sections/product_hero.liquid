@@ -77,7 +77,7 @@ initGallery();
                 </div>
               </div>
             </div>
-            <div x-cloak="hide" class="product-details_wrapper">
+            <div x-cloa="hide" class="product-details_wrapper">
               {% if product.collections.first %}    <div li-if="product.collections.first" id="w-node-_81a83675-6f8d-ed5a-3553-4f9fcfc84cb7-5313685d">
     
                 <a href="{{ collection.url | default: product.collections.first.url }}" class="product-details_backlink-wrapper w-inline-block">
@@ -172,7 +172,7 @@ initGallery();
                         </div>
                         <div class="product-header_links-layout">
                           <a module-link="product-details" href="#" class="product-header_link cta-text">Product Details</a>
-                          <a module-link="size-guide" href="#" class="product-header_link cta-text" onclick="window.SmartRecomSizeChart.openModal()">Size & Fit Guide</a>
+                          <a module-link="size-guide" href="#" class="product-header_link cta-text">Size & Fit Guide</a>
                           <a module-link="shipping" href="#" class="product-header_link cta-text">Shipping and Returns</a>
                         </div>
                       </div>
@@ -199,7 +199,7 @@ initGallery();
                         <div li-object="product.description" class="text-rich-text max-width-large w-richtext">{{ product.description }}</div>
                         <div class="product-header_links-layout">
                           <a module-link="product-details" href="#" class="product-header_link">Product Details</a>
-                          <a module-link="size-guide" href="#" class="product-header_link" onclick="window.SmartRecomSizeChart.openModal()">Size & Fit Guide</a>
+                          <a li-attributes:onclick="window.SmartRecomSizeChart.openModal()" module-link="size-guide" href="#" class="product-header_link">Size & Fit Guide</a>
                           <a module-link="shipping" href="#" class="product-header_link">Shipping and Returns</a>
                         </div>
                       </div>
