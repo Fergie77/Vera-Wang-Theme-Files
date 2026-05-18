@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
         </div>
-        <div class="w-embed w-script">
+        <div class="hide w-embed w-script">
           <script>
 (function(){
   var slot = function(){ 
@@ -542,7 +542,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 </script>
         </div>
-        <div class="w-embed">
+        <div class="hide w-embed">
           <style>
 .size-picker_subheader {
   padding: 1.5rem 1rem 0.5rem;
@@ -636,7 +636,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 </style>
         </div>
-        <div class="w-embed w-script">
+        <div class="hide w-embed w-script">
           <script>
   (function () {
     var TAG = '[notify-me-auto]';
@@ -715,7 +715,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
 </script>
         </div>
-        <div class="w-embed">
+        <div class="hide w-embed">
           <style>
 .slide-out_module-title-heading {
   display: none;
@@ -738,7 +738,7 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 </style>
         </div>
-        <div class="w-embed w-script">
+        <div class="hide w-embed w-script">
           <script>
 (function () {
   if (window.matchMedia('(min-width: 768px)').matches) return;
@@ -841,6 +841,16 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener('shopify:section:load', init);
 })();
 </script>
+        </div>
+        <div class="hide w-embed">
+          <style>
+@media (hover: none) {
+  .nm-wishlist-button:hover {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+}
+</style>
         </div> {% schema %} {
     "tag": "section",
     "name": "Product Hero",
