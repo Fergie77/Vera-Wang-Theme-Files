@@ -745,101 +745,107 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="hide w-embed w-script">
           <script>
 (function () {
-  if (window.matchMedia('(min-width: 768px)').matches) return;
+  let mm;
   function init() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
       setTimeout(init, 100);
       return;
     }
-    // Tell ScrollTrigger to ignore small viewport height changes (URL bar show/hide)
-    // This prevents ScrollTrigger.refresh() from firing on every scroll on iOS
     ScrollTrigger.config({ ignoreMobileResize: true });
+    // Kill the Webflow-generated trigger regardless of breakpoint
     ScrollTrigger.getAll()
       .filter(st => st.vars.id && st.vars.id.includes('t-39e5f268'))
       .forEach(st => st.kill());
-    const gallery   = document.querySelector('.swiper-container.is-product-gallery');
-    const hideEls   = Array.from(document.querySelectorAll('.overflow-hidden.is-start'));
-    const revealEls = Array.from(document.querySelectorAll('.overflow-hidden.is-end'));
-    if (!gallery || (!hideEls.length && !revealEls.length)) return;
-    [...hideEls, ...revealEls].forEach(el => {
-      el.style.display    = 'block';
-      el.style.transition = 'none';
+    // Re-init safe: revert any previous matchMedia context (e.g. shopify:section:load)
+    if (mm) mm.revert();
+    mm = gsap.matchMedia();
+    mm.add('(max-width: 767px)', () => {
+      const gallery   = document.querySelector('.swiper-container.is-product-gallery');
+      const hideEls   = Array.from(document.querySelectorAll('.overflow-hidden.is-start'));
+      const revealEls = Array.from(document.querySelectorAll('.overflow-hidden.is-end'));
+      if (!gallery || (!hideEls.length && !revealEls.length)) return;
+      [...hideEls, ...revealEls].forEach(el => {
+        el.style.display    = 'block';
+        el.style.transition = 'none';
+      });
+      function naturalH(el) {
+        const prev = el.getAttribute('style');
+        el.style.display       = 'block';
+        el.style.height        = 'auto';
+        el.style.overflow      = 'visible';
+        el.style.paddingTop    = '0.5rem';
+        el.style.paddingBottom = '0.5rem';
+        const h = Math.ceil(el.getBoundingClientRect().height);
+        if (prev !== null) el.setAttribute('style', prev);
+        else el.removeAttribute('style');
+        return h;
+      }
+      function naturalHHide(el) {
+        const prev = el.getAttribute('style');
+        el.style.display  = 'block';
+        el.style.height   = 'auto';
+        el.style.overflow = 'visible';
+        const h = Math.ceil(el.getBoundingClientRect().height);
+        if (prev !== null) el.setAttribute('style', prev);
+        else el.removeAttribute('style');
+        return h;
+      }
+      const hideH   = hideEls.map(naturalHHide);
+      const revealH = revealEls.map(naturalH);
+      gsap.set(hideEls,   { overflow: 'hidden', height: (i) => hideH[i],   opacity: 1 });
+      gsap.set(revealEls, { overflow: 'hidden', height: 0, opacity: 0,
+                            paddingTop: '0.1rem', paddingBottom: '0.1rem' });
+      const DUR  = 1;
+      const EASE = 'power3.inOut';
+      ScrollTrigger.create({
+        trigger: gallery,
+        start:   'bottom+=300 bottom',
+        end:     'bottom top',
+        onEnter() {
+          gsap.to(hideEls, {
+            overwrite: 'auto',
+            height: 0, opacity: 0,
+            duration: DUR, ease: EASE,
+          });
+          gsap.to(revealEls, {
+            overwrite: 'auto',
+            height:        (i) => revealH[i],
+            opacity:       1,
+            paddingTop:    '0.5rem',
+            paddingBottom: '0.5rem',
+            duration: DUR, ease: EASE,
+          });
+        },
+        onLeaveBack() {
+          gsap.to(hideEls, {
+            overwrite: 'auto',
+            height: (i) => hideH[i], opacity: 1,
+            duration: DUR, ease: EASE,
+          });
+          gsap.to(revealEls, {
+            overwrite: 'auto',
+            height: 0, opacity: 0,
+            paddingTop:    '0.1rem',
+            paddingBottom: '0.1rem',
+            duration: DUR, ease: EASE,
+          });
+        },
+      });
+      // Re-measure on portrait <-> landscape (still inside mobile bracket)
+      const handleOrientation = () => {
+        setTimeout(() => {
+          hideEls.forEach((el, i)   => { hideH[i]   = naturalHHide(el); });
+          revealEls.forEach((el, i) => { revealH[i] = naturalH(el); });
+          ScrollTrigger.refresh();
+        }, 200);
+      };
+      window.addEventListener('orientationchange', handleOrientation, { passive: true });
+      // Cleanup runs when (max-width: 767px) stops matching &mdash; e.g. resize to desktop
+      return () => {
+        window.removeEventListener('orientationchange', handleOrientation);
+        gsap.set([...hideEls, ...revealEls], { clearProps: 'all' });
+      };
     });
-    function naturalH(el) {
-      const prev = el.getAttribute('style');
-      el.style.display       = 'block';
-      el.style.height        = 'auto';
-      el.style.overflow      = 'visible';
-      el.style.paddingTop    = '0.5rem';
-      el.style.paddingBottom = '0.5rem';
-      const h = Math.ceil(el.getBoundingClientRect().height);
-      if (prev !== null) el.setAttribute('style', prev);
-      else el.removeAttribute('style');
-      return h;
-    }
-    function naturalHHide(el) {
-      const prev = el.getAttribute('style');
-      el.style.display  = 'block';
-      el.style.height   = 'auto';
-      el.style.overflow = 'visible';
-      const h = Math.ceil(el.getBoundingClientRect().height);
-      if (prev !== null) el.setAttribute('style', prev);
-      else el.removeAttribute('style');
-      return h;
-    }
-    const hideH   = hideEls.map(naturalHHide);
-    const revealH = revealEls.map(naturalH);
-    gsap.set(hideEls,   { overflow: 'hidden', height: (i) => hideH[i],   opacity: 1 });
-    gsap.set(revealEls, { overflow: 'hidden', height: 0, opacity: 0,
-                          paddingTop: '0.1rem', paddingBottom: '0.1rem' });
-    const DUR  = 1;
-    const EASE = 'power3.inOut';
-    ScrollTrigger.create({
-      trigger: gallery,
-      start:   'bottom+=300 bottom',
-      end:     'bottom top',
-      // &darr; REMOVED: fastScrollEnd (unreliable velocity detection on iOS)
-      // &darr; REMOVED: preventOverlaps (overwrite:'auto' already handles conflicts)
-      onEnter() {
-        gsap.to(hideEls, {
-          overwrite: 'auto',
-          height: 0, opacity: 0,
-          duration: DUR, ease: EASE,
-        });
-        gsap.to(revealEls, {
-          overwrite: 'auto',
-          height:        (i) => revealH[i],
-          opacity:       1,
-          paddingTop:    '0.5rem',
-          paddingBottom: '0.5rem',
-          duration: DUR, ease: EASE,
-        });
-      },
-      onLeaveBack() {
-        gsap.to(hideEls, {
-          overwrite: 'auto',
-          height: (i) => hideH[i], opacity: 1,
-          duration: DUR, ease: EASE,
-        });
-        gsap.to(revealEls, {
-          overwrite: 'auto',
-          height: 0, opacity: 0,
-          paddingTop:    '0.1rem',
-          paddingBottom: '0.1rem',
-          duration: DUR, ease: EASE,
-        });
-      },
-    });
-    // Only re-measure on true orientation changes, not URL bar show/hide
-    // ignoreMobileResize above handles the filtering &mdash; this fires only for real resizes
-    window.addEventListener('orientationchange', () => {
-      setTimeout(() => {
-        // Wait for the new orientation layout to settle before re-measuring
-        hideEls.forEach((el, i)   => { hideH[i]   = naturalHHide(el); });
-        revealEls.forEach((el, i) => { revealH[i] = naturalH(el); });
-        ScrollTrigger.refresh();
-      }, 200);
-    }, { passive: true });
   }
   document.addEventListener('DOMContentLoaded', init);
   document.addEventListener('shopify:section:load', init);
