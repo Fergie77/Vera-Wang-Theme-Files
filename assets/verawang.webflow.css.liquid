@@ -9903,7 +9903,7 @@ figcaption {
     grid-row-gap: 0rem;
     flex-flow: column;
     max-height: 0;
-    transition: max-height .6s;
+    transition: max-height .6s ease-in-out;
     display: flex;
     overflow: clip;
   }
@@ -10061,6 +10061,13 @@ figcaption {
     min-height: unset;
     border-left-style: none;
     padding: 2rem 1.25rem 3rem;
+  }
+
+  .account-buttons {
+    grid-column-gap: var(--gap--global);
+    grid-row-gap: var(--gap--global);
+    width: 100%;
+    display: flex;
   }
 }
 
@@ -10930,11 +10937,6 @@ figcaption {
   .support_layout {
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;
-  }
-
-  .footer-dropdown_list {
-    transition-duration: .6s;
-    transition-timing-function: ease-in-out;
   }
 
   .collection-page_custom-padding-2 {

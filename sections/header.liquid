@@ -183,8 +183,17 @@
                     </div>
                   </div>
                   <div class="mobile-nav-links_account-layout show-tablet">
-                    <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="button is-secondary w-button">Log In</a>
-                    <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="button w-button">Register</a>
+                    {% if customer %}    <div li-if="customer" class="account-buttons">
+    
+                      <a href="{{ routes.account_url }}" class="button is-secondary w-button">My Account</a>
+                        </div>
+{% endif %}
+                    {% unless customer %}    <div li-unless="customer" class="account-buttons">
+    
+                      <a href="{{ routes.account_login_url }}" class="button is-secondary w-button">Log In</a>
+                      <a href="{{ routes.account_register_url }}" class="button w-button">Register</a>
+                        </div>
+{% endunless %}
                   </div>
                 </div>
               </nav>
