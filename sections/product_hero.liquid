@@ -636,10 +636,87 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 </style>
         </div>
-        <script>(function(){ var TAG='[notify-me-auto]'; if(window.__notifyMeAutoBound){console.log(TAG,'already bound, skipping');return;} window.__notifyMeAutoBound=true; console.log(TAG,'init &mdash; binding change+click on document'); function getVariantInfo(input){ var info={value:input.getAttribute('value'),name:(input.getAttribute('name')||input.getAttribute('data-name')||''),disabled:input.classList.contains('data-disabled')}; try{ var form=document.querySelector('[li-form="product"]')||document.querySelector('[x-data]'); var data=window.Alpine&&form?window.Alpine.$data(form):null; info.selectedVariant=data&&data.selected_or_first_available_variant; info.firstOptionMap=data&&data.firstOptionHasAvailableChildren; }catch(err){info.alpineError=String(err);} return info; } function maybeTrigger(input,evtType){ var inSizePicker=!!input.closest('.size-picker_wrapper, .size-picker_panel, .size-picker_slot'); var optName=(input.getAttribute('name')||input.getAttribute('data-name')||'').toLowerCase(); var disabled=input.classList.contains('data-disabled'); console.log(TAG,evtType+' on input',{value:input.getAttribute('value'),option:optName,inSizePicker:inSizePicker,disabled:disabled}); if(!inSizePicker){console.log(TAG,'skip &mdash; not from size picker');return;} if(optName!=='size'){console.log(TAG,'skip &mdash; option is not "size"');return;} if(!disabled){console.log(TAG,'skip &mdash; variant is available');return;} console.log(TAG,'sold-out size selected &rarr; triggering Notify flow'); setTimeout(function(){ try{ var info=getVariantInfo(input); console.log(TAG,'variant snapshot:',info); var closeBtn=document.querySelector('.size-picker_wrapper [data-drawer-close]'); console.log(TAG,'drawer close button:',closeBtn); if(closeBtn)closeBtn.click(); setTimeout(function(){ var btn=document.querySelector('[li-element="add-to-cart"]'); console.log(TAG,'add-to-cart button element:',btn); if(btn){console.log(TAG,'button text:',btn.textContent.trim(),'classes:',btn.className);btn.click();console.log(TAG,'clicked add-to-cart (now Notify Me)');}else{console.warn(TAG,'no add-to-cart button found');} },300); }catch(err){console.error(TAG,'error during trigger:',err);} },100); } function handler(evtType){ return function(e){ var input=e.target&&e.target.closest&&e.target.closest('[li-element="product-option-input"]'); if(!input){ var lbl=e.target&&e.target.closest&&e.target.closest('label.product-header_radio'); if(lbl)input=lbl.querySelector('[li-element="product-option-input"]'); } if(!input)return; maybeTrigger(input,evtType); }; } document.addEventListener('change',handler('change'),true); document.addEventListener('click',handler('click'),true); })();</script>
+        <div class="w-embed w-script">
+          <script>
+  (function () {
+    var TAG = '[notify-me-auto]';
+    if (window.__notifyMeAutoBound) {
+      console.log(TAG, 'already bound, skipping');
+      return;
+    }
+    window.__notifyMeAutoBound = true;
+    console.log(TAG, 'init &mdash; binding change+click on document');
+    function getVariantInfo(input) {
+      var info = { value: input.getAttribute('value'), name: input.getAttribute('name') || input.getAttribute('data-name') || '', disabled: input.classList.contains('data-disabled') };
+      try {
+        var form = document.querySelector('[li-form="product"]') || document.querySelector('[x-data]');
+        var data = window.Alpine && form ? window.Alpine.$data(form) : null;
+        info.selectedVariant = data && data.selected_or_first_available_variant;
+        info.firstOptionMap = data && data.firstOptionHasAvailableChildren;
+      } catch (err) {
+        info.alpineError = String(err);
+      }
+      return info;
+    }
+    function maybeTrigger(input, evtType) {
+      var inSizePicker = !!input.closest('.size-picker_wrapper, .size-picker_panel, .size-picker_slot');
+      var optName = (input.getAttribute('name') || input.getAttribute('data-name') || '').toLowerCase();
+      var disabled = input.classList.contains('data-disabled');
+      console.log(TAG, evtType + ' on input', { value: input.getAttribute('value'), option: optName, inSizePicker: inSizePicker, disabled: disabled });
+      if (!inSizePicker) {
+        console.log(TAG, 'skip &mdash; not from size picker');
+        return;
+      }
+      if (optName !== 'size') {
+        console.log(TAG, 'skip &mdash; option is not "size"');
+        return;
+      }
+      if (!disabled) {
+        console.log(TAG, 'skip &mdash; variant is available');
+        return;
+      }
+      console.log(TAG, 'sold-out size selected &rarr; triggering Notify flow');
+      setTimeout(function () {
+        try {
+          var info = getVariantInfo(input);
+          console.log(TAG, 'variant snapshot:', info);
+          var closeBtn = document.querySelector('.size-picker_wrapper [data-drawer-close]');
+          console.log(TAG, 'drawer close button:', closeBtn);
+          if (closeBtn) closeBtn.click();
+          setTimeout(function () {
+            var btn = document.querySelector('[li-element="add-to-cart"]');
+            console.log(TAG, 'add-to-cart button element:', btn);
+            if (btn) {
+              console.log(TAG, 'button text:', btn.textContent.trim(), 'classes:', btn.className);
+              btn.click();
+              console.log(TAG, 'clicked add-to-cart (now Notify Me)');
+            } else {
+              console.warn(TAG, 'no add-to-cart button found');
+            }
+          }, 300);
+        } catch (err) {
+          console.error(TAG, 'error during trigger:', err);
+        }
+      }, 100);
+    }
+    function handler(evtType) {
+      return function (e) {
+        var input = e.target && e.target.closest && e.target.closest('[li-element="product-option-input"]');
+        if (!input) {
+          var lbl = e.target && e.target.closest && e.target.closest('label.product-header_radio');
+          if (lbl) input = lbl.querySelector('[li-element="product-option-input"]');
+        }
+        if (!input) return;
+        maybeTrigger(input, evtType);
+      };
+    }
+    document.addEventListener('change', handler('change'), true);
+    document.addEventListener('click', handler('click'), true);
+  })();
+</script>
+        </div>
         <div class="w-embed">
           <style>
-  /* ============ SLIDE-OUT MODULE &mdash; desktop title heading ============ */
 .slide-out_module-title-heading {
   display: none;
 }
@@ -661,47 +738,111 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 </style>
         </div>
-        <div class="w-embed">
-          <style>
-  /* Override the Webflow-generated transitions with iOS-safe alternatives */
-@media screen and (max-width: 767px) {
-  /* Force GPU layer &mdash; prevents iOS from jumping */
-  .overflow-hidden.is-start,
-  .overflow-hidden.is-end {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    /* Replace grid-template-rows transition with max-height */
-    transition: max-height 0.5s ease-in-out,
-                opacity 0.5s ease-in-out,
-                padding 0.5s ease-in-out !important;
+        <div class="w-embed w-script">
+          <script>
+(function () {
+  if (window.matchMedia('(min-width: 768px)').matches) return;
+  function init() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+      setTimeout(init, 100);
+      return;
+    }
+    ScrollTrigger.getAll()
+      .filter(st => st.vars.id && st.vars.id.includes('t-39e5f268'))
+      .forEach(st => st.kill());
+    const gallery   = document.querySelector('.swiper-container.is-product-gallery');
+    const hideEls   = Array.from(document.querySelectorAll('.overflow-hidden.is-start'));
+    const revealEls = Array.from(document.querySelectorAll('.overflow-hidden.is-end'));
+    if (!gallery || (!hideEls.length && !revealEls.length)) return;
+    // &#9472;&#9472; 1. Switch display:grid &rarr; block &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+    [...hideEls, ...revealEls].forEach(el => {
+      el.style.display    = 'block';
+      el.style.transition = 'none';
+    });
+    // &#9472;&#9472; 2. Measure natural heights at FINAL padding state &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+    // Measuring at the default 0.1rem padding gives heights ~9px too small
+    // because the tween animates padding to 0.5rem simultaneously with height.
+    // We also use getBoundingClientRect (not scrollHeight) for subpixel accuracy &mdash;
+    // Big Caslon's font metrics cause scrollHeight to undercount by ~1px.
+    function naturalH(el) {
+      const prev = el.getAttribute('style');
+      el.style.display       = 'block';
+      el.style.height        = 'auto';
+      el.style.overflow      = 'visible';   // allow content to set its own height
+      el.style.paddingTop    = '0.5rem';    // measure at the revealed padding state
+      el.style.paddingBottom = '0.5rem';
+      const h = Math.ceil(el.getBoundingClientRect().height);
+      if (prev !== null) el.setAttribute('style', prev);
+      else el.removeAttribute('style');
+      return h;
+    }
+    function naturalHHide(el) {
+      const prev = el.getAttribute('style');
+      el.style.display  = 'block';
+      el.style.height   = 'auto';
+      el.style.overflow = 'visible';
+      const h = Math.ceil(el.getBoundingClientRect().height);
+      if (prev !== null) el.setAttribute('style', prev);
+      else el.removeAttribute('style');
+      return h;
+    }
+    const hideH   = hideEls.map(naturalHHide);
+    const revealH = revealEls.map(naturalH);
+    // &#9472;&#9472; 3. Set initial states &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+    gsap.set(hideEls,   { overflow: 'hidden', height: (i) => hideH[i],   opacity: 1 });
+    gsap.set(revealEls, { overflow: 'hidden', height: 0, opacity: 0,
+                          paddingTop: '0.1rem', paddingBottom: '0.1rem' });
+    // &#9472;&#9472; 4. Tween config &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+    const DUR  = 0.45;
+    const EASE = 'power2.inOut';
+    // &#9472;&#9472; 5. ScrollTrigger &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+    ScrollTrigger.create({
+      trigger: gallery,
+      start:   'bottom+=300 bottom',
+      end:     'bottom top',
+      fastScrollEnd:   true,
+      preventOverlaps: true,
+      onEnter() {
+        gsap.to(hideEls, {
+          overwrite: 'auto',
+          height: 0, opacity: 0,
+          duration: DUR, ease: EASE,
+        });
+        gsap.to(revealEls, {
+          overwrite: 'auto',
+          height:        (i) => revealH[i],
+          opacity:       1,
+          paddingTop:    '0.5rem',
+          paddingBottom: '0.5rem',
+          duration: DUR, ease: EASE,
+        });
+      },
+      onLeaveBack() {
+        gsap.to(hideEls, {
+          overwrite: 'auto',
+          height: (i) => hideH[i], opacity: 1,
+          duration: DUR, ease: EASE,
+        });
+        gsap.to(revealEls, {
+          overwrite: 'auto',
+          height: 0, opacity: 0,
+          paddingTop:    '0.1rem',
+          paddingBottom: '0.1rem',
+          duration: DUR, ease: EASE,
+        });
+      },
+    });
+    // Re-measure on orientation change
+    window.addEventListener('resize', () => {
+      ScrollTrigger.refresh();
+      hideEls.forEach((el, i)   => { hideH[i]   = naturalHHide(el); });
+      revealEls.forEach((el, i) => { revealH[i] = naturalH(el); });
+    }, { passive: true });
   }
-  /* is-start: initially visible */
-  .overflow-hidden.is-start {
-    display: block;            /* no grid needed */
-    max-height: 200px;         /* generous enough for content */
-    overflow: hidden;
-  }
-  .overflow-hidden.is-start.completed-animation {
-    opacity: 0;
-    max-height: 0;
-  }
-  /* is-end: initially hidden */
-  .overflow-hidden.is-end {
-    display: block;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-  }
-  .overflow-hidden.is-end.completed-animation {
-    opacity: 1;
-    max-height: 300px;         /* generous enough for content */
-  }
-  .overflow-hidden.is-end.completed-animation {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-}
-</style>
+  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('shopify:section:load', init);
+})();
+</script>
         </div> {% schema %} {
     "tag": "section",
     "name": "Product Hero",
