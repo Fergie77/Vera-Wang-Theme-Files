@@ -502,7 +502,8 @@ mark{
                             <div class="mini-cart_line-item">
                               <ul role="list" class="mini-cart_line-item_list w-list-unstyled">
                                 <template x-for="product in products" :key="product.key">
-    <li li-element="mini-cart-item" class="mini-cart_line-item_item"><button li-js-object:href="product.url" class="mini-cart_line-item_link" x-bind:href="product.url"><img src="../images/product-apparel-2.svg" loading="lazy" alt="" class="mini-cart_line-item_img" x-bind:src="product.image" x-bind:alt="product.product_title"></button>
+    <li li-element="mini-cart-item" class="mini-cart_line-item_item">
+                                  <a li-js-object:href="product.url" href="#" class="mini-cart_line-item_link w-inline-block" x-bind:href="product.url"><img src="../images/product-apparel-2.svg" loading="lazy" alt="" class="mini-cart_line-item_img" x-bind:src="product.image" x-bind:alt="product.product_title"></a>
                                   <div class="mini-cart_line-item_product-info">
                                     <div class="product-info_wrapper">
                                       <div class="product-info_layout">
@@ -520,7 +521,7 @@ mark{
                                       {% if product.properties._colour_name %}    <div li-if="product.properties._colour_name" class="mini-cart_main-text-size text-color-grey">
     <span>Colour</span> <span li-js-object="product.properties._colour_name" class="text-weight-light" x-text="product.properties._colour_name">L</span>    </div>
 {% endif %}
-                                      {% if product.options_with_values[0] %}    <div li-if="product.options_with_values[0]" class="mini-cart_main-text-size text-color-grey">
+                                      {% if product.options_with_values[0] and product.options_with_values[0].name != 'Default Title' %}    <div li-if="product.options_with_values[0] and product.options_with_values[0].name != 'Default Title'" class="mini-cart_main-text-size text-color-grey">
     <span>Size</span> <span li-js-object="product.options_with_values[0].value" class="text-weight-light" x-text="product.options_with_values[0].value">L</span>    </div>
 {% endif %}
                                       <div class="mini-cart_main-text-size text-color-grey"><span>Quantity</span> <span li-js-object="product.quantity" class="text-weight-light" x-text="product.quantity">1</span></div>
@@ -605,6 +606,9 @@ mark{
   }
   .mini-cart-v2_panel .mini-cart_line-item {
     padding-top: 0.75rem;
+  }
+  .mini-cart_line-item_link{
+    text-box: normal;
   }
 }
 </style>
@@ -1044,7 +1048,8 @@ mark{
                               <div class="mini-cart_line-item">
                                 <ul role="list" class="mini-cart_line-item_list w-list-unstyled">
                                   <template x-for="product in products" :key="product.key">
-    <li li-element="mini-cart-item" class="mini-cart_line-item_item"><button li-js-object:href="product.url" class="mini-cart_line-item_link" x-bind:href="product.url"><img src="../images/product-apparel-2.svg" loading="lazy" alt="" class="mini-cart_line-item_img" x-bind:src="product.image" x-bind:alt="product.product_title"></button>
+    <li li-element="mini-cart-item" class="mini-cart_line-item_item">
+                                    <a li-js-object:href="product.url" href="#" class="mini-cart_line-item_link w-inline-block" x-bind:href="product.url"><img src="../images/product-apparel-2.svg" loading="lazy" alt="" class="mini-cart_line-item_img" x-bind:src="product.image" x-bind:alt="product.product_title"></a>
                                     <div class="mini-cart_line-item_product-info">
                                       <div class="product-info_wrapper">
                                         <div class="product-info_layout">
@@ -1062,7 +1067,7 @@ mark{
                                         {% if product.properties._colour_name %}    <div li-if="product.properties._colour_name" class="mini-cart_main-text-size text-color-grey">
     <span>Colour</span> <span li-js-object="product.properties._colour_name" class="text-weight-light" x-text="product.properties._colour_name">L</span>    </div>
 {% endif %}
-                                        {% if product.options_with_values[0] %}    <div li-if="product.options_with_values[0]" class="mini-cart_main-text-size text-color-grey">
+                                        {% if product.options_with_values[0] and product.options_with_values[0].name != 'Default Title' %}    <div li-if="product.options_with_values[0] and product.options_with_values[0].name != 'Default Title'" class="mini-cart_main-text-size text-color-grey">
     <span>Size</span> <span li-js-object="product.options_with_values[0].value" class="text-weight-light" x-text="product.options_with_values[0].value">L</span>    </div>
 {% endif %}
                                         <div class="mini-cart_main-text-size text-color-grey"><span>Quantity</span> <span li-js-object="product.quantity" class="text-weight-light" x-text="product.quantity">1</span></div>
@@ -1147,6 +1152,9 @@ mark{
   }
   .mini-cart-v2_panel .mini-cart_line-item {
     padding-top: 0.75rem;
+  }
+  .mini-cart_line-item_link{
+    text-box: normal;
   }
 }
 </style>
