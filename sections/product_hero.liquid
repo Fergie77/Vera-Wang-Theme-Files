@@ -660,6 +660,48 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }
 </style>
+        </div>
+        <div class="w-embed">
+          <style>
+  /* Override the Webflow-generated transitions with iOS-safe alternatives */
+@media screen and (max-width: 767px) {
+  /* Force GPU layer &mdash; prevents iOS from jumping */
+  .overflow-hidden.is-start,
+  .overflow-hidden.is-end {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    /* Replace grid-template-rows transition with max-height */
+    transition: max-height 0.5s ease-in-out,
+                opacity 0.5s ease-in-out,
+                padding 0.5s ease-in-out !important;
+  }
+  /* is-start: initially visible */
+  .overflow-hidden.is-start {
+    display: block;            /* no grid needed */
+    max-height: 200px;         /* generous enough for content */
+    overflow: hidden;
+  }
+  .overflow-hidden.is-start.completed-animation {
+    opacity: 0;
+    max-height: 0;
+  }
+  /* is-end: initially hidden */
+  .overflow-hidden.is-end {
+    display: block;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+  .overflow-hidden.is-end.completed-animation {
+    opacity: 1;
+    max-height: 300px;         /* generous enough for content */
+  }
+  .overflow-hidden.is-end.completed-animation {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+</style>
         </div> {% schema %} {
     "tag": "section",
     "name": "Product Hero",
