@@ -27,7 +27,8 @@
       ],
       "name": "Footer",
       "settings": {
-        "text_heading": "Join our Newsletter(Replace with Klaviyo)",
+        "text_heading": "Join our Newsletter",
+        "text_newsletter_paragraph": "Sign up to join the Vera Wang mailing list for exclusive content, events, promotions and more.",
         "text_checkbox": "By subscribing you agree to with our Privacy Policy and provide consent to receive updates from our company.",
         "placeholder_text": "Email address",
         "menu_1": "online-services",
