@@ -72,7 +72,11 @@ function initGallery() {
   });
   setActive(getActiveIndex());
 }
-initGallery();
+if (typeof gsap !== 'undefined') {
+  initGallery();
+} else {
+  window.addEventListener('load', initGallery);
+}
 </script>
                 </div>
               </div>
