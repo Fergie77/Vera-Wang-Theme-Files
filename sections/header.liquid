@@ -1066,8 +1066,8 @@ mark{
                                         </div>
                                         {% if product.properties._colour_name %}    <div li-if="product.properties._colour_name" class="mini-cart_main-text-size text-color-grey">
     <span>Colour</span> <span li-js-object="product.properties._colour_name" class="text-weight-light" x-text="product.properties._colour_name">L</span>    </div>
-{% endif %}{{ product.options_with_values[0] | json}}
-                                        {% if product.options_with_values[0] and product.options_with_values[0].value != 'Default Title' %}    <div li-if="product.options_with_values[0] and product.options_with_values[0].name != 'Default Title'" class="mini-cart_main-text-size text-color-grey">
+{% endif %}{{ product.options_with_values[0]}}
+                                        {% if product.options_with_values[0] and product.options_with_values[0].title != 'Default Title' %}    <div li-if="product.options_with_values[0] and product.options_with_values[0].name != 'Default Title'" class="mini-cart_main-text-size text-color-grey">
     <span>Size</span> <span li-js-object="product.options_with_values[0].value" class="text-weight-light" x-text="product.options_with_values[0].value">L</span>    </div>
 {% endif %}
                                         <div class="mini-cart_main-text-size text-color-grey"><span>Quantity</span> <span li-js-object="product.quantity" class="text-weight-light" x-text="product.quantity">1</span></div>
