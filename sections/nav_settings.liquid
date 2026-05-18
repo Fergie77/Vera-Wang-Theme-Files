@@ -1,11 +1,18 @@
 <div class="w-embed w-script">{% if section.settings.nav_scroll_animation %}
           <script>
+function initNavbar() {
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.create({
     start: "top -5%",
     onEnter: () => document.querySelector(".section_navbar").classList.add("scrolling"),
     onLeaveBack: () => document.querySelector(".section_navbar").classList.remove("scrolling"),
   });
+}
+if (typeof gsap !== 'undefined') {
+  initNavbar();
+} else {
+  window.addEventListener('load', initNavbar);
+}
 </script>
           {% endif %}
         </div> {% schema %} {
