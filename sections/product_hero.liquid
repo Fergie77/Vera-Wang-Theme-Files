@@ -868,6 +868,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }
 </style>
+        </div>
+        <div class="w-embed w-script">
+          <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.css">
+          <script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.js';
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#my-gallery',
+    children: 'a.product-header_gallery-lightbox',
+    pswpModule: () => import('https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.esm.js'),
+    bgOpacity: 1,
+    padding: { top: 40, bottom: 40, left: 0, right: 0 }
+  });
+  lightbox.on('change', () => {
+    const swiper = window.productSwiper;
+    if (swiper && !swiper.destroyed) swiper.slideTo(lightbox.pswp.currIndex, 0);
+  });
+  lightbox.init();
+</script>
         </div> {% schema %} {
     "tag": "section",
     "name": "Product Hero",
