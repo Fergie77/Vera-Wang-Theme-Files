@@ -788,7 +788,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.set(hideEls,   { overflow: 'hidden', height: (i) => hideH[i],   opacity: 1 });
     gsap.set(revealEls, { overflow: 'hidden', height: 0, opacity: 0,
                           paddingTop: '0.1rem', paddingBottom: '0.1rem' });
-    const DUR  = 0.45;
+    const DUR  = 1;
     const EASE = 'power2.inOut';
     ScrollTrigger.create({
       trigger: gallery,
