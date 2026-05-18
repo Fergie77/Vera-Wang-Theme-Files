@@ -747,6 +747,9 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(init, 100);
       return;
     }
+    // Tell ScrollTrigger to ignore small viewport height changes (URL bar show/hide)
+    // This prevents ScrollTrigger.refresh() from firing on every scroll on iOS
+    ScrollTrigger.config({ ignoreMobileResize: true });
     ScrollTrigger.getAll()
       .filter(st => st.vars.id && st.vars.id.includes('t-39e5f268'))
       .forEach(st => st.kill());
@@ -754,22 +757,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const hideEls   = Array.from(document.querySelectorAll('.overflow-hidden.is-start'));
     const revealEls = Array.from(document.querySelectorAll('.overflow-hidden.is-end'));
     if (!gallery || (!hideEls.length && !revealEls.length)) return;
-    // &#9472;&#9472; 1. Switch display:grid &rarr; block &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
     [...hideEls, ...revealEls].forEach(el => {
       el.style.display    = 'block';
       el.style.transition = 'none';
     });
-    // &#9472;&#9472; 2. Measure natural heights at FINAL padding state &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
-    // Measuring at the default 0.1rem padding gives heights ~9px too small
-    // because the tween animates padding to 0.5rem simultaneously with height.
-    // We also use getBoundingClientRect (not scrollHeight) for subpixel accuracy &mdash;
-    // Big Caslon's font metrics cause scrollHeight to undercount by ~1px.
     function naturalH(el) {
       const prev = el.getAttribute('style');
       el.style.display       = 'block';
       el.style.height        = 'auto';
-      el.style.overflow      = 'visible';   // allow content to set its own height
-      el.style.paddingTop    = '0.5rem';    // measure at the revealed padding state
+      el.style.overflow      = 'visible';
+      el.style.paddingTop    = '0.5rem';
       el.style.paddingBottom = '0.5rem';
       const h = Math.ceil(el.getBoundingClientRect().height);
       if (prev !== null) el.setAttribute('style', prev);
@@ -788,20 +785,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const hideH   = hideEls.map(naturalHHide);
     const revealH = revealEls.map(naturalH);
-    // &#9472;&#9472; 3. Set initial states &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
     gsap.set(hideEls,   { overflow: 'hidden', height: (i) => hideH[i],   opacity: 1 });
     gsap.set(revealEls, { overflow: 'hidden', height: 0, opacity: 0,
                           paddingTop: '0.1rem', paddingBottom: '0.1rem' });
-    // &#9472;&#9472; 4. Tween config &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
     const DUR  = 0.45;
     const EASE = 'power2.inOut';
-    // &#9472;&#9472; 5. ScrollTrigger &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
     ScrollTrigger.create({
       trigger: gallery,
       start:   'bottom+=300 bottom',
       end:     'bottom top',
-      fastScrollEnd:   true,
-      preventOverlaps: true,
+      // &darr; REMOVED: fastScrollEnd (unreliable velocity detection on iOS)
+      // &darr; REMOVED: preventOverlaps (overwrite:'auto' already handles conflicts)
       onEnter() {
         gsap.to(hideEls, {
           overwrite: 'auto',
@@ -832,11 +826,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       },
     });
-    // Re-measure on orientation change
-    window.addEventListener('resize', () => {
-      ScrollTrigger.refresh();
-      hideEls.forEach((el, i)   => { hideH[i]   = naturalHHide(el); });
-      revealEls.forEach((el, i) => { revealH[i] = naturalH(el); });
+    // Only re-measure on true orientation changes, not URL bar show/hide
+    // ignoreMobileResize above handles the filtering &mdash; this fires only for real resizes
+    window.addEventListener('orientationchange', () => {
+      setTimeout(() => {
+        // Wait for the new orientation layout to settle before re-measuring
+        hideEls.forEach((el, i)   => { hideH[i]   = naturalHHide(el); });
+        revealEls.forEach((el, i) => { revealH[i] = naturalH(el); });
+        ScrollTrigger.refresh();
+      }, 200);
     }, { passive: true });
   }
   document.addEventListener('DOMContentLoaded', init);
