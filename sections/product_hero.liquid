@@ -8,7 +8,7 @@
                   
                             {% if media.media_type == 'image' %}    <div li-if="media.media_type == 'image'" class="swiper-slide is-product-gallery">
     
-                    <a href="media | image_url: width: 2400" class="product-header_gallery-lightbox w-inline-block" data-pswp-height="{{media.height}}" data-pswp-width="{{media.width}}"><img class="product-header_gallery-image" src="{{ 'media | image_url: width: 800' | asset_url }}" alt="{{ media.alt }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" li-object:alt="media.alt" sizes="(min-width: 768px) 50vw, 100vw"></a>
+                    <div class="product-header_gallery-lightbox"><img loading="lazy" li-object:src="media | image_url: width: 2000" li-object:alt="media.alt" src="{{ media | image_url: width: 2000 }}" alt="{{ media.alt }}" class="product-header_gallery-image"></div>
                       </div>
 {% endif %}
                             
