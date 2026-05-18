@@ -789,7 +789,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.set(revealEls, { overflow: 'hidden', height: 0, opacity: 0,
                           paddingTop: '0.1rem', paddingBottom: '0.1rem' });
     const DUR  = 1;
-    const EASE = 'power2.inOut';
+    const EASE = 'power4.inOut';
     ScrollTrigger.create({
       trigger: gallery,
       start:   'bottom+=300 bottom',
